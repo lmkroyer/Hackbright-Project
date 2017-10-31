@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3><a href="/login">Login</a></h3>
+
+<img src="https://dendritics.com/scales/alice/alice37a.gif" height="300" width="200">
+
+<!-- <h1><a href="/upload">Upload a document</a></h1> -->
+
+<h1>Upload a document</h1>
+
+<form action='/upload' method="POST" enctype="multipart/form-data">
+    <p><input type="file" name="file">
+        <input type="submit">
+</form>
+
+{% endblock %}
