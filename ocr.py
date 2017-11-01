@@ -6,7 +6,11 @@ def pdf_to_OCR(file_path):
     # with open(file_path) as ocr_text:
 
     text = textract.process(file_path)
-    return text
+
+    f = open('hello.txt', 'w')
+    f.write(text)
+    f.close()
 
 
-# pdf_to_OCR('test.pdf')
+
+pdf_to_OCR('test.pdf')
