@@ -50,10 +50,22 @@ def OCR_file(document):
     FIX: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!"""
 
     text = textract.process(document)
+    text_path = os.path.join('{document}.txt'.format(document=document))
 
-    f = open('hello.txt', 'w')
-    f.write(text)
-    f.close()
+    # text_file = open((os.path.join(UPLOAD_FOLDER, '{document}.txt'.format(document=document)), 'w+')
+    with open(text_path, 'w+') as text_file:
+
+        text_file.write(text)
+
+    # f.save(os.path.join(app.config['UPLOAD_FOLDER'], document))
+
+    text_file.close()
+
+
+    #this works!!
+    # f = open('hello.txt', 'w')
+    # f.write(text)
+    # f.close()
 
     # uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     # OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -122,7 +134,7 @@ def upload_file():
         OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         #all working up to here!!!
-        return render_template('display.html', text=text)
+        return render_template('display.html', text=)
 
         #can we from here to ocr function?
         # uploaded_file.close()
