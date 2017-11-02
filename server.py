@@ -38,26 +38,25 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+    return ('.' in filename and
+            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
 
-def file_to_OCR(filename):
-    """Takes in a file and outputs an OCR'd txt file."""
 
-    # with open(file_path) as ocr_text:
-    #turn this into a txt file!!
+def OCR_file(document):
+    """Takes in a file and outputs an OCR'd txt file.
 
-    #this returns a STRING
+    FIX: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!"""
 
-    text = textract.process(filename)
+    text = textract.process(document)
 
     f = open('hello.txt', 'w')
     f.write(text)
-    # f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     f.close()
 
-    # return f
+    # uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    # OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 @app.route('/')
 def index():
@@ -112,62 +111,31 @@ def upload_file():
 
     if 'file' not in request.files:
         flash('No file part')
-        return redirect('homepage.html')
-    file = request.files['file']
-    if file.filename == '':
+        return redirect('/')
+    uploaded_file = request.files['file']
+    if uploaded_file.filename == '':
         flash('No selected file')
-        return redirect('homepage.html')
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        file.close()
-        return redirect(url_for('uploaded_file', filename=filename))
+        return redirect('/')
+    if uploaded_file and allowed_file(uploaded_file.filename):
+        filename = secure_filename(uploaded_file.filename)
+        uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        #all working up to here!!!
+        return render_template('display.html', text=text)
+
+        #can we from here to ocr function?
+        # uploaded_file.close()
+        # return redirect(url_for('uploaded_file', filename=filename))
 
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    """Broken --fix so outputs OCR file."""
+#try to eliminate all of this!!!!!
+# @app.route('/uploads/<filename>')
+# def uploaded_file(filename):
+#     """Broken --fix so outputs OCR file."""
 
-    # filename = secure_filename(temp_file.filename)
-
-    # result = send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-    # file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'r')
-
-    #error: Attempted implicit sequence conversion but the response object is in direct passthrough mode.
-    # text = jsonify(response.data)
-
-    # # error: 'Response' object has no attribute 'text'
-    # text = jsonify(response)
-
-    #gets error: <Response streamed [200 OK]> is not JSON serializable
-    # response = jsonify(response)
-
-
-    # response = requests.get(response)
-    # string = response.read().decode('utf-8')
-    # json_obj = json.loads(string)
-
-    # response = requests.get(response)
-    # response_dict = response.json()
-
-    # import pdb
-    # pdb.set_trace()
-    # with open (result, 'r'):
-
-    result = send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-    text = file_to_OCR(result)
-
-    return send_from_directory(app.config['UPLOAD_FOLDER'], text)
-
-    # filename = secure_filename(f.filename)
-    # f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-    # return render_template('display.html', text=text)
-
-
-    #this line below works, to download and display doc - see if it will work with txt file 
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
+#     #this line below works, to download and display doc - see if it will work with txt file 
+#     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
 
