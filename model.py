@@ -46,6 +46,8 @@ class Case(db.Model):
 class OpposingCounsel(db.Model):
     """Opposition model."""
 
+    __tablename__ = 'opposing_counsel'
+
     opposing_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
@@ -55,6 +57,8 @@ class OpposingCounsel(db.Model):
 
 class Plaintiffs(db.model):
     """Plaintiff model."""
+
+    __tablename__ = 'plaintiffs'
 
     plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=True)
@@ -68,6 +72,8 @@ class Plaintiffs(db.model):
 class Clients(db.model):
     """Client model."""
 
+    __tablename__ = 'clients'
+
     client_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=True)
     lname = db.Column(db.String(25), nullable=True)
@@ -80,14 +86,42 @@ class Clients(db.model):
 class DocTypes (db.model):
     """Doctype model."""
 
+    __tablename__ = 'doc_types'
+
     doc_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(25), nullable=True)
+    name = db.Column(db.String(64), nullable=True)
 
 class ClaimTypes (db.model):
     """Claim type model."""
 
+    __tablename__ = 'claim_types'
+
     claim_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(25), nullable=True)
+    name = db.Column(db.String(64), nullable=True)
+
+class Complaint (db.model):
+    """Complaint document model."""
+
+    __tablename__ = 'complaints'
+
+    complaint_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    date_received = db.Column(db.DateTime, nullable=False)
+    date_reviewed = db.Column(db.DateTime, nullable=False)
+    date_submitted = db.Column(db.DateTime, nullable=False)
+    date_filed = db.Column(db.String(25), nullable=False)
+    incident_date = db.Column(db.String(25), nullable=False)
+    incident_location = db.Column(db.String(100), nullable=False)
+    incident_description = db.Column(db.Text)
+    # is there a special syntax for a file path?
+    pdf = db.Column
+    txt_file = db.Column
+
+
+
+    name = db.Column(db.String(64), nullable=True)
 
 
 
