@@ -2,6 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+# FIXME: add repr's
+# FIXME: check all null values
+
 class User(db.Model):
     """User model."""
 
@@ -38,7 +41,54 @@ class Case(db.Model):
     county = db.Column(db.String(25), nullable=False)
     # add court_dept and/or judge_name?
     initialized = db.Column(db.DateTime, nullable=False)
-    settled = db.Column()
+    settled = db.Column(Boolean, default=False, nullable=False)
+
+class OpposingCounsel(db.Model):
+    """Opposition model."""
+
+    opposing_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    fname = db.Column(db.String(25), nullable=False)
+    lname = db.Column(db.String(25), nullable=False)
+    email = db.Column(db.String(100), nullable=True)
+    mailing_address = db.Column(db.String(100), nullable=False)
+    firm_name = db.Column(db.String(64), nullable=False)
+
+class Plaintiffs(db.model):
+    """Plaintiff model."""
+
+    plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    fname = db.Column(db.String(25), nullable=True)
+    lname = db.Column(db.String(25), nullable=True)
+    company = db.Column(db.String(100), nullable=True)
+    email = db.Column(db.String(100), nullable=True)
+    mailing_address = db.Column(db.String(100), nullable=False)
+    # FIXME: country? town? state? 'location'?
+    resident_of = db.Column(db.String(64), nullable=False)
+
+class Clients(db.model):
+    """Client model."""
+
+    client_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    fname = db.Column(db.String(25), nullable=True)
+    lname = db.Column(db.String(25), nullable=True)
+    company = db.Column(db.String(100), nullable=True)
+    email = db.Column(db.String(100), nullable=True)
+    mailing_address = db.Column(db.String(100), nullable=False)
+    # FIXME: country? town? state? 'location'?
+    resident_of = db.Column(db.String(64), nullable=False)
+
+class DocTypes (db.model):
+    """Doctype model."""
+
+    doc_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(25), nullable=True)
+
+class ClaimTypes (db.model):
+    """Claim type model."""
+
+    claim_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(25), nullable=True)
+
 
 
 
