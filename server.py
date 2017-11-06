@@ -1,3 +1,5 @@
+"""HACKBRIGHT PROJECT !!!!!!"""
+
 import textract
 
 from requests_oauthlib import OAuth2Session
@@ -34,7 +36,7 @@ token_url = 'https://github.com/login/oauth/access_token'
 app.jinja_env.undefined = StrictUndefined
 
 UPLOAD_FOLDER = 'filestorage/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -47,25 +49,40 @@ def allowed_file(filename):
 def OCR_file(document):
     """Takes in a file and outputs an OCR'd txt file.
 
-    FIX: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!"""
+    FIX: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!
 
-    text = textract.process(document)
-    text_path = os.path.join('{document}.txt'.format(document=document))
+    FIX: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
 
-    # text_file = open((os.path.join(UPLOAD_FOLDER, '{document}.txt'.format(document=document)), 'w+')
-    with open(text_path, 'w+') as text_file:
 
-        text_file.write(text)
 
-    # f.save(os.path.join(app.config['UPLOAD_FOLDER'], document))
 
-    text_file.close()
+    # doc_name, file_type, = document.split('.')
+    # if file_type == 'pdf':
+    #     text = textract.parser
+    # else:
+    #     text = textract.process(document)
+    # # doc_name = document.split('.')[0]
+    # text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
 
+    # # text_file = open((os.path.join(UPLOAD_FOLDER, '{document}.txt'.format(document=document)), 'w+')
+    # with open(text_path, 'w+') as text_file:
+
+    #     text_file.write(text)
+
+    # # f.save(os.path.join(app.config['UPLOAD_FOLDER'], document))
+
+    # text_file.close()
 
     #this works!!
-    # f = open('hello.txt', 'w')
-    # f.write(text)
-    # f.close()
+    
+    import pdb
+    pdb.set_trace()
+
+    text = textract.process(document)
+    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+    with open(text_path, 'w+') as text_file:
+        text_file.write(text)
+    text_file.close()
 
     # uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     # OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -134,7 +151,7 @@ def upload_file():
         OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         #all working up to here!!!
-        return render_template('display.html', text=)
+        return render_template('display.html')
 
         #can we from here to ocr function?
         # uploaded_file.close()
