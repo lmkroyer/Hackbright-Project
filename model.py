@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# FIXME: check all null values make sense  
+# FIXME: check all null values make sense
 
 
 class User(db.Model):
@@ -32,9 +32,10 @@ class Team(db.model):
 
     team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
     # FIXME: where should this boolean live???
     team_lead = db.Column(db.Boolean, default=True, nullable=True)
+
 
 class Case(db.Model):
     """Case model."""
@@ -53,7 +54,12 @@ class Case(db.Model):
     county = db.Column(db.String(25), nullable=False)
     # add court_dept and/or judge_name?
     initialized = db.Column(db.DateTime, nullable=False)
+    # FIXME: should I make a settlement amount association table? with case id, settlement id, and settlement amount
+    settlement_amount = db.Column(db.Integer, nullable=True)
     settled = db.Column(db.Boolean, default=False, nullable=False)
+
+    # <FIXME (go through team?)> Define relationship to user
+    user = db.relationship('User', backref=db.backref('cases', order_by=case_no))
 
     def __repr__(self):
         """Provide info about the case instance."""
@@ -82,7 +88,7 @@ class OpposingCounsel(db.Model):
                                                                     self.firm_name)
 
 
-class Plaintiffs(db.model):
+class Plaintiff(db.model):
     """Plaintiff model."""
 
     __tablename__ = 'plaintiffs'
@@ -106,7 +112,7 @@ class Plaintiffs(db.model):
             return "<Company company={}>".format(self.company)
 
 
-class Clients(db.model):
+class Client(db.model):
     """Client model."""
 
     __tablename__ = 'clients'
@@ -130,7 +136,7 @@ class Clients(db.model):
             return "<Company company={}>".format(self.company)
 
 
-class DocTypes (db.model):
+class DocType(db.model):
     """Doctype model."""
 
     __tablename__ = 'doc_types'
@@ -144,7 +150,7 @@ class DocTypes (db.model):
         return "<Document name={}>".format(self.name)
 
 
-class ClaimTypes (db.model):
+class ClaimType(db.model):
     """Claim type model."""
 
     __tablename__ = 'claim_types'
@@ -158,7 +164,7 @@ class ClaimTypes (db.model):
         return "<Claim name={}>".format(self.name)
 
 
-class Complaint (db.model):
+class Complaint(db.model):
     """Complaint (document type) model."""
 
     __tablename__ = 'complaints'
@@ -187,7 +193,7 @@ class Complaint (db.model):
                                                                self.case_no)
 
 
-class Answer (db.model):
+class Answer(db.model):
     """Answer (document type) model."""
 
     __tablename__ = 'answers'
@@ -227,11 +233,11 @@ def init_app():
     print "Connected to DB."
 
 
-def connect_to_db(app, db_uri='postgres:///hbproject'):
+def connect_to_db(app, db_uri='postgres:///legalease'):
     """Connect the database to our Flask app."""
 
     # Configure to use our database.
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///hbproject'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///legalease'
     app.config['SQLALCHEMY_ECHO'] = False
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app

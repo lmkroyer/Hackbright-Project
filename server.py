@@ -11,7 +11,9 @@ from flask import (Flask, jsonify, render_template, redirect, request, flash,
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-# from model import User, Rating, Movie, connect_to_db, db
+from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
+                   ClaimType, Complaint, Answer, connect_to_db, db)
+
 from flask_sqlalchemy import SQLAlchemy
 
 import requests
@@ -49,12 +51,9 @@ def allowed_file(filename):
 def OCR_file(document):
     """Takes in a file and outputs an OCR'd txt file.
 
-    FIX: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!
+    FIXME: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!
 
-    FIX: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
-
-
-
+    FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
 
     # doc_name, file_type, = document.split('.')
     # if file_type == 'pdf':
@@ -125,7 +124,7 @@ def callback():
 
     return redirect(url_for('.profile'))
 
-
+# HELP: how redirect to dashboard not homepage?
 @app.route("/profile", methods=["GET"])
 def profile():
     """Fetching a protected resource using an OAuth 2 token.
@@ -158,16 +157,12 @@ def upload_file():
         # return redirect(url_for('uploaded_file', filename=filename))
 
 
-#try to eliminate all of this!!!!!
+# Presently uncesseary below
 # @app.route('/uploads/<filename>')
 # def uploaded_file(filename):
-#     """Broken --fix so outputs OCR file."""
+#     """Displays uploaded file."""
 
-#     #this line below works, to download and display doc - see if it will work with txt file 
 #     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
-
-
-
 
 
 if __name__ == "__main__":
@@ -176,7 +171,7 @@ if __name__ == "__main__":
     app.debug = True
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
 
-    # connect_to_db(app)
+    connect_to_db(app)
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
