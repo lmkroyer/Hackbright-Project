@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# FIXME: check all null values make sense
+# FIXME: add relationships to users? with secondary?
 
 
 class User(db.Model):
@@ -16,17 +16,20 @@ class User(db.Model):
     lname = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     mailing_address = db.Column(db.String(100), nullable=False)
-    # FIXME: what is syntax for default value?
-    firm_name = db.Column(db.String(64), default='ABC Firm', nullable=False)
+    firm_name = db.Column(db.String(64),
+                          default='Wayne, Prince & Jones LLP',
+                          nullable=False)
 
     def __repr__(self):
         """Provide info about the user instance."""
 
         return "<Name fname={} lname={}>".format(self.fname, self.lname)
 
-# FIXME: do I want this association table?? to include multiple users on a case??
+
 class Team(db.model):
-    """Team model. An association of users to cases."""
+    """Team model.
+
+    An association of users to cases so that multiple users may work on a case."""
 
     __tablename__ = 'teams'
 
@@ -58,7 +61,7 @@ class Case(db.Model):
     settlement_amount = db.Column(db.Integer, nullable=True)
     settled = db.Column(db.Boolean, default=False, nullable=False)
 
-    # <FIXME (go through team?)> Define relationship to user
+    # <FIXME -- go through team as secondary? do I need to order by?> Define relationship to user
     user = db.relationship('User', backref=db.backref('cases', order_by=case_no))
 
     def __repr__(self):
@@ -80,6 +83,9 @@ class OpposingCounsel(db.Model):
     mailing_address = db.Column(db.String(100), nullable=False)
     firm_name = db.Column(db.String(64), nullable=False)
 
+    # Define relationship to a case
+    case = db.relationship('Case', backref=db.backref('opposing_counsel'))
+
     def __repr__(self):
         """Provide info about the opposing counsel instance."""
 
@@ -87,6 +93,8 @@ class OpposingCounsel(db.Model):
                                                                     self.lname,
                                                                     self.firm_name)
 
+# FIXME: consolidate plaintiff and client as a 'parties' table? with an Enum column 
+# w/ defendant, plaintiff, party to defendant, party to plaintiff
 
 class Plaintiff(db.model):
     """Plaintiff model."""
@@ -102,10 +110,13 @@ class Plaintiff(db.model):
     # FIXME: country? town? state? 'location'?
     resident_of = db.Column(db.String(64), nullable=False)
 
+    # Define relationship to a case
+    case = db.relationship('Case', backref=db.backref('plaintiffs'))
+
     def __repr__(self):
         """Provide info about the plaintiff instance."""
 
-        # FIXME: make sure this is how I want to display it
+        # FIXME: use NLP to know if person or entity
         if fname and lname:
             return "<Name fname={} lname={}>".format(self.fname, self.lname)
         elif company:
@@ -126,10 +137,13 @@ class Client(db.model):
     # FIXME: country? town? state? 'location'?
     resident_of = db.Column(db.String(64), nullable=False)
 
+    # Define relationship to a case
+    case = db.relationship('Case', backref=db.backref('clients'))
+
     def __repr__(self):
         """Provide info about the client instance."""
 
-        # FIXME: make sure this makes sense
+        # FIXME: use NLP to know if person or entity
         if fname and lname:
             return "<Name fname={} lname={}>".format(self.fname, self.lname)
         elif company:
@@ -142,7 +156,7 @@ class DocType(db.model):
     __tablename__ = 'doc_types'
 
     doc_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(64), nullable=True)
+    name = db.Column(db.String(64), nullable=False)
 
     def __repr__(self):
         """Provide into about the document type."""
@@ -156,7 +170,7 @@ class ClaimType(db.model):
     __tablename__ = 'claim_types'
 
     claim_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(64), nullable=True)
+    name = db.Column(db.String(64), nullable=False)
 
     def __repr__(self):
         """Provide into about the claim type."""
@@ -174,17 +188,20 @@ class Complaint(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
-    date_reviewed = db.Column(db.DateTime, nullable=False)
-    date_submitted = db.Column(db.DateTime, nullable=False)
+    date_reviewed = db.Column(db.DateTime, nullable=True)
+    date_submitted = db.Column(db.DateTime, nullable=True)
     # should this be a Date column type?
-    date_filed = db.Column(db.String(25), nullable=False)
+    date_filed = db.Column(db.String(25), nullable=True)
     incident_date = db.Column(db.String(25), nullable=False)
     incident_location = db.Column(db.String(100), nullable=False)
     incident_description = db.Column(db.Text, nullable=False)
     damages_asked = db.Column(db.String(100), nullable=False)
-    # is there a special syntax for a file path?
+    # syntax for a file path?
     pdf = db.Column
     txt_file = db.Column
+
+    # Define relationship to a case
+    case = db.relationship('Case', backref=db.backref('complaint'))
 
     def __repr__(self):
         """Provide into about the complaint instance."""
@@ -205,14 +222,16 @@ class Answer(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
-    date_reviewed = db.Column(db.DateTime, nullable=False)
-    date_submitted = db.Column(db.DateTime, nullable=False)
+    date_reviewed = db.Column(db.DateTime, nullable=True)
+    date_submitted = db.Column(db.DateTime, nullable=True)
     #should this be seprate from date_submitted when it's from our end???
-    date_filed = db.Column(db.String(25), nullable=False)
-    # FIXME: add any other form-specific info...
-    # is there a special syntax for a file path?
+    date_filed = db.Column(db.String(25), nullable=True)
+    # syntax for a file path?
     pdf = db.Column
     txt_file = db.Column
+
+    # Define relationship to a case
+    case = db.relationship('Case', backref=db.backref('answer'))
 
     def __repr__(self):
         """Provide into about the answer instance."""

@@ -173,6 +173,11 @@ def upload_file():
 
 #     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
+@app.route('/submit', methods=['POST'])
+def send_to_db():
+    """Sends uploaded information to database."""
+
+    pass
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
