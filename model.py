@@ -2,15 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# FIXME: add relationships to users? with secondary?
-
 
 class User(db.Model):
     """User model."""
 
     __tablename__ = 'users'
 
-    # FIXME: change user_id to attorney number (natural primary key)
+    # TODO: change user_id to natural key (attorney number) by removing autoincrement when make profile edit page
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
@@ -26,8 +24,8 @@ class User(db.Model):
         return "<Name fname={} lname={}>".format(self.fname, self.lname)
 
 
-class Team(db.model):
-    """Team model.
+class CaseUser(db.model):
+    """CaseUser model.
 
     An association of users to cases so that multiple users may work on a case."""
 
@@ -36,8 +34,6 @@ class Team(db.model):
     team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
-    # FIXME: where should this boolean live???
-    team_lead = db.Column(db.Boolean, default=True, nullable=True)
 
 
 class Case(db.Model):
@@ -45,14 +41,14 @@ class Case(db.Model):
 
     __tablename__ = 'cases'
 
-    # FIXME: change to natural primary key: case number assinged (from OCR)
-    case_no = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)
+    # Natural primary key: case number assinged (from OCR)
+    case_no = db.Column(db.Integer, primary_key=True)
+    team_lead = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    client_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
     opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
-    plaintiff_id = db.Column(db.Integer, db.ForeignKey('plaintiffs.plaintiff_id'), nullable=False)
     claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_type.claim_type_id'), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    estimate = db.Column(db.Integer, nullable=False)
+    #below: see what is on form
     court_name = db.Column(db.String(25), nullable=False)
     county = db.Column(db.String(25), nullable=False)
     # add court_dept and/or judge_name?
@@ -61,14 +57,54 @@ class Case(db.Model):
     settlement_amount = db.Column(db.Integer, nullable=True)
     settled = db.Column(db.Boolean, default=False, nullable=False)
 
-    # <FIXME -- go through team as secondary? do I need to order by?> Define relationship to user
-    user = db.relationship('User', backref=db.backref('cases', order_by=case_no))
+    # Define relationship to user
+    user = db.relationship('User', secondary='Team', backref=db.backref('cases'))
 
     def __repr__(self):
         """Provide info about the case instance."""
 
         return "<Case case_no={} initialized={}>".format(self.case_no,
                                                          self.initialized)
+
+
+class CaseParty(db.model):  # or name this CaseParty?
+    """CaseParty model.
+
+    An association of parties to cases to assign plaintiff(s) to case.
+
+    Allows parties to be both plaintiffs and defendants for different cases."""
+
+    __tablename__ = 'plaintiffs'
+
+    plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    party_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+
+
+class Party(db.model):
+    """Party model."""
+
+    __tablename__ = 'parties'
+
+    party_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    fname = db.Column(db.String(25), nullable=True)
+    lname = db.Column(db.String(25), nullable=True)
+    company = db.Column(db.String(100), nullable=True)
+    email = db.Column(db.String(100), nullable=True)
+    mailing_address = db.Column(db.String(100), nullable=False)
+    resident_of = db.Column(db.String(64), nullable=False)
+
+    # Define relationship to a case
+    cases = db.relationship('Case', secondary='plaintiffs', backref=db.backref('party'))
+
+    def __repr__(self):
+        """Provide info about the party instance."""
+
+        # FIXME: use NLP to know if person or entity
+        if fname and lname:
+            return "<Name fname={} lname={}>".format(self.fname, self.lname)
+        elif company:
+            return "<Company company={}>".format(self.company)
 
 
 class OpposingCounsel(db.Model):
@@ -84,7 +120,7 @@ class OpposingCounsel(db.Model):
     firm_name = db.Column(db.String(64), nullable=False)
 
     # Define relationship to a case
-    case = db.relationship('Case', backref=db.backref('opposing_counsel'))
+    cases = db.relationship('Case', backref=db.backref('opposing_counsel'))
 
     def __repr__(self):
         """Provide info about the opposing counsel instance."""
@@ -92,62 +128,6 @@ class OpposingCounsel(db.Model):
         return "<Name fname={} lname={}, from firm_name={}>".format(self.fname,
                                                                     self.lname,
                                                                     self.firm_name)
-
-# FIXME: consolidate plaintiff and client as a 'parties' table? with an Enum column 
-# w/ defendant, plaintiff, party to defendant, party to plaintiff
-
-class Plaintiff(db.model):
-    """Plaintiff model."""
-
-    __tablename__ = 'plaintiffs'
-
-    plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fname = db.Column(db.String(25), nullable=True)
-    lname = db.Column(db.String(25), nullable=True)
-    company = db.Column(db.String(100), nullable=True)
-    email = db.Column(db.String(100), nullable=True)
-    mailing_address = db.Column(db.String(100), nullable=False)
-    # FIXME: country? town? state? 'location'?
-    resident_of = db.Column(db.String(64), nullable=False)
-
-    # Define relationship to a case
-    case = db.relationship('Case', backref=db.backref('plaintiffs'))
-
-    def __repr__(self):
-        """Provide info about the plaintiff instance."""
-
-        # FIXME: use NLP to know if person or entity
-        if fname and lname:
-            return "<Name fname={} lname={}>".format(self.fname, self.lname)
-        elif company:
-            return "<Company company={}>".format(self.company)
-
-
-class Client(db.model):
-    """Client model."""
-
-    __tablename__ = 'clients'
-
-    client_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fname = db.Column(db.String(25), nullable=True)
-    lname = db.Column(db.String(25), nullable=True)
-    company = db.Column(db.String(100), nullable=True)
-    email = db.Column(db.String(100), nullable=True)
-    mailing_address = db.Column(db.String(100), nullable=False)
-    # FIXME: country? town? state? 'location'?
-    resident_of = db.Column(db.String(64), nullable=False)
-
-    # Define relationship to a case
-    case = db.relationship('Case', backref=db.backref('clients'))
-
-    def __repr__(self):
-        """Provide info about the client instance."""
-
-        # FIXME: use NLP to know if person or entity
-        if fname and lname:
-            return "<Name fname={} lname={}>".format(self.fname, self.lname)
-        elif company:
-            return "<Company company={}>".format(self.company)
 
 
 class DocType(db.model):
@@ -183,22 +163,23 @@ class Complaint(db.model):
 
     __tablename__ = 'complaints'
 
+    # Meta data on document
     complaint_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    # hardcode this to the value in doctype table:
     doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
     date_reviewed = db.Column(db.DateTime, nullable=True)
     date_submitted = db.Column(db.DateTime, nullable=True)
-    # should this be a Date column type?
-    date_filed = db.Column(db.String(25), nullable=True)
+    date_filed = db.Column(db.Date, nullable=True)
+    # Substantive data from document
     incident_date = db.Column(db.String(25), nullable=False)
     incident_location = db.Column(db.String(100), nullable=False)
     incident_description = db.Column(db.Text, nullable=False)
     damages_asked = db.Column(db.String(100), nullable=False)
-    # syntax for a file path?
-    pdf = db.Column
-    txt_file = db.Column
+    # Storage location <TODO: put on AWS and change to url>
+    pdf = db.Column(db.String(64, nullable=False))  #will be url if online server or relative file /static/etc...
+    txt_file = db.Column(db.String(64), nullable=False)
 
     # Define relationship to a case
     case = db.relationship('Case', backref=db.backref('complaint'))
@@ -216,19 +197,16 @@ class Answer(db.model):
     __tablename__ = 'answers'
 
     answer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    #do I need to include complaint_id???
-    complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=False)
     doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+
     date_received = db.Column(db.DateTime, nullable=False)
     date_reviewed = db.Column(db.DateTime, nullable=True)
     date_submitted = db.Column(db.DateTime, nullable=True)
-    #should this be seprate from date_submitted when it's from our end???
-    date_filed = db.Column(db.String(25), nullable=True)
-    # syntax for a file path?
-    pdf = db.Column
-    txt_file = db.Column
+    # this should be the same as date_submitted when it's from our end
+    date_filed = db.Column(date_submitted)
+    pdf = db.Column(db.String(64, nullable=False))  #will be url if online server or relative file /static/etc...
+    txt_file = db.Column(db.String(64), nullable=False)
 
     # Define relationship to a case
     case = db.relationship('Case', backref=db.backref('answer'))

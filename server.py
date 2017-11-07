@@ -20,6 +20,9 @@ import requests
 
 import os
 
+# Import helper functions
+import spellcheck
+
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -51,49 +54,23 @@ def allowed_file(filename):
 def OCR_file(document):
     """Takes in a file and outputs (saves) an OCR'd txt file.
 
-    FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER.
-
-    FIXME: doc is saving as pdf.txt -- fix that!!"""
-
-    # doc_name, file_type, = document.split('.')
-    # if file_type == 'pdf':
-    #     text = textract.parser
-    # else:
-    #     text = textract.process(document)
-    # # doc_name = document.split('.')[0]
-    # text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
-
-    # # text_file = open((os.path.join(UPLOAD_FOLDER, '{document}.txt'.format(document=document)), 'w+')
-    # with open(text_path, 'w+') as text_file:
-
-    #     text_file.write(text)
-
-    # # f.save(os.path.join(app.config['UPLOAD_FOLDER'], document))
-
-    # text_file.close()
-
-    #this works!!
+    FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
 
     # Use multi page functionality with tesseract
     #FIXME: make sure this method works with other file formats, it at least works with pdf -- may need to if / else for other file formats
     text = textract.process(document, method='tesseract')
 
-    #adding below 
     doc_name = document.split('.')[0]
     text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+
     with open(text_path, 'w+') as text_file:
+
         text_file.write(text)
+
+        #add a for loop here that spellchecks each word in the text file (or do it for word in text from above?)
+
     text_file.close()
 
-    #adding above
-
-    # text_path = os.path.join('{document}.txt'.format(document=document))
-    # with open(text_path, 'w+') as text_file:
-    #     text_file.write(text)
-    # text_file.close()
-
-    # uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    # OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 @app.route('/')
 def index():
