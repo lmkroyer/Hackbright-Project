@@ -11,8 +11,8 @@ from flask import (Flask, jsonify, render_template, redirect, request, flash,
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
-                   ClaimType, Complaint, Answer, connect_to_db, db)
+# from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
+#                    ClaimType, Complaint, Answer, connect_to_db, db)
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -49,11 +49,11 @@ def allowed_file(filename):
 
 
 def OCR_file(document):
-    """Takes in a file and outputs an OCR'd txt file.
+    """Takes in a file and outputs (saves) an OCR'd txt file.
 
-    FIXME: NEED TO BE ABLE TO PROCESS MORE THAN ONE PAGE!
+    FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER.
 
-    FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
+    FIXME: doc is saving as pdf.txt -- fix that!!"""
 
     # doc_name, file_type, = document.split('.')
     # if file_type == 'pdf':
@@ -73,12 +73,10 @@ def OCR_file(document):
     # text_file.close()
 
     #this works!!
-    
-    import pdb
-    pdb.set_trace()
 
-    text = textract.process(document)
-    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+    # Use multi page functionality with tesseract
+    text = textract.process(document, method='tesseract')
+    text_path = os.path.join('{document}.txt'.format(document=document))
     with open(text_path, 'w+') as text_file:
         text_file.write(text)
     text_file.close()
@@ -171,7 +169,7 @@ if __name__ == "__main__":
     app.debug = True
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
 
-    connect_to_db(app)
+    # connect_to_db(app)
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
