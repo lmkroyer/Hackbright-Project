@@ -75,11 +75,22 @@ def OCR_file(document):
     #this works!!
 
     # Use multi page functionality with tesseract
+    #FIXME: make sure this method works with other file formats, it at least works with pdf -- may need to if / else for other file formats
     text = textract.process(document, method='tesseract')
-    text_path = os.path.join('{document}.txt'.format(document=document))
+
+    #adding below 
+    doc_name = document.split('.')[0]
+    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
     with open(text_path, 'w+') as text_file:
         text_file.write(text)
     text_file.close()
+
+    #adding above
+
+    # text_path = os.path.join('{document}.txt'.format(document=document))
+    # with open(text_path, 'w+') as text_file:
+    #     text_file.write(text)
+    # text_file.close()
 
     # uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     # OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
