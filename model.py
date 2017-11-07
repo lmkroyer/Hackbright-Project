@@ -10,7 +10,7 @@ class User(db.Model):
 
     __tablename__ = 'users'
 
-    # FIXME: change user_id to attorney number?
+    # FIXME: change user_id to attorney number (natural primary key)
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
