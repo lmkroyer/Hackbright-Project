@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# FIXME: add repr's
-# FIXME: check all null values
+# FIXME: check all null values make sense  
+
 
 class User(db.Model):
     """User model."""
@@ -24,6 +24,18 @@ class User(db.Model):
 
         return "<Name fname={} lname={}>".format(self.fname, self.lname)
 
+# FIXME: do I want this association table?? to include multiple users on a case??
+class Team(db.model):
+    """Team model. An association of users to cases."""
+
+    __tablename__ = 'teams'
+
+    team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('clients.client_id'), nullable=False)
+    # FIXME: where should this boolean live???
+    team_lead = db.Column(db.Boolean, default=True, nullable=True)
+
 class Case(db.Model):
     """Case model."""
 
@@ -41,7 +53,14 @@ class Case(db.Model):
     county = db.Column(db.String(25), nullable=False)
     # add court_dept and/or judge_name?
     initialized = db.Column(db.DateTime, nullable=False)
-    settled = db.Column(Boolean, default=False, nullable=False)
+    settled = db.Column(db.Boolean, default=False, nullable=False)
+
+    def __repr__(self):
+        """Provide info about the case instance."""
+
+        return "<Case case_no={} initialized={}>".format(self.case_no,
+                                                         self.initialized)
+
 
 class OpposingCounsel(db.Model):
     """Opposition model."""
@@ -54,6 +73,14 @@ class OpposingCounsel(db.Model):
     email = db.Column(db.String(100), nullable=True)
     mailing_address = db.Column(db.String(100), nullable=False)
     firm_name = db.Column(db.String(64), nullable=False)
+
+    def __repr__(self):
+        """Provide info about the opposing counsel instance."""
+
+        return "<Name fname={} lname={}, from firm_name={}>".format(self.fname,
+                                                                    self.lname,
+                                                                    self.firm_name)
+
 
 class Plaintiffs(db.model):
     """Plaintiff model."""
@@ -69,6 +96,16 @@ class Plaintiffs(db.model):
     # FIXME: country? town? state? 'location'?
     resident_of = db.Column(db.String(64), nullable=False)
 
+    def __repr__(self):
+        """Provide info about the plaintiff instance."""
+
+        # FIXME: make sure this is how I want to display it
+        if fname and lname:
+            return "<Name fname={} lname={}>".format(self.fname, self.lname)
+        elif company:
+            return "<Company company={}>".format(self.company)
+
+
 class Clients(db.model):
     """Client model."""
 
@@ -83,6 +120,16 @@ class Clients(db.model):
     # FIXME: country? town? state? 'location'?
     resident_of = db.Column(db.String(64), nullable=False)
 
+    def __repr__(self):
+        """Provide info about the client instance."""
+
+        # FIXME: make sure this makes sense
+        if fname and lname:
+            return "<Name fname={} lname={}>".format(self.fname, self.lname)
+        elif company:
+            return "<Company company={}>".format(self.company)
+
+
 class DocTypes (db.model):
     """Doctype model."""
 
@@ -90,6 +137,12 @@ class DocTypes (db.model):
 
     doc_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(64), nullable=True)
+
+    def __repr__(self):
+        """Provide into about the document type."""
+
+        return "<Document name={}>".format(self.name)
+
 
 class ClaimTypes (db.model):
     """Claim type model."""
@@ -99,8 +152,14 @@ class ClaimTypes (db.model):
     claim_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(64), nullable=True)
 
+    def __repr__(self):
+        """Provide into about the claim type."""
+
+        return "<Claim name={}>".format(self.name)
+
+
 class Complaint (db.model):
-    """Complaint document model."""
+    """Complaint (document type) model."""
 
     __tablename__ = 'complaints'
 
@@ -111,23 +170,50 @@ class Complaint (db.model):
     date_received = db.Column(db.DateTime, nullable=False)
     date_reviewed = db.Column(db.DateTime, nullable=False)
     date_submitted = db.Column(db.DateTime, nullable=False)
+    # should this be a Date column type?
     date_filed = db.Column(db.String(25), nullable=False)
     incident_date = db.Column(db.String(25), nullable=False)
     incident_location = db.Column(db.String(100), nullable=False)
-    incident_description = db.Column(db.Text)
+    incident_description = db.Column(db.Text, nullable=False)
+    damages_asked = db.Column(db.String(100), nullable=False)
     # is there a special syntax for a file path?
     pdf = db.Column
     txt_file = db.Column
 
+    def __repr__(self):
+        """Provide into about the complaint instance."""
+
+        return "<Complaint complaint_id={} case_no={}>".format(self.complaint_id,
+                                                               self.case_no)
 
 
-    name = db.Column(db.String(64), nullable=True)
+class Answer (db.model):
+    """Answer (document type) model."""
 
+    __tablename__ = 'answers'
 
+    answer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    #do I need to include complaint_id???
+    complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=False)
+    doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    date_received = db.Column(db.DateTime, nullable=False)
+    date_reviewed = db.Column(db.DateTime, nullable=False)
+    date_submitted = db.Column(db.DateTime, nullable=False)
+    #should this be seprate from date_submitted when it's from our end???
+    date_filed = db.Column(db.String(25), nullable=False)
+    # FIXME: add any other form-specific info...
+    # is there a special syntax for a file path?
+    pdf = db.Column
+    txt_file = db.Column
 
+    def __repr__(self):
+        """Provide into about the answer instance."""
 
+        return "<Answer answer_id={} case_no={}>".format(self.answer_id,
+                                                         self.case_no)
 
-# FIXME: everything below this needs to be updated
 
 ##############################################################################
 # Helper functions
@@ -141,11 +227,11 @@ def init_app():
     print "Connected to DB."
 
 
-def connect_to_db(app):
+def connect_to_db(app, db_uri='postgres:///hbproject'):
     """Connect the database to our Flask app."""
 
     # Configure to use our database.
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///animals'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///hbproject'
     app.config['SQLALCHEMY_ECHO'] = False
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
