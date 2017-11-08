@@ -2,25 +2,17 @@
 
 import textract, requests, os, sys
 
-reload(sys)
-sys.setdefaultencoding('Cp1252')
-
 # from spellcheck import correction
 
 from requests_oauthlib import OAuth2Session
-
 from textblob import TextBlob
-
 from jinja2 import StrictUndefined
-
 from flask import (Flask, jsonify, render_template, redirect, request, flash,
                    session, url_for, send_from_directory)
-
 from flask_debugtoolbar import DebugToolbarExtension
 
 # from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
 #                    ClaimType, Complaint, Answer, connect_to_db, db)
-
 from flask_sqlalchemy import SQLAlchemy
 
 # import requests
@@ -28,7 +20,6 @@ from flask_sqlalchemy import SQLAlchemy
 # import os
 
 # import spellcheck
-
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
