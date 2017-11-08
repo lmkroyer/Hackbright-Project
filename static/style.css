@@ -12,8 +12,8 @@ body {
     height: 100%; 
     margin: 0; 
     padding: 0; 
-    background-color: #7283a0;
+    /*background-color: #7283a0;*/
     /*background-color: #b6ccd6;*/
 /*    background-color: #93afbc;*/
-    /*background-color: #dce3ef;*/
+    background-color: #dce3ef;
 }

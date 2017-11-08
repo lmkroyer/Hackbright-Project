@@ -3,24 +3,9 @@
 
 "use strict";
 
-// or try 39.8097343, -98.5556199)
-// let unitedStates = {lat: 39, lng: -95};
-
-// let map = new google.maps.Map(document.querySelector('#map'), {
-//     center: unitedStates,
-//     zoom: 3,
-//     mapTypeControl: false,
-//     zoomControl: false,
-//     scaleControl: true,
-//     streetViewControl: false,
-
-// });
-
 function initMap() {
 
   // Specify where the map is centered
-  // Defining this variable outside of the map options makes
-  // it easier to dynamically change if you need to recenter
   let unitedStates = {lat: 39, lng: -95};
 
   // Create a map object and specify the DOM element for display.

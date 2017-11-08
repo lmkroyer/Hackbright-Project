@@ -2,29 +2,31 @@
 
 {% block head %}
 
-    <h3><a href="/login">Login</a></h3>
+<h3><a href="/login">Login</a></h3>
 
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/static/mapstyle.js"></script>
     <script src="/static/casemap.js"></script>
 
-<script async defer
-//       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&callback=initMap">
-</script>
+    <script async defer
+    //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&callback=initMap">
+    </script>
 
 {% endblock %}
 
 
 {% block content %}
+
     <div id="map"></div>
 
     <h2>Upload a document</h2>
 <!-- TODO display this option on dashboard; consider leaving link or just put login here:
 <h1><a href="/upload">Upload a document</a></h1> -->
 
-<form action='/upload' method="POST" enctype="multipart/form-data">
-    <p><input type="file" name="file">
-        <input type="submit">
-</form>
+    <form action='/upload' method="POST" enctype="multipart/form-data">
+        <p><input type="file" name="file">
+            <input type="submit">
+    </form>
+
 {% endblock %}
