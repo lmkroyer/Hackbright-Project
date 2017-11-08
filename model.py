@@ -35,6 +35,13 @@ class CaseUser(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
 
+    def __repr__(self):
+        """Provide info about the CaseUser instance."""
+
+        return "<CaseUser team_id={} user_id={} case_no={}>".format(self.team_id,
+                                                                    self.user_id,
+                                                                    self.case_no)
+
 
 class Case(db.Model):
     """Case model."""
@@ -79,6 +86,14 @@ class CaseParty(db.model):  # or name this CaseParty?
     plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     party_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+
+    def __repr__(self):
+        """Provide info about the CaseParty instance."""
+
+        return "<CaseParty plaintiff_id={} party_id={} case_no={}>".format(
+                                                                    self.plaintiff_id,
+                                                                    self.party_id,
+                                                                    self.case_no)
 
 
 class Party(db.model):

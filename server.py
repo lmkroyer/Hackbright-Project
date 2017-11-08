@@ -1,8 +1,15 @@
 """HACKBRIGHT PROJECT !!!!!!"""
 
-import textract
+import textract, requests, os, sys
+
+reload(sys)
+sys.setdefaultencoding('Cp1252')
+
+# from spellcheck import correction
 
 from requests_oauthlib import OAuth2Session
+
+from textblob import TextBlob
 
 from jinja2 import StrictUndefined
 
@@ -16,12 +23,11 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from flask_sqlalchemy import SQLAlchemy
 
-import requests
+# import requests
 
-import os
+# import os
 
-# Import helper functions
-import spellcheck
+# import spellcheck
 
 from werkzeug.utils import secure_filename
 
@@ -60,16 +66,40 @@ def OCR_file(document):
     #FIXME: make sure this method works with other file formats, it at least works with pdf -- may need to if / else for other file formats
     text = textract.process(document, method='tesseract')
 
+    # print text.find('Plaintiff ')
+    # print text.find('DISTRICT COURT OF ')
+    # print text.find('Case No.')
+
+    parse_me = TextBlob(text)
+
+    # This throws a UnicodeDecodeError
+    # text = TextBlob(text)
+    # text.correct()
+
+    # TODO: 2.0 Spellcheck and render misspelled words in red font
+    # TODO: 3.0 Spellcheck the OCR'd text and autofix the word
+    # words = text.split(' ')
+    # result_words = []
+
+    # for word in words:
+    #     c = correction(word)
+    #     result_words.append(c)
+
+    # result = ' '.join(result_words)
+
+    # Create txt file in filestorage
     doc_name = document.split('.')[0]
     text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
 
+    # Open a txt file or create one
     with open(text_path, 'w+') as text_file:
-
+        # Write spellchecked text to the new file
         text_file.write(text)
 
-        #add a for loop here that spellchecks each word in the text file (or do it for word in text from above?)
-
+    # Close the file
     text_file.close()
+
+    return parse_me
 
 
 @app.route('/')
@@ -135,8 +165,39 @@ def upload_file():
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        #now start playing with extraction
+        file_finder = filename.split('.')[0]
+
+        # OCR_file = file_finder + '.txt'
+
+        with open('filestorage/%s.txt' % (file_finder)) as f:
+
+            # line = f.rstrip()
+            for line in f:
+
+                if 'Plaintiff ' in line:
+                    words = line.split(' ')
+                    tracker = 0
+                    for word in words:
+                        if word == 'Plaintiff':
+                            tracker += 1
+                            plaintiff_fname = words[tracker]
+                            tracker += 1
+                            plaintiff_lname = words[tracker]
+                        else:
+                            tracker += 1
+
+        # experiment with textblob
+
+        #this returns a list of noun phrases for blob
+        nouns = parse_me.noun_phrases
+
+
+
+
         #all working up to here!!!
-        return render_template('display.html')
+        return render_template('display.html', plaintiff_fname=plaintiff_fname,
+                                               plaintiff_lname=plaintiff_lname)
 
         #can we from here to ocr function?
         # uploaded_file.close()
