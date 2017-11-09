@@ -147,45 +147,21 @@ def upload_file():
     if uploaded_file and allowed_file(uploaded_file.filename):
         filename = secure_filename(uploaded_file.filename)
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        parsed_text = OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         #now start playing with extraction
         # file_finder = filename.split('.')[0]
 
         # # OCR_file = file_finder + '.txt'
 
-        word_list = parse_me.split()
-
-        tracker = 0
-
-        for word in word_list:
-            if word == 'Plaintiff ':
-                tracker += 1
-                plaintiff_fname = word_list[tracker]
-                tracker += 1
-                plaintiff_lname = word_list[tracker]
-            else:
-                tracker += 1
-
-
-
-
 
         #all working up to here!!!
-        return render_template('display.html', plaintiff_fname=plaintiff_fname,
-                                               plaintiff_lname=plaintiff_lname)
+        return render_template('display.html', parsed_text=parsed_text)
 
         #can we from here to ocr function?
         # uploaded_file.close()
         # return redirect(url_for('uploaded_file', filename=filename))
 
-
-# Presently uncesseary below
-# @app.route('/uploads/<filename>')
-# def uploaded_file(filename):
-#     """Displays uploaded file."""
-
-#     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 @app.route('/submit', methods=['POST'])
 def send_to_db():

@@ -16,15 +16,15 @@ Counsel:<br><br>
 Court<br><br>
 
   Court name[VERIFY]: <input type="text" name="court_name"><br>
-  Case No.: <input type="text" name="case_no"><br>
+  Case No.: <input type="text" name="case_no" value={{ parsed_text.case_no }}><br>
   Mailing Address: <input type="text" name="mailing_address"><br><br>
 
 <!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
  -->
 Plaintiff:<br><br>
 
-  First name: <input type="text" name="first_name" value={{ plaintiff_fname}}><br>
-  Last name: <input type="text" name="last_name" value={{ plaintiff_lname}}><br>
+  First name: <input type="text" name="first_name" value={{ parsed_text.plaintiff_fname  }}><br>
+  Last name: <input type="text" name="last_name" value={{ parsed_text.plaintiff_lname }}><br>
   Residency: <input type="text" name="resident_of"><br><br>
 
 Defendant:<br><br>

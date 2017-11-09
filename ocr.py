@@ -1,7 +1,8 @@
-"""HELPER FUNCTIONS TO OCR AND PARSE FILE"""
+"""HELPER FUNCTIONS FOR SERVER"""
 
 from textblob import TextBlob
 import textract, os
+from classes import Complaint
 
 def OCR_file(document):
     """Takes in a file and outputs (saves) an OCR'd txt file.
@@ -14,29 +15,32 @@ def OCR_file(document):
     # Decode string to handle stray bytes
     decoded_text = text.decode('utf-8')
 
+    # FIXME: need some logic here to check what kind of form was uploaded (add dropdown for user)
+    parsed_text = Complaint(decoded_text)
+
+    return parsed_text
+
+    #import text class and instantiate text object and return it for server side, which gets passed to jinja
+
     # print text.find('Plaintiff ')
     # print text.find('DISTRICT COURT OF ')
     # print text.find('Case No.')
 
-    parse_me = TextBlob(decoded_text)
+    # parse_me = TextBlob(decoded_text)
 
-    # This throws a UnicodeDecodeError
-    # text = TextBlob(text)
-    # text.correct()
+    # Create txt file in filestorage -- DO I WANT TO DO THIS?
+    # doc_name = document.split('.')[0]
+    # text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
 
-    # Create txt file in filestorage
-    doc_name = document.split('.')[0]
-    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+    # # Open a txt file or create one
+    # with open(text_path, 'w+') as text_file:
+    #     # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
+    #     text_file.write(text)
 
-    # Open a txt file or create one
-    with open(text_path, 'w+') as text_file:
-        # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
-        text_file.write(text)
+    # # Close the file
+    # text_file.close()
 
-    # Close the file
-    text_file.close()
-
-    return parse_me
+    #return a text file and turn into the text object 
 
 
 def get_plaintiff_name(text):
@@ -56,7 +60,6 @@ def get_plaintiff_name(text):
     #             else:
     #                 tracker += 1
 
-    # make this a global variable, outside function
     # word_list = parse_me.split()
 
     # tracker = 0
@@ -71,11 +74,20 @@ def get_plaintiff_name(text):
     #         tracker += 1
     pass
 
+
 def get_case_no(text):
 
     pass
 
 
+#text class --> pass in the text
+# attributes on the text class for sentece list and word list
+# call methods on attributes to extract data 
+#get data from text object function 
+
+#pass object into jinja
+# class inherits from textblob to call textblob methods 
+# call the super and add extra stuff in __init__
 
 
     # TODO: 2.0 Spellcheck and render misspelled words in red font
