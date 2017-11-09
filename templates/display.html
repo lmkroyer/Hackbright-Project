@@ -3,21 +3,26 @@
 
 
 
-Verify form details<br><br>
+Verify complaint details<br><br>
 
 <form action="/submit">
+<!-- this is called 'name' in claim_type db table -->
+CLAIM TYPE: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br>
+<!-- Date of complaint: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br> -->
 
 Counsel:<br><br>
 
-  First name: <input type="text" name="f_name"><br>
-  Last name: <input type="text" name="l_name"><br>
-  Mailing Address: <input type="text" name="mailing_address"><br><br>
+  First name: <input type="text" name="f_name" value={{ parsed_text.counsel_fname  }}><br>
+  Last name: <input type="text" name="l_name" value={{ parsed_text.counsel_fname  }}><br>
+  Firm name: <input type="text" name="firm"><br><br>
+  <!-- put a mailing address on template -->
+  Firm name: <input type="text" name="mailing_address"><br><br>
 
 Court<br><br>
 
-  Court name[VERIFY]: <input type="text" name="court_name"><br>
+  Court county: <input type="text" name="court_name" value={{ parsed_text.county }}><br>
   Case No.: <input type="text" name="case_no" value={{ parsed_text.case_no }}><br>
-  Mailing Address: <input type="text" name="mailing_address"><br><br>
+<!--   Mailing Address: <input type="text" name="mailing_address"><br><br> -->
 
 <!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
  -->
@@ -29,16 +34,16 @@ Plaintiff:<br><br>
 
 Defendant:<br><br>
 
-  First name: <input type="text" name="first_name"><br>
-  Last name: <input type="text" name="last_name"><br>
-  Residency: <input type="text" name="resident_of"><br><br>
+  First name: <input type="text" name="first_name" value={{ parsed_text.defendant_fname  }}><br>
+  Last name: <input type="text" name="last_name" value={{ parsed_text.defendant_lname  }}><br>
+  Residence: <input type="text" name="resident_of" value={{ parsed_text.defendant_residence  }}><br><br>
 
 Claim details:<br><br>
 
   Date of injury: <input type="text" name="incident_date"><br>
   Injury location: <input type="text" name="incident_location"><br>
   Description of injury: <input type="text" name="incident_description"><br>
-  Damages requested: <input type="text" name="damages_asked"><br><br>
+  Amount claimed: <input type="text" name="damages_asked" value={{ parsed_text.amount_claimed  }}><br><br>
 
   <input type="submit">
 

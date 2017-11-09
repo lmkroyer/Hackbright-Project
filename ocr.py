@@ -18,66 +18,28 @@ def OCR_file(document):
     # FIXME: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = Complaint(decoded_text)
 
-    return parsed_text
+    #for testing:
+    print parsed_text.word_list
 
     #import text class and instantiate text object and return it for server side, which gets passed to jinja
 
-    # print text.find('Plaintiff ')
-    # print text.find('DISTRICT COURT OF ')
-    # print text.find('Case No.')
-
-    # parse_me = TextBlob(decoded_text)
-
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
-    # doc_name = document.split('.')[0]
-    # text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+    doc_name = document.split('.')[0]
+    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
 
-    # # Open a txt file or create one
-    # with open(text_path, 'w+') as text_file:
-    #     # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
-    #     text_file.write(text)
+    # Open a txt file or create one
+    with open(text_path, 'w+') as text_file:
+        # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
+        text_file.write(text)
 
-    # # Close the file
-    # text_file.close()
+    # Close the file
+    text_file.close()
 
-    #return a text file and turn into the text object 
-
-
-def get_plaintiff_name(text):
+    #return a class instance
+    return parsed_text
 
 
-    # with open('filestorage/%s.txt' % (file_finder)) as f:
-    # for line in text_file.readlines():
-    #     if 'Plaintiff ' in line:
-    #         words = line.split(' ')
-    #         tracker = 0
-    #         for word in words:
-    #             if word == 'Plaintiff':
-    #                 tracker += 1
-    #                 plaintiff_fname = words[tracker]
-    #                 tracker += 1
-    #                 plaintiff_lname = words[tracker]
-    #             else:
-    #                 tracker += 1
 
-    # word_list = parse_me.split()
-
-    # tracker = 0
-
-    # for word in word_list:
-    #     if word == 'Plaintiff ':
-    #         tracker += 1
-    #         plaintiff_fname = word_list[tracker]
-    #         tracker += 1
-    #         plaintiff_lname = word_list[tracker]
-    #     else:
-    #         tracker += 1
-    pass
-
-
-def get_case_no(text):
-
-    pass
 
 
 #text class --> pass in the text

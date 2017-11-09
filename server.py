@@ -149,6 +149,8 @@ def upload_file():
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         parsed_text = OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        import pdb
+        pdb.set_trace()
         #now start playing with extraction
         # file_finder = filename.split('.')[0]
 
