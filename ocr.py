@@ -4,6 +4,9 @@ from textblob import TextBlob
 import textract, os
 from classes import Complaint
 
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
+
+
 def OCR_file(document):
     """Takes in a file and outputs (saves) an OCR'd txt file.
 
@@ -17,9 +20,6 @@ def OCR_file(document):
 
     # FIXME: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = Complaint(decoded_text)
-
-    #for testing:
-    print parsed_text.word_list
 
     #import text class and instantiate text object and return it for server side, which gets passed to jinja
 
@@ -39,7 +39,9 @@ def OCR_file(document):
     return parsed_text
 
 
-
+def allowed_file(filename):
+    return ('.' in filename and
+            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
 
 
 #text class --> pass in the text

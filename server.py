@@ -4,7 +4,7 @@ import textract, requests, os, sys
 
 # from spellcheck import correction
 
-from ocr import OCR_file
+from ocr import OCR_file, allowed_file
 
 from requests_oauthlib import OAuth2Session
 from textblob import TextBlob
@@ -40,50 +40,8 @@ token_url = 'https://github.com/login/oauth/access_token'
 app.jinja_env.undefined = StrictUndefined
 
 UPLOAD_FOLDER = 'filestorage/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-def allowed_file(filename):
-    return ('.' in filename and
-            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
-
-
-# def OCR_file(document):
-#     """Takes in a file and outputs (saves) an OCR'd txt file.
-
-#     FIXME: FORK TEXTRACT TO ACCEPT A FILE OBJECT, TO AVOID TRIPS TO SERVER."""
-
-#     # Use multi page functionality with tesseract
-#     #FIXME: make sure this method works with other file formats, it at least works with pdf -- may need to if / else for other file formats
-#     text = textract.process(document, method='tesseract')
-#     # Decode string to handle stray bytes
-#     decoded_text = text.decode('utf-8')
-
-#     # print text.find('Plaintiff ')
-#     # print text.find('DISTRICT COURT OF ')
-#     # print text.find('Case No.')
-
-#     parse_me = TextBlob(decoded_text)
-
-#     # This throws a UnicodeDecodeError
-#     # text = TextBlob(text)
-#     # text.correct()
-
-#     # Create txt file in filestorage
-#     doc_name = document.split('.')[0]
-#     text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
-
-#     # Open a txt file or create one
-#     with open(text_path, 'w+') as text_file:
-#         # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
-#         text_file.write(text)
-
-#     # Close the file
-#     text_file.close()
-
-#     return parse_me
 
 
 @app.route('/')
@@ -149,26 +107,15 @@ def upload_file():
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         parsed_text = OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        import pdb
-        pdb.set_trace()
-        #now start playing with extraction
-        # file_finder = filename.split('.')[0]
-
-        # # OCR_file = file_finder + '.txt'
-
-
-        #all working up to here!!!
         return render_template('display.html', parsed_text=parsed_text)
-
-        #can we from here to ocr function?
-        # uploaded_file.close()
-        # return redirect(url_for('uploaded_file', filename=filename))
 
 
 @app.route('/submit', methods=['POST'])
 def send_to_db():
     """Sends uploaded information to database."""
 
+
+    # return render_template('edit_answer.html')
     pass
 
 if __name__ == "__main__":

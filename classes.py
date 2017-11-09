@@ -1,6 +1,4 @@
-"""FACTORY OF FORM OBJECTS.
-
-Send this to the server (import there) and use in jinja."""
+"""FACTORY OF FORM OBJECTS."""
 
 from textblob import TextBlob
 import re
@@ -23,11 +21,17 @@ class Complaint(TextBlob):
         self.claim = self.get_claim()
         self.counsel_fname = self.get_counsel_fname()
         self.counsel_lname = self.get_counsel_lname()
+        self.counsel_firm = self. get_counsel_firm()
+        self.complaint_date = self.get_complaint_date()
 
         # etc...
 
 # FIXME: refactor option to consolidate double ifs in one line, and return the self. (no name)
+# FIXME: remove punctuation from word list so can not hardcode that into checks
+# FIXME: .correct() everything that comes out
+# FIXME: a way to grab other defendants and/or check if company or person
 
+    # Could also check if what comes after starts with upper case, and if so pull it
     def get_plaintiff_fname(self):
         """Return the plaintiff's first name."""
 
@@ -42,10 +46,10 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Plaintiff':
-                plaintiff_lname = self.word_list[i + 2]
+                plaintiff_lname = self.word_list[i + 3]
                 return plaintiff_lname
 
-
+    # FIXME: add a case number to template
     def get_case_no(self):
         """Return the plaintiff's last name."""
 
@@ -89,7 +93,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Amount':
-                if self.word_list[i + 1] == 'claimed':
+                if self.word_list[i + 1] == 'claimed:':
                     amount_claimed = self.word_list[i + 2]
                     return amount_claimed
 
@@ -99,7 +103,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Personal':
-                if self.word_list[i + 1] == 'Injury':
+                if self.word_list[i + 1] == 'Injury;':
                     claim = 'Personal Injury'
             else:
                 claim = 'UNDEFINED'
@@ -128,9 +132,48 @@ class Complaint(TextBlob):
         """Return the opposing counsel's last name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'P.C.':
+            if self.word_list[i] == 'P.C.' or self.word_list[i] == 'LLC':
                 counsel_lname = self.word_list[i + 4]
                 return counsel_lname
+
+
+    def get_counsel_firm(self):
+        """Return the opposing counsel's firm name."""
+
+        for i in range(len(self.sentence_list)):
+
+            if self.sentence_list[i].find('P.C.'):
+                return self.sentence_list[i]
+            elif self.sentence_list[i].find('LLC'):
+                return self.sentence_list[i]
+
+
+    def get_complaint_date(self):
+        """Return the date of the complaint.
+
+        FIXME: cast this return value into a date format."""
+
+        for i in range(len(self.sentence_list)):
+
+            if self.sentence_list[i].find('DATED this'):
+                return self.sentence_list[i]
+
+
+    def get_injury_date(self):
+
+        pass 
+
+        # regex: 'On *** plaintiff'
+
+
+    def get_injury_location(self):
+
+        pass
+
+
+    def get_injury_description(self):
+
+        pass
 
 class Answer(TextBlob):
     pass 

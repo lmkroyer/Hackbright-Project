@@ -1,4 +1,31 @@
 {% extends 'base.html' %}
+
+{% block head %}
+
+<!-- <body onload="myFunction()" style="margin:0;"> -->
+
+<!-- <div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  <h2>Tada!</h2>
+  <p>Some text in my newly loaded page..</p>
+</div> -->
+
+// <script>
+// var myVar;
+
+// function myFunction() {
+//     myVar = setTimeout(showPage, 3000);
+// }
+
+// function showPage() {
+//   document.getElementById("loader").style.display = "none";
+//   document.getElementById("myDiv").style.display = "block";
+// }
+// </script>
+
+{% endblock %}
+
 {% block content %}
 
 
@@ -7,21 +34,21 @@ Verify complaint details<br><br>
 
 <form action="/submit">
 <!-- this is called 'name' in claim_type db table -->
-CLAIM TYPE: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br>
-<!-- Date of complaint: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br> -->
+CLAIM TYPE: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br><br>
+Date of complaint: <input type="text" name="claim_type" value={{ parsed_text.complaint_date }}><br>
 
 Counsel:<br><br>
 
   First name: <input type="text" name="f_name" value={{ parsed_text.counsel_fname  }}><br>
-  Last name: <input type="text" name="l_name" value={{ parsed_text.counsel_fname  }}><br>
-  Firm name: <input type="text" name="firm"><br><br>
+  Last name: <input type="text" name="l_name" value={{ parsed_text.counsel_lname  }}><br>
+  Firm name: <input type="text" name="firm" value={{ parsed_text.counsel_firm }}><br><br>
   <!-- put a mailing address on template -->
-  Firm name: <input type="text" name="mailing_address"><br><br>
+  <!-- Firm name: <input type="text" name="mailing_address"><br><br> -->
 
 Court<br><br>
 
   Court county: <input type="text" name="court_name" value={{ parsed_text.county }}><br>
-  Case No.: <input type="text" name="case_no" value={{ parsed_text.case_no }}><br>
+  Case No.: <input type="text" name="case_no" value={{ parsed_text.case_no }}><br><br>
 <!--   Mailing Address: <input type="text" name="mailing_address"><br><br> -->
 
 <!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
