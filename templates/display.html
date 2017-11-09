@@ -11,7 +11,7 @@
   <p>Some text in my newly loaded page..</p>
 </div> -->
 
-// <script>
+<!-- // --> <script>
 // var myVar;
 
 // function myFunction() {
@@ -28,49 +28,48 @@
 
 {% block content %}
 
-
-
 Verify complaint details<br><br>
 
 <form action="/submit">
 <!-- this is called 'name' in claim_type db table -->
-CLAIM TYPE: <input type="text" name="claim_type" value={{ parsed_text.claim }}><br><br>
-Date of complaint: <input type="text" name="claim_type" value={{ parsed_text.complaint_date }}><br>
+CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br><br>
+Date of complaint: <input type="text" name="claim_type" value="{{ parsed_text.complaint_date }}"><br><br>
 
 Counsel:<br><br>
 
-  First name: <input type="text" name="f_name" value={{ parsed_text.counsel_fname  }}><br>
-  Last name: <input type="text" name="l_name" value={{ parsed_text.counsel_lname  }}><br>
-  Firm name: <input type="text" name="firm" value={{ parsed_text.counsel_firm }}><br><br>
+  First name: <input type="text" name="f_name" value="{{ parsed_text.counsel_fname  }}"><br>
+  Last name: <input type="text" name="l_name" value="{{ parsed_text.counsel_lname  }}"><br>
+  Firm name: <input type="text" name="firm" value="{{ parsed_text.counsel_firm }}"><br><br>
   <!-- put a mailing address on template -->
   <!-- Firm name: <input type="text" name="mailing_address"><br><br> -->
 
 Court<br><br>
 
-  Court county: <input type="text" name="court_name" value={{ parsed_text.county }}><br>
-  Case No.: <input type="text" name="case_no" value={{ parsed_text.case_no }}><br><br>
+  Court county: <input type="text" name="court_name" value="{{ parsed_text.county }}"><br>
+  Court state: <input type="text" name="court_state" value="{{ parsed_text.state }}"><br>
+  Case No.: <input type="text" name="case_no" value="{{ parsed_text.case_no }}"><br><br>
 <!--   Mailing Address: <input type="text" name="mailing_address"><br><br> -->
 
 <!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
  -->
 Plaintiff:<br><br>
 
-  First name: <input type="text" name="first_name" value={{ parsed_text.plaintiff_fname  }}><br>
-  Last name: <input type="text" name="last_name" value={{ parsed_text.plaintiff_lname }}><br>
+  First name: <input type="text" name="first_name" value="{{ parsed_text.plaintiff_fname }}"><br>
+  Last name: <input type="text" name="last_name" value="{{ parsed_text.plaintiff_lname }}"><br>
   Residency: <input type="text" name="resident_of"><br><br>
 
 Defendant:<br><br>
 
-  First name: <input type="text" name="first_name" value={{ parsed_text.defendant_fname  }}><br>
-  Last name: <input type="text" name="last_name" value={{ parsed_text.defendant_lname  }}><br>
-  Residence: <input type="text" name="resident_of" value={{ parsed_text.defendant_residence  }}><br><br>
+  First name: <input type="text" name="first_name" value="{{ parsed_text.defendant_fname }}"><br>
+  Last name: <input type="text" name="last_name" value="{{ parsed_text.defendant_lname }}"><br>
+  Residence: <input type="text" name="resident_of" value="{{ parsed_text.defendant_residence  }}"><br><br>
 
 Claim details:<br><br>
 
   Date of injury: <input type="text" name="incident_date"><br>
   Injury location: <input type="text" name="incident_location"><br>
   Description of injury: <input type="text" name="incident_description"><br>
-  Amount claimed: <input type="text" name="damages_asked" value={{ parsed_text.amount_claimed  }}><br><br>
+  Amount claimed: <input type="text" name="damages_asked" value="{{ parsed_text.amount_claimed  }}"><br><br>
 
   <input type="submit">
 

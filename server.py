@@ -91,6 +91,20 @@ def profile():
     return jsonify(github.get('https://api.github.com/user').json())
 
 
+@app.route('/dashboard_lit')
+def display_lit_dashboard():
+    """Display the litigation dashboard."""
+
+    return render_template('dashboard_lit.html')
+
+
+@app.route('/dashboard_corp')
+def display_corp_dashboard():
+    """Display the corporate dashboard."""
+
+    return render_template('dashboard_corp.html')
+
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     """Lets user upload a file."""
