@@ -172,7 +172,7 @@ class DocType(db.Model):
 
     __tablename__ = 'doc_types'
 
-    doc_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    doc_type_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
 
     def __repr__(self):
@@ -186,7 +186,7 @@ class ClaimType(db.Model):
 
     __tablename__ = 'claim_types'
 
-    claim_type_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    claim_type_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
 
     def __repr__(self):
