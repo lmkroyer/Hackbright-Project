@@ -35,6 +35,20 @@ Verify complaint details<br><br>
   <input type="hidden" name="filename" value="{{ filename }}">
   <input type="hidden" name="txt_filename" value="{{ txt_filename }}"> 
 
+<!-- make this a dropdown auto selection -->
+parsed_text.claim == 'Personal Injury'
+
+  <select name="claim_type">
+    <option value="personal injury">Personal Injury</option>
+    <option value="contract">Contract</option>
+
+
+    <option value=""></option>
+    <option value="chartreuse">chartreuse</option>
+    </select>
+
+
+
   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br>
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
   Amount claimed: <input type="text" name="damages_asked" value="{{ parsed_text.amount_claimed  }}"><br>

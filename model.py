@@ -52,7 +52,7 @@ class Case(db.Model):
     case_no = db.Column(db.Integer, primary_key=True)
     team_lead = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
     # client_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
-    opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
+    # opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
     claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=False)
     damages_asked = db.Column(db.Integer, nullable=False)
     #below: see what is on form

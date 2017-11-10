@@ -31,8 +31,8 @@ app.secret_key = "ABC"
 # For OAuth application
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
-authorization_base_url = 'https://github.com/login/oauth/authorize'
-token_url = 'https://github.com/login/oauth/access_token'
+AUTHORIZATION_BASE_URL = 'https://github.com/login/oauth/authorize'
+TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
 # Normally, if you use an undefined variable in Jinja2, it fails
 # silently. This is horrible. Fix this so that, instead, it raises an
@@ -55,7 +55,7 @@ def user_login():
     """Step 1. User authentication."""
 
     github = OAuth2Session(client_id)
-    authorization_url, state = github.authorization_url(authorization_base_url)
+    authorization_url, state = github.authorization_url(AUTHORIZATION_BASE_URL)
 
     # State is used to prevent CSRF, keep this for later.
     session['oauth_state'] = state
@@ -72,7 +72,7 @@ def callback():
     """
 
     github = OAuth2Session(client_id, state=session['oauth_state'])
-    token = github.fetch_token(token_url, client_secret=client_secret,
+    token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
 
     # At this point you can fetch protected resources but lets save
@@ -85,11 +85,11 @@ def callback():
 # HELP: how redirect to dashboard not homepage?
 @app.route("/profile", methods=["GET"])
 def profile():
-    """Fetching a protected resource using an OAuth 2 token.
-    """
+    """Fetching a protected resource using an OAuth 2 token."""
+
     github = OAuth2Session(client_id, token=session['oauth_token'])
     return jsonify(github.get('https://api.github.com/user').json())
-
+# find user info here: https://developer.github.com/apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps/
 
 @app.route('/dashboard_lit')
 def display_lit_dashboard():
@@ -158,11 +158,18 @@ def send_to_db():
     filename = request.form.get('filename')
 
     doc_type_id = 1
+
+    if claim_type == 'Personal Injury':
+        claim_type_id = 1
     # FIXME: check those entries that may already be in there!!!!!
     # FIXME: how do I handle giving it to users who are logged in??
     # FIXME: how to handle claim type / claim type id?
+
+# when log in with oauth, put user id in the session 
+
     new_case = Case(case_no=case_no,
                     team_lead=USER,
+                    claim_type_id=claim_type_id,
                     damages_asked=damages_asked,
                     county=court_county,
                     state=court_state,
@@ -198,7 +205,7 @@ def send_to_db():
 
     db.session.add(new_opp)
 
-    new_case.opposing_id=new_opposing_counsel
+    new_case.opposing_id = new_opposing_counsel
 
     # if autoincrement primary key, add and commit to get to it before any next steps
     # can add pieces at a time before commit whole thing, even if missing inforation
@@ -222,7 +229,18 @@ def send_to_db():
 
 
 @app.route('/answer_init')
-def display_answer_options:    
+def display_answer_options():
+    """Display answer options to user."""
+
+    return render_template('edit_answer.html')
+
+
+@app.route('/display_answer')
+def display_answer():
+    """Show the user the word doc to approve or edit.
+
+    FIXME: or just generate it????"""
+
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
