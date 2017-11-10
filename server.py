@@ -121,16 +121,108 @@ def upload_file():
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         parsed_text = OCR_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        return render_template('display.html', parsed_text=parsed_text)
+        txt_filename = filename.split('.')[0]
+        txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
+
+        return render_template('display.html', parsed_text=parsed_text,
+                                               filename=filename,
+                                               txt_filename=txt_filename)
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/submit_complaint', methods=['POST'])
 def send_to_db():
-    """Sends uploaded information to database."""
+    """Sends uploaded complaint information to database."""
+
+    # Grab doc info
+    claim_type = request.form.get('claim_type')
+    legal_basis = request.form.get('legal_basis')
+    damages_asked = request.form.get('damages_asked')
+    date_processed = request.form.get('complaint_date')
+    # Grab opposing counsel info
+    counsel_fname = request.form.get('counsel_fname')
+    counsel_lname = request.form.get('counsel_lname')
+    counsel_firm = request.form.get('counsel_firm')
+    counsel_address = request.form.get('counsel_address')
+    # Grab court info
+    court_county = request.form.get('county')
+    court_state = request.form.get('state')
+    case_no = request.form.get('case_no')
+    # Grab plaintiff info
+    plaintiff_fname = request.form.get('plaintiff_fname')
+    plaintiff_lname = request.form.get('plaintiff_lname')
+    # Grab defendant info
+    defendant_fname = request.form.get('defendant_fname')
+    defendant_lname = request.form.get('defendant_lname')
+    defendant_residence = request.form.get('defendant_residence')
+
+    filename = request.form.get('filename')
+
+    doc_type_id = 1
+    # FIXME: check those entries that may already be in there!!!!!
+    # FIXME: how do I handle giving it to users who are logged in??
+    # FIXME: how to handle claim type / claim type id?
+    new_case = Case(case_no=case_no,
+                    team_lead=USER,
+                    damages_asked=damages_asked,
+                    county=court_county,
+                    state=court_state,
+                    initialized=date_processed)
+
+    db.session.add(new_case)
+
+    new_party1 = Party(fname=plaintiff_fname,
+                       lname=plaintiff_lname)
+
+    db.session.add(new_party1)
+
+    new_plaintiff = Plaintiff(case=new_case,
+                              party=new_party1)
+
+    db.session.add(new_plaintiff)
+
+    new_party2 = Party(fname=defendant_fname,
+                       lname=defendant_lname,
+                       residence=defendant_residence)
+
+    db.session.add(new_party2)
+
+    new_defendant = Defendant(case=new_case,
+                              party=new_party2)
+
+    db.session.add(new_defendant)
+
+    new_opp = OpposingCounsel(fname=counsel_fname,
+                              lname=counsel_lname,
+                              mailing_address=counsel_address,
+                              firm_name=counsel_firm)
+
+    db.session.add(new_opp)
+
+    new_case.opposing_id=new_opposing_counsel
+
+    # if autoincrement primary key, add and commit to get to it before any next steps
+    # can add pieces at a time before commit whole thing, even if missing inforation
+
+    #new_case.[attribute] =
+
+    new_complaint = Complaint(doc_type_id=doc_type_id,
+                              case=new_case,
+                              date_received=date_processed,
+                              damages_asked=damages_asked,
+                              legal_basis=legal_basis,
+                              pdf=os.path.join(app.config['UPLOAD_FOLDER'],
+                                               filename),
+                              txt=os.path.join(app.config['UPLOAD_FOLDER'],
+                                               txt_filename))
+
+    db.session.add(new_complaint)
+    db.session.commit()
+
+    return render_template('complaint_submitted.html')
 
 
-    # return render_template('edit_answer.html')
-    pass
+@app.route('/answer_init')
+def display_answer_options:    
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the

@@ -2,6 +2,7 @@
 
 from textblob import TextBlob
 import re
+from datetime import datetime
 
 
 class Complaint(TextBlob):
@@ -24,9 +25,10 @@ class Complaint(TextBlob):
         self.counsel_lname = self.get_counsel_lname()
         self.counsel_firm = self. get_counsel_firm()
         self.complaint_date = self.get_complaint_date()
-        self.injury_date = self.get_injury_date()
-        self.injury_location = self.get_injury_location()
-        self.injury_description = self.get_injury_description()
+        self.legal_basis = self.get_legal_basis()
+        # self.injury_date = self.get_injury_date()
+        # self.injury_location = self.get_injury_location()
+        # self.injury_description = self.get_injury_description()
 
         # etc...
 
@@ -61,7 +63,7 @@ class Complaint(TextBlob):
             if self.word_list[i] == 'Case':
                 if self.word_list[i + 1] == 'No.2':
                     case_no = self.word_list[i + 2]
-                    return case_no
+                    return int(case_no)
 
 
     def get_county(self):
@@ -89,8 +91,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'defendant':
-                defendant_fname = self.word_list[i + 1]
-                return defendant_fname
+                return self.word_list[i + 1]
 
 
     def get_defendant_lname(self):
@@ -98,8 +99,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'defendant':
-                defedant_lname = self.word_list[i + 2]
-                return defedant_lname
+                return self.word_list[i + 2]
 
 
     def get_amount_claimed(self):
@@ -108,20 +108,11 @@ class Complaint(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Amount':
                 if self.word_list[i + 1] == 'claimed:':
-                    amount_claimed = self.word_list[i + 2]
-                    return amount_claimed
+                    return self.word_list[i + 2]
 
 
     def get_claim(self):
         """Return the type of claim as either the default PI or an error message."""
-
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == '(Personal':
-        #         if self.word_list[i + 1] == 'Injury;':
-        #             claim = 'Personal Injury'
-        #     else:
-        #         claim = 'UNDEFINED'
-        #     return claim
 
         for i in range(len(self.sentence_list)):
 
@@ -129,6 +120,23 @@ class Complaint(TextBlob):
                 return 'Personal Injury'
             else:
                 return 'UNKNOWN'
+
+
+    def get_legal_basis(self):
+        """Return the types of legal claims made in the complaint.
+
+        FIXME: add other types of claims here."""
+
+        result = []
+
+        for i in range(len(self.sentence_list)):
+
+            if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
+                result.append('Negligence')
+            # etc.
+        result = ' '.join(result)
+
+        return result
 
 
     def get_defendant_residence(self):
@@ -146,8 +154,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'P.C.':
-                counsel_fname = self.word_list[i + 2]
-                return counsel_fname
+                return self.word_list[i + 2]
 
 
     def get_counsel_lname(self):
@@ -155,37 +162,27 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'P.C.' or self.word_list[i] == 'LLC':
-                counsel_lname = self.word_list[i + 4]
-                return counsel_lname
+                return self.word_list[i + 4]
 
 
     def get_counsel_firm(self):
         """Return the opposing counsel's firm name."""
 
-        for i in range(len(self.sentence_list)):
-
-            if self.sentence_list[i].find('P.C.'):
-                return self.sentence_list[i]
-            elif self.sentence_list[i].find('LLC'):
-                return self.sentence_list[i]
+        firm = self.sentence_list[-3]
+        return firm.title()
 
 
     def get_complaint_date(self):
-        """Return the date of the complaint.
+        """Stampe the complaint with the date processed."""
 
-        FIXME: cast this return value into a date format."""
-
-        for i in range(len(self.sentence_list)):
-
-            if self.sentence_list[i].find('DATED this'):
-                return self.sentence_list[i]
+        return datetime.utcnow()
 
 
     def get_injury_date(self):
 
         return 'N/A'
 
-        # regex: 'On *** plaintiff'
+        # regex: 'On *** plaintiff was'
 
 
     def get_injury_location(self):
