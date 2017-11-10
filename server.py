@@ -24,6 +24,8 @@ from flask_sqlalchemy import SQLAlchemy
 # import spellcheck
 from werkzeug.utils import secure_filename
 
+from github import Github
+
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
@@ -165,7 +167,7 @@ def send_to_db():
     # FIXME: how do I handle giving it to users who are logged in??
     # FIXME: how to handle claim type / claim type id?
 
-# when log in with oauth, put user id in the session 
+    # when log in with oauth, put user id in the session
 
     new_case = Case(case_no=case_no,
                     team_lead=USER,

@@ -8,12 +8,14 @@ class User(db.Model):
 
     __tablename__ = 'users'
 
-    # TODO: change user_id to natural key (attorney number) by removing autoincrement when make profile edit page
+    # TODO: change user_id to natural key (github login)
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(100), nullable=False)
-    mailing_address = db.Column(db.String(100), nullable=False)
+    mailing_address = db.Column(db.String(100),
+                                default='383 Sutter St. San Francisco, CA',
+                                nullable=False)
     firm_name = db.Column(db.String(64),
                           default='Wayne, Prince & Jones LLP',
                           nullable=False)
