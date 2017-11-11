@@ -174,7 +174,9 @@ def create_team():
     new_CaseUser2 = CaseUser(user=attorney_1, case=new_case)
     new_CaseUser3 = CaseUser(user=attorney_2, case=new_case)
 
-    db.session.add(new_CaseUser1, new_CaseUser2, new_CaseUser3)
+    db.session.add(new_CaseUser1)
+    db.session.add(new_CaseUser2)
+    db.session.add(new_CaseUser3)
 
     db.session.commit()
 
@@ -202,10 +204,22 @@ def upload_file():
 
         txt_filename = filename.split('.')[0]
         txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
+        # Grab all claim types from db to pass into dropdown menu
+        claims = ClaimType.query.all()
+        # Figure out of OCR'd claim type is in the db
+        selected_claim = ClaimType.query.filter(ClaimType.name == parsed_text.claim).first()
+
+        if selected_claim:
+            selected_claim_name = selected_claim.name
+        # FIXME: COME BACK TO THIS!!
+        else:
+            selected_claim_name = xyz
 
         return render_template('display.html', parsed_text=parsed_text,
                                                filename=filename,
-                                               txt_filename=txt_filename)
+                                               txt_filename=txt_filename,
+                                               claims=claims,
+                                               selected_claim_name=selected_claim_name)
 
 
 @app.route('/submit_complaint', methods=['POST'])
@@ -238,9 +252,9 @@ def send_to_db():
 
     # Grab the case and team information we seeded earlier
     case = request.form.get('case')
-    team_lead = new_CaseUser1
-    attorney1 = new_CaseUser2
-    attorney2 = new_CaseUser3
+    team_lead = request.form.get('new_CaseUser1')
+    attorney1 = request.form.get('new_CaseUser2')
+    attorney2 = request.form.get('new_CaseUser3')
 
     # FIXME: figure out how to pass this in
     doc_type_id = 1
@@ -252,53 +266,80 @@ def send_to_db():
     # when log in with oauth, put user id in the session
 
     # FIXME: pass in the case id
-    new_case = Case(case_no=case_no,
-                    team_lead=USER,
-                    claim_type_id=claim_type_id,
-                    damages_asked=damages_asked,
-                    county=court_county,
-                    state=court_state,
-                    initialized=date_processed)
+    # new_case = Case(case_no=case_no,
+    #                 team_lead=team_lead,
+    #                 claim_type_id=claim_type_id,
+    #                 damages_asked=damages_asked,
+    #                 county=court_county,
+    #                 state=court_state,
+    #                 initialized=date_processed)
 
-    db.session.add(new_case)
+    case.case_no = case_no
+    case.team_lead = team_lead
+    case.claim_type_id = claim_type_id
+    case.damages_asked = damages_asked
+    case.county = county
+    case.state = state
+    case.initialized = initialized
 
-    new_party1 = Party(fname=plaintiff_fname,
-                       lname=plaintiff_lname)
+    # db.session.add(new_case)
 
-    db.session.add(new_party1)
+    # TODO: Check to see whether the plaintiff exsist in the db
+    check_party1 = Party.query.filter(Party.fname == plaintiff_fname,
+                                      Party.lname == plaintiff_lname).first()
+    if check_party1:
+        new_plaintiff = Plaintiff(case=case,
+                          party=new_party1)
 
-    new_plaintiff = Plaintiff(case=new_case,
-                              party=new_party1)
+    else:
+        new_party1 = Party(fname=plaintiff_fname,
+                           lname=plaintiff_lname)
+        db.session.add(new_party1)
+        new_plaintiff = Plaintiff(case=case,
+                                  party=new_party1)
 
     db.session.add(new_plaintiff)
 
-    new_party2 = Party(fname=defendant_fname,
-                       lname=defendant_lname,
-                       residence=defendant_residence)
+    # TODO: check to see whether the defendant exists in the db
+    check_party2 = Party.query.filter(Party.fname == defendant_fname,
+                                      Party.lname == defenant_lname).first()
+    if check_party2:
+        new_defendant = Defendant(case=case,
+                                  party=new_party2)
 
-    db.session.add(new_party2)
-
-    new_defendant = Defendant(case=new_case,
-                              party=new_party2)
+    else:
+        new_party2 = Party(fname=defendant_fname,
+                           lname=defendant_lname,
+                           residence=defendant_residence)
+        db.session.add(new_party2)
+        new_defendant = Defendant(case=case,
+                                  party=new_party2)
 
     db.session.add(new_defendant)
 
-    new_opp = OpposingCounsel(fname=counsel_fname,
-                              lname=counsel_lname,
-                              mailing_address=counsel_address,
-                              firm_name=counsel_firm)
+    # Check to see whether the opposing counsel already exists in db
+    # FIXME: do i need to do just one attribute and then check fname after?
+    check_opp = OpposingCounsel.query.filter(OpposingCounsel.fname == counsel_fname,
+                                             OpposingCounsel.lname == counsel_lname).first()
 
-    db.session.add(new_opp)
+    # If opposing counsel already in db, add their id to the case
+    if check_opp:
+        case.opposing_id = new_opp
+    # If not, create the opposing counsel object
+    else:
+        new_opp = OpposingCounsel(fname=counsel_fname,
+                                  lname=counsel_lname,
+                                  mailing_address=counsel_address,
+                                  firm_name=counsel_firm)
+        db.session.add(new_opp)
 
-    new_case.opposing_id = new_opposing_counsel
+    case.opposing_id = new_opp
 
     # if autoincrement primary key, add and commit to get to it before any next steps
     # can add pieces at a time before commit whole thing, even if missing inforation
 
-    #new_case.[attribute] =
-
     new_complaint = Complaint(doc_type_id=doc_type_id,
-                              case=new_case,
+                              case=case,
                               date_received=date_processed,
                               damages_asked=damages_asked,
                               legal_basis=legal_basis,
@@ -320,11 +361,44 @@ def display_answer_options():
     return render_template('edit_answer.html')
 
 
+# TODO: display and allow to edit before build
 @app.route('/display_answer')
 def display_answer():
-    """Show the user the word doc to approve or edit.
+    """Show the user the word doc to approve or edit."""
 
-    FIXME: or just generate it????"""
+    pass
+
+
+@app.route('/process_answer', methods=['POST'])
+def compose_answer_form():
+    """Create an answer object from the user's selections."""
+
+    # Query for the complaint info to get party names and firms and addresses.
+    # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')
+    # # Query the db for all the info that goes in the answer form
+    # defedant_fname =
+    # defedant_lname = 
+    # defendant_name = defendant_fname + defedant_lname
+
+    # plaintiff_fname =
+    # plaintiff_lname = 
+    # plaintiff_name = plaintiff_fname + plaintiff_lname
+
+    # defendant_counsel = (TEAM LEAD)
+    # defendant_firm_address = 
+
+    # case_no = 
+    # county = 
+    # state = 
+
+    pass
+
+    # create an answer object
+    # get the template from '/forms/answer_template'
+    # open doc and write to it
+    # now create the bespoke doc using replace(tag, item)
+
+    #for now, then return a redirect like after the original upload (i.e. display the doc)
 
 
 if __name__ == "__main__":

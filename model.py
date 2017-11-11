@@ -9,7 +9,7 @@ class User(db.Model):
     __tablename__ = 'users'
 
     # TODO: change user_id to natural key (github login)
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(25), primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(100), nullable=False)
@@ -34,7 +34,7 @@ class CaseUser(db.Model):
     __tablename__ = 'teams'
 
     team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    user_id = db.Column(db.String(25), db.ForeignKey('users.user_id'), nullable=False)
     case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     def __repr__(self):
@@ -52,10 +52,12 @@ class Case(db.Model):
 
     # Natural primary key: case number assinged (from OCR)
     case_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    case_no = db.Column(db.Integer, db.ForeignKey('complaints.case_no'), nullable=True)
-    team_lead = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
-    # client_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
-    # opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
+    # case_no = db.Column(db.Integer, db.ForeignKey('complaints.case_no'), nullable=True)
+    team_lead = db.Column(db.String(25), db.ForeignKey('users.user_id'), nullable=True)
+    complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=True)
+    # plaintiff_id = db.Column(db.Integer, db.ForeignKey('plaintiffs.plaintiff_id'), nullable=True)
+    # defendant_id = db.Column(db.Integer, db.ForeignKey('defendants.defendant_id'), nullable=True)
+    opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
     claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=False)
     damages_asked = db.Column(db.Integer, nullable=True)
     #below: see what is on form
@@ -68,7 +70,10 @@ class Case(db.Model):
     settled = db.Column(db.Boolean, default=False, nullable=False)
 
     # Define relationship to user
-    user = db.relationship('User', secondary='Team', backref=db.backref('cases'))
+    user = db.relationship('User', secondary='teams', backref=db.backref('cases'))
+
+    # Define relationship to cpmplaint
+    complaint = db.relationship('Complaint', backref=db.backref('cases'))
 
     def __repr__(self):
         """Provide info about the case instance."""
@@ -97,6 +102,8 @@ class Plaintiff(db.Model):  # or name this CaseParty?
                                                                     self.plaintiff_id,
                                                                     self.party_id,
                                                                     self.case_id)
+    cases = db.relationship('Case', backref=db.backref('plaintiffs'))
+    parties = db.relationship('Party', backref=db.backref('plaintiffs'))
 
 
 class Defendant(db.Model):  # or name this CaseParty?
@@ -113,12 +120,15 @@ class Defendant(db.Model):  # or name this CaseParty?
     case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     def __repr__(self):
-        """Provide info about the Defendant instance."""
+        """Provide info about the CaseParty instance."""
 
         return "<CaseParty defendant_id={} party_id={} case_id={}>".format(
-                                                                    self.defendant_id,
+                                                                    self.plaintiff_id,
                                                                     self.party_id,
                                                                     self.case_id)
+    cases = db.relationship('Case', backref=db.backref('defendants'))
+    parties = db.relationship('Party', backref=db.backref('defendants'))
+
 
 class Party(db.Model):
     """Party model."""
@@ -205,9 +215,8 @@ class Complaint(db.Model):
 
     # Meta data on document
     complaint_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    # hardcode this to the value in doctype table:
-    doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
+    # case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
+    doc_type_id = db.Column(db.Integer, default=1, nullable=False)
     case_no = db.Column(db.Integer, nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
     date_reviewed = db.Column(db.DateTime, nullable=True)
@@ -218,12 +227,12 @@ class Complaint(db.Model):
     # incident_description = db.Column(db.Text, nullable=False)
     damages_asked = db.Column(db.String(100), nullable=False)
     legal_basis = db.Column(db.String(64), nullable=True)
-    # Storage location <TODO: put on AWS and change to url>
-    pdf = db.Column(db.String(64), nullable=False)  # will be url if online server or relative file /static/etc...
+    # TODO: put on AWS and change to url
+    pdf = db.Column(db.String(64), nullable=False)
     txt = db.Column(db.String(64), nullable=False)
 
     # Define relationship to a case
-    case = db.relationship('Case', backref=db.backref('complaint'))
+    # case = db.relationship('Case', foreign_keys='Case.case_id', backref=db.backref('complaint'))
 
     def __repr__(self):
         """Provide into about the complaint instance."""
@@ -238,8 +247,8 @@ class Answer(db.Model):
     __tablename__ = 'answers'
 
     answer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('complaints.case_no'), nullable=False)
+    doc_type_id = db.Column(db.Integer, default=2, nullable=False)
+    complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=False)
     case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     date_created = db.Column(db.DateTime, nullable=True)
@@ -251,6 +260,9 @@ class Answer(db.Model):
 
     # Define relationship to a case
     case = db.relationship('Case', backref=db.backref('answer'))
+
+    # Define relationship to a complaint
+    complaint = db.relationship('Complaint', backref=db.backref('answer'))
 
     def __repr__(self):
         """Provide into about the answer instance."""

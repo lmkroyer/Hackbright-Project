@@ -30,7 +30,7 @@
 
 Verify complaint details<br><br>
 
-<form action="/submit_complaint">
+<form action="/submit_complaint", method='POST'>
 
   <input type="hidden" name="filename" value="{{ filename }}">
   <input type="hidden" name="txt_filename" value="{{ txt_filename }}"> 
@@ -39,21 +39,19 @@ Verify complaint details<br><br>
   <input type="hidden" name="attorney_2" value="{{ new_CaseUser3 }}"> 
    <input type="hidden" name="case" value="{{ new_case }}">  
 
-<!-- make this a dropdown auto selection -->
-parsed_text.claim == 'Personal Injury'
-
+  CLAIM TYPE: <!-- FIX THIS!!! -->
   <select name="claim_type">
-    <option value="personal injury">Personal Injury</option>
-    <option value="contract">Contract</option>
+    {% for claim in claims}
+    <option value="{{ claim.name }}"
+    {% if claim.name == parsed_text.claim %}
+      {{ selected_claim_name }}
+    {% endif %}
+    >{{ claim.name }}</option>
+    {% endfor %}
+  </select>
 
 
-    <option value=""></option>
-    <option value="chartreuse">chartreuse</option>
-    </select>
-
-
-
-  CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br>
+<!--   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br> -->
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
   Amount claimed: <input type="text" name="damages_asked" value="{{ parsed_text.amount_claimed  }}"><br>
   Date: <input type="text" name="claim_type" value="{{ parsed_text.complaint_date }}"><br><br>

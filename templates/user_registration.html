@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- DECIDE IF WANT TO DO THIS, IF SO, ADD A USER CONFIRMATION ROUTE ( SEE RATINGS )
+ -->
+    <h2>Register</h2>
+    <form action="/confirm_new_account" method="POST">
+      First Name<input type="text" name="fname">
+      Last Name<input type="text" name="lname">
+      Email<input type="text" name="email">
+<!--       Password<input type="password" name="password"> -->
+      <input type="submit">
+    </form>
+
+
+{% endblock %}

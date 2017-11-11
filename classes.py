@@ -123,18 +123,23 @@ class Complaint(TextBlob):
 
 
     def get_legal_basis(self):
-        """Return the types of legal claims made in the complaint.
-
-        FIXME: add other types of claims here."""
+        """Return the types of legal claims made in the complaint."""
 
         result = []
 
-        for i in range(len(self.sentence_list)):
+        for i in range(len(self.word_list)):
 
-            if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
-                result.append('Negligence')
-            # etc.
-        result = ' '.join(result)
+        #     if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
+        #         result.append('Negligence')
+        #     # etc.
+        # result = ' '.join(result)
+
+
+            if self.word_list[i] == 'Claim' and self.word_list[i + 1] == 'for' and self.word_list[i + 2] == 'Relief':
+                if self.word_list[i + 3] not in result:
+                    result.append(self.word_list[i + 3])
+            result = ' '.join(result)
+            return result[1:]
 
         return result
 
@@ -147,7 +152,7 @@ class Complaint(TextBlob):
                 defendant_residence = self.word_list[i + 2:i + 6]
                 result = ' '.join(defendant_residence)
                 return result[:-1]
-
+                #FIXME: turn this into a geocode here?
 
     def get_counsel_fname(self):
         """Return the opposing counsel's first name."""
