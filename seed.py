@@ -7,7 +7,7 @@ from model import connect_to_db, db
 from server import app
 
 
-def load_claim_type():
+def load_claim_types():
     """Add the types of claims we can process."""
 
     personal_injury = ClaimType(claim_type_id=1,
@@ -38,6 +38,7 @@ def load_doc_types():
 
     complaint = DocType(doc_type_id=1,
                         name='Complaint')
+
     answer = DocType(doc_type_id=2,
                      name='Answer')
 
@@ -48,7 +49,7 @@ def load_doc_types():
 def load_users():
     """Add attorney user data."""
 
-    user1 = User(user_id=theCoolOne,
+    user1 = User(user_id=theIntenseOne,
                  fname=Effy,
                  lname=Stonem,
                  email=estonem@lglease.com)
@@ -113,8 +114,13 @@ def load_users():
                  lname=Blood,
                  email=gblood@lglease.com)
 
+    user14 = User(user_id=lmariek,
+                  fname=Lindsay,
+                  lname=Kroyer,
+                  email=lkroyer@leglease.com)
+
     db.session.add(user1, user2, user3, user4, user5, user6, user7,
-                   user8, user9, user10, user11, user12, user13)
+                   user8, user9, user10, user11, user12, user13, user14)
 
     db.session.commit()
 
@@ -127,4 +133,4 @@ if __name__ == "__main__":
 
     load_users()
     load_doc_types()
-    load_claim_type()
+    load_claim_types()

@@ -2,11 +2,10 @@
 
 import textract, requests, os, sys
 
-# from spellcheck import correction
-
 from ocr import OCR_file, allowed_file
 
 from requests_oauthlib import OAuth2Session
+from github import Github
 from textblob import TextBlob
 from jinja2 import StrictUndefined
 from flask import (Flask, jsonify, render_template, redirect, request, flash,
@@ -16,15 +15,9 @@ from flask_debugtoolbar import DebugToolbarExtension
 # from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
 #                    ClaimType, Complaint, Answer, connect_to_db, db)
 from flask_sqlalchemy import SQLAlchemy
-
 # import requests
-
 # import os
-
-# import spellcheck
 from werkzeug.utils import secure_filename
-
-from github import Github
 
 app = Flask(__name__)
 
@@ -61,37 +54,81 @@ def user_login():
 
     # State is used to prevent CSRF, keep this for later.
     session['oauth_state'] = state
+
     return redirect(authorization_url)
+
+
+@app.route('/signout')
+def signout():
+    """Signs out user and removes from session."""
+
+    flash('Successfully signed out')
+    del session['oauth_state']
+
+    return redirect('/')
+
+
+# @app.route('/register')
+# def register_user():
+#     """Allows user to create new account."""
+
+#     return render_template('user_registration.html')
+
+
+@app.route('/edit_profile')
+def edit_profile():
+    """Allows user to edit exisitng account details."""
+
+    # FIXME: grad the user object for user who is logged in
+    # user = User.query
+
+    return render_template('edit_profile.html')
+
+
+@app.route('/confirm_new_account', methods=["POST"])
+def add_user():
+    """Add new user to database."""
+
+    pass
 
 
 @app.route("/callback", methods=["GET"])
 def callback():
     """ Step 3: Retrieving an access token.
 
-    The user has been redirected back from the provider to your registered
+    The user has been redirected back from the provider to the registered
     callback URL. With this redirection comes an authorization code included
-    in the redirect URL. We will use that to obtain an access token.
+    in the redirect URL. Use that to obtain an access token.
     """
 
     github = OAuth2Session(client_id, state=session['oauth_state'])
     token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
 
-    # At this point you can fetch protected resources but lets save
+    # At this point we can fetch protected resources but let's save
     # the token and show how this is done from a persisted token
     # in /profile.
     session['oauth_token'] = token
 
-    return redirect(url_for('.profile'))
-
-# HELP: how redirect to dashboard not homepage?
-@app.route("/profile", methods=["GET"])
-def profile():
-    """Fetching a protected resource using an OAuth 2 token."""
-
     github = OAuth2Session(client_id, token=session['oauth_token'])
-    return jsonify(github.get('https://api.github.com/user').json())
-# find user info here: https://developer.github.com/apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps/
+    github_user = github.get('https://api.github.com/user').json()
+    print github_user
+
+    return redirect(url_for('/profile'))
+
+
+# @app.route("/profile", methods=["GET"])
+# def profile():
+#     """Fetching a protected resource using an OAuth 2 token."""
+
+#     github = OAuth2Session(client_id, token=session['oauth_token'])
+#     github_user = github.get('https://api.github.com/user').json()
+# # find user info here: https://developer.github.com/apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps/
+#     import pdb
+#     pdb.set_trace()
+
+#     return 'hello world'
+
 
 @app.route('/dashboard_lit')
 def display_lit_dashboard():
@@ -105,6 +142,46 @@ def display_corp_dashboard():
     """Display the corporate dashboard."""
 
     return render_template('dashboard_corp.html')
+
+
+@app.route('/case_init')
+def start_case():
+    """Allow user to initialize a team and case by uploading complaint."""
+
+
+    attorneys = User.query.all()
+
+    return render_template('case_init.html', attorneys=attorneys)
+
+
+@app.route('/process_users', methods=['POST'])
+def create_team():
+    """Add the selected attorneys to a team and create a case_id."""
+
+    # Grab user ids
+    team_lead = request.form.get('team_lead')
+    attorney_1 = request.form.get('attorney_1')
+    attorney_2 = request.form.get('attorney_2')
+
+    # Create a case object
+    new_case = Case()
+    db.session.add(case)
+    db.session.commit()
+
+    # Create the team
+    new_case.team_lead = team_lead
+    new_CaseUser1 = CaseUser(user=team_lead, case=new_case)
+    new_CaseUser2 = CaseUser(user=attorney_1, case=new_case)
+    new_CaseUser3 = CaseUser(user=attorney_2, case=new_case)
+
+    db.session.add(new_CaseUser1, new_CaseUser2, new_CaseUser3)
+
+    db.session.commit()
+
+    return render_template('/upload_complaint.html', new_CaseUser1=new_CaseUser1,
+                                                     new_CaseUser2=new_CaseUser2,
+                                                     new_CaseUser3=new_CaseUser3,
+                                                     new_case=new_case)
 
 
 @app.route('/upload', methods=['POST'])
@@ -159,16 +236,22 @@ def send_to_db():
 
     filename = request.form.get('filename')
 
+    # Grab the case and team information we seeded earlier
+    case = request.form.get('case')
+    team_lead = new_CaseUser1
+    attorney1 = new_CaseUser2
+    attorney2 = new_CaseUser3
+
+    # FIXME: figure out how to pass this in
     doc_type_id = 1
 
-    if claim_type == 'Personal Injury':
-        claim_type_id = 1
     # FIXME: check those entries that may already be in there!!!!!
     # FIXME: how do I handle giving it to users who are logged in??
     # FIXME: how to handle claim type / claim type id?
 
     # when log in with oauth, put user id in the session
 
+    # FIXME: pass in the case id
     new_case = Case(case_no=case_no,
                     team_lead=USER,
                     claim_type_id=claim_type_id,

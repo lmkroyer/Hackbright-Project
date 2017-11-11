@@ -20,24 +20,27 @@ function initMap() {
   });
 
 };
+
 ////////////
 // marker //
 ////////////
 
-// TODO: Add each case here:
+// FIXME: Add each case here -- fix where to put on map, link to db:
 
-// function addMarker() {
-//   let myImageURL = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-//   let nearSydney = new google.maps.LatLng(-34.788666, 150.41146);
-//   let marker = new google.maps.Marker({
-//       position: nearSydney,
-//       map: map,
-//       title: 'Hover text',
-//       icon: myImageURL
-//   });
-//   return marker;
-// }
+function addMarker() {
+  let markerLocation = map.getCenter();
+  let marker = new google.maps.Marker({
+     position: new google.maps.LatLng(XYZ),
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: 'red'
+      },
+      map: map
+  });
+  return marker;
+}
 
-// let marker = addMarker();
+let marker = addMarker();
 
 google.maps.event.addDomListener(window, 'load', initMap);

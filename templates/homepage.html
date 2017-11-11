@@ -2,13 +2,18 @@
 
 {% block head %}
 
-<h3><a href="/login">Login</a></h3>
+    {% if 'oauth_state' not in session %}
+      <h3><a href="/login">Login</a></h3>
+    {% else %}
+      <h3><a href="/signout">Sign out</a></h3>
+    {% endif %}
+
+    <h3><a href="/register">Register new user</a></h3>
 
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/static/mapstyle.js"></script>
     <script src="/static/casemap.js"></script>
-
     <script async defer
     //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&callback=initMap">
     </script>
@@ -18,9 +23,9 @@
 
 {% block content %}
 
-<a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
+    <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
 
-<a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a>
+    <a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a>
 
     <div id="map"></div>
 

@@ -9,7 +9,7 @@ class User(db.Model):
     __tablename__ = 'users'
 
     # TODO: change user_id to natural key (github login)
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(100), nullable=False)
@@ -35,14 +35,14 @@ class CaseUser(db.Model):
 
     team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     def __repr__(self):
         """Provide info about the CaseUser instance."""
 
-        return "<CaseUser team_id={} user_id={} case_no={}>".format(self.team_id,
+        return "<CaseUser team_id={} user_id={} case_id={}>".format(self.team_id,
                                                                     self.user_id,
-                                                                    self.case_no)
+                                                                    self.case_id)
 
 
 class Case(db.Model):
@@ -51,17 +51,18 @@ class Case(db.Model):
     __tablename__ = 'cases'
 
     # Natural primary key: case number assinged (from OCR)
-    case_no = db.Column(db.Integer, primary_key=True)
+    case_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    case_no = db.Column(db.Integer, db.ForeignKey('complaints.case_no'), nullable=True)
     team_lead = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
     # client_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
     # opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
     claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=False)
-    damages_asked = db.Column(db.Integer, nullable=False)
+    damages_asked = db.Column(db.Integer, nullable=True)
     #below: see what is on form
-    state = db.Column(db.String(25), nullable=False)
-    county = db.Column(db.String(25), nullable=False)
+    state = db.Column(db.String(25), nullable=True)
+    county = db.Column(db.String(25), nullable=True)
     # add court_dept and/or judge_name?
-    initialized = db.Column(db.DateTime, nullable=False)
+    initialized = db.Column(db.DateTime, nullable=True)
     # FIXME: should I make a settlement amount association table? with case id, settlement id, and settlement amount
     settlement_amount = db.Column(db.Integer, nullable=True)
     settled = db.Column(db.Boolean, default=False, nullable=False)
@@ -72,7 +73,7 @@ class Case(db.Model):
     def __repr__(self):
         """Provide info about the case instance."""
 
-        return "<Case case_no={} initialized={}>".format(self.case_no,
+        return "<Case case_id={} initialized={}>".format(self.case_id,
                                                          self.initialized)
 
 
@@ -87,15 +88,15 @@ class Plaintiff(db.Model):  # or name this CaseParty?
 
     plaintiff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     party_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     def __repr__(self):
         """Provide info about the CaseParty instance."""
 
-        return "<CaseParty plaintiff_id={} party_id={} case_no={}>".format(
+        return "<CaseParty plaintiff_id={} party_id={} case_id={}>".format(
                                                                     self.plaintiff_id,
                                                                     self.party_id,
-                                                                    self.case_no)
+                                                                    self.case_id)
 
 
 class Defendant(db.Model):  # or name this CaseParty?
@@ -109,15 +110,15 @@ class Defendant(db.Model):  # or name this CaseParty?
 
     defendant_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     party_id = db.Column(db.Integer, db.ForeignKey('parties.party_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     def __repr__(self):
         """Provide info about the Defendant instance."""
 
-        return "<CaseParty defendant_id={} party_id={} case_no={}>".format(
+        return "<CaseParty defendant_id={} party_id={} case_id={}>".format(
                                                                     self.defendant_id,
                                                                     self.party_id,
-                                                                    self.case_no)
+                                                                    self.case_id)
 
 class Party(db.Model):
     """Party model."""
@@ -206,7 +207,8 @@ class Complaint(db.Model):
     complaint_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     # hardcode this to the value in doctype table:
     doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
+    case_no = db.Column(db.Integer, nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
     date_reviewed = db.Column(db.DateTime, nullable=True)
     date_submitted = db.Column(db.DateTime, nullable=True)
@@ -226,8 +228,8 @@ class Complaint(db.Model):
     def __repr__(self):
         """Provide into about the complaint instance."""
 
-        return "<Complaint complaint_id={} case_no={}>".format(self.complaint_id,
-                                                               self.case_no)
+        return "<Complaint complaint_id={} case_id={}>".format(self.complaint_id,
+                                                               self.case_id)
 
 
 class Answer(db.Model):
@@ -237,7 +239,8 @@ class Answer(db.Model):
 
     answer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     doc_type_id = db.Column(db.Integer, db.ForeignKey('doc_types.doc_type_id'), nullable=False)
-    case_no = db.Column(db.Integer, db.ForeignKey('cases.case_no'), nullable=False)
+    case_no = db.Column(db.Integer, db.ForeignKey('complaints.case_no'), nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     date_created = db.Column(db.DateTime, nullable=True)
     date_reviewed = db.Column(db.DateTime, nullable=True)
@@ -252,8 +255,8 @@ class Answer(db.Model):
     def __repr__(self):
         """Provide into about the answer instance."""
 
-        return "<Answer answer_id={} case_no={}>".format(self.answer_id,
-                                                         self.case_no)
+        return "<Answer answer_id={} case_id={}>".format(self.answer_id,
+                                                         self.case_id)
 
 
 ##############################################################################
