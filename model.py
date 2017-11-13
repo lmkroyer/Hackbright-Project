@@ -57,8 +57,8 @@ class Case(db.Model):
     complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=True)
     # plaintiff_id = db.Column(db.Integer, db.ForeignKey('plaintiffs.plaintiff_id'), nullable=True)
     # defendant_id = db.Column(db.Integer, db.ForeignKey('defendants.defendant_id'), nullable=True)
-    opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=False)
-    claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=False)
+    opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=True)
+    claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=True)
     damages_asked = db.Column(db.Integer, nullable=True)
     #below: see what is on form
     state = db.Column(db.String(25), nullable=True)

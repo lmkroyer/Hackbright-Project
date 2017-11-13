@@ -12,12 +12,14 @@ from flask import (Flask, jsonify, render_template, redirect, request, flash,
                    session, url_for, send_from_directory)
 from flask_debugtoolbar import DebugToolbarExtension
 
-# from model import (User, Team, Case, OpposingCounsel, Plaintiff, Client, DocType,
-#                    ClaimType, Complaint, Answer, connect_to_db, db)
+from model import (User, CaseUser, Case, OpposingCounsel, Plaintiff, Defendant,
+                   Party, DocType, ClaimType, Complaint, Answer, connect_to_db, db)
 from flask_sqlalchemy import SQLAlchemy
 # import requests
 # import os
 from werkzeug.utils import secure_filename
+
+from docx import Document
 
 app = Flask(__name__)
 
@@ -43,7 +45,35 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     """Homepage."""
 
+    # if 'oauth_token' in session:
+    #     # github = OAuth2Session(client_id, token=session['oauth_token'])
+    #     github_user = github.get('https://api.github.com/user').json()
+    #     # Access the user's login id in the json dict
+    #     current_user = github_user.get('login')
+    #     import pdb 
+    #     pdb.set_trace()
+    # Query for all registered users
+
+    # Check if the login is in the 
+    # current_user = github_user.name
+
     return render_template('homepage.html')
+
+
+@app.route('/active_cases')
+def active_case_info():
+    """JSON information about county, state for active cases. For map markers."""
+
+    cases = {
+        activeCase.marker_id: {
+            'caseCounty': case.county,
+            'caseState': case.state,
+            'caseID': case.case_id
+        }
+    }
+
+    return jsonify(cases)
+
 
 @app.route('/login')
 def user_login():
@@ -54,7 +84,7 @@ def user_login():
 
     # State is used to prevent CSRF, keep this for later.
     session['oauth_state'] = state
-
+ 
     return redirect(authorization_url)
 
 
@@ -105,14 +135,20 @@ def callback():
     token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
 
+    # github = OAuth2Session(client_id, token=session['oauth_token'])
+    # token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
+    #                            authorization_response=request.url)
+
     # At this point we can fetch protected resources but let's save
     # the token and show how this is done from a persisted token
     # in /profile.
     session['oauth_token'] = token
 
     github = OAuth2Session(client_id, token=session['oauth_token'])
+
     github_user = github.get('https://api.github.com/user').json()
-    print github_user
+    # current_user = github_user.login
+    # session['current_user'] = current_user
 
     return redirect(url_for('/profile'))
 
@@ -153,10 +189,12 @@ def start_case():
 
     return render_template('case_init.html', attorneys=attorneys)
 
-
+# FIXME
 @app.route('/process_users', methods=['POST'])
 def create_team():
-    """Add the selected attorneys to a team and create a case_id."""
+    """Add the selected attorneys to a team and create a case_id.
+
+    FIXME: something not passing correctly"""
 
     # Grab user ids
     team_lead = request.form.get('team_lead')
@@ -165,19 +203,21 @@ def create_team():
 
     # Create a case object
     new_case = Case()
-    db.session.add(case)
+    db.session.add(new_case)
     db.session.commit()
 
     # Create the team
-    new_case.team_lead = team_lead
-    new_CaseUser1 = CaseUser(user=team_lead, case=new_case)
-    new_CaseUser2 = CaseUser(user=attorney_1, case=new_case)
-    new_CaseUser3 = CaseUser(user=attorney_2, case=new_case)
+    new_CaseUser1 = CaseUser(user_id=team_lead, case_id=new_case)
+    new_CaseUser2 = CaseUser(user_id=attorney_1, case_id=new_case)
+    new_CaseUser3 = CaseUser(user_id=attorney_2, case_id=new_case)
 
     db.session.add(new_CaseUser1)
     db.session.add(new_CaseUser2)
     db.session.add(new_CaseUser3)
 
+    db.session.commit()
+
+    new_case.team_lead = team_lead
     db.session.commit()
 
     return render_template('/upload_complaint.html', new_CaseUser1=new_CaseUser1,
@@ -373,7 +413,11 @@ def display_answer():
 def compose_answer_form():
     """Create an answer object from the user's selections."""
 
-    # Query for the complaint info to get party names and firms and addresses.
+    query for info we need to pass and pass it into function:
+
+    generate_initial_answer()
+
+    for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
     # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')
     # # Query the db for all the info that goes in the answer form
     # defedant_fname =
@@ -391,12 +435,20 @@ def compose_answer_form():
     # county = 
     # state = 
 
-    pass
+        document = Document('/forms/answer_template.docx')
+        # FIXME: grab case_no from query
+        document.save('/filestorage/answer_{case_no}.docx'.format(case_no=case_no))
+
 
     # create an answer object
     # get the template from '/forms/answer_template'
     # open doc and write to it
     # now create the bespoke doc using replace(tag, item)
+
+    # this returns a list of the defenses a user checked
+    affirmative_defenses = request.form.getlist('affirmative_defenses')
+
+    generate_final_answer(affirmative_defenses)
 
     #for now, then return a redirect like after the original upload (i.e. display the doc)
 
@@ -407,7 +459,7 @@ if __name__ == "__main__":
     app.debug = True
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
 
-    # connect_to_db(app)
+    connect_to_db(app)
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)

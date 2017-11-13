@@ -41,7 +41,7 @@ Verify complaint details<br><br>
 
   CLAIM TYPE: <!-- FIX THIS!!! -->
   <select name="claim_type">
-    {% for claim in claims}
+    {% for claim in claims %}
     <option value="{{ claim.name }}"
     {% if claim.name == parsed_text.claim %}
       {{ selected_claim_name }}

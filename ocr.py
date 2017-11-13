@@ -21,8 +21,6 @@ def OCR_file(document):
     # FIXME: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = Complaint(decoded_text)
 
-    #import text class and instantiate text object and return it for server side, which gets passed to jinja
-
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
     doc_name = document.split('.')[0]
     text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
@@ -35,13 +33,39 @@ def OCR_file(document):
     # Close the file
     text_file.close()
 
-    #return a class instance
+    # Return a class instance
     return parsed_text
 
 
 def allowed_file(filename):
+    """Checks whether an uploaded file is one of the allowed formats."""
+
+    # Returns a boolean 'true' if allowed format
     return ('.' in filename and
             filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
+
+
+def generate_initial_answer(ABC):
+    """Takes in case-specific info and inserts into txt file answer template.
+
+    Converts txt to docx filetype. Returns docx."""
+
+    pass
+
+def generate_final_ answer(defenses):
+    """Takes in a list of selected defenses and a docx file and adds appropriate
+    paragraphs.
+
+    Outputs a final answer document."""
+
+    # make a dictionary with affirm defense and paragraph text 
+    # start with txt file, replace small items
+    # convert to docx
+    # open docx and add the relevant paragraphs
+    # save
+
+    # for defense in defenses:
+    pass
 
 
 #text class --> pass in the text
