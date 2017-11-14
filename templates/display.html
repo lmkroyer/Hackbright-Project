@@ -40,7 +40,7 @@ Verify complaint details<br><br>
   CLAIM TYPE: <!-- FIX THIS!!! -->
   <select name="claim_type">
     {% for claim in claims %}
-    <option value="{{ claim.name }}">{{ claim.name }}</option>
+    <option value="{{ claim.claim_type_id }}">{{ claim.name }}</option>
     {% endfor %}
   </select><br>
 

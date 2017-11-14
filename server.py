@@ -301,10 +301,8 @@ def send_to_db():
 
     filename = request.form.get('filename')
     txt_filename = request.form.get('txt_filename')
-
-    # FIXME: figure out how to pass this in w/o hardcoding
+    claim_type_id = request.form.get('claim_type')
     doc_type_id = 1
-    claim_type_id = 1
 
     # grab the case id
     case_id = request.form.get('new_case')
@@ -319,7 +317,7 @@ def send_to_db():
 
     # TODO: add geocode latlong here
 
-    # Check to see whether the plaintiff exsist in the db
+    # Check to see whether the plaintiff exsists in the db
     plaintiff = Party.query.filter(Party.fname == plaintiff_fname,
                                       Party.lname == plaintiff_lname).first()
 

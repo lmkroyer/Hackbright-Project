@@ -13,7 +13,7 @@ class Complaint(TextBlob):
     def __init__(self, decoded_text):
         super(Complaint, self).__init__(decoded_text)
 
-        self.word_list = self.split()
+        self.word_list = self.words
         self.sentence_list = self.sentences
         self.plaintiff_fname = self.get_plaintiff_fname()
         self.plaintiff_lname = self.get_plaintiff_lname()
@@ -64,7 +64,7 @@ class Complaint(TextBlob):
         """Return the plaintiff's last name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'No.':
+            if self.word_list[i] == 'Case' and self.word_list[i + 1] == 'No':
                 case_no = self.word_list[i + 2]
                 return case_no
 
@@ -110,7 +110,7 @@ class Complaint(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Amount':
-                if self.word_list[i + 1] == 'claimed:':
+                if self.word_list[i + 1] == 'claimed':
                     return self.word_list[i + 2]
 
 
@@ -142,8 +142,7 @@ class Complaint(TextBlob):
             #     if self.word_list[i + 3] not in result:
             #         result.append(self.word_list[i + 3])
             # result = ' '.join(result)
-                result = self.word_list[i + 3]
-                return result[1:]
+                return self.word_list[i + 3]
 
 
     def get_defendant_residence(self):
@@ -160,7 +159,7 @@ class Complaint(TextBlob):
         """Return the opposing counsel's first name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'P.C.':
+            if self.word_list[i] == 'P.C':
                 return self.word_list[i + 2]
 
 
@@ -168,7 +167,7 @@ class Complaint(TextBlob):
         """Return the opposing counsel's last name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'P.C.' or self.word_list[i] == 'LLC':
+            if self.word_list[i] == 'P.C' or self.word_list[i] == 'LLC':
                 return self.word_list[i + 4]
 
 
