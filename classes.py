@@ -258,10 +258,10 @@ class Answer(object):
         self.complaint = complaint
         self.user = user
         self.defenses = defenses
-        self.plaintiff_fname = complaint.case.plaintiffs.fname
-        self.plaintiff_lname = complaint.case.plaintiffs.lname
-        self.defendant_fname = complaint.case.defendants.fname
-        self.defendant_lname = complaint.case.defendants.lname
+        self.plaintiff_fname = complaint.case.plaintiffs[0].fname
+        self.plaintiff_lname = complaint.case.plaintiffs[0].lname
+        self.defendant_fname = complaint.case.defendants[0].fname
+        self.defendant_lname = complaint.case.defendants[0].lname
         self.case_county = complaint.case.county
         self.case_state = complaint.case.state
         # this gets the ID for the user marked as team lead

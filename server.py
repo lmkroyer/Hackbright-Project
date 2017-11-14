@@ -263,8 +263,8 @@ def upload_file():
         # else:
         #     selected_claim_name = xyz
 
-        # print parsed_text.word_list
-        # print parsed_text.nouns
+        print parsed_text.word_list
+        print parsed_text.nouns
 
         new_case = request.form.get('new_case')
 
@@ -289,8 +289,8 @@ def send_to_db():
     counsel_lname = request.form.get('counsel_lname')
     counsel_firm = request.form.get('counsel_firm')
     # Grab court info
-    county = request.form.get('county')
-    state = request.form.get('state')
+    county = request.form.get('court_county')
+    state = request.form.get('court_state')
     case_no = request.form.get('case_no')
     # Grab plaintiff info
     plaintiff_fname = request.form.get('plaintiff_fname')
@@ -310,15 +310,14 @@ def send_to_db():
     case = Case.query.get(case_id)
 
     # FIXME: = int(case_no)
-    case.case_no = 1234
+    case.case_no = int(case_no)
     case.claim_type_id = claim_type_id
     case.damages_asked = damages_asked
     case.county = county
     case.state = state
 
     # TODO: add geocode latlong here
-    # import pdb
-    # pdb.set_trace()
+
     # Check to see whether the plaintiff exsists in the db
     plaintiff = Party.query.filter(Party.fname == plaintiff_fname,
                                       Party.lname == plaintiff_lname).first()
