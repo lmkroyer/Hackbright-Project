@@ -313,7 +313,7 @@ def send_to_db():
     case.county = county
     case.state = state
 
-
+    # TODO: add geocode latlong here
 
     # Check to see whether the plaintiff exsist in the db
     plaintiff = Party.query.filter(Party.fname == plaintiff_fname,
@@ -344,20 +344,20 @@ def send_to_db():
     case.set_party_role(defendant, 'defendant')
 
     # Check to see whether the opposing counsel already exists in db
-    check_opp = OpposingCounsel.query.filter(OpposingCounsel.fname == counsel_fname,
+    opp = OpposingCounsel.query.filter(OpposingCounsel.fname == counsel_fname,
                                              OpposingCounsel.lname == counsel_lname).first()
 
     # If opposing counsel already in db, add their id to the case
-    if check_opp:
-        case.opposing_id = new_opp
+    if opp:
+        case.opposing_id = opp
     # If not, create the opposing counsel object
     else:
-        new_opp = OpposingCounsel(fname=counsel_fname,
+        opp = OpposingCounsel(fname=counsel_fname,
                                   lname=counsel_lname,
                                   firm_name=counsel_firm)
         db.session.add(new_opp)
 
-    case.opp = new_opp
+    case.opp = opp
 
     new_complaint = Complaint(doc_type_id=doc_type_id,
                               case_id=case_id,
@@ -371,6 +371,8 @@ def send_to_db():
 
     db.session.add(new_complaint)
     db.session.commit()
+
+    session['active_case'] = case_id
 
     return render_template('complaint_submitted.html')
 
@@ -399,6 +401,19 @@ def compose_answer_form():
     # generate_initial_answer()
     pass
 
+    # this returns a list of the defenses a user checked
+    defenses = request.form.getlist('affirmative_defenses')
+
+    if 'active_case' in session:
+        case_id = session['active_case']
+
+        case = Case.query.get(case_id)
+        complaint = case.complaint
+        user = User.query.filter(User.user_id == case.team_lead).first()
+
+        answer = Answer(complaint, user, defenses)
+        answer.insert_information()
+
     # for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
     # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')
     # # Query the db for all the info that goes in the answer form
@@ -420,9 +435,6 @@ def compose_answer_form():
     # county =
     # state =
 
-        # document = Document('/forms/answer_template.docx')
-        # # FIXME: grab case_no from query
-        # document.save('/filestorage/answer_{case_no}.docx'.format(case_no=case_no))
 
 
     # create an answer object
@@ -430,8 +442,7 @@ def compose_answer_form():
     # open doc and write to it
     # now create the bespoke doc using replace(tag, item)
 
-    # this returns a list of the defenses a user checked
-    # affirmative_defenses = request.form.getlist('affirmative_defenses')
+
 
     # generate_final_answer(affirmative_defenses)
 

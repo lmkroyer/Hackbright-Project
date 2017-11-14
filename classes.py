@@ -3,7 +3,10 @@
 from textblob import TextBlob
 import re
 from datetime import datetime
+from docx import Document
 
+
+# FIXME: remove all punctuation!!!! so don't have to do weird searches
 
 class Complaint(TextBlob):
     def __init__(self, decoded_text):
@@ -198,38 +201,54 @@ class Complaint(TextBlob):
         return 'N/A'
 
 class Answer(object):
-    def __init__(self, XYZ):
-        super(Complaint, self).__init__()
+    def __init__(self, complaint, user, defenses):
 
-    def add_plaintiff_info():
-        pass
+# pass a complaint into the answer, and loop through complaint attributes and set to answer
+# method that takes in self and generates a document
+# make info inside brackets match so can set as variable and check all brackets
+# look up: get attr and set attr (takes in a variable, find attribute that matches that and set)
+
+        self.plaintiff_fname = complaint.plaintiff_fname
+        self.plaintiff_lname = complaint.plaintiff_lname
+        self.defendant_fname = complaint.defendant_fname
+        self.defendant_lname = complaint.defendant_lname
+        self.case_county = complaint.county
+        self.case_state = complaint.state
+        # this gets the ID for the user marked as team lead
+        # self.team_lead = complaint.cases.team_lead
+        # self.user = user
+        self.user_fname = user.fname
+        self.user_lname = user.user_lname
+        self.user_email = user.user_email
+        self.user_mailing_address = user.mailing_address
+        self.user_firm_name = user.firm_name
+        self.case_no = complaint.case_no
 
 
-    def add_defendat_info():
-        pass
+    def insert_information():
+        """Adds custom information into the answer template.
 
-    def add_counsel_info(fname, lname, address, firm):
-        """Add the information about defendant's counsel."""
+        Returns a modified docx file."""
 
-        doc = Document(filename)
-        for p in doc.paragraphs:
-            if 'old text' in p.text:
-                inline = p.runs
-                # Loop added to work with runs (strings with same style)
-                for i in range(len(inline)):
-                    if 'old text' in inline[i].text:
-                        text = inline[i].text.replace('old text', 'new text')
-                        inline[i].text = text
-                print p.text
+        # make a dictionary of all attributes on an Answer class
+        attrs = Answer.__dict__
 
-        doc.save('dest1.docx')
-        return 1
+        answer = Document('/forms/answer_template.docx')
 
-    def convert_to_docx():
-        pass
+        for attr in attrs:
 
-    def add_defenses():
-        pass
+            for p in answer.paragraphs:
+                if attr in p.text:
+                    inline = p.runs
+                    # Loop added to work with runs (strings with same style)
+                    for i in range(len(inline)):
+                        if attr in inline[i].text:
+                            text = inline[i].text.replace(attr, attrs[attr])
+                            inline[i].text = text
+                    print p.text
+
+        answer.save('/filestorage/answer_{case_no}.docx'.format(case_no=self.case_no))
+        return SOMETHING
 
 
 
