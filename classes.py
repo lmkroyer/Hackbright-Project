@@ -4,6 +4,7 @@ from textblob import TextBlob
 import re
 from datetime import datetime
 from docx import Document
+from defenses import defenses
 
 
 # FIXME: remove all punctuation!!!! so don't have to do weird searches
@@ -229,8 +230,11 @@ class Answer(object):
         """Adds custom information into the answer template.
 
         Returns a modified docx file."""
+        # FIXME: add pronoun awareness (textblob)!!! on the extract from dictionary point.
+        # Grab a value, turn to textblob object, change gender pronount, and then insert
+        # FIXME: change civil code #s so that state gets input as variable
 
-        # make a dictionary of all attributes on an Answer class
+        # Make a dictionary of all attributes on an Answer class
         attrs = Answer.__dict__
 
         answer = Document('/forms/answer_template.docx')
@@ -252,6 +256,15 @@ class Answer(object):
 
 
 
+# don't assume end coordinate
+# give user option to draw
+# function returns list
+# iterate over and crop box/image for each item
+# draw image with text returned (opencv)
+# algorithm: given this location and image, where can i place it?
+# tiling project
+
+PIL
 
 
 
