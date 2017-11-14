@@ -76,8 +76,8 @@ class Complaint(TextBlob):
         """Return the plaintiff's last name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'Case' and self.word_list[i + 1] == 'No':
-                case_no = self.word_list[i + 2]
+            if self.word_list[i] == 'No':
+                case_no = self.word_list[i + 1]
                 return case_no
 
 
@@ -104,24 +104,24 @@ class Complaint(TextBlob):
     def get_defendant_fname(self):
         """Return the defendant's first name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'defendant':
-        #         return self.word_list[i + 1]
-        for i in range(len(self.nouns)):
-            if self.nouns[i] == 'defendant':
-                defendant_fname = self.nouns[i + 1]
-                return defendant_fname.capitalize()
+        for i in range(len(self.word_list)):
+            if self.word_list[i] == 'defendant':
+                return self.word_list[i + 1]
+        # for i in range(len(self.nouns)):
+        #     if self.nouns[i] == 'defendant':
+        #         defendant_fname = self.nouns[i + 1]
+        #         return defendant_fname.capitalize()
 
     def get_defendant_lname(self):
         """Return the defendant's last name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'defendant':
-        #         return self.word_list[i + 2]
-        for i in range(len(self.nouns)):
-            if self.nouns[i] == 'defendant':
-                defendant_lname = self.nouns[i + 2]
-                return defendant_lname.capitalize()
+        for i in range(len(self.word_list)):
+            if self.word_list[i] == 'defendant':
+                return self.word_list[i + 2]
+        # for i in range(len(self.nouns)):
+        #     if self.nouns[i] == 'defendant':
+        #         defendant_lname = self.nouns[i + 2]
+        #         return defendant_lname.capitalize()
 
     def get_amount_claimed(self):
         """Return the dollar of damages requested."""
