@@ -7,12 +7,13 @@ from ocr import OCR_file, allowed_file
 from requests_oauthlib import OAuth2Session
 from github import Github
 from textblob import TextBlob
+from datetime import datetime
 from jinja2 import StrictUndefined
 from flask import (Flask, jsonify, render_template, redirect, request, flash,
                    session, url_for, send_from_directory)
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import (User, CaseUser, Case, OpposingCounsel, Plaintiff, Defendant,
+from model import (User, CaseUser, Case, OpposingCounsel, Role, CaseParty,
                    Party, DocType, ClaimType, Complaint, Answer, connect_to_db, db)
 from flask_sqlalchemy import SQLAlchemy
 # import requests
@@ -50,11 +51,11 @@ def index():
     #     github_user = github.get('https://api.github.com/user').json()
     #     # Access the user's login id in the json dict
     #     current_user = github_user.get('login')
-    #     import pdb 
+    #     import pdb
     #     pdb.set_trace()
     # Query for all registered users
 
-    # Check if the login is in the 
+    # Check if the login is in the
     # current_user = github_user.name
 
     return render_template('homepage.html')
@@ -84,7 +85,7 @@ def user_login():
 
     # State is used to prevent CSRF, keep this for later.
     session['oauth_state'] = state
- 
+
     return redirect(authorization_url)
 
 
@@ -192,24 +193,29 @@ def start_case():
 # FIXME
 @app.route('/process_users', methods=['POST'])
 def create_team():
-    """Add the selected attorneys to a team and create a case_id.
-
-    FIXME: something not passing correctly"""
+    """Add the selected attorneys to a team and create a case_id."""
 
     # Grab user ids
     team_lead = request.form.get('team_lead')
     attorney_1 = request.form.get('attorney_1')
     attorney_2 = request.form.get('attorney_2')
 
-    # Create a case object
+    # Create a case
     new_case = Case()
+
+    # TODO: refactor:
+    # append case to each caseuser (or append users to the case)
+    # case.users.append(the user ids selected)
+    # new_case.user.append(each user)
+    # add new_case to db, and add an commit once
+
     db.session.add(new_case)
     db.session.commit()
 
     # Create the team
-    new_CaseUser1 = CaseUser(user_id=team_lead, case_id=new_case)
-    new_CaseUser2 = CaseUser(user_id=attorney_1, case_id=new_case)
-    new_CaseUser3 = CaseUser(user_id=attorney_2, case_id=new_case)
+    new_CaseUser1 = CaseUser(user_id=team_lead, case_id=new_case.case_id)
+    new_CaseUser2 = CaseUser(user_id=attorney_1, case_id=new_case.case_id)
+    new_CaseUser3 = CaseUser(user_id=attorney_2, case_id=new_case.case_id)
 
     db.session.add(new_CaseUser1)
     db.session.add(new_CaseUser2)
@@ -218,12 +224,10 @@ def create_team():
     db.session.commit()
 
     new_case.team_lead = team_lead
+    new_case.initialized = datetime.utcnow()
     db.session.commit()
 
-    return render_template('/upload_complaint.html', new_CaseUser1=new_CaseUser1,
-                                                     new_CaseUser2=new_CaseUser2,
-                                                     new_CaseUser3=new_CaseUser3,
-                                                     new_case=new_case)
+    return render_template('/upload_complaint.html', new_case=new_case.case_id)
 
 
 @app.route('/upload', methods=['POST'])
@@ -246,20 +250,25 @@ def upload_file():
         txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
         # Grab all claim types from db to pass into dropdown menu
         claims = ClaimType.query.all()
-        # Figure out of OCR'd claim type is in the db
-        selected_claim = ClaimType.query.filter(ClaimType.name == parsed_text.claim).first()
+        # # Figure out of OCR'd claim type is in the db
+        # selected_claim = ClaimType.query.filter(ClaimType.name == parsed_text.claim).first()
 
-        if selected_claim:
-            selected_claim_name = selected_claim.name
-        # FIXME: COME BACK TO THIS!!
-        else:
-            selected_claim_name = xyz
+        # if selected_claim:
+        #     selected_claim_name = selected_claim.name
+        # # FIXME: COME BACK TO THIS!!
+        # else:
+        #     selected_claim_name = xyz
+
+        print parsed_text.word_list
+
+        new_case = request.form.get('new_case')
 
         return render_template('display.html', parsed_text=parsed_text,
                                                filename=filename,
                                                txt_filename=txt_filename,
                                                claims=claims,
-                                               selected_claim_name=selected_claim_name)
+                                               new_case=new_case)
+                                               # selected_claim_name=selected_claim_name)
 
 
 @app.route('/submit_complaint', methods=['POST'])
@@ -270,15 +279,13 @@ def send_to_db():
     claim_type = request.form.get('claim_type')
     legal_basis = request.form.get('legal_basis')
     damages_asked = request.form.get('damages_asked')
-    date_processed = request.form.get('complaint_date')
     # Grab opposing counsel info
     counsel_fname = request.form.get('counsel_fname')
     counsel_lname = request.form.get('counsel_lname')
     counsel_firm = request.form.get('counsel_firm')
-    counsel_address = request.form.get('counsel_address')
     # Grab court info
-    court_county = request.form.get('county')
-    court_state = request.form.get('state')
+    county = request.form.get('county')
+    state = request.form.get('state')
     case_no = request.form.get('case_no')
     # Grab plaintiff info
     plaintiff_fname = request.form.get('plaintiff_fname')
@@ -289,76 +296,54 @@ def send_to_db():
     defendant_residence = request.form.get('defendant_residence')
 
     filename = request.form.get('filename')
+    txt_filename = request.form.get('txt_filename')
 
-    # Grab the case and team information we seeded earlier
-    case = request.form.get('case')
-    team_lead = request.form.get('new_CaseUser1')
-    attorney1 = request.form.get('new_CaseUser2')
-    attorney2 = request.form.get('new_CaseUser3')
-
-    # FIXME: figure out how to pass this in
+    # FIXME: figure out how to pass this in w/o hardcoding
     doc_type_id = 1
+    claim_type_id = 1
 
-    # FIXME: check those entries that may already be in there!!!!!
-    # FIXME: how do I handle giving it to users who are logged in??
-    # FIXME: how to handle claim type / claim type id?
+    # grab the case id
+    case_id = request.form.get('new_case')
+    case = Case.query.get(case_id)
 
-    # when log in with oauth, put user id in the session
-
-    # FIXME: pass in the case id
-    # new_case = Case(case_no=case_no,
-    #                 team_lead=team_lead,
-    #                 claim_type_id=claim_type_id,
-    #                 damages_asked=damages_asked,
-    #                 county=court_county,
-    #                 state=court_state,
-    #                 initialized=date_processed)
-
-    case.case_no = case_no
-    case.team_lead = team_lead
+    # FIXME: = int(case_no)
+    case.case_no = 1234
     case.claim_type_id = claim_type_id
     case.damages_asked = damages_asked
     case.county = county
     case.state = state
-    case.initialized = initialized
 
-    # db.session.add(new_case)
 
-    # TODO: Check to see whether the plaintiff exsist in the db
-    check_party1 = Party.query.filter(Party.fname == plaintiff_fname,
+
+    # Check to see whether the plaintiff exsist in the db
+    plaintiff = Party.query.filter(Party.fname == plaintiff_fname,
                                       Party.lname == plaintiff_lname).first()
-    if check_party1:
-        new_plaintiff = Plaintiff(case=case,
-                          party=new_party1)
 
-    else:
-        new_party1 = Party(fname=plaintiff_fname,
+    if not plaintiff:
+        plaintiff = Party(fname=plaintiff_fname,
                            lname=plaintiff_lname)
-        db.session.add(new_party1)
-        new_plaintiff = Plaintiff(case=case,
-                                  party=new_party1)
+        db.session.add(plaintiff)
+        db.session.commit()
+        # new_plaintiff = Plaintiff(case=case)
+        # new_plaintiff.parties.append(new_party1)
+    case.parties.append(plaintiff)
+    case.set_party_role(plaintiff, 'plaintiff')
 
-    db.session.add(new_plaintiff)
-
-    # TODO: check to see whether the defendant exists in the db
-    check_party2 = Party.query.filter(Party.fname == defendant_fname,
-                                      Party.lname == defenant_lname).first()
-    if check_party2:
-        new_defendant = Defendant(case=case,
-                                  party=new_party2)
-
-    else:
-        new_party2 = Party(fname=defendant_fname,
+    # Check to see whether the defendant exists in the db
+    defendant = Party.query.filter(Party.fname == defendant_fname,
+                                      Party.lname == defendant_lname).first()
+    if not defendant:
+        defendant = Party(fname=defendant_fname,
                            lname=defendant_lname,
                            residence=defendant_residence)
-        db.session.add(new_party2)
-        new_defendant = Defendant(case=case,
-                                  party=new_party2)
-
-    db.session.add(new_defendant)
+        db.session.add(defendant)
+        db.session.commit()
+        # new_defendant = Defendant(case=case)
+        # new_defendant.parties.append()
+    case.parties.append(defendant)
+    case.set_party_role(defendant, 'defendant')
 
     # Check to see whether the opposing counsel already exists in db
-    # FIXME: do i need to do just one attribute and then check fname after?
     check_opp = OpposingCounsel.query.filter(OpposingCounsel.fname == counsel_fname,
                                              OpposingCounsel.lname == counsel_lname).first()
 
@@ -369,18 +354,14 @@ def send_to_db():
     else:
         new_opp = OpposingCounsel(fname=counsel_fname,
                                   lname=counsel_lname,
-                                  mailing_address=counsel_address,
                                   firm_name=counsel_firm)
         db.session.add(new_opp)
 
-    case.opposing_id = new_opp
-
-    # if autoincrement primary key, add and commit to get to it before any next steps
-    # can add pieces at a time before commit whole thing, even if missing inforation
+    case.opp = new_opp
 
     new_complaint = Complaint(doc_type_id=doc_type_id,
-                              case=case,
-                              date_received=date_processed,
+                              case_id=case_id,
+                              date_received=case.initialized,
                               damages_asked=damages_asked,
                               legal_basis=legal_basis,
                               pdf=os.path.join(app.config['UPLOAD_FOLDER'],
@@ -413,31 +394,35 @@ def display_answer():
 def compose_answer_form():
     """Create an answer object from the user's selections."""
 
-    query for info we need to pass and pass it into function:
+    # query for info we need to pass and pass it into function:
 
-    generate_initial_answer()
+    # generate_initial_answer()
+    pass
 
-    for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
+    # for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
     # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')
     # # Query the db for all the info that goes in the answer form
-    # defedant_fname =
-    # defedant_lname = 
-    # defendant_name = defendant_fname + defedant_lname
+    # case = session.get('active_case')
+    # # Get defendant id
+    # defendant = case.defendants
+
+    # defendant_fname = defendant.fname
+    # defendant_lname = defendant.lname
 
     # plaintiff_fname =
-    # plaintiff_lname = 
+    # plaintiff_lname =
     # plaintiff_name = plaintiff_fname + plaintiff_lname
 
     # defendant_counsel = (TEAM LEAD)
-    # defendant_firm_address = 
+    # defendant_firm_address =
 
-    # case_no = 
-    # county = 
-    # state = 
+    # case_no =
+    # county =
+    # state =
 
-        document = Document('/forms/answer_template.docx')
-        # FIXME: grab case_no from query
-        document.save('/filestorage/answer_{case_no}.docx'.format(case_no=case_no))
+        # document = Document('/forms/answer_template.docx')
+        # # FIXME: grab case_no from query
+        # document.save('/filestorage/answer_{case_no}.docx'.format(case_no=case_no))
 
 
     # create an answer object
@@ -446,9 +431,9 @@ def compose_answer_form():
     # now create the bespoke doc using replace(tag, item)
 
     # this returns a list of the defenses a user checked
-    affirmative_defenses = request.form.getlist('affirmative_defenses')
+    # affirmative_defenses = request.form.getlist('affirmative_defenses')
 
-    generate_final_answer(affirmative_defenses)
+    # generate_final_answer(affirmative_defenses)
 
     #for now, then return a redirect like after the original upload (i.e. display the doc)
 
@@ -465,5 +450,5 @@ if __name__ == "__main__":
     DebugToolbarExtension(app)
 
 
-    
+
     app.run(port=5000, host='0.0.0.0')

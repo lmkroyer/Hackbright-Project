@@ -2,7 +2,7 @@
 
 from sqlalchemy import func
 import datetime as dt
-from model import ClaimType, DocType, User
+from model import ClaimType, DocType, User, Role
 from model import connect_to_db, db
 from server import app
 
@@ -42,7 +42,20 @@ def load_doc_types():
     answer = DocType(doc_type_id=2,
                      name='Answer')
 
-    db.session.add(complaint, answer)
+    db.session.add(complaint)
+    db.session.add(answer)
+    db.session.commit()
+
+
+def load_role_types():
+    """Add the types of parties to a case."""
+
+    plaintiff = Role(role_name='plaintiff')
+
+    defendant = Role(role_name='defendant')
+
+    db.session.add(plaintiff)
+    db.session.add(defendant)
     db.session.commit()
 
 
@@ -153,3 +166,4 @@ if __name__ == "__main__":
     load_users()
     load_doc_types()
     load_claim_types()
+    load_role_types()

@@ -3,6 +3,7 @@
 from textblob import TextBlob
 import textract, os
 from classes import Complaint
+import fileinput
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
 
@@ -50,9 +51,24 @@ def generate_initial_answer(ABC):
 
     Converts txt to docx filetype. Returns docx."""
 
-    pass
+    # Open a the answer template as a txt file
+    # with open('/forms/answer_template.txt', 'w') as answer:
+    #     # Get a string from the txt file
+    #     answer_string = answer.read()
+    #     # Decode string to handle stray bytes
+    #     decoded_text = text.decode('utf-8')
+    #     new_answer = TextBlob
 
-def generate_final_ answer(defenses):
+    # # Close the file
+    # text_file.close()
+
+    template = open('/forms/answer_template.txt', 'r')
+    template_string = template.read()
+    template.close()
+
+    answer = template_string.replace()
+
+def generate_final_answer(defenses):
     """Takes in a list of selected defenses and a docx file and adds appropriate
     paragraphs.
 
@@ -66,6 +82,11 @@ def generate_final_ answer(defenses):
 
     # for defense in defenses:
     pass
+
+def generate_answer(defenses):
+
+    answer = Answer()
+    # call all the methods on the answer
 
 
 #text class --> pass in the text

@@ -35,25 +35,25 @@ function initMap() {
 
 // TODO: put id on the things!
 
-// function codeActiveCases() {
-//     let address = document.getElementById('XYZ').value;
-//     geocoder.geocode( { 'XYZ': XYZ}, function(results, status) {
-//       if (status == 'OK') {
-//         map.setCenter(unitedStates);
-//         let marker = new google.maps.Marker({
-//             map: map,
-//             position: results[0].geometry.location
-//               // icon: {
-//               //   path: google.maps.SymbolPath.CIRCLE,
-//               //   scale: 10,
-//               //   fillColor: 'red'
-//               // },
-//         });
-//       } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//       }
-//     });
-//   }
+function codeActiveCases() {
+    let address = document.getElementById('XYZ').value;
+    geocoder.geocode( { 'XYZ': XYZ}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(unitedStates);
+        let marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+              // icon: {
+              //   path: google.maps.SymbolPath.CIRCLE,
+              //   scale: 10,
+              //   fillColor: 'red'
+              // },
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
 
 ////////////
 // marker //

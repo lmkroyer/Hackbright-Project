@@ -55,15 +55,14 @@ class Complaint(TextBlob):
                 plaintiff_lname = self.word_list[i + 3]
                 return plaintiff_lname.capitalize()
 
-    # FIXME: add a case number to template
+
     def get_case_no(self):
         """Return the plaintiff's last name."""
 
         for i in range(len(self.word_list)):
-            if self.word_list[i] == 'Case':
-                if self.word_list[i + 1] == 'No.2':
-                    case_no = self.word_list[i + 2]
-                    return int(case_no)
+            if self.word_list[i] == 'No.':
+                case_no = self.word_list[i + 2]
+                return case_no
 
 
     def get_county(self):
@@ -123,9 +122,11 @@ class Complaint(TextBlob):
 
 
     def get_legal_basis(self):
-        """Return the types of legal claims made in the complaint."""
+        """Return the types of legal claims made in the complaint.
 
-        result = []
+        TODO: (2.0) allow multiple legal bases."""
+
+        # result = []
 
         for i in range(len(self.word_list)):
 
@@ -133,15 +134,12 @@ class Complaint(TextBlob):
         #         result.append('Negligence')
         #     # etc.
         # result = ' '.join(result)
-
-
             if self.word_list[i] == 'Claim' and self.word_list[i + 1] == 'for' and self.word_list[i + 2] == 'Relief':
-                if self.word_list[i + 3] not in result:
-                    result.append(self.word_list[i + 3])
-            result = ' '.join(result)
-            return result[1:]
-
-        return result
+            #     if self.word_list[i + 3] not in result:
+            #         result.append(self.word_list[i + 3])
+            # result = ' '.join(result)
+                result = self.word_list[i + 3]
+                return result[1:]
 
 
     def get_defendant_residence(self):
@@ -199,5 +197,45 @@ class Complaint(TextBlob):
 
         return 'N/A'
 
-class Answer(TextBlob):
-    pass 
+class Answer(object):
+    def __init__(self, XYZ):
+        super(Complaint, self).__init__()
+
+    def add_plaintiff_info():
+        pass
+
+
+    def add_defendat_info():
+        pass
+
+    def add_counsel_info(fname, lname, address, firm):
+        """Add the information about defendant's counsel."""
+
+        doc = Document(filename)
+        for p in doc.paragraphs:
+            if 'old text' in p.text:
+                inline = p.runs
+                # Loop added to work with runs (strings with same style)
+                for i in range(len(inline)):
+                    if 'old text' in inline[i].text:
+                        text = inline[i].text.replace('old text', 'new text')
+                        inline[i].text = text
+                print p.text
+
+        doc.save('dest1.docx')
+        return 1
+
+    def convert_to_docx():
+        pass
+
+    def add_defenses():
+        pass
+
+
+
+
+
+
+
+
+

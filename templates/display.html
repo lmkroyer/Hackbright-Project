@@ -33,23 +33,16 @@ Verify complaint details<br><br>
 <form action="/submit_complaint", method='POST'>
 
   <input type="hidden" name="filename" value="{{ filename }}">
-  <input type="hidden" name="txt_filename" value="{{ txt_filename }}"> 
-  <input type="hidden" name="team_lead" value="{{ new_CaseUser1 }}"> 
-  <input type="hidden" name="attorney_1" value="{{ new_CaseUser2 }}">
-  <input type="hidden" name="attorney_2" value="{{ new_CaseUser3 }}"> 
-   <input type="hidden" name="case" value="{{ new_case }}">  
+  <input type="hidden" name="txt_filename" value="{{ txt_filename }}">
+  <input type="hidden" name="new_case" value="{{ new_case }}">
+
 
   CLAIM TYPE: <!-- FIX THIS!!! -->
   <select name="claim_type">
     {% for claim in claims %}
-    <option value="{{ claim.name }}"
-    {% if claim.name == parsed_text.claim %}
-      {{ selected_claim_name }}
-    {% endif %}
-    >{{ claim.name }}</option>
+    <option value="{{ claim.name }}">{{ claim.name }}</option>
     {% endfor %}
-  </select>
-
+  </select><br>
 
 <!--   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br> -->
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
@@ -58,10 +51,9 @@ Verify complaint details<br><br>
 
 Counsel:<br><br>
 
-  First name: <input type="text" name="f_name" value="{{ parsed_text.counsel_fname  }}"><br>
-  Last name: <input type="text" name="l_name" value="{{ parsed_text.counsel_lname  }}"><br>
-  Firm name: <input type="text" name="firm" value="{{ parsed_text.counsel_firm }}"><br><br>
-  Firm address: <input type="text" name="mailing_address" value="{{ parsed_text.counsel_address }}"><br><br>
+  First name: <input type="text" name="counsel_fname" value="{{ parsed_text.counsel_fname  }}"><br>
+  Last name: <input type="text" name="counsel_lname" value="{{ parsed_text.counsel_lname  }}"><br>
+  Firm name: <input type="text" name="counsel_firm" value="{{ parsed_text.counsel_firm }}"><br><br>
 
 Court<br><br>
 
