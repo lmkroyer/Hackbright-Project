@@ -1,0 +1,39 @@
+***VIRUS
+
+1. Figure out how to get user id from github json. Do I want to make user_ids something other than string? (auto increment int, or github login?). Make it so their dashboard shows all their open cases.
+
+*** 2. Google maps: How add places library w/ key? and how pass in db info?
+
+3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
+
+*** 4. Not working: send info to db after upload. FINISH WORKING W/ KATIE
+
+5. Answer: start with txt file, replace items, convert to word doc, add paragraphs (use dictionary)
+
+***6. change text extraction to tags -- or use a noun phrase list. MAKE THIS MORE ROBUST
+
+7. use the original upload submit on the answer generation route
+
+
+TUESDAY ^^^
+
+
+6. D3 the teams on either dashboard or teams page
+
+7. add two more lit forms (one back in, one back out)
+
+8. spinning loader on upload page
+
+9. progress bar on case page
+
+10. cleanups: upload other than pdf? (maybe not). check for which doc coming in when make object
+
+11. textblob: make real nlp tags for data items
+
+12. search engine for uploaded docs
+
+13. bootstrap! make things look nice!
+
+14. make sure everything is spell checked where appropriate
+
+15. do the overlay OCR!!!! opencv

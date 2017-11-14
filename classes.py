@@ -150,17 +150,21 @@ class Complaint(TextBlob):
 
         # result = []
 
-        for i in range(len(self.word_list)):
+        # for i in range(len(self.word_list)):
 
-        #     if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
-        #         result.append('Negligence')
-        #     # etc.
-        # result = ' '.join(result)
-            if self.word_list[i] == 'Claim' and self.word_list[i + 1] == 'for' and self.word_list[i + 2] == 'Relief':
-            #     if self.word_list[i + 3] not in result:
-            #         result.append(self.word_list[i + 3])
-            # result = ' '.join(result)
-                return self.word_list[i + 3]
+        # #     if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
+        # #         result.append('Negligence')
+        # #     # etc.
+        # # result = ' '.join(result)
+        #     if self.word_list[i] == 'Claim' and self.word_list[i + 1] == 'for' and self.word_list[i + 2] == 'Relief':
+        #     #     if self.word_list[i + 3] not in result:
+        #     #         result.append(self.word_list[i + 3])
+        #     # result = ' '.join(result)
+        #         return self.word_list[i + 3]
+
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'claim' and self.nouns[i + 1] == 'relief':
+                return self.nouns[i + 2]
 
 
     def get_defendant_residence(self):
@@ -211,10 +215,10 @@ class Complaint(TextBlob):
             if self.nouns[i] == 'llc':
                 firm = self.nouns[i -1]
                 #FIXME: titlecase firm (can from titlecase import titlecase -- look in textblob)
-                preposition = self.nouns[i]
-                preposition.upper()
-                full_firm = firm, preposition
-                return full_firm.capitalize()
+                preposition = (self.nouns[i]).upper()
+                # preposition.upper()
+                return firm + ' ' + preposition
+                # return full_firm
 
 
     def get_complaint_date(self):
