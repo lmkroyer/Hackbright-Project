@@ -4,7 +4,7 @@ from textblob import TextBlob
 import re
 from datetime import datetime
 from docx import Document
-from defenses import defenses
+from defenses import all_defenses
 
 
 # FIXME: remove all punctuation!!!! so don't have to do weird searches
@@ -202,6 +202,7 @@ class Complaint(TextBlob):
         return 'N/A'
 
 class Answer(object):
+
     def __init__(self, complaint, user, defenses):
 
 # pass a complaint into the answer, and loop through complaint attributes and set to answer
@@ -209,12 +210,15 @@ class Answer(object):
 # make info inside brackets match so can set as variable and check all brackets
 # look up: get attr and set attr (takes in a variable, find attribute that matches that and set)
 
-        self.plaintiff_fname = complaint.plaintiff_fname
-        self.plaintiff_lname = complaint.plaintiff_lname
-        self.defendant_fname = complaint.defendant_fname
-        self.defendant_lname = complaint.defendant_lname
-        self.case_county = complaint.county
-        self.case_state = complaint.state
+        self.complaint = complaint
+        self.user = user
+        self.defenses = defenses
+        self.plaintiff_fname = complaint.case.plaintiffs.fname
+        self.plaintiff_lname = complaint.case.plaintiffs.lname
+        self.defendant_fname = complaint.case.defendants.fname
+        self.defendant_lname = complaint.case.defendants.lname
+        self.case_county = complaint.case.county
+        self.case_state = complaint.case.state
         # this gets the ID for the user marked as team lead
         # self.team_lead = complaint.cases.team_lead
         # self.user = user
@@ -238,7 +242,7 @@ class Answer(object):
         attrs = Answer.__dict__
 
         answer = Document('/forms/answer_template.docx')
-
+        # FIXME: account for caps and lower
         for attr in attrs:
 
             for p in answer.paragraphs:
@@ -249,10 +253,48 @@ class Answer(object):
                         if attr in inline[i].text:
                             text = inline[i].text.replace(attr, attrs[attr])
                             inline[i].text = text
+                    # do I need to print here?
+                    print p.text
+        # FIXME: make this its own method on the class
+        for defense in defenses:
+            # set a counter variable, to know how to label a paragraph
+            # FIXME: when insert, convert this to word version of number
+            # counter_letters = 1
+            # counter_num = 2
+
+            for p in answer.paragraphs:
+                # if 'AFFIRMATIVE DEFENSE' in p.text:
+                #     inline = p.runs
+                #     # Grab the legalese from the dictionary - a string of text
+                #     legalese = all_defenses[defense]
+
+                #     # Add a paragraph
+                #     # FIXME: add a number at the beginning of each paragraph
+                #     # FIXME: add a tab after the starting number
+                #     INSERT VAR(counter) + "AFFIRMATIVE DEFENSE"
+                #     INSERT legalese
+                #     # Loop added to work with runs (strings with same style)
+                #     for i in range(len(inline)):
+                #         if attr in inline[i].text:
+                #             text = inline[i].text.replace(attr, attrs[attr])
+                #             inline[i].text = text
+                #     # do I need to print here?
+                #     print p.text
+                if 'AFFIRMATIVE DEFENSE' in p.text:
+                    para = p._p
+                    # Grab the legalese from the dictionary - a string of text
+                    legalese = all_defenses[defense]
+
+                    # Add a paragraph
+                    # FIXME: add a number at the beginning of each paragraph
+                    # FIXME: add a tab after the starting number
+                    para.addnext(counter, "AFFIRMATIVE DEFENSE", '/n', legalese)
+
+                    # do I need to print here?
                     print p.text
 
         answer.save('/filestorage/answer_{case_no}.docx'.format(case_no=self.case_no))
-        return SOMETHING
+        # return something to pass to display
 
 
 
@@ -263,8 +305,6 @@ class Answer(object):
 # draw image with text returned (opencv)
 # algorithm: given this location and image, where can i place it?
 # tiling project
-
-PIL
 
 
 

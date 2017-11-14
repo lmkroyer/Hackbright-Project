@@ -1,0 +1,112 @@
+ 1   [team_lead.fname] [team_lead.lname]
+     
+ 2   [team_lead.mailing_address]
+
+ 3   [team_lead.email]
+
+ 4
+     Attorney for Defendant
+ 5   [defendant.fname] [defendant.lname]
+
+ 6
+
+ 7
+
+ 8
+                           SUPERIOR COURT OF THE STATE OF [CASE.STATE]
+ 9
+                                 FOR THE COUNTY OF [CASE.COUNTY]
+10
+
+11
+     [PLAINTIFF.FNAME],
+     [PLAINTIFF.LNAME]                   )           CASE NO.
+12                                       )
+                       Plaintiff,        )           ANSWER OF DEFENDANT 
+13                                       )           TO COMPLAINT OF PLAINTIFF
+     v.                                  )           ____________________
+14                                       )
+15   [DEFENDANT.FNAME]
+     [DEFENDANT.LNAME],                  )
+                                         )
+16                     Defendants.       )
+                                         )
+17   ____________________________________)
+18
+
+19
+            To subscribe to my FREE weekly legal newsletter visit
+20
+
+21          http://www.legaldocspro.net/newsletter.htm and enter your e-mail
+22
+     address. Be sure to remove this notice and all other notices before
+23
+
+24   using this document.
+25
+            Defendant, _____________________ for themselves and no other Defendant, denies and
+26
+
+27   alleges as follows:
+
+28
+
+
+                                                - 1 -
+                                        ANSWER TO COMPLAINT
+ 1          1.      Pursuant to the provision of section 431.30(d) of the California Code of Civil
+ 2   Procedure, Defendant, ______________________ denies, both generally and specifically, each,
+ 3
+     every and all of the allegations of Plaintiff, ______________________________ and each and every
+ 4
+     cause of action contained therein, and the whole thereof; this Answering Defendant further denies
+ 5
+
+ 6
+     that Plaintiff was damaged and/or injured in any sum or sums, or at all, by reason of any negligent act
+
+ 7   and/or omission to, or any other conduct on the part of this Answering Defendant, or any of their
+
+ 8   agents and/or employees.
+ 9
+            FURTHER, AS SEPARATE AFFIRMATIVE DEFENSES to each and every cause of action
+10
+     of the complaint, this Answering Defendant is informed and believes, and on such information and
+11
+     belief alleges as follows:
+12
+
+13                                    FIRST AFFIRMATIVE DEFENSE
+
+14          2.      As a First and Separate Affirmative Defense, this Answering Defendant alleges that
+15
+     the Plaintiff’s complaint and each cause of action contained therein fails to state facts sufficient to
+16
+     constitute a cause of action against this Answering Defendant. This affirmative defense is for the
+17
+     purpose of avoiding any waiver of the affirmative defense and is based on information and belief.
+18
+
+19   This affirmative defense is likely to have evidentiary support after a reasonable opportunity for
+
+20   further investigation or discovery.
+21
+            To purchase the entire document visit:
+22
+
+23   https://legaldocspro.myshopify.com/products/sample-answer-to-
+24
+     personal-injury-complaint-in-california
+25
+
+26
+
+27
+
+28
+
+
+                                                     - 2 -
+                                             ANSWER TO COMPLAINT
+

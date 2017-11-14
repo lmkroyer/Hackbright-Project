@@ -91,9 +91,9 @@ class Case(db.Model):
                                  backref=db.backref("cases_where_defendant"))
 
     # Define relationship to cpmplaint
-    complaint = db.relationship('Complaint', uselist=False, backref=db.backref('cases'))
+    complaint = db.relationship('Complaint', uselist=False, backref=db.backref('case'))
     # Define relationship to answer
-    answer = db.relationship('Answer', uselist=False, backref=db.backref('cases'))
+    answer = db.relationship('Answer', uselist=False, backref=db.backref('case'))
 
     # Define relationship to opposing counsel
     opp = db.relationship('OpposingCounsel', backref=db.backref('cases'))

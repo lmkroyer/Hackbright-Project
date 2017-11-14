@@ -22,6 +22,10 @@ from werkzeug.utils import secure_filename
 
 from docx import Document
 
+from classes import Answer
+
+# import geocoder
+
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
@@ -355,9 +359,10 @@ def send_to_db():
         opp = OpposingCounsel(fname=counsel_fname,
                                   lname=counsel_lname,
                                   firm_name=counsel_firm)
-        db.session.add(new_opp)
+        db.session.add(opp)
+        db.session.commit()
 
-    case.opp = opp
+    case.opposing_id = opp.opposing_id
 
     new_complaint = Complaint(doc_type_id=doc_type_id,
                               case_id=case_id,
@@ -393,13 +398,12 @@ def display_answer():
 
 
 @app.route('/process_answer', methods=['POST'])
-def compose_answer_form():
+def generate_answer():
     """Create an answer object from the user's selections."""
 
     # query for info we need to pass and pass it into function:
 
     # generate_initial_answer()
-    pass
 
     # this returns a list of the defenses a user checked
     defenses = request.form.getlist('affirmative_defenses')
@@ -413,6 +417,8 @@ def compose_answer_form():
 
         answer = Answer(complaint, user, defenses)
         answer.insert_information()
+
+    return redirect('/')
 
     # for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
     # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')

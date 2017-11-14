@@ -1,6 +1,6 @@
-defenses = {"no cause of action":"""As a First and Separate Affirmative Defense,
+all_defenses = {"no cause of action":"""As a First and Separate Affirmative Defense,
                                       this Answering Defendant alleges that the
-                                      Plaintiff’s complaint and each cause of action
+                                      Plaintiff's complaint and each cause of action
                                       contained therein fails to state facts sufficient
                                       to constitute a cause of action against this
                                       Answering Defendant. This affirmative defense
