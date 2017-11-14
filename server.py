@@ -264,6 +264,7 @@ def upload_file():
         #     selected_claim_name = xyz
 
         print parsed_text.word_list
+        print parsed_text.nouns
 
         new_case = request.form.get('new_case')
 
@@ -417,38 +418,6 @@ def generate_answer():
         answer.insert_information()
 
     return redirect('/')
-
-    # for defense in affirmative_defenses:    # Query for the complaint info to get party names and firms and addresses.
-    # defenses = request.form.get('HOW GET MORE THAN ONE?? CHECK GITHUB MADLIB')
-    # # Query the db for all the info that goes in the answer form
-    # case = session.get('active_case')
-    # # Get defendant id
-    # defendant = case.defendants
-
-    # defendant_fname = defendant.fname
-    # defendant_lname = defendant.lname
-
-    # plaintiff_fname =
-    # plaintiff_lname =
-    # plaintiff_name = plaintiff_fname + plaintiff_lname
-
-    # defendant_counsel = (TEAM LEAD)
-    # defendant_firm_address =
-
-    # case_no =
-    # county =
-    # state =
-
-
-
-    # create an answer object
-    # get the template from '/forms/answer_template'
-    # open doc and write to it
-    # now create the bespoke doc using replace(tag, item)
-
-
-
-    # generate_final_answer(affirmative_defenses)
 
     #for now, then return a redirect like after the original upload (i.e. display the doc)
 

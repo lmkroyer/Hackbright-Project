@@ -15,6 +15,7 @@ class Complaint(TextBlob):
 
         self.word_list = self.words
         self.sentence_list = self.sentences
+        self.nouns = self.noun_phrases
         self.plaintiff_fname = self.get_plaintiff_fname()
         self.plaintiff_lname = self.get_plaintiff_lname()
         self.case_no = self.get_case_no()
@@ -41,24 +42,35 @@ class Complaint(TextBlob):
 # FIXME: .correct() everything that comes out
 # FIXME: a way to grab other defendants and/or check if company or person
 
+# FIXME: get all names by making a noun phrase list!!!
+
     # Could also check if what comes after starts with upper case, and if so pull it
     def get_plaintiff_fname(self):
         """Return the plaintiff's first name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'Plaintiff':
-                plaintiff_fname = self.word_list[i + 1]
-                return plaintiff_fname.capitalize()
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'Plaintiff':
+        #         plaintiff_fname = self.word_list[i - 4]
+        #         return plaintiff_fname.capitalize()
 
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'plaintiff':
+                full_name = self.nouns[i - 1]
+                plaintiff_fname = full_name.split(' ')[0]
+                return plaintiff_fname.capitalize()
 
     def get_plaintiff_lname(self):
         """Return the plaintiff's last name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'Plaintiff':
-                plaintiff_lname = self.word_list[i + 3]
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'Plaintiff':
+        #         plaintiff_lname = self.word_list[i - 2]
+        #         return plaintiff_lname.capitalize()
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'plaintiff':
+                full_name = self.nouns[i - 1]
+                plaintiff_lname = full_name.split(' ')[1]
                 return plaintiff_lname.capitalize()
-
 
     def get_case_no(self):
         """Return the plaintiff's last name."""
@@ -92,18 +104,24 @@ class Complaint(TextBlob):
     def get_defendant_fname(self):
         """Return the defendant's first name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'defendant':
-                return self.word_list[i + 1]
-
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'defendant':
+        #         return self.word_list[i + 1]
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'defendant':
+                defendant_fname = self.nouns[i + 1]
+                return defendant_fname.capitalize()
 
     def get_defendant_lname(self):
         """Return the defendant's last name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'defendant':
-                return self.word_list[i + 2]
-
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'defendant':
+        #         return self.word_list[i + 2]
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'defendant':
+                defendant_lname = self.nouns[i + 2]
+                return defendant_lname.capitalize()
 
     def get_amount_claimed(self):
         """Return the dollar of damages requested."""
@@ -151,31 +169,52 @@ class Complaint(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'resides':
                 defendant_residence = self.word_list[i + 2:i + 6]
-                result = ' '.join(defendant_residence)
-                return result[:-1]
-                #FIXME: turn this into a geocode here?
+                return ' '.join(defendant_residence)
+
 
     def get_counsel_fname(self):
         """Return the opposing counsel's first name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'P.C':
-                return self.word_list[i + 2]
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'P.C':
+        #         return self.word_list[i + 2]
+
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'llc':
+                full_name = self.nouns[i + 1]
+                counsel_fname = full_name.split(' ')[0]
+                return counsel_fname.capitalize()
 
 
     def get_counsel_lname(self):
         """Return the opposing counsel's last name."""
 
-        for i in range(len(self.word_list)):
-            if self.word_list[i] == 'P.C' or self.word_list[i] == 'LLC':
-                return self.word_list[i + 4]
+        # for i in range(len(self.word_list)):
+        #     if self.word_list[i] == 'P.C' or self.word_list[i] == 'LLC':
+        #         return self.word_list[i + 4]
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'llc':
+                full_name = self.nouns[i + 1]
+                counsel_lname = full_name.split(' ')[2]
+                return counsel_lname.capitalize()
 
 
     def get_counsel_firm(self):
         """Return the opposing counsel's firm name."""
 
-        firm = self.sentence_list[-3]
-        return firm.title()
+        # for i in range(len(self.sentence_list)):
+
+        #     if self.sentence_list[i].find('LLC') or self.sentence_list[i].find('P.C'):
+        #         return self.sentence_list[i]
+
+        for i in range(len(self.nouns)):
+            if self.nouns[i] == 'llc':
+                firm = self.nouns[i -1]
+                #FIXME: titlecase firm (can from titlecase import titlecase -- look in textblob)
+                preposition = self.nouns[i]
+                preposition.upper()
+                full_firm = firm, preposition
+                return full_firm.capitalize()
 
 
     def get_complaint_date(self):

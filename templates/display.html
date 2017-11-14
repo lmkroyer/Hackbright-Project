@@ -28,7 +28,7 @@
 
 {% block content %}
 
-Verify complaint details<br><br>
+Let us know if everything looks right<br><br>
 
 <form action="/submit_complaint", method='POST'>
 
@@ -46,7 +46,7 @@ Verify complaint details<br><br>
 
 <!--   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br> -->
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
-  Amount claimed: <input type="text" name="damages_asked" value="{{ parsed_text.amount_claimed  }}"><br>
+  Amount claimed: <input type="text" name="damages_asked" value="${{ parsed_text.amount_claimed  }}"><br>
   Date: <input type="text" name="claim_type" value="{{ parsed_text.complaint_date }}"><br><br>
 
 Counsel:<br><br>
@@ -66,7 +66,7 @@ Court<br><br>
 Plaintiff:<br><br>
 
   First name: <input type="text" name="first_name" value="{{ parsed_text.plaintiff_fname }}"><br>
-  Last name: <input type="text" name="last_name" value="{{ parsed_text.plaintiff_lname }}"><br>
+  Last name: <input type="text" name="last_name" value="{{ parsed_text.plaintiff_lname }}"><br><br><br>
 
 Defendant:<br><br>
 
