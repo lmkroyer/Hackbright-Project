@@ -413,6 +413,7 @@ def generate_answer():
         case = Case.query.get(case_id)
         complaint = case.complaint
         user = User.query.filter(User.user_id == case.team_lead).first()
+        print user
 
         answer = Answer(complaint, user, defenses)
         answer.insert_information()

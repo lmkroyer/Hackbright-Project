@@ -268,14 +268,14 @@ class Answer(object):
         # self.team_lead = complaint.cases.team_lead
         # self.user = user
         self.user_fname = user.fname
-        self.user_lname = user.user_lname
-        self.user_email = user.user_email
+        self.user_lname = user.lname
+        self.user_email = user.email
         self.user_mailing_address = user.mailing_address
         self.user_firm_name = user.firm_name
-        self.case_no = complaint.case_no
+        self.case_no = complaint.case.case_no
 
 
-    def insert_information():
+    def insert_information(self):
         """Adds custom information into the answer template.
 
         Returns a modified docx file."""
@@ -286,7 +286,7 @@ class Answer(object):
         # Make a dictionary of all attributes on an Answer class
         attrs = Answer.__dict__
 
-        answer = Document('/forms/answer_template.docx')
+        answer = Document('forms/answer_template.docx')
         # FIXME: account for caps and lower
         for attr in attrs:
 
@@ -301,11 +301,11 @@ class Answer(object):
                     # do I need to print here?
                     print p.text
         # FIXME: make this its own method on the class
-        for defense in defenses:
+        for defense in self.defenses:
             # set a counter variable, to know how to label a paragraph
             # FIXME: when insert, convert this to word version of number
-            # counter_letters = 1
-            # counter_num = 2
+            counter_letters = 1
+            counter_num = 2
 
             for p in answer.paragraphs:
                 # if 'AFFIRMATIVE DEFENSE' in p.text:
@@ -325,20 +325,21 @@ class Answer(object):
                 #             inline[i].text = text
                 #     # do I need to print here?
                 #     print p.text
-                if 'AFFIRMATIVE DEFENSE' in p.text:
-                    para = p._p
+                if '***' in p.text:
+
                     # Grab the legalese from the dictionary - a string of text
                     legalese = all_defenses[defense]
 
                     # Add a paragraph
                     # FIXME: add a number at the beginning of each paragraph
                     # FIXME: add a tab after the starting number
-                    para.addnext(counter, "AFFIRMATIVE DEFENSE", '/n', legalese)
+                    # addnext all of these: counter_letters, "AFFIRMATIVE DEFENSE", '/n',
+                    prior_paragraph = p.insert_paragraph_before(legalese)
 
                     # do I need to print here?
                     print p.text
 
-        answer.save('/filestorage/answer_{case_no}.docx'.format(case_no=self.case_no))
+        answer.save('filestorage/answer_{case_no}.docx'.format(case_no=self.case_no))
         # return something to pass to display
 
 
