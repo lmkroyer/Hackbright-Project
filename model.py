@@ -107,7 +107,8 @@ class Case(db.Model):
     def set_party_role(self, party, role):
 
         cp = CaseParty.query.filter(CaseParty.case_id == self.case_id,
-                                    CaseParty.party_id == Party.party_id).first()
+                                    CaseParty.party_id == party.party_id).first()
+
         cp.role_name = role
         db.session.commit()
 

@@ -164,7 +164,8 @@ class Complaint(TextBlob):
 
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'claim' and self.nouns[i + 1] == 'relief':
-                return self.nouns[i + 2]
+                result = self.nouns[i + 2]
+                return result.capitalize()
 
 
     def get_defendant_residence(self):
@@ -214,10 +215,12 @@ class Complaint(TextBlob):
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'llc':
                 firm = self.nouns[i -1]
+                firm = firm.title()
                 #FIXME: titlecase firm (can from titlecase import titlecase -- look in textblob)
-                preposition = (self.nouns[i]).upper()
+                org = self.nouns[i]
+                org = org.upper()
                 # preposition.upper()
-                return firm + ' ' + preposition
+                return firm + ' ' + org
                 # return full_firm
 
 

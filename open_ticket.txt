@@ -6,7 +6,7 @@
 
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
 
-*** 4. Not working: send info to db after upload. FINISH WORKING W/ KATIE
+*** 4. Not working: send info to db after upload. FINISH WORKING
 
 5. Answer: start with txt file, replace items, convert to word doc, add paragraphs (use dictionary)
 
