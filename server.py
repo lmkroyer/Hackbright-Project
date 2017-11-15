@@ -159,9 +159,10 @@ def callback():
     github = OAuth2Session(client_id, token=session['oauth_token'])
 
     github_user = github.get('https://api.github.com/user').json()
-    print github_user
-    # current_user = github_user.login
-    # session['current_user'] = current_user
+    # print github_user
+    current_user = github_user['login']
+    session['current_user'] = current_user
+    print session['current_user']
 
     return redirect('/')
 
