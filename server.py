@@ -66,6 +66,9 @@ def index():
     # Check if the login is in the
     # current_user = github_user.name
 
+    # if 'current_user' in session:
+    #     current_user = session['current_user']
+
     return render_template('homepage.html')
 
 
@@ -103,7 +106,9 @@ def signout():
     """Signs out user and removes from session."""
 
     flash('Successfully signed out')
-    del session['oauth_state']
+    del session['oauth_token']
+    # include this?
+    del session['current_user']
 
     return redirect('/')
 
@@ -146,11 +151,6 @@ def callback():
     token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
 
-
-    # github = OAuth2Session(client_id, token=session['oauth_token'])
-    # token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
-    #                            authorization_response=request.url)
-
     # At this point we can fetch protected resources but let's save
     # the token and show how this is done from a persisted token
     # in /profile.
@@ -159,10 +159,9 @@ def callback():
     github = OAuth2Session(client_id, token=session['oauth_token'])
 
     github_user = github.get('https://api.github.com/user').json()
-    # print github_user
+
     current_user = github_user['login']
     session['current_user'] = current_user
-    print session['current_user']
 
     return redirect('/')
 
