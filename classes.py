@@ -4,6 +4,9 @@ from textblob import TextBlob
 import re
 from datetime import datetime
 from docx import Document
+from docx.shared import Inches, Pt
+from docx.enum.style import WD_STYLE_TYPE
+from docx.enum.text import WD_COLOR
 from defenses import all_defenses
 
 
@@ -283,24 +286,30 @@ class Answer(object):
 
         Returns a modified docx file."""
         # FIXME: add pronoun awareness (textblob)!!! on the extract from dictionary point.
+        # give user a change to choose female, male or plural
+        # user textblob on paragraphs to insert to convert to plural or pronoun
+
         # Grab a value, turn to textblob object, change gender pronount, and then insert
         # FIXME: change civil code #s so that state gets input as variable
 
-        # Make a dictionary of all attributes on an Answer class
+        # Make a list of all attributes on an Answer class
         attrs = [attr for attr in Answer.__dict__.keys()
                  if (not attr.startswith("__") and
                      not callable(Answer.__dict__[attr]))]
-
+        # Make a list of all upper case attributes
         cap_attrs = [attr.upper() for attr in Answer.__dict__.keys()
                  if (not attr.startswith("__") and
                      not callable(Answer.__dict__[attr]))]
 
-        print cap_attrs
-
+        # Make a Document object for Python-docx
         answer = Document('forms/answer_template.docx')
+        style = answer.styles['Normal']
+        font = style.font
+        font.size = Pt(12)
 
-        # FIXME: account for caps and lower
+        # font.highlight_color = WD_COLOR.YELLOW
 
+        # Preserve format: replace lowercase tags with values
         for attr_name in attrs:
 
             for paragraph in answer.paragraphs:
@@ -310,6 +319,7 @@ class Answer(object):
                         paragraph.text.replace(attr_name,
                                                getattr(self, attr_name)))
 
+        # Preserve format: replace uppercase tags with values
         for attr_name in cap_attrs:
 
             for paragraph in answer.paragraphs:
