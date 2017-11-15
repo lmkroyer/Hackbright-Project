@@ -54,21 +54,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     """Homepage."""
 
-    # if 'oauth_token' in session:
-    #     # github = OAuth2Session(client_id, token=session['oauth_token'])
-    #     github_user = github.get('https://api.github.com/user').json()
-    #     # Access the user's login id in the json dict
-    #     current_user = github_user.get('login')
-    #     import pdb
-    #     pdb.set_trace()
-    # Query for all registered users
-
-    # Check if the login is in the
-    # current_user = github_user.name
-
-    # if 'current_user' in session:
-    #     current_user = session['current_user']
-
     return render_template('homepage.html')
 
 
@@ -161,7 +146,10 @@ def callback():
     github_user = github.get('https://api.github.com/user').json()
 
     current_user = github_user['login']
-    session['current_user'] = current_user
+    user_object = User.query.get(current_user)
+    user_name = user_object.fname
+    # session['current_user'] = current_user
+    session['current_user'] = user_name
 
     return redirect('/')
 
