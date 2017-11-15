@@ -8,6 +8,7 @@ from docx.shared import Inches, Pt
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.text import WD_COLOR
 from defenses import all_defenses
+import inflect
 
 
 # FIXME: remove all punctuation!!!! so don't have to do weird searches
@@ -332,13 +333,12 @@ class Answer(object):
                     # paragraph.text = (
                     #     paragraph.text.replace(attr_name,
                     #                            getattr(self, attr_name)))
-
+        counter1 = 2
+        counter2 = 2
         # FIXME: make this its own method on the class
         for defense in self.defenses:
             # set a counter variable, to know how to label a paragraph
             # FIXME: when insert, convert this to word version of number
-            counter_letters = 1
-            counter_num = 2
 
             for p in answer.paragraphs:
                 if '***' in p.text:
@@ -348,10 +348,19 @@ class Answer(object):
                     # Add a paragraph
                     # FIXME: add a number at the beginning of each paragraph
                     # FIXME: add a tab after the starting number
-                    # addnext all of these: counter_letters, "AFFIRMATIVE DEFENSE", '/n',
+                    # addnext all of these: counter_letters, "AFFIRMATIVE DEFENSE", '/n'
+                    # font.bold = True
+                    # Use inflect library to convert int to spelled digit
+                    convert = inflect.engine()
+                    spell_digit = convert.number_to_words(counter1)
+                    spell_ordinal = convert.ordinal(spell_digit)
+                    spell_ordinal = spell_ordinal.upper()
+                    prior_paragraph = p.insert_paragraph_before("{spell_ordinal} AFFIRMATIVE DEFENSE".format(spell_ordinal=spell_ordinal))
+                    counter1 += 1
+                    # font.bold = False
                     prior_paragraph = p.insert_paragraph_before(legalese)
                     # do I need to print here?
-                    print p.text
+                    # print p.text
 
         filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
         answer.save('filestorage/{filename}'.format(filename=filename))

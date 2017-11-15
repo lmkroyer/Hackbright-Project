@@ -4,6 +4,8 @@ import textract, requests, os, sys
 
 from ocr import OCR_file, allowed_file
 
+import os
+
 from requests_oauthlib import OAuth2Session
 from github import Github
 from textblob import TextBlob
@@ -35,6 +37,8 @@ client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
 AUTHORIZATION_BASE_URL = 'https://github.com/login/oauth/authorize'
 TOKEN_URL = 'https://github.com/login/oauth/access_token'
+
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Normally, if you use an undefined variable in Jinja2, it fails
 # silently. This is horrible. Fix this so that, instead, it raises an
@@ -91,6 +95,7 @@ def user_login():
     session['oauth_state'] = state
 
     return redirect(authorization_url)
+    # return redirect('/callback')
 
 
 @app.route('/signout')
@@ -137,8 +142,10 @@ def callback():
     """
 
     github = OAuth2Session(client_id, state=session['oauth_state'])
+
     token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
+
 
     # github = OAuth2Session(client_id, token=session['oauth_token'])
     # token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
@@ -152,23 +159,20 @@ def callback():
     github = OAuth2Session(client_id, token=session['oauth_token'])
 
     github_user = github.get('https://api.github.com/user').json()
+    print github_user
     # current_user = github_user.login
     # session['current_user'] = current_user
 
-    return redirect(url_for('/profile'))
+    return redirect('/')
 
 
-# @app.route("/profile", methods=["GET"])
-# def profile():
-#     """Fetching a protected resource using an OAuth 2 token."""
+@app.route("/profile", methods=["GET"])
+def profile():
+    """Fetching a protected resource using an OAuth 2 token."""
 
-#     github = OAuth2Session(client_id, token=session['oauth_token'])
-#     github_user = github.get('https://api.github.com/user').json()
-# # find user info here: https://developer.github.com/apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps/
-#     import pdb
-#     pdb.set_trace()
+    github = OAuth2Session(client_id, token=session['oauth_token'])
+    github_user = github.get('https://api.github.com/user').json()
 
-#     return 'hello world'
 
 
 @app.route('/dashboard_lit')
@@ -409,7 +413,6 @@ def generate_answer():
         case = Case.query.get(case_id)
         complaint = case.complaint
         user = User.query.filter(User.user_id == case.team_lead).first()
-        print user
 
         answer = Answer(complaint, user, defenses)
         filename = answer.insert_information()
