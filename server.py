@@ -400,11 +400,7 @@ def display_answer():
 def generate_answer():
     """Create an answer object from the user's selections."""
 
-    # query for info we need to pass and pass it into function:
-
-    # generate_initial_answer()
-
-    # this returns a list of the defenses a user checked
+    # Return a list of the defenses a user checked
     defenses = request.form.getlist('affirmative_defenses')
 
     if 'active_case' in session:
@@ -416,11 +412,16 @@ def generate_answer():
         print user
 
         answer = Answer(complaint, user, defenses)
-        answer.insert_information()
+        filename = answer.insert_information()
 
-    return redirect('/')
+    return redirect(url_for('uploaded_answer', filename=filename))
 
-    #for now, then return a redirect like after the original upload (i.e. display the doc)
+
+@app.route('/upload_answer/<filename>')
+def uploaded_answer(filename):
+    """Attach the generated answer to the browser."""
+
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
 if __name__ == "__main__":

@@ -308,25 +308,7 @@ class Answer(object):
             counter_num = 2
 
             for p in answer.paragraphs:
-                # if 'AFFIRMATIVE DEFENSE' in p.text:
-                #     inline = p.runs
-                #     # Grab the legalese from the dictionary - a string of text
-                #     legalese = all_defenses[defense]
-
-                #     # Add a paragraph
-                #     # FIXME: add a number at the beginning of each paragraph
-                #     # FIXME: add a tab after the starting number
-                #     INSERT VAR(counter) + "AFFIRMATIVE DEFENSE"
-                #     INSERT legalese
-                #     # Loop added to work with runs (strings with same style)
-                #     for i in range(len(inline)):
-                #         if attr in inline[i].text:
-                #             text = inline[i].text.replace(attr, attrs[attr])
-                #             inline[i].text = text
-                #     # do I need to print here?
-                #     print p.text
                 if '***' in p.text:
-
                     # Grab the legalese from the dictionary - a string of text
                     legalese = all_defenses[defense]
 
@@ -335,12 +317,15 @@ class Answer(object):
                     # FIXME: add a tab after the starting number
                     # addnext all of these: counter_letters, "AFFIRMATIVE DEFENSE", '/n',
                     prior_paragraph = p.insert_paragraph_before(legalese)
-
                     # do I need to print here?
                     print p.text
+        filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
+        answer.save('filestorage/{filename}'.format(filename=filename))
+        return filename
 
-        answer.save('filestorage/answer_{case_no}.docx'.format(case_no=self.case_no))
+        # answer.save('filestorage/{case_no}.docx'.format(case_no=self.case_no))
         # return something to pass to display
+
 
 
 

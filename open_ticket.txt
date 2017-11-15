@@ -6,13 +6,12 @@
 
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
 
-*** 4. Not working: send info to db after upload. FINISH WORKING
 
 5. Answer: start with txt file, replace items, convert to word doc, add paragraphs (use dictionary)
 
-***6. change text extraction to tags -- or use a noun phrase list. MAKE THIS MORE ROBUST
 
-7. use the original upload submit on the answer generation route
+ANSWER FIX:
+1. formatting of paragraphs: 12 point font, spaces between lines, numbers and titles
 
 
 TUESDAY ^^^
