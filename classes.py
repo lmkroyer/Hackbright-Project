@@ -248,12 +248,18 @@ class Complaint(TextBlob):
 
 class Answer(object):
 
+    plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
+    case_state = case_county = user_fname = user_lname = user_mailing_address = None
+    user_email = user_firm_name = case_no = None
+
     def __init__(self, complaint, user, defenses):
 
 # pass a complaint into the answer, and loop through complaint attributes and set to answer
 # method that takes in self and generates a document
 # make info inside brackets match so can set as variable and check all brackets
 # look up: get attr and set attr (takes in a variable, find attribute that matches that and set)
+# make a dictionary as a class attribute with keys as attribute name, value as right side
+#   use setattr(self, "left side", )
 
         self.complaint = complaint
         self.user = user
@@ -264,15 +270,12 @@ class Answer(object):
         self.defendant_lname = complaint.case.defendants[0].lname
         self.case_county = complaint.case.county
         self.case_state = complaint.case.state
-        # this gets the ID for the user marked as team lead
-        # self.team_lead = complaint.cases.team_lead
-        # self.user = user
         self.user_fname = user.fname
         self.user_lname = user.lname
         self.user_email = user.email
         self.user_mailing_address = user.mailing_address
         self.user_firm_name = user.firm_name
-        self.case_no = complaint.case.case_no
+        self.case_no = str(complaint.case.case_no)
 
 
     def insert_information(self):
@@ -284,22 +287,24 @@ class Answer(object):
         # FIXME: change civil code #s so that state gets input as variable
 
         # Make a dictionary of all attributes on an Answer class
-        attrs = Answer.__dict__
+        attrs = [attr for attr in Answer.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(Answer.__dict__[attr]))]
 
         answer = Document('forms/answer_template.docx')
-        # FIXME: account for caps and lower
-        for attr in attrs:
 
-            for p in answer.paragraphs:
-                if attr in p.text:
-                    inline = p.runs
-                    # Loop added to work with runs (strings with same style)
-                    for i in range(len(inline)):
-                        if attr in inline[i].text:
-                            text = inline[i].text.replace(attr, attrs[attr])
-                            inline[i].text = text
-                    # do I need to print here?
-                    print p.text
+        # FIXME: account for caps and lower
+
+        for attr_name in attrs:
+
+            for paragraph in answer.paragraphs:
+
+                if attr_name in paragraph.text:
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name,
+                                               getattr(self, attr_name)))
+
+
         # FIXME: make this its own method on the class
         for defense in self.defenses:
             # set a counter variable, to know how to label a paragraph
@@ -319,6 +324,7 @@ class Answer(object):
                     prior_paragraph = p.insert_paragraph_before(legalese)
                     # do I need to print here?
                     print p.text
+
         filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
         answer.save('filestorage/{filename}'.format(filename=filename))
         return filename
