@@ -291,6 +291,12 @@ class Answer(object):
                  if (not attr.startswith("__") and
                      not callable(Answer.__dict__[attr]))]
 
+        cap_attrs = [attr.upper() for attr in Answer.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(Answer.__dict__[attr]))]
+
+        print cap_attrs
+
         answer = Document('forms/answer_template.docx')
 
         # FIXME: account for caps and lower
@@ -304,6 +310,18 @@ class Answer(object):
                         paragraph.text.replace(attr_name,
                                                getattr(self, attr_name)))
 
+        for attr_name in cap_attrs:
+
+            for paragraph in answer.paragraphs:
+
+                if attr_name in paragraph.text:
+                    attr_data = getattr(self, attr_name.lower())
+                    attr_data = attr_data.upper()
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name, attr_data))
+                    # paragraph.text = (
+                    #     paragraph.text.replace(attr_name,
+                    #                            getattr(self, attr_name)))
 
         # FIXME: make this its own method on the class
         for defense in self.defenses:
