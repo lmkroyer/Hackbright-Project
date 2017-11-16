@@ -358,9 +358,9 @@ class Answer(object):
 
                     # Grammar check
                     if spell_ordinal != 'eighth' or 'eleventh':
-                        custom_intro = "As a {ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal)
+                        custom_intro = "As a {spell_ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal.lower())
                     else:
-                        custom_intro = "As an {ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal)
+                        custom_intro = "As an {spell_ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal.lower())
 
                     # Add the meat of the legal text, with formatting
                     legalese = str(counter2) +'.' + '\t' + '\t' + custom_intro + legalese
