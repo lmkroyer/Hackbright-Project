@@ -2,12 +2,10 @@
 
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
 
-
 4. Fix answer formatting:
  a. underline signature
  b. fix tabbing
- c. change first word in dict
- d. correct for pronouns
+ c. correct for pronouns
 
  5. build out user experience
 
@@ -37,4 +35,4 @@ THURSDAY ^^^
 
 14. make sure everything is spell checked where appropriate
 
-15. do the overlay OCR!!!! opencv
+15. do the overlay OCR!!!! opencv (test in new env)

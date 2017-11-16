@@ -369,6 +369,7 @@ class Answer(object):
                     paragraph_format.first_line_indent = Inches(0.25)
                     paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
                     counter2 += 1
+
         # Make a new filename from case no.
         filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
         # Save the modified document with the new filename

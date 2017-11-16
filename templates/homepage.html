@@ -2,14 +2,7 @@
 
 {% block head %}
 
-{% if 'current_user' not in session %}
-  <h3><a href="/login">Login</a></h3>
-{% else %}
-  <h2>Hello, {{ session['current_user'] }}</h2>
-  <h3><a href="/signout">Sign out</a></h3>
-{% endif %}
-
-  <h3><a href="/register">Register new user</a></h3>
+    <h3><a href="/register">Register new user</a></h3>
 
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -25,9 +18,17 @@
  -->
 {% block content %}
 
+  {% if 'current_user' in session %}
+
     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
 
     <a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a>
+
+  {% endif %}
+
+<!--     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
+
+    <a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a> -->
 
     <div id="map"></div>
 
