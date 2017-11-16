@@ -18,16 +18,7 @@ function initMap() {
     styles: MAPSTYLES,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
-  // let geocoder = new google.maps.Geocoder();
 
-
-
-// function addGeocode() {
-//   let geocoder = new google.maps.Geocoder();
-//   let mapOptions = {
-
-//   }
-// }
 
 ////////////
 // geocode //
