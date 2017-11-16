@@ -13,6 +13,12 @@
 
  7. refactor to pass current case_in through URLs
 
+ 8. add datetime stamps to complaint and answer
+
+ 9. check all reprs
+
+ 10. test on other pdf
+
 
 THURSDAY ^^^
 

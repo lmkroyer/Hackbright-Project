@@ -9,10 +9,10 @@
           rel='stylesheet'>
     <link href="/static/style.css" rel="stylesheet">
 
-  {% if 'current_user' not in session %}
+  {% if 'current_user_name' not in session %}
     <h3><a href="/login">Login</a></h3>
   {% else %}
-    <h2>Hello, {{ session['current_user'] }}</h2>
+    <h2>Hello, {{ session['current_user_name'] }}</h2>
     <h3><a href="/signout">Sign out</a></h3>
   {% endif %}
 

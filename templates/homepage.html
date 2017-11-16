@@ -7,10 +7,6 @@
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/static/mapstyle.js"></script>
-    <script src="/static/casemap.js"></script>
-    <script async defer
-    //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&callback=initMap">
-    </script>
 
 {% endblock %}
 
@@ -31,5 +27,7 @@
     <a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a> -->
 
     <div id="map"></div>
-
+    <script src="/static/casemap.js"></script>
+    <script async defer
+    //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
 {% endblock %}

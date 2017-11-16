@@ -12,14 +12,14 @@ function initMap() {
   let map = new google.maps.Map(document.querySelector('#map'), {
     center: unitedStates,
     scrollwheel: false,
-    zoom: 3,
+    zoom: 5,
     zoomControl: true,
     streetViewControl: false,
     styles: MAPSTYLES,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
   // let geocoder = new google.maps.Geocoder();
-};
+
 
 
 // function addGeocode() {
@@ -35,65 +35,58 @@ function initMap() {
 
 // TODO: put id on the things!
 
-function codeActiveCases() {
-    let address = document.getElementById('XYZ').value;
-    geocoder.geocode( { 'XYZ': XYZ}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(unitedStates);
-        let marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-              // icon: {
-              //   path: google.maps.SymbolPath.CIRCLE,
-              //   scale: 10,
-              //   fillColor: 'red'
-              // },
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
+// function codeActiveCases() {
+//   //   let address = document.getElementById('XYZ').value;
+//   //   geocoder.geocode( { 'XYZ': XYZ}, function(results, status) {
+//   //     if (status == 'OK') {
+//   //       map.setCenter(unitedStates);
+//   //       let marker = new google.maps.Marker({
+//   //           map: map,
+//   //           position: results[0].geometry.location
+//   //             // icon: {
+//   //             //   path: google.maps.SymbolPath.CIRCLE,
+//   //             //   scale: 10,
+//   //             //   fillColor: 'red'
+//   //             // },
+//   //       });
+//   //     } else {
+//   //       alert('Geocode was not successful for the following reason: ' + status);
+//   //     }
+//   //   });
+//   // }
 
-////////////
-// marker //
-////////////
+// ////////////
+// // marker //
+// ////////////
 
-// FIXME: Add each case here -- fix where to put on map, link to db:
+// FIXME: pull in custom marker icon above, plus pass unitedStates to map.setCenter
 
-// $.get('/active_cases.json', function(activeCases) {
+  $.get('/active_cases.json', function(activeCases) {
 
-//   let activeCase, marker;
+    console.log(activeCases);
 
-//   for (let key in cases) {
-//     activeCase = cases[key];
+    for (let key in activeCases) {
+         let activeCaseCounty = activeCases[key]['caseCounty'];
 
-//     marker = new google.maps.Marker({
-//         position: new google.maps.LatLng(activeCase.caseCounty, activeCase.caseState),
-//         map: map,
-//         title: 'Case ID: ' + activeCase.caseId,
-//         icon: {
-//           path: google.maps.SymbolPath.CIRCLE,
-//           scale: 10,
-//           fillColor: 'red'
-//         },
-//     });
-//   }
-// }
+      let geocode_generator = new google.maps.Geocoder();
+      let administrative_area_level_2 =  activeCaseCounty + ' County';
 
-// function addMarker() {
-//   let marker = new google.maps.Marker({
-//      position: new google.maps.LatLng(XYZ),
-//       icon: {
-//         path: google.maps.SymbolPath.CIRCLE,
-//         scale: 10,
-//         fillColor: 'red'
-//       },
-//       map: map
-//   });
-//   return marker;
-// }
+      geocode_generator.geocode({'address': administrative_area_level_2}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
 
-// let marker = addMarker();
+            let marker = new google.maps.Marker({
+              map: map,
+              place: {
+                location: results[0].geometry.location,
+                query: "Case ID"
+              }
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+      });
+    }
+  });
 
-google.maps.event.addDomListener(window, 'load', initMap);
+}

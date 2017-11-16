@@ -57,17 +57,17 @@ def index():
     return render_template('homepage.html')
 
 
-@app.route('/active_cases')
+@app.route('/active_cases.json')
 def active_case_info():
     """JSON information about county, state for active cases. For map markers."""
 
     cases = {
-        activeCase.marker_id: {
-            'caseCounty': case.county,
-            'caseState': case.state,
-            'caseID': case.case_id
+        case.case_id: {
+            'caseCounty': case.county
+            # 'caseState': case.state,
+            # 'caseID': case.case_id
         }
-    }
+    for case in Case.query.filter(Case.settled == False).all()}
 
     return jsonify(cases)
 
@@ -94,6 +94,7 @@ def signout():
     del session['oauth_token']
     # include this?
     del session['current_user']
+    del session['current_user_name']
 
     return redirect('/')
 
@@ -148,8 +149,9 @@ def callback():
     current_user = github_user['login']
     user_object = User.query.get(current_user)
     user_name = user_object.fname
-    # session['current_user'] = current_user
-    session['current_user'] = user_name
+    # switch back to this so the object is in the session, can call for id or name other places
+    session['current_user'] = current_user
+    session['current_user_name'] = user_name
 
     return redirect('/')
 
@@ -167,7 +169,17 @@ def profile():
 def display_lit_dashboard():
     """Display the litigation dashboard."""
 
-    return render_template('dashboard_lit.html')
+    current_user = session.get('current_user')
+
+    user_object = User.query.get(current_user)
+    # Query for all cases where settled == False
+    active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
+    # cases = active_cases.statement.execute().fetchall()
+    case_count = active_cases.count()
+
+    # import pdb; pdb.set_trace()
+
+    return render_template('dashboard_lit.html', case_count=case_count)
 
 
 @app.route('/dashboard_corp')

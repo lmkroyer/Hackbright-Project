@@ -152,20 +152,6 @@ class Complaint(TextBlob):
 
         TODO: (2.0) allow multiple legal bases."""
 
-        # result = []
-
-        # for i in range(len(self.word_list)):
-
-        # #     if self.sentence_list[i].find('Negligence') and 'Negligence' not in result:
-        # #         result.append('Negligence')
-        # #     # etc.
-        # # result = ' '.join(result)
-        #     if self.word_list[i] == 'Claim' and self.word_list[i + 1] == 'for' and self.word_list[i + 2] == 'Relief':
-        #     #     if self.word_list[i + 3] not in result:
-        #     #         result.append(self.word_list[i + 3])
-        #     # result = ' '.join(result)
-        #         return self.word_list[i + 3]
-
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'claim' and self.nouns[i + 1] == 'relief':
                 result = self.nouns[i + 2]
