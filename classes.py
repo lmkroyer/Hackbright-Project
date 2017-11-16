@@ -332,8 +332,8 @@ class Answer(object):
                     paragraph.text = (
                         paragraph.text.replace(attr_name, attr_data))
 
-        counter1 = 2
-        counter2 = 3
+        counter1 = 1
+        counter2 = 2
         # FIXME: make this its own method on the class
         for defense in self.defenses:
 
