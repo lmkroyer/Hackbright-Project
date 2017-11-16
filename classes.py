@@ -6,7 +6,7 @@ from datetime import datetime
 from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.text import WD_COLOR, WD_LINE_SPACING
+from docx.enum.text import WD_COLOR, WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 from defenses import all_defenses
 import inflect
 
@@ -355,15 +355,16 @@ class Answer(object):
                     # style['Heading 1'].next_paragraph_style = style['Body Text']
                     prior_paragraph = p.insert_paragraph_before()
                     prior_paragraph.add_run("{spell_ordinal} AFFIRMATIVE DEFENSE".format(spell_ordinal=spell_ordinal)).bold = True
-
+                    prior_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    prior_paragraph = p.insert_paragraph_before()
                     counter1 += 1
 
                     # font.bold = False
                     # prior_paragraph = p.insert_paragraph_before()
-                    paragraph_format = prior_paragraph.paragraph_format
-                    paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
                     prior_paragraph = p.insert_paragraph_before(legalese)
-                    prior_paragraph.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+                    paragraph_format = prior_paragraph.paragraph_format
+                    paragraph_format.first_line_indent = Inches(0.25)
+                    paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
 
 
         # Check for paragraph titles to bold
