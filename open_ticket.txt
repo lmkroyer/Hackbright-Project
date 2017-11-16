@@ -1,18 +1,22 @@
-1. Figure out how to get user id from github json. Do I want to make user_ids something other than string? (auto increment int, or github login?). Make it so their dashboard shows all their open cases.
-
 *** 2. Google maps: How add places library w/ key? and how pass in db info?
 
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
 
 
-5. Fix answer formatting
+4. Fix answer formatting:
+ a. underline signature
+ b. fix tabbing
+ c. change first word in dict
+ d. correct for pronouns
+
+ 5. build out user experience
+
+ 6. refactor to more modular
+
+ 7. refactor to pass current case_in through URLs
 
 
-ANSWER FIX:
-1. formatting of paragraphs: 12 point font, spaces between lines, numbers and titles
-
-
-TUESDAY ^^^
+THURSDAY ^^^
 
 
 6. D3 the teams on either dashboard or teams page
@@ -23,9 +27,9 @@ TUESDAY ^^^
 
 9. progress bar on case page
 
-10. cleanups: upload other than pdf? (maybe not). check for which doc coming in when make object
+10. check for which doc coming in when make object
 
-11. textblob: make real nlp tags for data items
+11. X textblob: make real nlp tags for data items
 
 12. search engine for uploaded docs
 

@@ -338,30 +338,32 @@ class Answer(object):
         for defense in self.defenses:
 
             for p in answer.paragraphs:
+                # Begin making paragraphs
                 if '***' in p.text:
                     # Grab the legalese from the dictionary - a string of text
                     legalese = all_defenses[defense]
 
-                    # Add a paragraph
-                    # FIXME: add a number at the beginning of each paragraph
-                    # FIXME: add a tab after the starting number
-                    # font.bold = True
                     # Use inflect library to convert int to spelled digit
                     convert = inflect.engine()
                     spell_digit = convert.number_to_words(counter1)
                     spell_ordinal = convert.ordinal(spell_digit)
                     spell_ordinal = spell_ordinal.upper()
 
-                    # style['Heading 1'].next_paragraph_style = style['Body Text']
+                    # Add the header for each paragraph
                     prior_paragraph = p.insert_paragraph_before()
                     prior_paragraph.add_run("{spell_ordinal} AFFIRMATIVE DEFENSE".format(spell_ordinal=spell_ordinal)).bold = True
                     prior_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
                     prior_paragraph = p.insert_paragraph_before()
                     counter1 += 1
 
-                    # font.bold = False
-                    # prior_paragraph = p.insert_paragraph_before()
-                    legalese = str(counter2) +'.' + '\t' + '\t' + legalese
+                    # Grammar check
+                    if spell_ordinal != 'eighth' or 'eleventh':
+                        custom_intro = "As a {ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal)
+                    else:
+                        custom_intro = "As an {ordinal}, separate, and affirmative defense".format(spell_ordinal=spell_ordinal)
+
+                    # Add the meat of the legal text, with formatting
+                    legalese = str(counter2) +'.' + '\t' + '\t' + custom_intro + legalese
                     prior_paragraph = p.insert_paragraph_before(legalese)
                     paragraph_format = prior_paragraph.paragraph_format
                     paragraph_format.first_line_indent = Inches(0.25)
