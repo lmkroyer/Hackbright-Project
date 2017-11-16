@@ -369,16 +369,12 @@ class Answer(object):
                     paragraph_format.first_line_indent = Inches(0.25)
                     paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
                     counter2 += 1
-
-
-        # Check for paragraph titles to bold
-
+        # Make a new filename from case no.
         filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
+        # Save the modified document with the new filename
         answer.save('filestorage/{filename}'.format(filename=filename))
+        # Return filename to pass to display
         return filename
-
-        # answer.save('filestorage/{case_no}.docx'.format(case_no=self.case_no))
-        # return something to pass to display
 
 
 
