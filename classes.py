@@ -333,7 +333,7 @@ class Answer(object):
                         paragraph.text.replace(attr_name, attr_data))
 
         counter1 = 2
-        counter2 = 2
+        counter2 = 3
         # FIXME: make this its own method on the class
         for defense in self.defenses:
 
@@ -361,10 +361,12 @@ class Answer(object):
 
                     # font.bold = False
                     # prior_paragraph = p.insert_paragraph_before()
+                    legalese = str(counter2) +'.' + '\t' + '\t' + legalese
                     prior_paragraph = p.insert_paragraph_before(legalese)
                     paragraph_format = prior_paragraph.paragraph_format
                     paragraph_format.first_line_indent = Inches(0.25)
                     paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+                    counter2 += 1
 
 
         # Check for paragraph titles to bold
