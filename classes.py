@@ -6,7 +6,7 @@ from datetime import datetime
 from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.text import WD_COLOR
+from docx.enum.text import WD_COLOR, WD_LINE_SPACING
 from defenses import all_defenses
 import inflect
 
@@ -297,6 +297,7 @@ class Answer(object):
         attrs = [attr for attr in Answer.__dict__.keys()
                  if (not attr.startswith("__") and
                      not callable(Answer.__dict__[attr]))]
+
         # Make a list of all upper case attributes
         cap_attrs = [attr.upper() for attr in Answer.__dict__.keys()
                  if (not attr.startswith("__") and
@@ -330,15 +331,11 @@ class Answer(object):
                     attr_data = attr_data.upper()
                     paragraph.text = (
                         paragraph.text.replace(attr_name, attr_data))
-                    # paragraph.text = (
-                    #     paragraph.text.replace(attr_name,
-                    #                            getattr(self, attr_name)))
+
         counter1 = 2
         counter2 = 2
         # FIXME: make this its own method on the class
         for defense in self.defenses:
-            # set a counter variable, to know how to label a paragraph
-            # FIXME: when insert, convert this to word version of number
 
             for p in answer.paragraphs:
                 if '***' in p.text:
@@ -348,19 +345,28 @@ class Answer(object):
                     # Add a paragraph
                     # FIXME: add a number at the beginning of each paragraph
                     # FIXME: add a tab after the starting number
-                    # addnext all of these: counter_letters, "AFFIRMATIVE DEFENSE", '/n'
                     # font.bold = True
                     # Use inflect library to convert int to spelled digit
                     convert = inflect.engine()
                     spell_digit = convert.number_to_words(counter1)
                     spell_ordinal = convert.ordinal(spell_digit)
                     spell_ordinal = spell_ordinal.upper()
-                    prior_paragraph = p.insert_paragraph_before("{spell_ordinal} AFFIRMATIVE DEFENSE".format(spell_ordinal=spell_ordinal))
+
+                    # style['Heading 1'].next_paragraph_style = style['Body Text']
+                    prior_paragraph = p.insert_paragraph_before()
+                    prior_paragraph.add_run("{spell_ordinal} AFFIRMATIVE DEFENSE".format(spell_ordinal=spell_ordinal)).bold = True
+
                     counter1 += 1
+
                     # font.bold = False
+                    # prior_paragraph = p.insert_paragraph_before()
+                    paragraph_format = prior_paragraph.paragraph_format
+                    paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
                     prior_paragraph = p.insert_paragraph_before(legalese)
-                    # do I need to print here?
-                    # print p.text
+                    prior_paragraph.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+
+
+        # Check for paragraph titles to bold
 
         filename = 'answer_{case_no}.docx'.format(case_no=self.case_no)
         answer.save('filestorage/{filename}'.format(filename=filename))
