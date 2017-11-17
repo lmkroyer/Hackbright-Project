@@ -373,12 +373,12 @@ def send_to_db():
 
     case.opposing_id = opp.opposing_id
 
-    date_submitted = datetime.utcnow()
+    date_processed = datetime.utcnow()
 
     new_complaint = Complaint(doc_type_id=doc_type_id,
                               case_id=case_id,
-                              date_processed=case.initialized,
-                              date_submitted=date_submitted,
+                              date_received=case.initialized,
+                              date_processed=date_processed,
                               damages_asked=damages_asked,
                               legal_basis=legal_basis,
                               pdf=os.path.join(app.config['UPLOAD_FOLDER'],
@@ -399,14 +399,6 @@ def display_answer_options():
     """Display answer options to user."""
 
     return render_template('edit_answer.html')
-
-
-# TODO: display and allow to edit before build
-@app.route('/display_answer')
-def display_answer():
-    """Show the user the word doc to approve or edit."""
-
-    pass
 
 
 @app.route('/process_answer', methods=['POST'])
@@ -434,6 +426,14 @@ def generate_answer():
         db.session.commit()
 
     return redirect(url_for('uploaded_answer', filename=filename))
+
+
+# TODO: display and allow to edit before build
+@app.route('/display_answer')
+def display_answer():
+    """Show the user the word doc to approve or edit."""
+
+    pass
 
 
 @app.route('/upload_answer/<filename>')

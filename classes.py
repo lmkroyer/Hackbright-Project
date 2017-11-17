@@ -10,7 +10,6 @@ from docx.enum.text import WD_COLOR, WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 from defenses import all_defenses
 import inflect
 
-
 # FIXME: remove all punctuation!!!! so don't have to do weird searches
 
 class Complaint(TextBlob):
@@ -92,7 +91,11 @@ class Complaint(TextBlob):
             if self.word_list[i] == 'COUNTY':
                 if self.word_list[i + 1] == 'OF':
                     county = self.word_list[i + 2]
-                    return county.capitalize()
+
+                    if self.word_list[i + 3].isupper():
+                        county = county + ' ' + self.word_list[i + 3]
+
+                    return county.title()
 
 
     def get_state(self):
@@ -102,7 +105,11 @@ class Complaint(TextBlob):
             if self.word_list[i] == 'STATE':
                 if self.word_list[i + 1] == 'OF':
                     state = self.word_list[i + 2]
-                    return state.capitalize()
+
+                    if self.word_list[i + 3].isupper():
+                        state = state + ' ' + self.word_list[i + 3]
+
+                    return state.title()
 
 
     def get_defendant_fname(self):
@@ -197,21 +204,13 @@ class Complaint(TextBlob):
     def get_counsel_firm(self):
         """Return the opposing counsel's firm name."""
 
-        # for i in range(len(self.sentence_list)):
-
-        #     if self.sentence_list[i].find('LLC') or self.sentence_list[i].find('P.C'):
-        #         return self.sentence_list[i]
-
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'llc':
                 firm = self.nouns[i -1]
                 firm = firm.title()
-                #FIXME: titlecase firm (can from titlecase import titlecase -- look in textblob)
                 org = self.nouns[i]
                 org = org.upper()
-                # preposition.upper()
                 return firm + ' ' + org
-                # return full_firm
 
 
     def get_complaint_date(self):
