@@ -12,7 +12,7 @@ function initMap() {
   let map = new google.maps.Map(document.querySelector('#map'), {
     center: unitedStates,
     scrollwheel: false,
-    zoom: 5,
+    zoom: 4,
     zoomControl: true,
     streetViewControl: false,
     styles: MAPSTYLES,
@@ -64,7 +64,7 @@ function initMap() {
 
       geocode_generator.geocode({'address': administrative_area_level_2}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
+            map.setCenter(unitedStates);
 
             let marker = new google.maps.Marker({
               map: map,

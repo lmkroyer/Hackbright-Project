@@ -8,10 +8,10 @@
     background-position: center center;
 }
 
-body { 
-    height: 100%; 
-    margin: 0; 
-    padding: 0; 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     /*background-color: #7283a0;*/
     /*background-color: #b6ccd6;*/
 /*    background-color: #93afbc;*/
@@ -55,12 +55,12 @@ body {
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
+  from { bottom:-100px; opacity:0 }
   to { bottom:0px; opacity:1 }
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
   to{ bottom:0; opacity:1 }
 }
 
