@@ -150,6 +150,11 @@ def load_users():
     db.session.commit()
 
 
+# def load_caseusers():
+#     """Add some fake teams."""
+
+#     caseUser1 = case
+
 # def load_cases():
 #     """Add some fake case data."""
 

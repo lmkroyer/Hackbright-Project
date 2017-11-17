@@ -19,6 +19,8 @@
 
  10. test on other pdf
 
+ 11. integrate send answer with gmail!!!
+
 
 THURSDAY ^^^
 

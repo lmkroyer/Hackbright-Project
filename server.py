@@ -181,6 +181,13 @@ def display_lit_dashboard():
                                                  active_case_lst=active_case_lst)
 
 
+@app.route('/attorneys')
+def display_attorneys():
+    """Display all attorneys and their availability."""
+
+    # this can be the same as the case init -- just query for all attorneys and pass into template
+    pass
+
 @app.route('/dashboard_corp')
 def display_corp_dashboard():
     """Display the corporate dashboard."""
@@ -366,9 +373,12 @@ def send_to_db():
 
     case.opposing_id = opp.opposing_id
 
+    date_submitted = datetime.utcnow()
+
     new_complaint = Complaint(doc_type_id=doc_type_id,
                               case_id=case_id,
-                              date_received=case.initialized,
+                              date_processed=case.initialized,
+                              date_submitted=date_submitted,
                               damages_asked=damages_asked,
                               legal_basis=legal_basis,
                               pdf=os.path.join(app.config['UPLOAD_FOLDER'],
@@ -413,8 +423,15 @@ def generate_answer():
         complaint = case.complaint
         user = User.query.filter(User.user_id == case.team_lead).first()
 
+        # Create and Answer and generate the document
         answer = Answer(complaint, user, defenses)
         filename = answer.insert_information()
+
+        # Store the Answer info in the database
+        answer.date_created = datetime.utcnow()
+        answer.docx = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        db.session.add(answer)
+        db.session.commit()
 
     return redirect(url_for('uploaded_answer', filename=filename))
 

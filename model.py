@@ -8,7 +8,6 @@ class User(db.Model):
 
     __tablename__ = 'users'
 
-    # TODO: change user_id to natural key (github login)
     user_id = db.Column(db.String(25), primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
@@ -53,14 +52,12 @@ class Case(db.Model):
     case_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     case_no = db.Column(db.Integer, nullable=True)
     team_lead = db.Column(db.String(25), db.ForeignKey('users.user_id'), nullable=True)
-    # complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=True)
     opposing_id = db.Column(db.Integer, db.ForeignKey('opposing_counsel.opposing_id'), nullable=True)
     claim_type_id = db.Column(db.Integer, db.ForeignKey('claim_types.claim_type_id'), nullable=True)
     damages_asked = db.Column(db.String(15), nullable=True)
     state = db.Column(db.String(25), nullable=True)
     county = db.Column(db.String(25), nullable=True)
     initialized = db.Column(db.DateTime, nullable=True)
-    # FIXME: should I make a settlement amount association table? with case id, settlement id, and settlement amount
     settlement_amount = db.Column(db.Integer, nullable=True)
     settled = db.Column(db.Boolean, default=False, nullable=False)
 
@@ -140,20 +137,8 @@ class Party(db.Model):
     fname = db.Column(db.String(25), nullable=True)
     lname = db.Column(db.String(25), nullable=True)
     company = db.Column(db.String(100), nullable=True)
-    # email = db.Column(db.String(100), nullable=True)
+    email = db.Column(db.String(100), nullable=True)
     residence = db.Column(db.String(100), nullable=True)
-
-    # Define relationships to a case
-    # cases = db.relationship('Case', secondary='caseparties', backref=db.backref('party'))
-
-    # def __repr__(self):
-    #     """Provide info about the party instance."""
-
-    #     # FIXME: use NLP to know if person or entity???
-    #     if fname and lname:
-    #         return "<Name fname={} lname={}>".format(self.fname, self.lname)
-    #     elif company:
-    #         return "<Company company={}>".format(self.company)
 
 
 class OpposingCounsel(db.Model):
@@ -213,11 +198,9 @@ class Complaint(db.Model):
     complaint_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
     doc_type_id = db.Column(db.Integer, default=1, nullable=False)
-    # case_no = db.Column(db.Integer, nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
-    date_reviewed = db.Column(db.DateTime, nullable=True)
-    date_submitted = db.Column(db.DateTime, nullable=True)
-    # Substantive data from document
+    date_processed = db.Column(db.DateTime, nullable=True)
+    # Substantive data from document - maybe include?
     # incident_date = db.Column(db.String(25), nullable=False)
     # incident_location = db.Column(db.String(100), nullable=False)
     # incident_description = db.Column(db.Text, nullable=False)
@@ -241,18 +224,13 @@ class Answer(db.Model):
 
     answer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     doc_type_id = db.Column(db.Integer, default=2, nullable=False)
-    # complaint_id = db.Column(db.Integer, db.ForeignKey('complaints.complaint_id'), nullable=False)
     case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
 
     date_created = db.Column(db.DateTime, nullable=True)
     date_reviewed = db.Column(db.DateTime, nullable=True)
     date_submitted = db.Column(db.DateTime, nullable=True)
 
-    pdf = db.Column(db.String(64), nullable=False)  # will be url if online server or relative file /static/etc...
-    txt_file = db.Column(db.String(64), nullable=False)
-
-    # Define relationship to a complaint
-    # complaint = db.relationship('Complaint', backref=db.backref('answer'))
+    docx = db.Column(db.String(64), nullable=False)  # will be url if online server or relative file /static/etc...
 
     def __repr__(self):
         """Provide into about the answer instance."""

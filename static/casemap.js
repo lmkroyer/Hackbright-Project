@@ -50,7 +50,7 @@ function initMap() {
 // // marker //
 // ////////////
 
-// FIXME: pull in custom marker icon above, plus pass unitedStates to map.setCenter
+// FIXME: pull in custom marker icon above
 
   $.get('/active_cases.json', function(activeCases) {
 
