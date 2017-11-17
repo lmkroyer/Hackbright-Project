@@ -15,9 +15,18 @@
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">You Have {{ case_count }} Active Cases:</a>
+  <b><a href="#" class="w3-bar-item w3-button">You Have {{ case_count }} Active Cases:</a></b>
   {% for case in active_case_lst %}
-  <a href="#" class="w3-bar-item w3-button">{{ case }}</a>
+  {% for defendant in case.defendants %}
+  <a href="#" class="w3-bar-item w3-button"><li>Case: {{ case.case_id }}
+                                              | Client: {{ defendant.fname }}
+                                                        {{ defendant.lname }}<br>
+                                                <b>Due:</b> {{ case.complaint.DUE }}</li></a>
+<!--
+                                        Client: {{ case.defendants[0].fname }}
+                                                    {{ case.defendants[0].lname }}
+                                            | Case: {{ case.case_id }}</a> -->
+  {% endfor %}
   {% endfor %}
 </div>
 

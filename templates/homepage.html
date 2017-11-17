@@ -3,7 +3,7 @@
 {% block head %}
 
   {% if 'current_user_name' not in session %}
-    <h3><a href="/login">Login</a></h3>
+    <h3 align="right"><a href="/login">Login</a></h3>
   {% else %}
     <h5 align="right">Hello, {{ session['current_user_name'] }}</h5>
     <h3 align="right"><a href="/signout">Sign out</a></h3>
