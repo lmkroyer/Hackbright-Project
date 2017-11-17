@@ -2,6 +2,36 @@
 
 {% block head %}
 
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <h3><a href="/">Home</a></h3>
+
+  <h3><a href="/edit_profile">Register new user</a></h3>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">You Have {{ case_count }} Active Cases:</a>
+  {% for case in active_case_lst %}
+  <a href="#" class="w3-bar-item w3-button">{{ case }}</a>
+  {% endfor %}
+</div>
+
+<div id="main">
+
+<div class="w3-grey">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+    <h1>Hello, {{ session['current_user_name'] }}</h1>
+  </div>
+</div>
+
 <nav class="navbar navbar-inverse bg-inverse">
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,10 +45,10 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Start a Case</a>
+        <a class="nav-link" href="/attorneys">Attorneys</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/attorneys">Attorneys</a>
+        <a class="nav-link" href="#">Start a Case</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,17 +70,29 @@
 </nav>
 </nav>
 
-  <h3><a href="/">Home</a></h3>
-
-  <h3><a href="/edit_profile">Register new user</a></h3>
-
-{% endblock %}
-
-{% block content %}
-
+<div class="w3-container">
   <img src="https://dendritics.com/scales/alice/alice37a.gif" height="300" width="200">
-
   <a href="/case_init">Start a new case<a>
+</div>
+
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+
+
 
 
 

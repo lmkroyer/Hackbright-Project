@@ -2,6 +2,13 @@
 
 {% block head %}
 
+  {% if 'current_user_name' not in session %}
+    <h3><a href="/login">Login</a></h3>
+  {% else %}
+    <h2>Hello, {{ session['current_user_name'] }}</h2>
+    <h3><a href="/signout">Sign out</a></h3>
+  {% endif %}
+
     <h3><a href="/register">Register new user</a></h3>
 
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->

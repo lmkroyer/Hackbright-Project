@@ -83,7 +83,6 @@ def user_login():
     session['oauth_state'] = state
 
     return redirect(authorization_url)
-    # return redirect('/callback')
 
 
 @app.route('/signout')
@@ -176,10 +175,10 @@ def display_lit_dashboard():
     active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
     # cases = active_cases.statement.execute().fetchall()
     case_count = active_cases.count()
+    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
 
-    # import pdb; pdb.set_trace()
-
-    return render_template('dashboard_lit.html', case_count=case_count)
+    return render_template('dashboard_lit.html', case_count=case_count,
+                                                 active_case_lst=active_case_lst)
 
 
 @app.route('/dashboard_corp')
