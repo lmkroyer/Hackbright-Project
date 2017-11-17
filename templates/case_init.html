@@ -38,8 +38,10 @@
 
   </form>
 
+<div>
   {% for attorney in attorneys %}
     <ul>{{ attorney.fname }} {{ attorney.lname }}</ul>
   {% endfor %}
+<div>
 
 {% endblock %}

@@ -443,6 +443,42 @@ def uploaded_answer(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
+@app.route('/d3_play')
+def test_d3():
+
+
+
+    return render_template('attorney_status.html')
+
+# FIXME: !!!!!
+@app.route('/caseload.json')
+def get_caseload():
+    """JSON information about attorneys and their number of active cases."""
+
+    # query for users with active cases
+    # count the number of cases
+    # caseload = {
+    #     case.case_id: {
+    #         'caseCounty': case.county
+    #         # 'caseState': case.state,
+    #         # 'caseID': case.case_id
+    #     }
+    # for case in Case.query.filter(Case.settled == False).all()}
+
+    caseload = {}
+    # FIXME: how do I format data to show user and case_count?
+    for user in User.query.all():
+        case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
+        caseload[user.user_id] = {"fname": user.fname,
+                                  "lname": user.lname,
+                                  "caseload": case_count}
+
+    caseload = {user.user_id: case_count}
+
+    return jsonify(caseload)
+
+
+
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension

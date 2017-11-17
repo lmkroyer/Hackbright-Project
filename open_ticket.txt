@@ -1,5 +1,3 @@
-*** 2. Google maps: How add places library w/ key? and how pass in db info?
-
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
 
 4. Fix answer formatting:
@@ -13,13 +11,9 @@
 
  7. refactor to pass current case_in through URLs
 
- 8. add datetime stamps to complaint and answer
-
- 9. check all reprs
-
- 10. test on other pdf
-
  11. integrate send answer with gmail!!!
+
+ 12. how do d3?
 
 
 THURSDAY ^^^
@@ -44,3 +38,7 @@ THURSDAY ^^^
 14. make sure everything is spell checked where appropriate
 
 15. do the overlay OCR!!!! opencv (test in new env)
+
+
+
+d3: http://bl.ocks.org/charlesdguthrie/11356441

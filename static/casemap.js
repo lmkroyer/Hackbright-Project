@@ -54,8 +54,6 @@ function initMap() {
 
   $.get('/active_cases.json', function(activeCases) {
 
-    console.log(activeCases);
-
     for (let key in activeCases) {
          let activeCaseCounty = activeCases[key]['caseCounty'];
 
