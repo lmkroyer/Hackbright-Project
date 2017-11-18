@@ -186,7 +186,50 @@ def display_attorneys():
     """Display all attorneys and their availability."""
 
     # this can be the same as the case init -- just query for all attorneys and pass into template
-    pass
+    attorneys = User.query.all()
+
+    return render_template('attorneys.html', attorneys=attorneys)
+
+
+@app.route('/attorney_data.json')
+def get_attny_data():
+    """JSON information about attorneys and their number of active cases."""
+
+    caseload = {}
+
+    for user in User.query.all():
+        case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
+        fname = user.fname
+        lname = user.lname
+        name = fname + ' ' + lname
+        case_count = int(case_count)
+        caseload[name] = case_count
+
+    users = []
+    caseVolume = []
+    startColor = []
+    hoverColor = []
+
+    for attny in caseload.items():
+        users.append(attny[0])
+        caseVolume.append(attny[1])
+        startColor.append("#00ff00")
+        hoverColor.append("ff0000")
+
+    data_dict = {
+                "labels": users,
+                "datasets": [
+                    {   "label": ["Attorney Availability"],
+                        "data": caseVolume,
+                        "backgroundColor": startColor,
+                        "hoverBackgroundColor": hoverColor
+                    }]
+            }
+
+
+
+    return jsonify(data_dict)
+
 
 @app.route('/dashboard_corp')
 def display_corp_dashboard():

@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <h3><a href="/edit_profile">Register new user</a></h3>
-
 {% endblock %}
 
 {% block content %}
@@ -21,7 +19,7 @@
   <a href="#" class="w3-bar-item w3-button"><li>Case: {{ case.case_id }}
                                               | Client: {{ defendant.fname }}
                                                         {{ defendant.lname }}<br>
-                                                <b>Due:</b> {{ case.complaint.DUE }}</li></a>
+                                                <b>Due:</b> {{ case.complaint }}</li></a>
 <!--
                                         Client: {{ case.defendants[0].fname }}
                                                     {{ case.defendants[0].lname }}
@@ -35,7 +33,8 @@
 <div class="w3-#edf1f7">
   <button id="openNav" class="w3-button w3-#edf1f7 w3-xlarge" onclick="w3_open()">&#9776;</button>
   <div class="w3-container">
-    <h1>Hello, {{ session['current_user_name'] }}</h1>
+    <h1 align="center">Lglease</h1>
+    <h2>Hello, {{ session['current_user_name'] }}</h2>
   </div>
 </div>
 
