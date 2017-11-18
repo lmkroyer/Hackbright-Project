@@ -219,14 +219,12 @@ def get_attny_data():
     data_dict = {
                 "labels": users,
                 "datasets": [
-                    {   "label": ["Attorney Availability"],
+                    {   "label": ["Attorney Capacity"],
                         "data": caseVolume,
                         "backgroundColor": startColor,
                         "hoverBackgroundColor": hoverColor
                     }]
             }
-
-
 
     return jsonify(data_dict)
 
