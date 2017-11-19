@@ -42,3 +42,5 @@ THURSDAY ^^^
 
 
 d3: http://bl.ocks.org/charlesdguthrie/11356441
+
+http://jsbin.com/tayawutu/17/edit?html,js,output

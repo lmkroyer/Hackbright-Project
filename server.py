@@ -50,6 +50,15 @@ UPLOAD_FOLDER = 'filestorage/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+@app.route('/welcome')
+def test():
+    """Messing around with dashboard.
+
+    https://mdbootstrap.com/admin-dashboard-lesson-1/"""
+
+    return render_template('/welcome.html')
+
+
 @app.route('/')
 def index():
     """Homepage."""
@@ -434,8 +443,8 @@ def send_to_db():
 
     return render_template('complaint_submitted.html')
 
-
-@app.route('/answer_init')
+# FIXME: pass in the case_id here!!!
+@app.route('/answer_init/')
 def display_answer_options():
     """Display answer options to user."""
 

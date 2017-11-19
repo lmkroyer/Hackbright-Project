@@ -16,7 +16,7 @@
   <b><a href="#" class="w3-bar-item w3-button">You Have {{ case_count }} Active Cases:</a></b>
   {% for case in active_case_lst %}
   {% for defendant in case.defendants %}
-  <a href="#" class="w3-bar-item w3-button"><li>Case: {{ case.case_id }}
+  <a href="/answer_init/{{ case.case_id }}" class="w3-bar-item w3-button"><li>Case: {{ case.case_id }}
                                               | Client: {{ defendant.fname }}
                                                         {{ defendant.lname }}<br>
                                                 <b>Due:</b> {{ case.complaint }}</li></a>
