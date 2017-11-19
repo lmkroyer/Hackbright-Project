@@ -21,7 +21,7 @@
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form></li> -->
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ session['current_user_name'] }}</a></li>
       <li><a href="/signout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
@@ -30,10 +30,12 @@
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="#">Home</a></li>
-            <li><a href="#">Another link</a></li>
-            <li><a href="#">Next link</a></li>
-            <li><a href="#">Last link</a></li>
+            <li class="sidebar-brand"><a href="#">Home</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-send"></span> Messages</a></li>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -41,12 +43,46 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <!-- content of page -->
-                    </div>
+                        <table class="w3-table-all w3-hoverable">
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Points</th>
+                        </tr>
+                        <tr>
+                          <td>Jill</td>
+                          <td>Smith</td>
+                          <td>50</td>
+                        </tr>
+                        </table>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- <div class="w3-responsive">
+  <table class="w3-table-all w3-hoverable">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    </table>
+  </table>
+</div> -->
+
+
+    // <script src="https://code.jquery.com/jquery.js"></script>
+    // <script src="/static/mapstyle.js"></script>
+    // <script src="/static/casemap.js"></script>
+    // <script async defer
+    // //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
 
 {% endblock %}

@@ -8,6 +8,12 @@
     background-position: center center;
 }
 
+#map_dash {
+    width: 100%;
+    height: 600px;
+    background-position: center center;
+}
+
 body {
     height: 100%;
     margin: 0;
@@ -103,6 +109,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 10pt
 }
 
 @media (max-width:767px) {
@@ -126,4 +133,9 @@ body {
       transition: all 0.4s ease 0s;
     }
 
+}
+
+.navbar-brand {
+  width: 250px;
+  font-size: 18pt
 }
