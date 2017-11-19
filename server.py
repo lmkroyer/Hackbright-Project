@@ -56,7 +56,17 @@ def test():
 
     https://mdbootstrap.com/admin-dashboard-lesson-1/"""
 
-    return render_template('/welcome.html')
+    current_user = session.get('current_user')
+
+    user_object = User.query.get(current_user)
+    # Query for all cases where settled == False
+    active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
+    # cases = active_cases.statement.execute().fetchall()
+    case_count = active_cases.count()
+    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
+
+    return render_template('/welcome.html', active_case_lst=active_case_lst,
+                                            case_count=case_count)
 
 
 @app.route('/')

@@ -30,7 +30,11 @@
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="#">Home</a></li><br>
+            <br><li class="sidebar-brand">
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
@@ -43,17 +47,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="w3-table-all w3-hoverable">
-                        <tr>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Points</th>
-                        </tr>
-                        <tr>
-                          <td>Jill</td>
-                          <td>Smith</td>
-                          <td>50</td>
-                        </tr>
+
+                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Award Winning<br>Don't take our word for it. See all the awards our melons have earned.</div>
+                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>Huge Selection<br>We import melons from all over the world, ensuring we have every melon you could possibly desire.</div>
+                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>Certified Sustainable<br>Our melons are sourced only from sustainable, organic local farmers. These are the healthiest melons you'll ever eat.</div> <br>
+
+                  {% for case in active_case_lst %}
+                  {% for defendant in case.defendants %}
+
+                    <div class="row">
+                        <table class="table table-striped">
+                            <th> Case Id </th>
+                            <th> Type </th>
+                            <th> Team </th>
+                            <th> Opposition </th>
+                            <th> Status </th>
+
+                            <tr>
+                                <td> {{ case.case_id }} </td>
+                                <td> {{ case.complaint.legal_basis }} </td>
+                                <td>
+                                    {% for user in case.users %}
+                                    <li>{{ user.fname }} {{user.lname}}</li>
+                                    {% endfor %}
+                                </td>
+                                <td> {{ case.opp.firm_name }} </td>
+                            </tr>
+                          {% endfor %}
+                          {% endfor %}
                         </table>
                 </div>
                 </div>
