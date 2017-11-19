@@ -39,7 +39,11 @@
             <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-send"></span> Messages</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-send"></span> Send a message</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
+            <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -48,13 +52,14 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Award Winning<br>Don't take our word for it. See all the awards our melons have earned.</div>
-                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>Huge Selection<br>We import melons from all over the world, ensuring we have every melon you could possibly desire.</div>
-                        <div class="col-xs-4 col-lg-4"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>Certified Sustainable<br>Our melons are sourced only from sustainable, organic local farmers. These are the healthiest melons you'll ever eat.</div> <br>
-
+                        <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-offset-1 col-xs-6 col-lg-offset-1 col-lg-6">
+                                <img src="https://www.reflectionsworld.co.uk/assets/images/chartjs-casperjs.png"></div>
+                        </div><br>
+                  <p><b>You Have {{ case_count }} Active Cases:</b></p>
                   {% for case in active_case_lst %}
                   {% for defendant in case.defendants %}
-
                     <div class="row">
                         <table class="table table-striped">
                             <th> Case Id </th>
@@ -68,7 +73,11 @@
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
+                                    {% if user.user_id == case.team_lead %}
+                                    <li>{{ user.fname }} {{user.lname}}<span class="glyphicon glyphicon-star"></span></li>
+                                    {% else %}
                                     <li>{{ user.fname }} {{user.lname}}</li>
+                                    {% endif %}
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
@@ -100,10 +109,10 @@
 </div> -->
 
 
-    // <script src="https://code.jquery.com/jquery.js"></script>
-    // <script src="/static/mapstyle.js"></script>
-    // <script src="/static/casemap.js"></script>
-    // <script async defer
-    // //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/static/mapstyle.js"></script>
+    <script src="/static/casemap.js"></script>
+    <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
 
 {% endblock %}
