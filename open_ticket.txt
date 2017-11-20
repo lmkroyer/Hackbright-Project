@@ -5,7 +5,9 @@
  b. fix tabbing
  c. correct for pronouns
 
- 5. build out user experience
+ ** 5. Add a chart or two to dashboard
+
+** 6. get doc to open in browser
 
  6. refactor to more modular
 
@@ -13,9 +15,24 @@
 
  11. integrate send answer with gmail!!!
 
- 12. how do d3?
-
  13. make status on dashboard a percentage of completion
+
+ 14. fix click to expand on dashboard
+
+ 15. add ability to take notes
+
+ dashboard:
+
+ - show weather
+ - show items in order of what is due
+ - allow user to take and save notes in browser
+ - show line graph
+ - show attorney avail bar chart
+
+ https://stackoverflow.com/questions/19324301/embed-text-files-in-html
+ https://stackoverflow.com/questions/5565759/how-to-embed-a-document-in-html-page
+
+ https://codepen.io/steveg3003/pen/Gqakbo
 
 
 THURSDAY ^^^

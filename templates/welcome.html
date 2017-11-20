@@ -17,10 +17,6 @@
       <li><a href="#">Attorneys</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-     <!--  <li><form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form></li> -->
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ session['current_user_name'] }}</a></li>
       <li><a href="/signout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
@@ -57,18 +53,21 @@
                             <div class="col-xs-offset-1 col-xs-6 col-lg-offset-1 col-lg-6">
                                 <img src="https://www.reflectionsworld.co.uk/assets/images/chartjs-casperjs.png"></div>
                         </div><br>
-                  <p><b>You Have {{ case_count }} Active Cases:</b></p>
-                  {% for case in active_case_lst %}
-                  {% for defendant in case.defendants %}
-                    <div class="row">
+                          {% if case_count > 1 %}
+                          <p><b>You Have {{ case_count }} Active Cases:</b></p>
+                          {% elif case_count == 1 %}
+                          <p><b>You Have {{ case_count }} Active Case:</b></p>
+                          {% endif %}
+                          {% for case in active_case_lst %}
+                          {% for defendant in case.defendants %}
+                        <div class="row-fluid">
                         <table class="table table-striped">
                             <th> Case Id </th>
                             <th> Type </th>
                             <th> Team </th>
                             <th> Opposition </th>
                             <th> Status </th>
-
-                            <tr>
+                            <tr data-toggle="collapse" data-target="#collapseData" class="clickable">
                                 <td> {{ case.case_id }} </td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
@@ -81,9 +80,22 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
+                                <td><button type="button" class="btn" data-toggle="collapse" data-target="#collapseme">Click to expand</button></td>
                             </tr>
-                          {% endfor %}
-                          {% endfor %}
+                            <tr colspan="5" class="hiddenRow"><div id="demo3" class="accordian-body collapse">
+                            <div>
+                                {% if case.complaint %}
+                                <li><object data="{{ case.complaint.pdf }}" type="text/plain" width="500" style="height 300px">
+                                <a href="{{ case.complaint.pdf }}">Complaint</a></object></li>
+                                {% endif %}
+                                {% if case.answer %}
+                                <li>{{ case.answer.docx }}</li>
+                                {% endif %}
+                                <li><a href="/NEW NOTES">Add Notes</a></li>
+                                {% endfor %}
+                                {% endfor %}
+                            </div>
+                            </tr>
                         </table>
                 </div>
                 </div>
@@ -92,27 +104,12 @@
     </div>
 </div>
 
-<!-- <div class="w3-responsive">
-  <table class="w3-table-all w3-hoverable">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Points</th>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    </table>
-  </table>
-</div> -->
 
 
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/static/mapstyle.js"></script>
-    <script src="/static/casemap.js"></script>
-    <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script src="/static/dashboard.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
 
 {% endblock %}
