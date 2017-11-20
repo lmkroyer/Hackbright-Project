@@ -30,6 +30,7 @@
  - allow user to take and save notes in browser
  - show line graph
  - show attorney avail bar chart
+ - in expanded: email team / email client
 
  https://stackoverflow.com/questions/19324301/embed-text-files-in-html
  https://stackoverflow.com/questions/5565759/how-to-embed-a-document-in-html-page
@@ -37,6 +38,8 @@
  https://codepen.io/steveg3003/pen/Gqakbo
 
  http://simpleweatherjs.com/
+
+ http://eqdn.tech/html5-note-app-tutorial/
 
 
 THURSDAY ^^^

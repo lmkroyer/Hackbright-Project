@@ -2,6 +2,10 @@
 
 {% block head %}
 
+<script src=
+  "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
+</script>
+
 {% endblock %}
 
 {% block content %}
@@ -13,8 +17,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="#">Corporate</a></li>
-      <li><a href="#">Attorneys</a></li>
+      <li><a href="/dashboard_corp">Corporate</a></li>
+      <li><a href="/attorneys">Attorneys</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ session['current_user_name'] }}</a></li>
@@ -39,7 +43,7 @@
             <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
+            <li id="availChart"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</li>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -50,8 +54,9 @@
 
                         <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-6 col-lg-offset-1 col-lg-6">
+                            <div id="startingChart" class="col-xs-offset-1 col-xs-6 col-lg-offset-1 col-lg-6">
                                 <img src="https://www.reflectionsworld.co.uk/assets/images/chartjs-casperjs.png"></div>
+                            <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
                         </div><br>
                           {% if case_count > 1 %}
                           <p><b>You Have {{ case_count }} Active Cases:</b></p>
@@ -60,38 +65,36 @@
                           {% endif %}
                           {% for case in active_case_lst %}
                           {% for defendant in case.defendants %}
-                        <div class="row-fluid">
+                        <div id="caseInfo" class="row-fluid">
                         <table class="table table-striped">
                             <th> Case Id </th>
                             <th> Type </th>
                             <th> Team </th>
                             <th> Opposition </th>
                             <th> Status </th>
-                            <tr data-toggle="collapse" data-target="#collapseData" class="clickable">
+                            <tr class="accordion-toggle" data-toggle="collapse" data-parent="#caseInfo" data-target=".collapseData">
                                 <td> {{ case.case_id }} </td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
                                     {% if user.user_id == case.team_lead %}
-                                    <li>{{ user.fname }} {{user.lname}}<span class="glyphicon glyphicon-star"></span></li>
+                                    <b><li>{{ user.fname }} {{user.lname}}<b></li>
                                     {% else %}
                                     <li>{{ user.fname }} {{user.lname}}</li>
                                     {% endif %}
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td><button type="button" class="btn" data-toggle="collapse" data-target="#collapseme">Click to expand</button></td>
+                                <td><button type="button" class="btn" id="expandRow" data-toggle="collapse" data-target="#collapseData">Show More</button></td>
                             </tr>
-                            <tr colspan="5" class="hiddenRow"><div id="demo3" class="accordian-body collapse">
-                            <div>
+                            <tr colspan="5" class="hiddenRow"><div class="accordion-body collapse collapseData" id="collapseData">
                                 {% if case.complaint %}
-                                <li><object data="{{ case.complaint.pdf }}" type="text/plain" width="500" style="height 300px">
-                                <a href="{{ case.complaint.pdf }}">Complaint</a></object></li>
+                                <li><object data="{{ case.complaint.pdf }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.pdf }}">Complaint</a></object></li>
                                 {% endif %}
                                 {% if case.answer %}
                                 <li>{{ case.answer.docx }}</li>
                                 {% endif %}
-                                <li><a href="/NEW NOTES">Add Notes</a></li>
+                                <li id="NOTES">Add Notes</li>
                                 {% endfor %}
                                 {% endfor %}
                             </div>
@@ -107,7 +110,6 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
     <script src="/static/dashboard.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
