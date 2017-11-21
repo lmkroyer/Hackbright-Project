@@ -33,13 +33,44 @@ function createAttnyAvail() {
 $("#availChart").click(function(){
     createAttnyAvail();
     $("#attnyBarChart").toggle();
-    $("#startingChart").toggle();
+    $("#progressChart").toggle();
 });
 
 
 $("#expandRow").click(function(){
     $("#collapsedRow").toggle();
 });
+
+
+// USER LINE GRAPH ON DASHBOARD
+
+function showUserInfo() {
+
+    // Make Line Chart of Melon Sales over time
+    let ctx_line = $("#progressChart").get(0).getContext("2d");
+
+    let options = {
+      responsive: true
+    };
+
+    $.get("/userProgress.json", function (data) {
+      var myLineChart = Chart.Line(ctx_line, {
+                                    data: data,
+                                    options: options
+                                });
+      // $("#lineLegend").html(myLineChart.generateLegend());
+    });
+}
+
+showUserInfo();
+
+
+// START A NEW CASE
+
+
+// $("#caseInit").click(function(){
+//     $("#progressChart").toggle();
+// });
 
 
 // NOTEPAD FUNCTIONS
@@ -66,7 +97,7 @@ function display_saved_note() {
 
 function save() {
     if(check_web_storage_support() == true) {
-        var area = document.getElementById("area");
+        let area = document.getElementById("area");
         if(area.value != '') {
             localStorage.setItem("note", area.value);
         }
@@ -76,12 +107,32 @@ function save() {
     }
 }
 
-function clear() {
-    document.getElementById('area').value = "";
+// function download(filename) {
+//     let text = document.getElementById("area");
+//     let pom = document.createElement('a');
+//     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+//     pom.setAttribute('download', filename);
+
+//     if (document.createEvent) {
+//         let event = document.createEvent('MouseEvents');
+//         event.initEvent('click', true, true);
+//         pom.dispatchEvent(event);
+//     }
+//     else {
+//         pom.click();
+//     }
+// }
+
+function close() {
+    // this line clears content
+    // document.getElementById('area').value = "";
+    $("#notepad").toggle();
+    $("#notepadControls").toggle();
+    $("#progressChart").toggle();
 }
 
 $("#newNote").click(function(){
     $("#notepad").toggle();
     $("#notepadControls").toggle();
-    $("#startingChart").toggle();
+    $("#progressChart").toggle();
 });

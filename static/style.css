@@ -1,3 +1,27 @@
+
+@font-face {
+  font-family: ailerons;
+  src: url('Ailerons-Typeface.otf');
+}
+
+@font-face {
+  font-family: ailerons;
+  font-weight: bold;
+  src: url('Ailerons-Typeface.otf');
+}
+
+
+#logo {
+  font-family: ailerons;
+  font-size: 36pt;
+}
+
+#dash {
+  margin:auto;
+  display:block;
+}
+
+
 /*--------------------------------*/
 /*Maps*/
 /*--------------------------------*/
@@ -21,6 +45,7 @@ body {
     /*background-color: #7283a0;*/
     /*background-color: #b6ccd6;*/
 /*    background-color: #93afbc;*/
+    background-image: url("home2.jpg");
     background-color: #dce3ef;
 }
 
@@ -29,11 +54,11 @@ body {
   text-align: center;
 }
 
-.attny-chart {
+/*.attny-chart {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 #wrapper {
   padding-left: 250px;

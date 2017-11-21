@@ -10,7 +10,7 @@
     <h3 align="right"><a href="/signout">Sign out</a></h3>
   {% endif %}
 
-    <h1 align="center">Lglease</h1>
+    <h1 align="center" id="logo">Lglease</h1>
 
 <!--     // <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -24,9 +24,9 @@
 
   {% if 'current_user' in session %}
 
-    <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
+    <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate" id="dash">Corporate</button></a>
 
-    <a href='/welcome'><button type="button" class="btn btn-outline-litigation">Litigation</button></a>
+    <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
 
   {% endif %}
 
