@@ -76,6 +76,13 @@ def index():
     return render_template('homepage.html')
 
 
+@app.route('/about_us')
+def show_co_info():
+    """Display information about the company."""
+
+    return render_template('about_us.html')
+
+
 @app.route('/active_cases.json')
 def active_case_info():
     """JSON information about county, state for active cases. For map markers."""

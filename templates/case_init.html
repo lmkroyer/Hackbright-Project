@@ -2,7 +2,12 @@
 
 {% block head %}
 
-  Start a new case
+<br>
+  <h2>Choose your Team</h2><br>
+
+<script src=
+  "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
+</script>
 
 {% endblock %}
 
@@ -13,35 +18,41 @@
 <!-- TODO: default to the user who is in the session -->
 <!-- TODO: enter a 'none' option to two attorneys -->
 
-    <h3>Select team leader:</h3>
+    <h4>Select team leader:</h4>
     <select name="team_lead">
     {% for attorney in attorneys %}
     <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
     {% endfor %}
     </select>
 
-    <h3>Select first attorney:</h3>
+    <h4>Select first attorney:</h4>
     <select name="attorney_1">
     {% for attorney in attorneys %}
     <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
     {% endfor %}
     </select>
 
-    <h3>Select second attorney:</h3>
+    <h4>Select second attorney:</h4>
     <select name="attorney_2">
     {% for attorney in attorneys %}
     <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
     {% endfor %}
     </select>
 
-    <input type='submit'>
+    <input type='submit' value='Start Claim'>
 
   </form>
 
-<div>
-  {% for attorney in attorneys %}
-    <ul>{{ attorney.fname }} {{ attorney.lname }}</ul>
-  {% endfor %}
-<div>
+<div class="container-fluid">
+    <div class="row" class="col-xs-offset-8 col-xs-6 col-lg-offset-8 col-lg-6">
+        <canvas id="attnyBarChart" width="800" height="350"></canvas>
+    </div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="/static/dashboard.js"></script>
+    <script>
+        createAttnyAvail();
+    </script>
 
 {% endblock %}

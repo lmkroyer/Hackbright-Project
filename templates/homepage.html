@@ -6,8 +6,8 @@
     <h3 align="right"><a href="/login">Login</a></h3>
     <h3 align="right"><a href="/register">Register new user</a></h3>
   {% else %}
-    <h4 align="right">Hello, {{ session['current_user_name'] }}</h4>
-    <h3 align="right"><a href="/signout">Sign out</a></h3>
+    <h5 align="right">Hello, {{ session['current_user_name'] }}</h5>
+    <h4 align="right"><a href="/signout">Sign out</a></h4>
   {% endif %}
 
     <h1 align="center" id="logo">Lglease</h1>
@@ -23,10 +23,10 @@
 {% block content %}
 
   {% if 'current_user' in session %}
-
+  <div align="center">
     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate" id="dash">Corporate</button></a>
-
     <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
+  </div>
 
   {% endif %}
 
