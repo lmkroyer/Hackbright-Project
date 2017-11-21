@@ -21,7 +21,8 @@
 
  14. fix click to expand on dashboard
 
- 15. add ability to take notes
+ 15. add ability to save notes
+ 16. add download path (or view) for docs on table
 
  dashboard:
 
@@ -40,6 +41,8 @@
  http://simpleweatherjs.com/
 
  http://eqdn.tech/html5-note-app-tutorial/
+
+ gradients!!! https://digitalsynopsis.com/design/beautiful-color-gradients-backgrounds/
 
 
 THURSDAY ^^^
