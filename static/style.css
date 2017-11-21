@@ -122,8 +122,13 @@ body {
 
 .navbar-brand {
   width: 250px;
-  font-size: 18pt
+  font-size: 18pt;
 }
+
+/*.nav, .navbar-header, .navbar, .navbar_inverse {
+  background-color: #222;
+  border-color: #080808;
+}*/
 
 /*TEXT BOX FOR NOTEPAD*/
 
@@ -169,4 +174,16 @@ a.button:hover {
 }
 a.button:active {
     background: rgba(80, 120, 80, 1);
+}
+
+#dashBack {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background: #fdfbfb ;
+    background: -webkit-linear-gradient(left, #fdfbfb  , #ebedee);
+    background: -o-linear-gradient(right, #fdfbfb , #ebedee);
+    background: -moz-linear-gradient(right, #fdfbfb , #ebedee);
+    background: linear-gradient(to right, #fdfbfb  , #ebedee);
 }

@@ -1,3 +1,5 @@
+1. ability to resume case place
+
 2. write basic tests
 
 3. add two corporate forms: text inputs to generate turbo-tax style (LPA & PPM all in one submission route)
@@ -43,6 +45,8 @@
  http://eqdn.tech/html5-note-app-tutorial/
 
  gradients!!! https://digitalsynopsis.com/design/beautiful-color-gradients-backgrounds/
+
+(6 or 7)
 
  **** https://www.html5rocks.com/en/tutorials/offline/storage/
 

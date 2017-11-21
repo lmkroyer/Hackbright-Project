@@ -13,8 +13,7 @@ function initMap() {
     center: unitedStates,
     scrollwheel: false,
     zoom: 4,
-    zoomControl: true,
-    streetViewControl: false,
+    disableDefaultUI: true,
     styles: MAPSTYLES,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
