@@ -1,4 +1,4 @@
-"""FACTORY OF FORM OBJECTS."""
+"""FACTORY OF LITITGATION FORM OBJECTS."""
 
 from textblob import TextBlob
 import re
