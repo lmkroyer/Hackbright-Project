@@ -4,10 +4,6 @@
 
 <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1" /> -->
 
-<script src=
-  "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
-</script>
-
 {% endblock %}
 
 {% block content %}
@@ -31,87 +27,82 @@
   </div>
 </nav>
 
-<div id="wrapper">
-    <div id="sidebar-wrapper-corp">
-        <ul class="sidebar-nav">
-            <br><li class="sidebar-brand">
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form></li><br>
-            <li><a href="/case_init"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-send"></span> Send a message</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
-            <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
-            <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
-        </ul>
-    </div>
-    <div id="page-content-wrapper">
-        <div class="page-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="container-fluid">
-                        <div class="row">
-                            <div id="startingInfo" class="col-xs-offset-1 col-xs-6 col-lg-offset-1 col-lg-6">
-                                <br><li><a href="/#">Form a Fund</a></li>
-                            <div id="LPA-generator">
-                            <form id="example-form" action="#">
-                                <div>
-                                    <h3>Account</h3>
-                                    <section>
-                                        <label for="userName">User name *</label>
-                                        <input id="userName" name="userName" type="text" class="required">
-                                        <label for="password">Password *</label>
-                                        <input id="password" name="password" type="text" class="required">
-                                        <label for="confirm">Confirm Password *</label>
-                                        <input id="confirm" name="confirm" type="text" class="required">
-                                        <p>(*) Mandatory</p>
-                                    </section>
-                                    <h3>Profile</h3>
-                                    <section>
-                                        <label for="name">First name *</label>
-                                        <input id="name" name="name" type="text" class="required">
-                                        <label for="surname">Last name *</label>
-                                        <input id="surname" name="surname" type="text" class="required">
-                                        <label for="email">Email *</label>
-                                        <input id="email" name="email" type="text" class="required email">
-                                        <label for="address">Address</label>
-                                        <input id="address" name="address" type="text">
-                                        <p>(*) Mandatory</p>
-                                    </section>
-                                    <h3>Hints</h3>
-                                    <section>
-                                        <ul>
-                                            <li>Foo</li>
-                                            <li>Bar</li>
-                                            <li>Foobar</li>
-                                        </ul>
-                                    </section>
-                                    <h3>Finish</h3>
-                                    <section>
-                                        <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
-                                    </section>
-                                </div>
-                            </form>
-                        </div>
-
-                        </div><br>
-
-                </div>
-            </div>
+<div id="wrapper" class="container">
+    <div class="row">
+    <div class="col-sm-4">
+        <div id="sidebar-wrapper-corp">
+            <ul class="sidebar-nav">
+                <br><li class="sidebar-brand">
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form></li><br>
+                <li><a href="/case_init"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-send"></span> Send a message</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
+                <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
+                <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
+            </ul>
         </div>
+    </div>
+    <div id="page-content-wrapper" class="col-sm-8">
+        <div class="page-content">
+                            <div id="allOptions">
+                                <br><li id="formFund"><a href="#">Form a Fund</a></li>
+                            </div>
+
+                 <div id="LPA-generator" style="display:none">
+                        <form id="LPA-form">
+                          <input id="input-1" type="text" placeholder="John Doe" required autofocus />
+                          <label for="input-1">
+                            <span class="label-text">Full Name</span>
+                            <span class="nav-dot"></span>
+                            <div class="signup-button-trigger">Sign Up</div>
+                          </label>
+                          <input id="input-2" type="text" placeholder="john" required />
+                          <label for="input-2">
+                            <span class="label-text">Username</span>
+                            <span class="nav-dot"></span>
+                          </label>
+                          <input id="input-3" type="email" placeholder="email@address.com" required />
+                          <label for="input-3">
+                            <span class="label-text">Email</span>
+                            <span class="nav-dot"></span>
+                          </label>
+                          <input id="input-4" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required />
+                          <label for="input-4">
+                            <span class="label-text">Password</span>
+                            <span class="nav-dot"></span>
+                          </label>
+                          <input id="input-5" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required />
+                          <label for="input-5">
+                            <span class="label-text">Confirm Password</span>
+                            <span class="nav-dot"></span>
+                          </label>
+                          <button id="makeLPA" type="submit">Create Your Account</button>
+                          <p class="tip">Press Tab</p>
+                          <div class="signup-button">Sign Up</div>
+                        </form>
+
+                 </div><br>
+        </div>
+    </div>
     </div>
 </div>
 
+    <script src=
+      "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="/static/dashboard_corp.js"></script>
+    <script src="/static/jquery.steps.js"></script>
+    <script src="/static/jquery.steps.min.js"></script>
+
 </body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="/static/dashboard_corp.js"></script>
 
 {% endblock %}

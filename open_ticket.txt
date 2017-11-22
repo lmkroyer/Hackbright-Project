@@ -75,6 +75,9 @@ THURSDAY ^^^
 15. do the overlay OCR!!!! opencv (test in new env)
 
 
+tinymce
+
+
 
 d3: http://bl.ocks.org/charlesdguthrie/11356441
 
