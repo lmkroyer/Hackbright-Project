@@ -10,7 +10,6 @@ from docx.enum.text import WD_COLOR, WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 from defenses import all_defenses
 import inflect
 
-# FIXME: remove all punctuation!!!! so don't have to do weird searches
 
 class Complaint(TextBlob):
     def __init__(self, decoded_text):
@@ -44,8 +43,6 @@ class Complaint(TextBlob):
 # FIXME: remove punctuation from word list so can not hardcode that into checks
 # FIXME: .correct() everything that comes out
 # FIXME: a way to grab other defendants and/or check if company or person
-
-# FIXME: get all names by making a noun phrase list!!!
 
     # Could also check if what comes after starts with upper case, and if so pull it
     def get_plaintiff_fname(self):
@@ -363,6 +360,156 @@ class Answer(object):
         return filename
 
 
+class Interrogatories(object):
+
+    plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
+    case_state = case_county = user_fname = user_lname = user_mailing_address = None
+    user_email = user_firm_name = case_no = None
+
+    def __init__(self, complaint, user):
+
+        self.complaint = complaint
+        self.user = user
+        self.plaintiff_fname = complaint.case.plaintiffs[0].fname
+        self.plaintiff_lname = complaint.case.plaintiffs[0].lname
+        self.defendant_fname = complaint.case.defendants[0].fname
+        self.defendant_lname = complaint.case.defendants[0].lname
+        self.case_county = complaint.case.county
+        self.case_state = complaint.case.state
+        self.user_fname = user.fname
+        self.user_lname = user.lname
+        self.user_email = user.email
+        self.user_mailing_address = user.mailing_address
+        self.user_firm_name = user.firm_name
+        self.case_no = str(complaint.case.case_no)
+
+
+    def insert_information(self):
+        """Adds custom information into the interrogatories template.
+
+        Returns a modified docx file."""
+
+        # Make a list of all attributes on an Interrogatories class
+        attrs = [attr for attr in Interrogatories.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(Interrogatories.__dict__[attr]))]
+
+        # Make a list of all upper case attributes
+        cap_attrs = [attr.upper() for attr in Interrogatories.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(Interrogatories.__dict__[attr]))]
+
+        # Make a Document object for Python-docx
+        interrogatories = Document('forms/interrogatories_from_D_template.docx')
+        style = interrogatories.styles['Normal']
+        font = style.font
+        font.size = Pt(12)
+
+        # font.highlight_color = WD_COLOR.YELLOW
+
+        # Preserve format: replace lowercase tags with values
+        for attr_name in attrs:
+
+            for paragraph in answer.paragraphs:
+
+                if attr_name in paragraph.text:
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name,
+                                               getattr(self, attr_name)))
+
+        # Preserve format: replace uppercase tags with values
+        for attr_name in cap_attrs:
+
+            for paragraph in answer.paragraphs:
+
+                if attr_name in paragraph.text:
+                    attr_data = getattr(self, attr_name.lower())
+                    attr_data = attr_data.upper()
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name, attr_data))
+
+        # Make a new filename from case no.
+        filename = 'interrogatories_{case_no}.docx'.format(case_no=self.case_no)
+        # Save the modified document with the new filename
+        interrogatories.save('filestorage/{filename}'.format(filename=filename))
+        # Return filename to pass to display
+        return filename
+
+
+class RequestProDocs(object):
+
+    plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
+    case_state = case_county = user_fname = user_lname = user_mailing_address = None
+    user_email = user_firm_name = case_no = None
+
+    def __init__(self, complaint, user):
+
+        self.complaint = complaint
+        self.user = user
+        self.plaintiff_fname = complaint.case.plaintiffs[0].fname
+        self.plaintiff_lname = complaint.case.plaintiffs[0].lname
+        self.defendant_fname = complaint.case.defendants[0].fname
+        self.defendant_lname = complaint.case.defendants[0].lname
+        self.case_county = complaint.case.county
+        self.case_state = complaint.case.state
+        self.user_fname = user.fname
+        self.user_lname = user.lname
+        self.user_email = user.email
+        self.user_mailing_address = user.mailing_address
+        self.user_firm_name = user.firm_name
+        self.case_no = str(complaint.case.case_no)
+
+
+    def insert_information(self):
+        """Adds custom information into the request for production of documents template.
+
+        Returns a modified docx file."""
+
+        # Make a list of all attributes on a RequestProDocs class
+        attrs = [attr for attr in RequestProDocs.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(RequestProDocs.__dict__[attr]))]
+
+        # Make a list of all upper case attributes
+        cap_attrs = [attr.upper() for attr in RequestProDocs.__dict__.keys()
+                 if (not attr.startswith("__") and
+                     not callable(RequestProDocs.__dict__[attr]))]
+
+        # Make a Document object for Python-docx
+        request_pro_docs = Document('forms/request_for_production_of_docs_template.docx')
+        style = request_pro_docs.styles['Normal']
+        font = style.font
+        font.size = Pt(12)
+
+        # font.highlight_color = WD_COLOR.YELLOW
+
+        # Preserve format: replace lowercase tags with values
+        for attr_name in attrs:
+
+            for paragraph in request_pro_docs.paragraphs:
+
+                if attr_name in paragraph.text:
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name,
+                                               getattr(self, attr_name)))
+
+        # Preserve format: replace uppercase tags with values
+        for attr_name in cap_attrs:
+
+            for paragraph in request_pro_docs.paragraphs:
+
+                if attr_name in paragraph.text:
+                    attr_data = getattr(self, attr_name.lower())
+                    attr_data = attr_data.upper()
+                    paragraph.text = (
+                        paragraph.text.replace(attr_name, attr_data))
+
+        # Make a new filename from case no.
+        filename = 'request_pro_docs_{case_no}.docx'.format(case_no=self.case_no)
+        # Save the modified document with the new filename
+        request_pro_docs.save('filestorage/{filename}'.format(filename=filename))
+        # Return filename to pass to display
+        return filename
 
 
 # don't assume end coordinate
