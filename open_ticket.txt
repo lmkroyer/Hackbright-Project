@@ -1,3 +1,10 @@
+
+BROKEN: search bar not working!!!!
+
+add attorney bar chart back to corp dash
+
+*****
+
 1. ability to resume case place
 
 2. write basic tests
