@@ -93,64 +93,65 @@
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
 
              <div id="LPA-generator" style="display:none">
-                    <form id="LPA-form">
-                      <input class="lpa-input" id="input-1" type="text" placeholder="Red Cedar Onshore Fund, LP" required autofocus />
+                    <form id="LPA-form" action="/proess_LPA", method='POST'>
+                      <input class="lpa-input" id="input-1" type="text" name="fund" placeholder="Red Cedar Onshore Fund, LP" required autofocus />
                       <label for="input-1">
                         <span class="label-text">What is the complete name of the Fund?</span>
                         <span class="nav-dot"></span>
                        <!--  <div class="signup-button-trigger">Form a Fund</div> -->
                       </label>
-                      <input class="lpa-input" id="input-2" type="text" placeholder="Utah" required />
+                      <input class="lpa-input" id="input-2" type="text" name="fund_state" placeholder="Utah" required />
                       <label for="input-2">
                         <span class="label-text">In what state is the fund being formed?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <label for="input-2">
+                      <input class="lpa-input" id="input-3" type="text" name="fund_ppp" placeholder="Utah" required />
+                      <label for="input-3">
                         <span class="label-text">What will be the Fund's principal place of business?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="Red Cedar Feeder Fund GP, LP" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-4" type="text" name="gp" placeholder="Red Cedar Feeder Fund GP, LP" required />
+                      <label for="input-4">
                         <span class="label-text">What is the name of the General Partner?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-5" type="text" name="gp_state" placeholder="email@address.com" required />
+                      <label for="input-5">
                         <span class="label-text">Under what state is the GP organized?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-6" type="text" name="gp_address" placeholder="email@address.com" required />
+                      <label for="input-6">
                         <span class="label-text">What is the mailing address for the GP?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-6" type="email" placeholder="email@address.com" required />
-                      <label for="input-6">
+                      <input class="lpa-input" id="input-7" type="email" name="gp_email" placeholder="email@address.com" required />
+                      <label for="input-7">
                         <span class="label-text">How can we reach the GP (email)?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-8" type="text" name="im" placeholder="email@address.com" required />
+                      <label for="input-8">
                         <span class="label-text">What is the name of the Investment Manager?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-9" type="text" name="im_state" placeholder="email@address.com" required />
+                      <label for="input-9">
                         <span class="label-text">Under what state is the Manager organized?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
-                      <label for="input-3">
+                      <input class="lpa-input" id="input-10" type="text" name="im_address" placeholder="email@address.com" required />
+                      <label for="input-10">
                         <span class="label-text">What is the mailing address for the Manager?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-6" type="email" placeholder="email@address.com" required />
-                      <label for="input-6">
+                      <input class="lpa-input" id="input-11" type="email" name="im_email" placeholder="email@address.com" required />
+                      <label for="input-11">
                         <span class="label-text">How can we reach the Manager (email)?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input class="lpa-input" id="input-6" type="date" placeholder="01/01/2018" required />
-                      <label for="input-6">
+                      <input class="lpa-input" id="input-12" type="date" name="sig_date" placeholder="01/01/2018" required />
+                      <label for="input-12">
                         <span class="label-text">When will all parties be signing this agreement?</span>
                         <span class="nav-dot"></span>
                       </label>

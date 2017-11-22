@@ -581,6 +581,42 @@ def generate_answer():
 
     return redirect(url_for('download', filename=filename))
 
+# @WIP: plus pass in client_id so that don't need it in session
+@app.route('/process_LPA/<fund>', methods=['POST'])
+def generate_answer(fund):
+    """Create an LPA object from the user's input."""
+
+    fund = request.form.get('fund')
+    fund_state = request.form.get('fund_state')
+    fund_ppp = request.form.get('fund_ppp')
+    gp = request.form.get('gp')
+    gp_state = request.form.get('gp_state')
+    gp_address = request.form.get('gp_address')
+    gp_email = request.form.get('gp_email')
+    im = request.form.get('im')
+    im_state = request.form.get('im_state')
+    im_address = request.form.get('im_address')
+    im_email = request.form.get('im_email')
+    sig_date_lpa = request.form.get('sig_date')
+
+    if 'active_case' in session:
+        case_id = session['active_case']
+
+        case = Case.query.get(case_id)
+        complaint = case.complaint
+        user = User.query.filter(User.user_id == case.team_lead).first()
+
+        # Create and Answer and generate the document
+        answer = Answer(complaint, user, defenses)
+        filename = answer.insert_information()
+
+        # Store the Answer info in the database
+        answer.date_created = datetime.utcnow()
+        answer.docx = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        db.session.add(answer)
+        db.session.commit()
+
+    return redirect(url_for('download', filename=filename))
 
 # TODO: display and allow to edit before build
 @app.route('/display_answer')
@@ -594,7 +630,7 @@ def display_answer():
 def provide_document(filename):
     """Allow user access to a document via to the browser."""
 
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=False)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
 @app.route('/d3_play')

@@ -232,6 +232,7 @@ class Complaint(TextBlob):
 
         return 'N/A'
 
+
 class Answer(object):
 
     plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
