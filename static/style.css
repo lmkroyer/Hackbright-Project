@@ -21,6 +21,10 @@
   font-size: 48pt;
 }
 
+#dash-logo {
+  font-family: ailerons;
+}
+
 /*#dash {
   margin: auto;
   display: block;

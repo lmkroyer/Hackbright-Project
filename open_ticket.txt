@@ -1,6 +1,10 @@
 
 add sidebar tree: https://www.bootply.com/fMWRLF0p4D
 
+redo wireframe on lit side -- add functionality for case pattern + to resume
+
+change db to account for new forms and timestamps (plus due dates)
+
 *****
 
 1. ability to resume case place
