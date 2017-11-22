@@ -112,7 +112,7 @@
                                 <td>
                                     <div class="accordion-body collapse" id="demo1">
                                     {% if case.complaint %}
-                                    <li><object data="{{ case.complaint.pdf }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.pdf }}">Complaint</a></object></li>
+                                    <li><object data="{{ case.complaint.doc }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.doc }}">Complaint</a></object></li>
                                     {% endif %}
                                     {% if case.answer %}
                                     <li><object data="{{ case.answer.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.answer.docx }}">Answer</a></object></li>

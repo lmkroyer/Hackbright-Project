@@ -307,11 +307,15 @@ def get_attny_data():
     caseload = {}
 
     for user in User.query.all():
-        case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
+        # Return a list of that user's cases (all)
+        cases = user.cases
+        case_count = 0
+        for case in cases:
+            if case.settled == False:
+                case_count += 1
         fname = user.fname
         lname = user.lname
         name = fname + ' ' + lname
-        case_count = int(case_count)
         caseload[name] = case_count
 
     users = []
@@ -531,7 +535,7 @@ def send_to_db():
                               date_processed=date_processed,
                               damages_asked=damages_asked,
                               legal_basis=legal_basis,
-                              pdf=os.path.join(app.config['UPLOAD_FOLDER'],
+                              doc=os.path.join(app.config['UPLOAD_FOLDER'],
                                                filename),
                               txt=os.path.join(app.config['UPLOAD_FOLDER'],
                                                txt_filename))
@@ -575,7 +579,7 @@ def generate_answer():
         db.session.add(answer)
         db.session.commit()
 
-    return redirect(url_for('uploaded_answer', filename=filename))
+    return redirect(url_for('download', filename=filename))
 
 
 # TODO: display and allow to edit before build
@@ -586,11 +590,11 @@ def display_answer():
     pass
 
 
-@app.route('/upload_answer/<filename>')
-def uploaded_answer(filename):
-    """Attach the generated answer to the browser."""
+@app.route('/download/<filename>')
+def provide_document(filename):
+    """Allow user access to a document via to the browser."""
 
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=False)
 
 
 @app.route('/d3_play')
