@@ -215,6 +215,7 @@ a.button:active {
 
 #LPA-generator {
   color: white;
+  box-sizing : border-box;
 }
 
 /*LPA FORM*/
@@ -224,7 +225,7 @@ input,
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -300%);
+  transform: translate(-40%, -250%);
   display: block;
   width: 70vw;
   opacity: 0;
@@ -233,6 +234,7 @@ input,
 }
 
 input {
+  box-sizing : border-box;
   padding: .25rem 0;
   border: 0;
   border-bottom: 1px solid $primary;
@@ -266,7 +268,7 @@ button,
 input:focus,
 #makeLPA:focus {
   opacity: 1;
-  transform: translate(-50%, -100%);
+  transform: translate(-40%, -50%);
   pointer-events: auto;
   transition: all .4s cubic-bezier(.1, .45, .1, .85) .5s;
   z-index: 10;
@@ -274,11 +276,11 @@ input:focus,
 
 input:focus ~ input,
 input:focus ~ #makeLPA {
-  transform: translate(-50%, 500%);
+  transform: translate(-40%, 450%);
   transition: all .5s ease-in;
 }
 input:focus ~ label .label-text {
-  transform: translate(-50%, 300%);
+  transform: translate(-40%, 250%);
   transition: all .5s ease-in;
 }
 input:focus ~ .tip {
@@ -291,7 +293,7 @@ input:focus ~ .signup-button,
 
 input:focus + label .label-text {
   opacity: 1;
-  transform: translate(-50%, -100%);
+  transform: translate(-40%, -75%);
   transition: all .3s cubic-bezier(.1, .45, .1, .85) .4s;
 }
 input:focus + label .nav-dot:before {
@@ -303,7 +305,7 @@ input:focus + label .nav-dot:before {
   position: fixed;
   top: 57%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-40%, -40%);
   width: 70%;
   opacity: 0;
   color: #fff;
@@ -320,7 +322,7 @@ input:focus + label .nav-dot:before {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-40%, -75%);
   width: 70vw;
   padding: .25rem 0;
   line-height: 3.6rem;
@@ -339,7 +341,7 @@ input:focus + label .nav-dot:before {
   position: fixed;
   top: calc(50% - 4rem);
   left: 50%;
-  transform: translate(-50%, -300%);
+  transform: translate(-40%, -250%);
   width: 70vw;
   padding: 3.125rem 0 1.5rem;
   text-transform: uppercase;

@@ -16,8 +16,6 @@ add attorney bar chart back to corp dash
  b. fix tabbing
  c. correct for pronouns
 
- ** 5. Add a chart or two to dashboard
-
 ** 6. get doc to open in browser
 
  6. refactor to more modular
@@ -84,6 +82,7 @@ THURSDAY ^^^
 
 tinymce
 
+fancy form: https://codepen.io/epilande/pen/eZJGpP
 
 
 d3: http://bl.ocks.org/charlesdguthrie/11356441
