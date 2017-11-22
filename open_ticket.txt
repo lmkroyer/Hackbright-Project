@@ -1,7 +1,5 @@
 
-BROKEN: search bar not working!!!!
-
-add attorney bar chart back to corp dash
+add sidebar tree: https://www.bootply.com/fMWRLF0p4D
 
 *****
 

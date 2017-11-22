@@ -37,34 +37,42 @@
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form></li><br>
-                <li><a href="/case_init"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
                 <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
                 <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-send"></span> Send a message</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
                 <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
-                <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
+                <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span> Clients</a></li><br>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                    </ul>
+                  </div>
             </ul>
         </div>
     </div>
     <div id="page-content-wrapper" class="col-sm-8">
         <div class="page-content">
             <div id="allOptions">
-                <br><li id="formFund"><a href="#">Form a Fund</a></li>
+                <h3 id="corp-options">Select an Action:</h3><br>
+                <li id="formFund"><a href="#">Form a Fund</a></li>
             </div>
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
 
              <div id="LPA-generator" style="display:none">
                     <form id="LPA-form">
-                      <input id="input-1" type="text" placeholder="Red Cedar Onshore Fund, LP" required autofocus />
+                      <input class="lpa-input" id="input-1" type="text" placeholder="Red Cedar Onshore Fund, LP" required autofocus />
                       <label for="input-1">
                         <span class="label-text">What is the complete name of the Fund?</span>
                         <span class="nav-dot"></span>
                 <!--         <div class="signup-button-trigger">Sign Up</div> -->
                       </label>
-                      <input id="input-2" type="text" placeholder="Utah" required />
+                      <input class="lpa-input" id="input-2" type="text" placeholder="Utah" required />
                       <label for="input-2">
                         <span class="label-text">In what state is the fund being formed?</span>
                         <span class="nav-dot"></span>
@@ -73,47 +81,47 @@
                         <span class="label-text">What will be the Fund's principal place of business?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="Red Cedar Feeder Fund GP, LP" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="Red Cedar Feeder Fund GP, LP" required />
                       <label for="input-3">
                         <span class="label-text">What is the name of the General Partner?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
                       <label for="input-3">
                         <span class="label-text">Under what state is the GP organized?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
                       <label for="input-3">
                         <span class="label-text">What is the mailing address for the GP?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-6" type="email" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-6" type="email" placeholder="email@address.com" required />
                       <label for="input-6">
                         <span class="label-text">How can we reach the GP (email)?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
                       <label for="input-3">
                         <span class="label-text">What is the name of the Investment Manager?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
                       <label for="input-3">
                         <span class="label-text">Under what state is the Manager organized?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-3" type="text" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-3" type="text" placeholder="email@address.com" required />
                       <label for="input-3">
                         <span class="label-text">What is the mailing address for the Manager?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <input id="input-6" type="email" placeholder="email@address.com" required />
+                      <input class="lpa-input" id="input-6" type="email" placeholder="email@address.com" required />
                       <label for="input-6">
                         <span class="label-text">How can we reach the Manager (email)?</span>
                         <span class="nav-dot"></span>
                       </label>
-                      <button id="makeLPA" type="submit">Create Your Fund's Limited Partnership Agreement</button>
+                      <button id="makeLPA" type="submit">Okay, let's make the LPA</button>
                       <p class="tip">Press Tab</p>
                       <div class="signup-button">Sign Up</div>
                     </form>
