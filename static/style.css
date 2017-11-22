@@ -25,6 +25,20 @@
   font-family: ailerons;
 }
 
+#client-info {
+  color: white;
+}
+
+#client-info-sub {
+  color: white;
+  padding-left:2em;
+}
+
+#client-info-sub-sub {
+  color: white;
+  padding-left:3em;
+}
+
 /*#dash {
   margin: auto;
   display: block;
