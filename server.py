@@ -24,7 +24,7 @@ from werkzeug.utils import secure_filename
 
 from docx import Document
 
-from classes import Answer
+from lit_form_classes import Answer
 
 # import geocoder
 

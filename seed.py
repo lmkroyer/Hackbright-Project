@@ -42,8 +42,16 @@ def load_doc_types():
     answer = DocType(doc_type_id=2,
                      name='Answer')
 
+    interrogatories = DocType(doc_type_id=3,
+                              name="Interrogatories")
+
+    request_pro_docs = DocType(doc_type_id=4,
+                               name="Request_Pro_Docs")
+
     db.session.add(complaint)
     db.session.add(answer)
+    db.session.add(interrogatories)
+    db.session.add(request_pro_docs)
     db.session.commit()
 
 

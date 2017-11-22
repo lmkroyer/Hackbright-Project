@@ -2,7 +2,7 @@
 
 from textblob import TextBlob
 import textract, os
-from classes import Complaint
+from lit_form_classes import Complaint
 import fileinput
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
@@ -74,7 +74,7 @@ def generate_final_answer(defenses):
 
     Outputs a final answer document."""
 
-    # make a dictionary with affirm defense and paragraph text 
+    # make a dictionary with affirm defense and paragraph text
     # start with txt file, replace small items
     # convert to docx
     # open docx and add the relevant paragraphs
@@ -91,11 +91,11 @@ def generate_answer(defenses):
 
 #text class --> pass in the text
 # attributes on the text class for sentece list and word list
-# call methods on attributes to extract data 
-#get data from text object function 
+# call methods on attributes to extract data
+#get data from text object function
 
 #pass object into jinja
-# class inherits from textblob to call textblob methods 
+# class inherits from textblob to call textblob methods
 # call the super and add extra stuff in __init__
 
 

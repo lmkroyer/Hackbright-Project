@@ -44,6 +44,41 @@ class CaseUser(db.Model):
                                                                     self.case_id)
 
 
+class FundClient(db.Model):
+    """Private Investment Fund client model."""
+
+    __tablename__ = 'fclients'
+
+    client_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    attorney = db.Column(db.String(25), db.ForeignKey('users.user_id'), nullable=True)
+    fund = db.Column(db.String(64), nullable=True)
+    fund_state = db.Column(db.String(25), nullable=True)
+    fund_ppp = db.Column(db.String(64), nullable=True)
+    gp = db.Column(db.String(64), nullable=True)
+    gp_state = db.Column(db.String(25), nullable=True)
+    gp_address = db.Column(db.String(64), nullable=True)
+    im = db.Column(db.String(64), nullable=True)
+    im_state = db.Column(db.String(25), nullable=True)
+    im_address = db.Column(db.String(64), nullable=True)
+    lpa = db.Column(db.String(64), nullable=True)
+    mgmt_fee = db.Column(db.Integer, nullable=True)
+    perf_fee = db.Column(db.Integer, nullable=True)
+    ppm = db.Column(db.String(64), nullable=True)
+    ima = db.Column(db.String(64), nullable=True)
+    form_13F = db.Column(db.String(64), nullable=True)
+    form_PF = db.Column(db.String(64), nullable=True)
+    sum_rep = db.Column(db.String(64), nullable=True)
+
+    # Define relationship to user
+    user = db.relationship('User', backref=db.backref('fclients'))
+
+
+    def __repr__(self):
+        """Provide info about the FundClient instance."""
+
+        return "<Fund fund={}>".format(self.fund)
+
+
 class Case(db.Model):
     """Case model."""
 
@@ -91,6 +126,10 @@ class Case(db.Model):
     complaint = db.relationship('Complaint', uselist=False, backref=db.backref('case'))
     # Define relationship to answer
     answer = db.relationship('Answer', uselist=False, backref=db.backref('case'))
+    # Define relationship to interrogatories
+    interrogatories = db.relationship('Interrogatories', uselist=False, backref=db.backref('case'))
+    # Define relationship to request for production of documents
+    request_pro_docs = db.relationship('RequestProDocs', uselist=False, backref=db.backref('case'))
 
     # Define relationship to opposing counsel
     opp = db.relationship('OpposingCounsel', backref=db.backref('cases'))
@@ -207,7 +246,7 @@ class Complaint(db.Model):
     damages_asked = db.Column(db.String(100), nullable=False)
     legal_basis = db.Column(db.String(64), nullable=True)
     # TODO: put on AWS and change to url
-    pdf = db.Column(db.String(64), nullable=False)
+    doc = db.Column(db.String(64), nullable=False)
     txt = db.Column(db.String(64), nullable=False)
 
     def __repr__(self):
@@ -237,6 +276,50 @@ class Answer(db.Model):
 
         return "<Answer answer_id={} case_id={}>".format(self.answer_id,
                                                          self.case_id)
+
+
+class Interrogatories(db.Model):
+    """Interrogatories (document type) model."""
+
+    __tablename__ = 'interrogatories'
+
+    interrogatories_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    doc_type_id = db.Column(db.Integer, default=3, nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
+
+    date_created = db.Column(db.DateTime, nullable=True)
+    date_reviewed = db.Column(db.DateTime, nullable=True)
+    date_submitted = db.Column(db.DateTime, nullable=True)
+
+    docx = db.Column(db.String(64), nullable=True)  # will be url if online server or relative file /static/etc...
+
+    def __repr__(self):
+        """Provide into about the interrogatories instance."""
+
+        return "<Interrogatories interrogatories_id={} doc_type_id={}>".format(self.interrogatories_id,
+                                                                               self.doc_type_id)
+
+
+class RequestProDocs(db.Model):
+    """Request for Production of Documents (document type) model."""
+
+    __tablename__ = 'request_pro_docs'
+
+    request_pro_docs_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    doc_type_id = db.Column(db.Integer, default=4, nullable=False)
+    case_id = db.Column(db.Integer, db.ForeignKey('cases.case_id'), nullable=False)
+
+    date_created = db.Column(db.DateTime, nullable=True)
+    date_reviewed = db.Column(db.DateTime, nullable=True)
+    date_submitted = db.Column(db.DateTime, nullable=True)
+
+    docx = db.Column(db.String(64), nullable=True)  # will be url if online server or relative file /static/etc...
+
+    def __repr__(self):
+        """Provide into about the request for production of documents instance."""
+
+        return "<Request for Production of Documents request_pro_docs_id={} doc_type_id={}>".format(self.request_pro_docs_id,
+                                                                                                    self.doc_type_id)
 
 
 ##############################################################################
