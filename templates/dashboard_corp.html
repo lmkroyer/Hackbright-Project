@@ -43,8 +43,8 @@
                 <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br>
 
                 <li id="client-info">Clients:
-
-                  <li><label class="tree-toggle nav-header" id="client-info-sub">Fund Name</label><br>
+                  {% for fund in funds %}
+                  <li><label class="tree-toggle nav-header" id="client-info-sub">{{ fund.fund }}</label><br>
                     <ul class="tree" style="display:none">
                       <li><label class="tree-toggle nav-header" id="client-info-sub-sub">Docs</label>
                         <ul class="nav nav-list tree" id="client-info-sub-sub-sub" style="display:none">
@@ -67,6 +67,7 @@
                       </li>
                     </ul>
                   </li>
+                  {% endfor %}
                 </li>
 
 

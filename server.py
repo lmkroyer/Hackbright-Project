@@ -348,7 +348,9 @@ def get_attny_data():
 def display_corp_dashboard():
     """Display the corporate dashboard."""
 
-    return render_template('dashboard_corp.html')
+    funds = FundClient.query.all()
+
+    return render_template('dashboard_corp.html', funds=funds)
 
 
 @app.route('/case_init')

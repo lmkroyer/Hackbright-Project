@@ -106,7 +106,7 @@ class LPA(object):
                         paragraph.text.replace(attr_name, attr_data))
 
         # Make a new filename from fund name
-        filename = 'lpa_{fund}.docx'.format(fund=self._fund_)
+        filename = 'LPA_{fund}.docx'.format(fund=self._fund_)
         # Save the modified document with the new filename
         lpa.save('filestorage/{filename}'.format(filename=filename))
         # Return filename to pass to display
