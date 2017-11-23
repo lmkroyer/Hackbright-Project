@@ -1,5 +1,17 @@
 
-add sidebar tree: https://www.bootply.com/fMWRLF0p4D
+https://www.bootply.com/fMWRLF0p4D
+
+corp: add PPM question flow and that plus a few more options on the home dash
+    - add summary report full functionality (or maybe confi?) w/ OCR
+
+lit: add deadlines and timeline and ability to resume into certain documents
+
+misc: start messing with bounding box functionality
+
+
+MONDAY: get notes to display on browser line
+
+
 
 redo wireframe on lit side -- add functionality for case pattern + to resume
 

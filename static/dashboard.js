@@ -1,4 +1,40 @@
 
+"use strict";
+
+function getCaseStatus() {
+
+    let status = document.getElementById('caseID');
+
+    let cases = document.getElementById('caseList');
+
+    for (let cse of cases) {
+
+        if (cse.request_pro_docs.submitted) {
+            return '100%';
+        }
+        else if (cse.interrogatories.submitted) {
+            return '75%';
+        }
+        else if (cse.answer.submitted) {
+            return '50%';
+        }
+        else if (cse.complaint.processed) {
+            return '25%';
+        }
+        else {
+            return '0%';
+        }
+// FIXME: this needs to show status!
+
+
+let caseStatus = document.querySelector("#case-status");
+caseStatus.innerHTML = getCaseStatus();
+
+function insertText () {
+    document.getElementById('td1').innerHTML = "Some text to enter";
+}
+
+
 // ATTNY BAR CHART FUNCTIONS
 
 function createAttnyAvail() {
@@ -54,7 +90,7 @@ function showUserInfo() {
     };
 
     $.get("/userProgress.json", function (data) {
-      var myLineChart = Chart.Line(ctx_line, {
+      let myLineChart = Chart.Line(ctx_line, {
                                     data: data,
                                     options: options
                                 });

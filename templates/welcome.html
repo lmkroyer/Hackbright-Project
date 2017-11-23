@@ -12,7 +12,7 @@
 
 {% block content %}
 
-<body id="dashBack">
+<body id="dashBack" onload="getCaseStatus();">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -90,7 +90,7 @@
                             <th> Status </th>
 
                             <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-                                <td> {{ case.case_id }} </td>
+                                <td id="caseId"> {{ case.case_id }} </td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
@@ -102,7 +102,7 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td><button type="button" class="btn" id="expandRow" data-toggle="collapse" data-target="#demo">Show More</button></td>
+                                <td id="case-status">Status: <br><button type="button" class="btn" id="expandRow" data-toggle="collapse" data-target="#demo">Expand</button></td>
                             </tr>
                             <tr scolspan="5" class="hiddenRow">
                                 <td></td>
@@ -116,6 +116,12 @@
                                     {% endif %}
                                     {% if case.answer %}
                                     <li><object data="{{ case.answer.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.answer.docx }}">Answer</a></object></li>
+                                    {% endif %}
+                                    {% if case.interrogatories %}
+                                    <li><object data="{{ case.interrogatories.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.interrogatories.docx }}">Interrogatories</a></object></li>
+                                    {% endif %}
+                                    {% if case.request_pro_docs %}
+                                    <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
                                     <li id="newNote"><a href="#">Add Notes</a></li>
                                     {% endfor %}
@@ -131,6 +137,8 @@
         </div>
     </div>
 </div>
+
+<div id="caseList" style="display:none">{{ active_case_lst }}</div>
 
 </body>
 

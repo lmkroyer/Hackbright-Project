@@ -67,6 +67,19 @@ def test():
     case_count = active_cases.count()
     active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
 
+    # @wip: Figure out case status
+    # for case in active_case_lst:
+    #     if case.request_pro_docs.submitted:
+    #         status = '100%'
+    #     elif case.interrogatories.submitted:
+    #         status = '75%'
+    #     elif case.answer.submitted:
+    #         status = '50%'
+    #     elif case.complaint.processed:
+    #         status = '25%'
+    #     else:
+    #         status = '0%'
+
     return render_template('/welcome.html', active_case_lst=active_case_lst,
                                             case_count=case_count)
 
