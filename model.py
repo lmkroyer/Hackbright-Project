@@ -58,6 +58,7 @@ class FundClient(db.Model):
     gp_state = db.Column(db.String(25), nullable=True)
     gp_address = db.Column(db.String(64), nullable=True)
     gp_email = db.Column(db.String(64), nullable=True)
+    gp_sig_party = db.Column(db.String(64), nullable=True)
     im = db.Column(db.String(64), nullable=True)
     im_state = db.Column(db.String(25), nullable=True)
     im_address = db.Column(db.String(64), nullable=True)

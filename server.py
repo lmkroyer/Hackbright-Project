@@ -16,7 +16,8 @@ from flask import (Flask, jsonify, render_template, redirect, request, flash,
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import (User, CaseUser, Case, OpposingCounsel, Role, CaseParty,
-                   Party, DocType, ClaimType, Complaint, Answer, connect_to_db, db)
+                   Party, DocType, ClaimType, Complaint, Answer, Interrogatories,
+                   RequestProDocs, FundClient, connect_to_db, db)
 from flask_sqlalchemy import SQLAlchemy
 # import requests
 # import os
@@ -25,6 +26,7 @@ from werkzeug.utils import secure_filename
 from docx import Document
 
 from lit_form_classes import Answer
+from corp_form_classes import LPA
 
 # import geocoder
 
@@ -581,9 +583,9 @@ def generate_answer():
 
     return redirect(url_for('download', filename=filename))
 
-# @WIP: plus pass in client_id so that don't need it in session
-@app.route('/process_LPA/<fund>', methods=['POST'])
-def generate_answer(fund):
+# @WIP:
+@app.route('/process_LPA', methods=['POST'])
+def generate_lpa():
     """Create an LPA object from the user's input."""
 
     fund = request.form.get('fund')
@@ -593,30 +595,43 @@ def generate_answer(fund):
     gp_state = request.form.get('gp_state')
     gp_address = request.form.get('gp_address')
     gp_email = request.form.get('gp_email')
+    gp_sig_party = request.form.get('gp_sig_party')
     im = request.form.get('im')
     im_state = request.form.get('im_state')
     im_address = request.form.get('im_address')
     im_email = request.form.get('im_email')
-    sig_date_lpa = request.form.get('sig_date')
+    sig_date = request.form.get('sig_date')
 
-    if 'active_case' in session:
-        case_id = session['active_case']
+    user = session.get('current_user')
 
-        case = Case.query.get(case_id)
-        complaint = case.complaint
-        user = User.query.filter(User.user_id == case.team_lead).first()
+    new_fund_client = FundClient(attorney=user,
+                                 fund=fund,
+                                 fund_state=fund_state,
+                                 fund_ppp=fund_ppp,
+                                 gp=gp,
+                                 gp_state=gp_state,
+                                 gp_address=gp_address,
+                                 gp_email=gp_email,
+                                 gp_sig_party=gp_sig_party,
+                                 im=im,
+                                 im_state=im_state,
+                                 im_address=im_address,
+                                 im_email=im_email,
+                                 sig_date_lpa=sig_date)
 
-        # Create and Answer and generate the document
-        answer = Answer(complaint, user, defenses)
-        filename = answer.insert_information()
+    lpa = LPA(fund, fund_state, fund_ppp,
+              gp, gp_state, gp_address, gp_email, gp_sig_party,
+              im, im_state, im_address, im_email,
+              sig_date)
 
-        # Store the Answer info in the database
-        answer.date_created = datetime.utcnow()
-        answer.docx = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        db.session.add(answer)
-        db.session.commit()
+    filename = lpa.insert_information()
 
-    return redirect(url_for('download', filename=filename))
+    new_fund_client.lpa = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+    db.session.add(new_fund_client)
+    db.session.commit()
+
+    return redirect(url_for('generated_doc', filename=filename))
 
 # TODO: display and allow to edit before build
 @app.route('/display_answer')
@@ -627,7 +642,7 @@ def display_answer():
 
 
 @app.route('/download/<filename>')
-def provide_document(filename):
+def generated_doc(filename):
     """Allow user access to a document via to the browser."""
 
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)

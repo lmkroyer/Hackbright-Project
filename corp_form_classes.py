@@ -12,26 +12,55 @@ import inflect
 
 class LPA(object):
 
-    _fund_ = _sigdate_ = defendant_fname = defendant_lname = None
-    case_state = case_county = user_fname = user_lname = user_mailing_address = None
-    user_email = user_firm_name = case_no = None
+    _fund_ = _fund_state_ = _fund_ppp_ = None
+    _gp_ = _gp_state_ = _gp_address_ = _gp_email_ = _gp_sig_party_ = None
+    _im_ = _im_state_ = _im_address_ = _im_email_ = None
+    _sig_date_ = None
 
-    def __init__(self, complaint, user):
+    def __init__(self, fund, fund_state, fund_ppp,
+                 gp, gp_state, gp_address, gp_email, gp_sig_party,
+                 im, im_state, im_address, im_email,
+                 sig_date):
 
-        self.complaint = complaint
-        self.user = user
-        self.plaintiff_fname = complaint.case.plaintiffs[0].fname
-        self.plaintiff_lname = complaint.case.plaintiffs[0].lname
-        self.defendant_fname = complaint.case.defendants[0].fname
-        self.defendant_lname = complaint.case.defendants[0].lname
-        self.case_county = complaint.case.county
-        self.case_state = complaint.case.state
-        self.user_fname = user.fname
-        self.user_lname = user.lname
-        self.user_email = user.email
-        self.user_mailing_address = user.mailing_address
-        self.user_firm_name = user.firm_name
-        self.case_no = str(complaint.case.case_no)
+        self._fund_ = fund
+        self._fund_state_ = fund_state
+        self._fund_ppp_ = fund_ppp
+        self._gp_ = gp
+        self._gp_org_type_ = self.spell_gp_org()
+        self._gp_state_ = gp_state
+        self._gp_address_ = gp_address
+        self._gp_email_ = gp_email
+        self._gp_sig_party_ = gp_sig_party
+        self._im_ = im
+        self._im_org_type_ = self.spell_im_org()
+        self._im_state_ = im_state
+        self._im_address_ = im_address
+        self._im_email_ = im_email
+        self._sig_date_ = sig_date
+
+
+    def spell_gp_org(self):
+        """Return the full spelling of the GP's organizational type."""
+
+        gp = self._gp_
+        gp_org = gp.split(' ')[-1]
+
+        if gp_org == 'LP':
+            return 'Limited Partnership'
+        elif gp_org == 'LLC':
+            return 'Limited Liability Company'
+
+
+    def spell_im_org(self):
+        """Return the full spelling of the IM's organizational type."""
+
+        im = self._im_
+        im_org = im.split(' ')[-1]
+
+        if im_org == 'LP':
+            return 'Limited Partnership'
+        elif im_org == 'LLC':
+            return 'Limited Liability Company'
 
 
     def insert_information(self):
@@ -40,27 +69,25 @@ class LPA(object):
         Returns a modified docx file."""
 
         # Make a list of all attributes on a RequestProDocs class
-        attrs = [attr for attr in RequestProDocs.__dict__.keys()
+        attrs = [attr for attr in LPA.__dict__.keys()
                  if (not attr.startswith("__") and
-                     not callable(RequestProDocs.__dict__[attr]))]
+                     not callable(LPA.__dict__[attr]))]
 
         # Make a list of all upper case attributes
-        cap_attrs = [attr.upper() for attr in RequestProDocs.__dict__.keys()
+        cap_attrs = [attr.upper() for attr in LPA.__dict__.keys()
                  if (not attr.startswith("__") and
-                     not callable(RequestProDocs.__dict__[attr]))]
+                     not callable(LPA.__dict__[attr]))]
 
         # Make a Document object for Python-docx
-        request_pro_docs = Document('forms/request_for_production_of_docs_template.docx')
-        style = request_pro_docs.styles['Normal']
+        lpa = Document('forms/lpa_template.docx')
+        style = lpa.styles['Normal']
         font = style.font
-        font.size = Pt(12)
-
-        # font.highlight_color = WD_COLOR.YELLOW
+        font.size = Pt(10)
 
         # Preserve format: replace lowercase tags with values
         for attr_name in attrs:
 
-            for paragraph in request_pro_docs.paragraphs:
+            for paragraph in lpa.paragraphs:
 
                 if attr_name in paragraph.text:
                     paragraph.text = (
@@ -70,7 +97,7 @@ class LPA(object):
         # Preserve format: replace uppercase tags with values
         for attr_name in cap_attrs:
 
-            for paragraph in request_pro_docs.paragraphs:
+            for paragraph in lpa.paragraphs:
 
                 if attr_name in paragraph.text:
                     attr_data = getattr(self, attr_name.lower())
@@ -78,9 +105,9 @@ class LPA(object):
                     paragraph.text = (
                         paragraph.text.replace(attr_name, attr_data))
 
-        # Make a new filename from case no.
-        filename = 'request_pro_docs_{case_no}.docx'.format(case_no=self.case_no)
+        # Make a new filename from fund name
+        filename = 'lpa_{fund}.docx'.format(fund=self._fund_)
         # Save the modified document with the new filename
-        request_pro_docs.save('filestorage/{filename}'.format(filename=filename))
+        lpa.save('filestorage/{filename}'.format(filename=filename))
         # Return filename to pass to display
         return filename
