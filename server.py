@@ -3,6 +3,7 @@
 import textract, requests, os, sys
 
 from ocr import OCR_file, allowed_file
+# from boxes import convert_to_image, draw_rectangles
 
 import os
 
@@ -52,11 +53,15 @@ UPLOAD_FOLDER = 'filestorage/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-@app.route('/welcome')
-def test():
-    """Messing around with dashboard.
+@app.route('/test_boxes')
+def test_boxes():
 
-    https://mdbootstrap.com/admin-dashboard-lesson-1/"""
+    pass
+
+
+@app.route('/welcome')
+def make_lit_dashboard():
+    """Render the litigation dashboard."""
 
     current_user = session.get('current_user')
 
@@ -214,7 +219,7 @@ def display_lit_dashboard():
     user_object = User.query.get(current_user)
     # Query for all cases where settled == False
     active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
-    # cases = active_cases.statement.execute().fetchall()
+
     case_count = active_cases.count()
     active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
 
@@ -224,36 +229,7 @@ def display_lit_dashboard():
 
 @app.route('/userProgress.json')
 def user_progress_data():
-    """Return some information about the user's yearly progress."""
-
-
-    # caseload = {}
-
-    # for user in User.query.all():
-    #     case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
-    #     fname = user.fname
-    #     lname = user.lname
-    #     name = fname + ' ' + lname
-    #     case_count = int(case_count)
-    #     caseload[name] = case_count
-
-    # users = []
-    # caseVolume = []
-    # startColor = []
-    # hoverColor = []
-
-    # for attny in caseload.items():
-    #     users.append(attny[0])
-    #     caseVolume.append(attny[1])
-    #     startColor.append("#00ff00")
-    #     hoverColor.append("ff0000")
-
-    # data_dict = {
-    #             "labels": users,
-    #             "datasets": [
-    #                 {   "label": ["Attorney Capacity"],
-    #                     "data": caseVolume,
-
+    """Return some (fake) information about the user's yearly progress."""
 
     data_dict = {
         "labels": ["January", "February", "March", "April", "May", "June", "July",
@@ -375,7 +351,7 @@ def start_case():
 
     return render_template('case_init.html', attorneys=attorneys)
 
-# FIXME
+
 @app.route('/process_users', methods=['POST'])
 def create_team():
     """Add the selected attorneys to a team and create a case_id."""
@@ -387,12 +363,6 @@ def create_team():
 
     # Create a case
     new_case = Case()
-
-    # TODO: refactor:
-    # append case to each caseuser (or append users to the case)
-    # case.users.append(the user ids selected)
-    # new_case.user.append(each user)
-    # add new_case to db, and add an commit once
 
     db.session.add(new_case)
     db.session.commit()
@@ -490,14 +460,11 @@ def send_to_db():
     case_id = request.form.get('new_case')
     case = Case.query.get(case_id)
 
-    # FIXME: = int(case_no)
     case.case_no = int(case_no)
     case.claim_type_id = claim_type_id
     case.damages_asked = damages_asked
     case.county = county
     case.state = state
-
-    # TODO: add geocode latlong here
 
     # Check to see whether the plaintiff exsists in the db
     plaintiff = Party.query.filter(Party.fname == plaintiff_fname,
@@ -671,31 +638,31 @@ def test_d3():
     return render_template('attorney_status.html')
 
 # FIXME: !!!!!
-@app.route('/caseload.json')
-def get_caseload():
-    """JSON information about attorneys and their number of active cases."""
+# @app.route('/caseload.json')
+# def get_caseload():
+#     """JSON information about attorneys and their number of active cases."""
 
-    # query for users with active cases
-    # count the number of cases
-    # caseload = {
-    #     case.case_id: {
-    #         'caseCounty': case.county
-    #         # 'caseState': case.state,
-    #         # 'caseID': case.case_id
-    #     }
-    # for case in Case.query.filter(Case.settled == False).all()}
+#     # query for users with active cases
+#     # count the number of cases
+#     # caseload = {
+#     #     case.case_id: {
+#     #         'caseCounty': case.county
+#     #         # 'caseState': case.state,
+#     #         # 'caseID': case.case_id
+#     #     }
+#     # for case in Case.query.filter(Case.settled == False).all()}
 
-    caseload = {}
-    # FIXME: how do I format data to show user and case_count?
-    for user in User.query.all():
-        case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
-        caseload[user.user_id] = {"fname": user.fname,
-                                  "lname": user.lname,
-                                  "caseload": case_count}
+#     caseload = {}
+#     # FIXME: how do I format data to show user and case_count?
+#     for user in User.query.all():
+#         case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
+#         caseload[user.user_id] = {"fname": user.fname,
+#                                   "lname": user.lname,
+#                                   "caseload": case_count}
 
-    caseload = {user.user_id: case_count}
+#     caseload = {user.user_id: case_count}
 
-    return jsonify(caseload)
+#     return jsonify(caseload)
 
 
 

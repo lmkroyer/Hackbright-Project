@@ -1,3 +1,16 @@
+timeline: https://bootsnipp.com/snippets/a3BjR
+
+use this? https://pypi.python.org/pypi/pdfquery
+
+bounding boxes: https://docs.opencv.org/trunk/dc/da5/tutorial_py_drawing_functions.html
+https://www.pyimagesearch.com/2015/03/09/capturing-mouse-click-events-with-python-and-opencv/
+
+0: convert pdf to image
+1: find rectangle coordinates
+2: draw rectangle (opencv)
+3: ocr the text in extracted rectangle image
+4: use opencv to puttext on the original image
+
 
 https://www.bootply.com/fMWRLF0p4D
 
