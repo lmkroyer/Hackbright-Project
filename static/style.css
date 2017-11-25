@@ -51,6 +51,14 @@
   display: block;
 }*/
 
+#sum-rep {
+  color: white;
+}
+
+#table-labels {
+  color: grey;
+}
+
 
 /*--------------------------------*/
 /*Maps*/
@@ -224,6 +232,12 @@ a.button:active {
     background: -o-linear-gradient(right, #fdfbfb , #ebedee);
     background: -moz-linear-gradient(right, #fdfbfb , #ebedee);
     background: linear-gradient(to right, #fdfbfb  , #ebedee);
+/*
+    background: #e6e9f0;
+    background: -webkit-linear-gradient(left, #e6e9f0, #eef1f5);
+    background: -o-linear-gradient(right, #e6e9f0 #eef1f5);
+    background: -moz-linear-gradient(right, #e6e9f0 #eef1f5);
+    background: linear-gradient(to right, #e6e9f0, #eef1f5);*/
 }
 
 #dashBackCorp {

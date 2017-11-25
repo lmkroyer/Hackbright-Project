@@ -4,6 +4,7 @@ use this? https://pypi.python.org/pypi/pdfquery
 
 bounding boxes: https://docs.opencv.org/trunk/dc/da5/tutorial_py_drawing_functions.html
 https://www.pyimagesearch.com/2015/03/09/capturing-mouse-click-events-with-python-and-opencv/
+https://docs.opencv.org/trunk/db/deb/tutorial_display_image.html
 
 0: convert pdf to image
 1: find rectangle coordinates
@@ -22,7 +23,13 @@ lit: add deadlines and timeline and ability to resume into certain documents
 misc: start messing with bounding box functionality
 
 
-MONDAY: get notes to display on browser line
+MONDAY:
+- get notes to display on browser line
+- when click on case row, how pass case_id to the js function?
+    see: https://www.w3schools.com/tags/att_global_data.asp
+    see: invite lab -- make the timeline a class?
+    - same: click 'summary report' on corp side and see table populate w/ that client's data
+- fix toggle displays on lit dash
 
 
 

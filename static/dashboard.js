@@ -66,6 +66,17 @@ function createAttnyAvail() {
 
 }
 
+
+// function showTimeline(case_id) {
+//     $.get("/caseTimeline.json", function (data) {
+//       let myLineChart = Chart.Line(ctx_line, {
+//                                     data: data,
+//                                     options: options
+//                                 });
+//       // $("#lineLegend").html(myLineChart.generateLegend());
+//     });
+// }
+
 $("#availChart").click(function(){
     createAttnyAvail();
     $("#attnyBarChart").toggle();

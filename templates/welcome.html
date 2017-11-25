@@ -71,8 +71,8 @@
                                 <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">Mussum ipsum cacilds 1</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                                        <h4 class="timeline-title">Complaint</h4>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Mussum ipsum cacilds, vidis litro abertis. Consetis faiz elementum girarzis, nisi eros gostis.</p>
@@ -83,8 +83,8 @@
                                 <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">Mussum ipsum cacilds 2</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                                        <h4 class="timeline-title">Answer</h4>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Mussum ipsum cacilds, vidis faiz elementum girarzis, nisi eros gostis.</p>
@@ -95,8 +95,8 @@
                                 <div class="timeline-badge info"><i class="glyphicon glyphicon-check"></i></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">Mussum ipsum cacilds 3</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                                        <h4 class="timeline-title">Interrogatories</h4>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipisci. Mé faiz elementum girarzis, nisi eros gostis.</p>
@@ -107,8 +107,8 @@
                                 <div class="timeline-badge danger"><i class="glyphicon glyphicon-check"></i></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">Mussum ipsum cacilds 4</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                                        <h4 class="timeline-title">Request for Production of Documents</h4>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.</p>
@@ -120,7 +120,7 @@
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">Mussum ipsum cacilds 5</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.</p>
@@ -172,15 +172,16 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td id="case-status">Status: <br><button type="button" class="btn" id="show-timeline" data-toggle="collapse" data-target="#demo">Show Case History</button></td>
+                                <td id="case-status">Status: <br><button type="button" class="btn" id="show-timeline" data-case-id="{{ case }}">Show Case History</button></td>
                             </tr>
-                            <tr scolspan="5" class="hiddenRow">
+                            <tr class="hiddenRow">
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>
                                     <div class="accordion-body collapse" id="demo1">
+                                    <b>Documents:</b>
                                     {% if case.complaint %}
                                     <li><object data="{{ case.complaint.doc }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.doc }}">Complaint</a></object></li>
                                     {% endif %}
