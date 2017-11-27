@@ -527,7 +527,7 @@ def send_to_db():
     db.session.commit()
 
     # Add the complaint to elasticsearch index
-    es_index_complaint(filename)
+    # es_index_complaint(filename)
 
     session['active_case'] = case_id
 

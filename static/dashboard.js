@@ -118,8 +118,9 @@ showUserInfo();
 //     $("#progressChart").toggle();
 // });
 
-
-// NOTEPAD FUNCTIONS
+///////////////////////
+// NOTEPAD FUNCTIONS //
+///////////////////////
 
 function check_web_storage_support() {
     if(typeof(Storage) !== "undefined") {

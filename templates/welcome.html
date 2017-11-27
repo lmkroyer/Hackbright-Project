@@ -149,23 +149,23 @@
                           {% elif case_count == 1 %}
                           <p><b>You Have {{ case_count }} Active Case:</b></p>
                           {% endif %}
-                          {% for case in active_case_lst %}
-                          {% for defendant in case.defendants %}
+
                         <div id="caseInfo" class="row-fluid">
-                        <table class="table table-hover table-dark">
+                          <table class="table table-hover table-dark">
                             <th> Case Id </th>
                             <th> Type </th>
                             <th> Team </th>
                             <th> Opposition </th>
                             <th> Status </th>
-
-                            <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle" id="case-row">
+                            {% for case in active_case_lst %}
+                            {% for defendant in case.defendants %}
+                            <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" class="accordion-toggle" id="case-row">
                                 <td id="caseId"> {{ case.case_id }} </td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
                                     {% if user.user_id == case.team_lead %}
-                                    <b><li>{{ user.fname }} {{user.lname}}<b></li>
+                                    <b><li>{{ user.fname }} {{user.lname}}</b></li>
                                     {% else %}
                                     <li>{{ user.fname }} {{user.lname}}</li>
                                     {% endif %}
@@ -180,7 +180,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <div class="accordion-body collapse" id="demo1">
+                                    <div class="accordion-body collapse" id="div-{{ case.case_id }}">
                                     <b>Documents:</b>
                                     {% if case.complaint %}
                                     <li><object data="{{ case.complaint.doc }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.doc }}">Complaint</a></object></li>
@@ -195,13 +195,14 @@
                                     <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
                                     <li id="newNote"><a href="#">Add Notes</a></li>
-                                    {% endfor %}
-                                    {% endfor %}
                                     </div>
                                 </td>
                             </tr>
+                            {% endfor %}
+                            {% endfor %}
+                          </table>
+                        </div>
 
-                        </table>
                 </div>
             </div>
         </div>
