@@ -48,7 +48,7 @@
                     <ul class="tree" style="display:none">
                       <li><label class="tree-toggle nav-header" id="client-info-sub-sub">Docs</label>
                         <ul class="nav nav-list tree" id="client-info-sub-sub-sub" style="display:none">
-                          <li><a href="#">LPA</a></li>
+                          <li><a href="/download/X">LPA</a></li>
                           <li><a href="#">PPM</a></li>
                           <li><a href="#">IMA</a></li>
                         </ul>
@@ -62,7 +62,8 @@
                       </li>
                       <li><label class="tree-toggle nav-header" id="client-info-sub-sub">Data</label>
                         <ul class="nav nav-list tree" id="client-info-sub-sub-sub" style="display:none">
-                          <li><a href="#">Summary Report</a></li>
+                          <li id="summary-report"><a href="#">Summary Report</a></li>
+                          <li><a href="#">Confidentiality</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -90,7 +91,7 @@
             <div id="allOptions">
                 <h3 id="corp-options">Select an Action:</h3><br>
                 <li id="formFund"><a href="#">Form a Fund</a></li>
-                <li id="formFund"><a href="#">Start a Summary Report</a></li>
+                <li id="start-sum-rep"><a href="#">Start a Summary Report</a></li>
             </div>
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
 
@@ -169,11 +170,19 @@
 
              </div><br>
 
-              <div id="sum-rep">
+                <div id="upload-sum-rep" style="display:none">
+                  <h4>Upload a Fund Doc:</h4>
+                  <form action='/upload' method="POST" enctype="multipart/form-data">
+                    <p><input type="file" name="file">
+                        <input type="submit">
+                  </form>
+                </div>
+
+              <div id="sum-rep" style="display:none">
                <table class="table table-hover">
                 <thead>
                   <tr id="table-labels">
-                    <th scope="col">Category</th>
+                    <th scope="col">CATEGORY</th>
                     <th scope="col">FUND NAME</th>
                   </tr>
                 </thead>
@@ -230,7 +239,7 @@
     <script src="/static/dashboard_corp.js"></script>
     <script src="/static/jquery.steps.js"></script>
     <script src="/static/jquery.steps.min.js"></script>
-    <script src="/static/dashboard.js"></script>
+
 
 </body>
 

@@ -12,10 +12,10 @@ import inflect
 
 class LPA(object):
 
-    _fund_ = _fund_state_ = _fund_ppp_ = None
-    _gp_ = _gp_state_ = _gp_address_ = _gp_email_ = _gp_sig_party_ = None
-    _im_ = _im_state_ = _im_address_ = _im_email_ = None
-    _sig_date_ = None
+    _fund_ = _fdState_ = _fundPpp_ = None
+    _gp_ = _gpState_ = _gpAddress_ = _gpEmail_ = _gpSigParty_ = None
+    _im_ = _imState_ = _imAddress_ = _imEmail_ = None
+    _sigDate_ = None
 
     def __init__(self, fund, fund_state, fund_ppp,
                  gp, gp_state, gp_address, gp_email, gp_sig_party,
@@ -23,20 +23,20 @@ class LPA(object):
                  sig_date):
 
         self._fund_ = fund
-        self._fund_state_ = fund_state
-        self._fund_ppp_ = fund_ppp
+        self._fundState_ = fund_state
+        self._fundPpp_ = fund_ppp
         self._gp_ = gp
-        self._gp_org_type_ = self.spell_gp_org()
-        self._gp_state_ = gp_state
-        self._gp_address_ = gp_address
-        self._gp_email_ = gp_email
-        self._gp_sig_party_ = gp_sig_party
+        self._gpOrgType_ = self.spell_gp_org()
+        self._gpState_ = gp_state
+        self._gpAddress_ = gp_address
+        self._gpEmail_ = gp_email
+        self._gpSigParty_ = gp_sig_party
         self._im_ = im
-        self._im_org_type_ = self.spell_im_org()
-        self._im_state_ = im_state
-        self._im_address_ = im_address
-        self._im_email_ = im_email
-        self._sig_date_ = sig_date
+        self._imOrgType_ = self.spell_im_org()
+        self._imState_ = im_state
+        self._imAddress_ = im_address
+        self._imEmail_ = im_email
+        self._sigDate_ = sig_date
 
 
     def spell_gp_org(self):

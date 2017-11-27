@@ -109,3 +109,10 @@ def generate_answer(defenses):
     #     result_words.append(c)
 
     # result = ' '.join(result_words)
+
+
+
+
+
+
+

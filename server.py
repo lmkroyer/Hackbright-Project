@@ -29,7 +29,6 @@ from docx import Document
 from lit_form_classes import Answer
 from corp_form_classes import LPA
 
-# import geocoder
 
 app = Flask(__name__)
 
@@ -526,6 +525,9 @@ def send_to_db():
 
     db.session.add(new_complaint)
     db.session.commit()
+
+    # Add the complaint to elasticsearch index
+    es_index_complaint(filename)
 
     session['active_case'] = case_id
 

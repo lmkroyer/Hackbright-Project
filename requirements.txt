@@ -9,6 +9,7 @@ Cython==0.27.2
 decorator==4.1.2
 docx2txt==0.6
 EbookLib==0.15
+elasticsearch==6.0.0
 Flask==0.12.2
 Flask-DebugToolbar==0.10.1
 Flask-SQLAlchemy==2.3.2
@@ -43,6 +44,7 @@ tesseract-ocr==0.0.1
 textblob==0.13.0
 textract==1.6.1
 urllib3==1.22
+Wand==0.4.4
 Werkzeug==0.12.2
 xlrd==1.0.0
 XlsxWriter==1.0.2

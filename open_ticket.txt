@@ -1,10 +1,22 @@
+SUNDAY: elasticsearch and PPM generation (or OCR PPM for confi)
+
 timeline: https://bootsnipp.com/snippets/a3BjR
+
+elasticsearch: https://marcobonzanini.com/2015/08/10/building-a-search-as-you-type-feature-with-elasticsearch-angularjs-and-flask/
+    and: https://marcobonzanini.com/2015/02/02/how-to-query-elasticsearch-with-python/
+    https://tryolabs.com/blog/2015/02/17/python-elasticsearch-first-steps/
+
+    https://elasticsearch-py.readthedocs.io/en/master/
+
+    https://stackoverflow.com/questions/46988307/how-do-you-use-the-elasticsearch-ingest-attachment-processor-plugin-with-the-pyt
 
 use this? https://pypi.python.org/pypi/pdfquery
 
 bounding boxes: https://docs.opencv.org/trunk/dc/da5/tutorial_py_drawing_functions.html
 https://www.pyimagesearch.com/2015/03/09/capturing-mouse-click-events-with-python-and-opencv/
-https://docs.opencv.org/trunk/db/deb/tutorial_display_image.html
+https://docs.opencv.org/trunk/db/deb/tutorial_display_image.html ****
+
+https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/bounding_rects_circles/bounding_rects_circles.html
 
 0: convert pdf to image
 1: find rectangle coordinates
@@ -24,14 +36,21 @@ misc: start messing with bounding box functionality
 
 
 MONDAY:
+- how pull up more than one summary report
+- how pass doc to each
 - get notes to display on browser line
 - when click on case row, how pass case_id to the js function?
     see: https://www.w3schools.com/tags/att_global_data.asp
     see: invite lab -- make the timeline a class?
     - same: click 'summary report' on corp side and see table populate w/ that client's data
 - fix toggle displays on lit dash
+- where to put spinner? https://codepen.io/nelsyeung/pen/MwdWmj?page=1&
+or https://jsfiddle.net/kimmobrunfeldt/72tkyn40/
+- error: ': cannot connect to X server'
 
+MON PM / TUES: set up elasticsearch
 
+TUESDAY: opencv bounding boxes + confi provision
 
 redo wireframe on lit side -- add functionality for case pattern + to resume
 
@@ -88,6 +107,17 @@ change db to account for new forms and timestamps (plus due dates)
 (6 or 7)
 
  **** https://www.html5rocks.com/en/tutorials/offline/storage/
+
+ es:
+    0. add docs when they are made to es index
+    1. grab input from search box (JS)
+    2. make a get request to server with the input
+    3. use python wrapper to enter the input to es search
+    4. return json of results to js
+    5. display results
+
+confiden:
+    0.
 
 
 THURSDAY ^^^
