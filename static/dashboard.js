@@ -83,11 +83,6 @@ $("#availChart").click(function(){
     $("#progressChart").toggle();
 });
 
-$("#show-timeline").click(function(){
-    $("#timeline").toggle();
-    $("#progressChart").toggle();
-});
-
 $("#expandRow").click(function(){
     $("#collapsedRow").toggle();
 });
@@ -204,109 +199,57 @@ $("#newNote").click(function(){
 // MAKE A TIMELINE //
 /////////////////////
 
-// class Timeline {
 
-//     constructor(displayElement){
 
-//         displayElement.append(`<img id="image">
-//                               <h1 id="title"></h1>
-//                               <p id="date"></p>
-//                               <p id="start"></p>
-//                               <p id="end"></p>
-//                               <p id="location"> </p>
-//                               <p id="description"></p>`);
+// function caseHistory() {
 
-//         // Set properties on the class
-//         this.container = displayElement;
-//         this.imageEl = displayElement.children("img#image");
-//         this.titleEl = displayElement.children("h1#title");
-//         this.dateEl = displayElement.children("p#date");
-//         this.startEl = displayElement.children("p#start");
-//         this.endEl = displayElement.children("p#end");
-//         this.locationEl = displayElement.children("p#location");
-//         this.descriptionEl = displayElement.children("p#description");
-
-//     }
-
-//     changeTimeline(my_case){
-//         this.titleEl.text(my_case);
-//     }
-
-//     changeDate(newDate) {
-//         this.dateEl.text("Join us on " + newDate);
-//     }
-
-//     changeStart(newStart) {
-//         this.startEl.text(newStart);
-//     }
-
-//     changeEnd(newEnd) {
-//         this.endEl.text(newEnd);
-//     }
-
-//     changeImage(newImage){
-//         this.imageEl.attr("src", newImage);
-//     }
-
-//     changeFont(newFont) {
-//         this.container.css("font-family", newFont);
-//     }
-
-//     changeLocation(newLocation) {
-//         this.locationEl.text(newLocation);
-//     }
-
-//     changeDescription(newDescription) {
-//         this.descriptionEl.text(newDescription);
-//     }
-
-//     changeBackgroundColor(newBackgroundColor) {
-//         this.container.css("background-color", newBackgroundColor);
-//     }
-
+//     $.get("/casehistory.json");
 // }
 
+// let CASEHISTORY = caseHistory();
 
-// PART 2:
+function showCaseHistory(buttonID) {
 
-// Create your invitation object
-// let invitationElement = $("#invite-display");
-// let invite = new Invitation(invitationElement);
+    $.get("/casehistory.json", function (data) {
+        $('#complaint-info').html(data[buttonID]['complaint']);
+        $('#answer-info').html(data[buttonID]['answer']);
+    });
+}
 
-// // Add event listeners
-// $('#show-timeline').on('click', function (evt) {
-//     //or could do evt.target.value
-//     invite.changeTimeline($('#title-input').val());
-// });
 
-// $('#date-input').on('change', function (evt) {
-//     invite.changeDate($('#date-input').val());
-// });
+$(".show-timeline").click(function(){
+    $("#timeline").toggle();
+    $("#progressChart").toggle();
+    let buttonID = $(this).attr("id");
+    showCaseHistory(buttonID);
+});
 
-// $('#start-time').on('change', function (evt) {
-//     invite.changeStart($('#start-time').val());
-// });
 
-// $('#end-time').on('change', function (evt) {
-//     invite.changeEnd($('#end-time').val());
-// });
+// preload all the cases into the DOM
+// server side: format into in json
 
-// $('#location-input').on('change', function (evt) {
-//     invite.changeLocation($('#location-input').val());
-// });
+// global variable (js): json object of all cases (case_id: {attribute1: attribute1
+//                                                             })
 
-// $('#description-input').on('change', function (evt) {
-//     invite.changeDescription($('#description-input').val());
-// });
+// map each id to button
 
-// $('#font').on('change', function (evt) {
-//     invite.changeFont($('#font').val());
-// });
+// inside event listener callback: use this or evt.target
 
-// $(".color-btn").on('click', function (evt) {
-//     invite.changeBackgroundColor($(evt.target).data("color"));
-// });
+// 1. write html jinja look that
+// 2. each box on timeline gets ID that matches attribute names from data dict
+// jquery element from complaint div
 
-// $(".image-input").on('click', function (evt) {
-//     invite.changeImage(evt.target.value);
-// })
+// attach event listener to class of buttons, each button will store case ID, so function with
+//     event listener will call the specific case info in the data dict (using this.attr('id'))
+
+//     {case 1: {complaint: attribute,
+//               answer: attribute,
+//               interrogatories: attribute,
+//     case 2: {complaintL attribute
+
+//         ...}}}
+
+// (".class").on click - event function
+
+// start with html data attributes, make server data dict, write js functions that listen for id and populate jinja loop
+

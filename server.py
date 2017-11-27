@@ -635,36 +635,43 @@ def generated_doc(filename):
 @app.route('/d3_play')
 def test_d3():
 
-
-
     return render_template('attorney_status.html')
 
-# FIXME: !!!!!
-# @app.route('/caseload.json')
-# def get_caseload():
-#     """JSON information about attorneys and their number of active cases."""
 
-#     # query for users with active cases
-#     # count the number of cases
-#     # caseload = {
-#     #     case.case_id: {
-#     #         'caseCounty': case.county
-#     #         # 'caseState': case.state,
-#     #         # 'caseID': case.case_id
-#     #     }
-#     # for case in Case.query.filter(Case.settled == False).all()}
+@app.route('/casehistory.json')
+def get_case_histories():
+    """JSON information about each case history."""
 
-#     caseload = {}
-#     # FIXME: how do I format data to show user and case_count?
-#     for user in User.query.all():
-#         case_count = Case.query.filter(User.user_id == user.user_id, Case.settled == False).count()
-#         caseload[user.user_id] = {"fname": user.fname,
-#                                   "lname": user.lname,
-#                                   "caseload": case_count}
+    casehistory = {}
 
-#     caseload = {user.user_id: case_count}
+    current_user = session.get('current_user')
 
-#     return jsonify(caseload)
+    user_object = User.query.get(current_user)
+
+    # Get a list of current user's active cases
+    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
+
+    for case in active_case_lst:
+
+        # If the case has a complaint, display info about it
+        if case.complaint:
+            complaint = case.complaint.legal_basis + ' claim' + case.complaint.damages_asked + 'damages claimed'
+        else:
+            complaint = 'Incomplete'
+
+        # If the case has an answer, display info about it
+        if case.answer:
+            answer = 'Submitted ' + case.answer.date_submitted
+
+        else:
+            answer = 'Incomplete'
+
+            casehistory[case.case_id] = {
+                                         'complaint':complaint,
+                                         'answer':answer
+                                         }
+
+    return jsonify(casehistory)
 
 
 

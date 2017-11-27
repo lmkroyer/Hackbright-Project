@@ -10,11 +10,15 @@ elasticsearch: https://marcobonzanini.com/2015/08/10/building-a-search-as-you-ty
 
     https://stackoverflow.com/questions/46988307/how-do-you-use-the-elasticsearch-ingest-attachment-processor-plugin-with-the-pyt
 
+    ** https://elasticsearch-py.readthedocs.io/en/master/
+
 use this? https://pypi.python.org/pypi/pdfquery
 
 bounding boxes: https://docs.opencv.org/trunk/dc/da5/tutorial_py_drawing_functions.html
 https://www.pyimagesearch.com/2015/03/09/capturing-mouse-click-events-with-python-and-opencv/
 https://docs.opencv.org/trunk/db/deb/tutorial_display_image.html ****
+
+rectanges: https://stackoverflow.com/questions/17408010/drawing-a-rectangle-using-click-mouse-move-and-click
 
 https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/bounding_rects_circles/bounding_rects_circles.html
 
@@ -46,7 +50,7 @@ MONDAY:
 - fix toggle displays on lit dash
 - where to put spinner? https://codepen.io/nelsyeung/pen/MwdWmj?page=1&
 or https://jsfiddle.net/kimmobrunfeldt/72tkyn40/
-- error: ': cannot connect to X server'
+- fix litigation table
 
 MON PM / TUES: set up elasticsearch
 
