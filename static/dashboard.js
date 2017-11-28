@@ -125,6 +125,7 @@ showUserInfo();
 ///////////////////////
 
 function checkWebStorageSupport() {
+
     if(typeof(Storage) !== "undefined") {
         return(true);
     }
@@ -134,60 +135,55 @@ function checkWebStorageSupport() {
     }
 }
 
-function displaySavedNote(note) {
+function displaySavedNote(noteKey) {
 
     if(checkWebStorageSupport() === true) {
-        let result = localStorage.getItem('note');
-    }
+        let result = JSON.parse(localStorage.getItem(noteKey));
 
-    if (result === null) {
+        if (result === null) {
         result = "No note saved";
-    }
+        }
 
-    document.getElementById('area').value = result;
+        document.getElementById('area').value = result.txt;
+    }
 }
 
 function listSavedNotes(caseID) {
 
-    // JSON.parse() --> turns strings back into object
-
     if(checkWebStorageSupport() === true) {
 
-        let noteValues = [],
-        noteKeys = Object.keys(localStorage),
-        i = noteKeys.length;
-        while ( i-- ) {
-            console.log(noteKeys);
-            let noteObj = JSON.parse(localStorage.getItem(noteKeys[i]));
+        let noteValues = {},
+        noteKeys = Object.keys(localStorage);
+
+        for (let key of noteKeys) {
+            let noteObj = JSON.parse(localStorage.getItem(key));
             if (noteObj.case_id == caseID) {
-                noteValues.push(noteObj);
+                noteValues[key] = noteObj;
             }
         }
-
-        // let thisCaseNotes = [];
-
-        // for (let note of noteValues) {
-        //     let noteObj = JSON.parse(note);
-
+        // i = noteKeys.length;
+        // while ( i-- ) {
+        //     console.log(noteKeys);
+        //     let noteObj = JSON.parse(localStorage.getItem(noteKeys[i]));
         //     if (noteObj.case_id == caseID) {
-        //         thisCaseNotes.push(noteObj);
+        //         noteValues.push(noteObj);
         //     }
         // }
+        console.log(noteValues);
 
         let trHTML = '';
-        $.each(noteValues, function(j, item) {
-            trHTML += "<tr><td>" + "Note " + item.date + "</td></tr>";
-        });
 
+        for (let key in noteValues) {
+            let value = noteValues[key];
+            trHTML += "<tr><td><li><a href='#' class='case-note' data-key='" + key + "'>" + "Note: " + value.date + "</a></li></td></tr>";
+        }
+        // $.each(noteValues, function(j, item) {
+        //     console.log(item);
+        //     trHTML += "<tr><td><li><a href='#' class='case-note' data-object='" + item + "'>" + "Note: " + item.date + "</a></li></td></tr>";
+        // });
+
+        $("#display-notes").html("<b>Notes:</b>");
         $("#display-notes").append(trHTML);
-
-
-        // FIXME: here is psuedocode
-        // for item in noteValues:
-        //     JSON.parse(item)
-        //     if item.case_id == caseID:
-        //         specCaseNotes.append(item)
-
     }
 }
 
@@ -195,6 +191,7 @@ function saveNote(caseID) {
 
     let today = new Date();
     let todayStr = today.toDateString();
+    let todayStrKey = String(today);
 
     if(checkWebStorageSupport() == true) {
         let noteInput = document.getElementById("area");
@@ -202,15 +199,14 @@ function saveNote(caseID) {
         if(noteInput.value != '') {
 
             let noteObj = {"case_id":caseID,
-                           "text": noteInput.value,
+                           "txt": noteInput.value,
                            "date": todayStr
                           };
 
             let noteObjJSON = JSON.stringify(noteObj);
-            let noteName = "Note " + noteObj.date;
-
-            localStorage.setItem(noteName, noteObjJSON);
+            localStorage.setItem(todayStrKey, noteObjJSON);
         }
+
         else {
             alert("Nothing to save");
         }
@@ -218,6 +214,7 @@ function saveNote(caseID) {
 }
 
 function downloadNote(filename) {
+
     let text = document.getElementById("area");
     let pom = document.createElement('a');
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -235,7 +232,7 @@ function downloadNote(filename) {
 
 function closeNote() {
     // this line clears content
-    // document.getElementById('area').value = "";
+    document.getElementById('area').value = "";
     $("#notepad").toggle();
     $("#notepadControls").toggle();
     $("#progressChart").toggle();
@@ -243,6 +240,7 @@ function closeNote() {
 
 
 $("#new-notes").click(function(){
+    document.getElementById('area').value = "";
     let caseID = $(this).data("case-id");
     $("#save-note").attr("data-case-id", caseID);
     $("#notepad").toggle();
@@ -250,7 +248,6 @@ $("#new-notes").click(function(){
     $("#progressChart").toggle();
 });
 
-// FIXME: caseID
 $("#close-note").click(function(){
     closeNote();
 });
@@ -272,6 +269,15 @@ $("#case-row").click(function(){
     listSavedNotes(caseID);
 });
 
+$(document).on("click", ".case-note", function(){
+    let noteKey = $(this).data("key");
+    console.log(noteKey);
+    $("#notepad").toggle();
+    $("#notepadControls").toggle();
+    $("#progressChart").toggle();
+    displaySavedNote(noteKey);
+});
+
 
 // $("#div"+case.case_id).click(function() {
 
@@ -287,6 +293,7 @@ $("#case-row").click(function(){
 
 
 function getResults() {
+
     let query = $("#user-lit-search").val();
 
     $.get("/search_results/" + query, function(data) {

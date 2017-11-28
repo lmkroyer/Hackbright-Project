@@ -42,7 +42,6 @@ misc: start messing with bounding box functionality
 TUESDAY:
 - pass in status of case from server
 - how pass doc to each download
-- get notes to display on browser line
 - es: make highlighted text display in search results
     - make sure can download return results
     - handle no results message

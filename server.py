@@ -682,6 +682,13 @@ def get_case_histories():
 def return_search_results(search):
     """Inputs user's search query. Outputs a list of relevant documents."""
 
+    # search_results = {
+    #                     'doc_id': {
+    #                                 'path': 'abc',
+    #                                 'highlights': 'text'
+    #                             }
+    #                 }
+
     search_results = {}
 
     es.indices.refresh(index=INDEX)
