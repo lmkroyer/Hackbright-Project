@@ -682,26 +682,24 @@ def get_case_histories():
 def return_search_results(search):
     """Inputs user's search query. Outputs a list of relevant documents."""
 
-    # import pdb; pdb.set_trace()
-
-    search_results = []
+    search_results = {}
 
     es.indices.refresh(index=INDEX)
 
+    # # this raises: TypeError("Unable to serialize set([u'botts'])
     # res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
-    res = es.search(index=INDEX, body={"query": {"match": {"content": search}}})
+    # this raises an empty search result
+    res = es.search(index=INDEX, body={"query": {"match": {"text": search}}})
 
     print("Got %d Hits:" % res['hits']['total'])
 
     for hit in res['hits']['hits']:
 
-        search_results.append("%(filepath)s" % hit["_source"])
-        # print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
-
-    import pdb; pdb.set_trace()
+        # search_results.append("%(path)s" % hit["_source"])
+        search_results["%(doc_id)s" % hit["_source"]] = "%(path)s" % hit["_source"]
 
     # Return a list of paths to relevant documents
-    return search_results
+    return jsonify(search_results)
 
 #     (Pdb) res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
 # *** SerializationError: ({'query': {'match_all': set([u'botts'])}}, TypeError("Unable to serialize set([u'botts']) (type: <type 'set'>)",))

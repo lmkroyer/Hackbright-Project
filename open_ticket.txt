@@ -42,7 +42,9 @@ misc: start messing with bounding box functionality
 TUESDAY:
 - how pass doc to each download
 - get notes to display on browser line
-- es
+- es: make highlighted text display in search results
+    - make sure can download return results
+- connect dots on lit work flow
 - make a summary report OCR
 - ability to delete cases
 - show pic on canvas and allow draw rectangles

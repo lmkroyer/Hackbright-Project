@@ -271,34 +271,55 @@ $("#download-note").click(function(){
 ///////////////////
 
 
-$("#lit-search").click(function() {
+// $("#lit-search").click(function() {
 
-    let search = $('#user-lit-search');
+//     let search = $('#user-lit-search');
 
-    $.get("/search_results/" + search.val(), function (data) {
+//     $.get("/search_results/" + search.val(), function (data) {
 
-        // this is a list of documents
-        // let results = data;
+//         let trHTML = '';
+//         $.each(data, function (i, item) {
+//             trHTML += '<tr><td>' + item + '</td></tr>';
+//         });
 
-        // for (let result of results) {
-        let resultsContent = "<table>";
+//         $('#search-results-table').append(trHTML);
+//     });
 
-        for (i=0; i < 100; i++) {
-            resultsContent += '<tr><td>' + 'result ' +  i + ':' + result + '</td></tr>';
-        }
+//     $("#search-results-table").toggle();
+//     $("#progressChart").toggle();
+//     $("#caseInfo").toggle();
+// });
 
-        resultsContent += "</table>";
 
-        $('#search-results-table').append(resultsContent);
+function getResults() {
+    let query = $("#user-lit-search").val();
+
+    $.get("/search_results/" + query, function(data) {
+        let trHTML = '';
+        $.each(data, function(i, item) {
+            trHTML += "<tr><td>" + item + "</td></tr>";
+
+        });
+
+        $("#search-results-table").append(trHTML);
 
     });
-
-
 
     $("#search-results-table").toggle();
     $("#progressChart").toggle();
     $("#caseInfo").toggle();
-});
+}
+
+$("#user-lit-search").keyup(function(event) {
+    // if person pressed enter
+    if (event.which == 13) {
+        getResults();
+    }
+    });
+
+$("#lit-search").click(function(event) {
+    getResults();
+    });
 
 
 
