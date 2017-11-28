@@ -2,27 +2,6 @@
 
 {% block head %}
 
-<!-- <body onload="myFunction()" style="margin:0;"> -->
-
-<!-- <div id="loader"></div>
-
-<div style="display:none;" id="myDiv" class="animate-bottom">
-  <h2>Tada!</h2>
-  <p>Some text in my newly loaded page..</p>
-</div> -->
-
-<!-- // --> <script>
-// var myVar;
-
-// function myFunction() {
-//     myVar = setTimeout(showPage, 3000);
-// }
-
-// function showPage() {
-//   document.getElementById("loader").style.display = "none";
-//   document.getElementById("myDiv").style.display = "block";
-// }
-// </script>
 
 {% endblock %}
 
@@ -37,7 +16,7 @@ Let us know if everything looks right<br><br>
   <input type="hidden" name="new_case" value="{{ new_case }}">
 
 
-  CLAIM TYPE: <!-- FIX THIS!!! -->
+  CLAIM TYPE: <!-- FIXME -->
   <select name="claim_type">
     {% for claim in claims %}
     <option value="{{ claim.claim_type_id }}">{{ claim.name }}</option>

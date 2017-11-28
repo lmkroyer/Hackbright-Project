@@ -39,18 +39,18 @@ lit: add deadlines and timeline and ability to resume into certain documents
 misc: start messing with bounding box functionality
 
 
-MONDAY:
-- how pull up more than one summary report
-- how pass doc to each
+TUESDAY:
+- how pass doc to each download
 - get notes to display on browser line
-- when click on case row, how pass case_id to the js function?
-    see: https://www.w3schools.com/tags/att_global_data.asp
-    see: invite lab -- make the timeline a class?
-    - same: click 'summary report' on corp side and see table populate w/ that client's data
+- es
+- make a summary report OCR
+- ability to delete cases
+- show pic on canvas and allow draw rectangles
 - fix toggle displays on lit dash
 - where to put spinner? https://codepen.io/nelsyeung/pen/MwdWmj?page=1&
 or https://jsfiddle.net/kimmobrunfeldt/72tkyn40/
-- fix litigation table
+
+
 
 MON PM / TUES: set up elasticsearch
 

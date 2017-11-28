@@ -1,395 +1,624 @@
-10
+4/14/2016 9:09:45 AM
 
-11
+16CV12155
 
-12
 
-13
 
-14
 
-15
 
-16
 
-17
 
-18
 
-19
 
-2O
+1
 
-21
 
-22
-
-23
-
-24
-
-25
-
-26
-
-a
-
-1BCV12155
-
-IN THE CIRCUIT COURT OF THE STATE OF CALIFORNIA
-
-FOR THE COUNTY OF SONOMA
-
-Ronald Weasley, No. 454545
-
-Plaintiff, COMPLAINT
-
-(Personal Injury; ORS 20.080)
-v.
-Subject to Mandatory
-Harry Potter; DUMBLEDORE'S Arbitration
-ARMY, INC.
-
-(doing business as Dumbledore's
-
-Army), a foreign business
-
-JURY TRIAL REQUESTED
-
-Amount claimed: $350,000
-(aggregate)
-
-Fee Authority: ORS 21.1mm (a)
-Defendants.
-
-Plaintiff RONALD WEASLEY alleges:
-First Claim for Relief
-(Negligence — Potter)
-1.
-
-At all times material herein, defendant Harry Potter was and
-is the owner of a patronus (“Stag"); he resides in Sonoma, Sonoma
-County, California.
-
-2.
-
-At all times material herein, defendant DUMBLEDORE'S
-ARMY, INC., d/b/a Dumbledore's Army (hereinafter
-“DA") was and is a foreign business entity authorized to
-
-conduct business in California, and was the owner and/or operator
-
-Page 1 * COMPLAINT (ORS 20.080)
-
- 
-
-GI A7FR, MAIIRFR X. PFTFRSON P r. Annrn-vx :Olaw
-
-10
-
-11
-
-12
-
-13
-
-14
-
-15
-
-16
-
-17
-
-18
-
-19
-
-2O
-
-21
-
-22
-
-23
-
-24
-
-25
-
-26
-
-practice room on NE 15“ Street in Sonoma, California.
-3.
-
-At all times material herein, defendant ELLIOTT ASSOCIATES,
-INC. was and is a CA corporation authorized to conduct
-business in CA, and was the owner, operator, manager and/or
-maintainer of certain real property on which defendant the DA
-operated a market (NE 15th St., Sonoma)
-
-4.
-
-At all times material herein, plaintiff was a pedestrian near
-
-the entrance to the store/market operated by defendant the DA.
-5.
-
-At all times pertinent, plaintiff was an invitee of the
-DA and an invitee of the commercial premises located on NE 15“
-Street occupied by the DA and maintained by Elliott
-Associates.
-
-6.
-
-On November 20, 2015, plaintiff was walking towards the
-entrance of the DA on NE 15th Street when he was accosted by a
-patronus owned by defendant Potter, causing bodily injuries
-to plaintiff as hereinafter set forth.
-
-7.
-
-Defendant POTTER was negligent in one or more of the
-following particulars which caused injuries to plaintiff:
-
-a) In failing to maintain proper control of his
-
-(patronus);
-
-Page 2 7 COMPLAINT (ORS 20.080)
-
-   
-
-GI A7FR. MAURFR X. PFTFRSON P r. Annnumk allaw
 
 2
 
+
+
 3
 
-4
 
-5
+
+4            IN THE CIRCUIT COURT OF THE STATE OF CALIFORNIA
+
+
+
+5                    FOR THE COUNTY OF SONOMA
+
+
 
 6
 
-7
+
+
+7 Ronald Weasley,
+
+
+) No. 454545
+
+)
 
 8
 
+Plaintiff,
+
+) COMPLAINT
+
+
+
+
+
+) (Personal Injury; ORS 20.080)
+
 9
+
+v.
+
+)
+
+
+
+
+
+) Subject to Mandatory
 
 10
 
+Harry Potter; DUMBLEDORE'S
+
+) Arbitration
+
+
+
+ARMY, INC.
+
+)
+
 11
+
+(doing business as Dumbledore's
+
+) JURY TRIAL REQUESTED
+
+
+
+Army), a foreign business
+
+)
 
 12
 
+
+
+) Amount claimed: $350,000
+
+
+
+
+
+) (aggregate)
+
 13
+
+
+
+)
+
+
 
 14
 
-15
 
-16
 
-17
+Defendants.
 
-18
+Fee Authority: ORS 21.160(1)(a)
 
-19
 
-20
 
-21
+15      Plaintiff RONALD WEASLEY alleges:
 
-22
 
-23
 
-24
+16                       First Claim for Relief
 
-25
+
+
+17                       (Negligence - Potter)
+
+
+
+18                                 1.
+
+
+
+19      At all times material herein, defendant Harry Potter was and
+
+
+
+20 is the owner of a patronus (“Stag”); he resides in Sonoma, Sonoma
+
+
+
+21 County, California.
+
+
+
+22                                 2.
+
+
+
+23      At all times material herein, defendant DUMBLEDORE'S
+
+
+
+24 ARMY, INC., d/b/a Dumbledore's Army (hereinafter
+
+
+
+25 “DA”) was and is a foreign business entity authorized to
+
+
+
+26 conduct business in California, and was the owner and/or operator of a
+
+1 practice room on NE 15th Street in Sonoma, California.
+
+
+
+2                                 3.
+
+
+
+3      At all times material herein, defendant ELLIOTT ASSOCIATES,
+
+
+
+4 INC. was and is a CA corporation authorized to conduct
+
+
+
+5 business in CA, and was the owner, operator, manager and/or
+
+
+
+6 maintainer of certain real property on which defendant the DA
+
+
+
+7 operated a market (NE 15th St., Sonoma).
+
+
+
+8                                 4.
+
+
+
+9      At all times material herein, plaintiff was a pedestrian near
+
+
+
+10 the entrance to the store/market operated by defendant the DA.
+
+
+
+11                                 5.
+
+
+
+12      At all times pertinent, plaintiff was an invitee of the
+
+
+
+13 DA and an invitee of the commercial premises located on NE 15th
+
+
+
+14 Street  occupied  by  the DA  and  maintained  by  Elliott
+
+
+
+15 Associates.
+
+
+
+16                                 6.
+
+
+
+17      On November 20, 2015, plaintiff was walking towards the
+
+
+
+18 entrance of the DA on NE 15th Street when he was accosted by a
+
+
+
+19 patronus owned by defendant Potter, causing bodily injuries
+
+
+
+20 to plaintiff as hereinafter set forth.
+
+
+
+21                                 7.
+
+
+
+22      Defendant POTTER was negligent in one or more of the
+
+
+
+23 following particulars which caused injuries to plaintiff:
+
+
+
+24      a)   In failing to maintain proper control of his 
+
+
+
+25           (patronus);
+
+
 
 26
 
-b) In failing to properly de—summon his patronus while it
-was in a place used by the general public.
-8.
+1      b)   In failing to properly de-summon his patronus while it
 
-As a direct, proximate and foreseeable result of the acts and
-omissions of defendant POTTER, plaintiff Ronald Weasley sustained
-a serious spook to his heart, all to plaintiff's non—economic
-damage in an amount exceeding $350,000.
 
-9.
 
-As a direct and foreseeable result of the acts and omissions
-of defendant POTTER, plaintiff incurred health care expenses and
-other economic damages. The total of plaintiff’s economic damages
-not paid a health insurance, subject to direct reimbursement under
-ORS 742.534, together with his non-economic damages, exceeds
-$350,000 but plaintiff hereby limits amount sought for both non-
-economic damages and non—742.534 economic damages to $350,000
-for purposes of ORS 20.080.
+2           was in a place used by the general public.
 
-10.
 
-By letter dated February 15, 2016, plaintiff made demand upon
-defendant POTTER and his insurer for damages in the manner
-provided by ORS 20.080.
 
-11.
+3                                 8.
 
-Plaintiff is entitled to recover attorney fees incurred herein
 
-pursuant to ORS 20.080 as well as her damages and costs and
 
-disbursements.
-//
-//
+4      As a direct, proximate and foreseeable result of the acts and
 
-Page 3 * COMPLAINT (ORS 20.080)
 
-   
 
-GI A7FR, MAURFR x. PFTFRSON P r. Annnmvx allnw
+5 omissions of defendant POTTER, plaintiff Ronald Weasley sustained
 
-1 Second Claim for Relief
 
-2 (Negligence — Dumbledore's Anny)
 
-3 12.
+6 a serious spook to his heart, all to plaintiff's non-economic
 
-4 Plaintiff re—alleges paragraphs 1—6 above.
 
-5 l3.
 
-6 Defendant DA was negligent in one or more of the
+7 damage in an amount exceeding $350,000.
+
+
+
+8                                 9.
+
+
+
+9      As a direct and foreseeable result of the acts and omissions
+
+
+
+10 of defendant POTTER, plaintiff incurred health care expenses and
+
+
+
+11 other economic damages. The total of plaintiff’s economic damages
+
+
+
+12 not paid a health insurance, subject to direct reimbursement under
+
+
+
+13 ORS 742.534, together with his non-economic damages, exceeds
+
+
+
+14 $350,000 but plaintiff hereby limits amount sought for both non-
+
+
+
+15 economic damages and non-742.534 economic damages to $350,000 
+
+
+
+16 for purposes of ORS 20.080.
+
+
+
+17                                10.
+
+
+
+18      By letter dated February 15, 2016, plaintiff made demand upon
+
+
+
+19 defendant POTTER and his insurer for damages in the manner
+
+
+
+20 provided by ORS 20.080.
+
+
+
+21                                11.
+
+
+
+22      Plaintiff is entitled to recover attorney fees incurred herein
+
+
+
+23 pursuant to ORS 20.080 as well as her damages and costs and
+
+
+
+24 disbursements.
+
+
+
+25 //
+
+
+
+26 //
+
+1                      Second Claim for Relief
+
+
+
+2                     (Negligence - Dumbledore's Army)
+
+
+
+3                                12.
+
+
+
+4      Plaintiff re-alleges paragraphs 1-6 above.
+
+
+
+5                                13.
+
+
+
+6      Defendant DA was negligent in one or more of the
+
+
 
 7 following particulars which caused injuries to plaintiff:
 
-8 a) In providing an unsafe area near its store entrance
-9 for the use of its patrons who conjured patroni;
-10 b) In failing to properly monitor and/or safeguard the
-11 area;
-12 c) In failing to provide appropriate warning (via sign&
-13 placards, cones, etc.) to members of the public that the
-14 area could be in use by dangerous patroni;
-15 d) In failing to properly segregate the area (via
-16 cones, fencing, distance, etc.) from business invitees
-17 and other members of the public;
-18 e) In failing to maintain its store premises, including the
-19 entrance, in a safe condition for business invitees and
-20 other members of the public.
-21 14.
-22 As a direct, proximate and foreseeable result of the acts and
+
+
+8      a)   In providing an unsafe area near its store entrance
+
+
+
+9 			for the use of its patrons who conjured patroni;
+
+
+
+10      b)   In failing to properly monitor and/or safeguard the 
+
+
+
+11           area;
+
+
+
+12      c)   In failing to provide appropriate warning (via signs,
+
+
+
+13           placards, cones, etc.) to members of the public that the
+
+
+
+14           area could be in use by dangerous patroni;
+
+
+
+15      d)   In failing to properly segregate the area (via
+
+
+
+16           cones, fencing, distance, etc.) from business invitees
+
+
+
+17           and other members of the public;
+
+
+
+18      e)   In failing to maintain its store premises, including the
+
+
+
+19           entrance, in a safe condition for business invitees and
+
+
+
+20           other members of the public.
+
+
+
+21                                14.
+
+
+
+22      As a direct, proximate and foreseeable result of the acts and
+
+
+
 23 omissions of defendant DA, plaintiff Ronald Weasley
+
+
+
 24 sustained a serious spook and a fright, all to plaintiff's
-25 non—economic damage in an amount exceeding $350,000.
+
+
+
+25 non-economic damage in an amount exceeding $350,000.
+
+
+
 26
 
-Page 4 7 COMPLAINT (ORS 20.080)
+1                                15.
 
-   
 
-GI A7FR, MAURFR X. PFTFRSON P r. Annnmvx ”law
 
-3
+2      As a direct and foreseeable result of the acts and omissions
 
-4
 
-5
 
-6
+3 of defendant DA, plaintiff incurred health care expenses
 
-8
+
+
+4 and other economic damages.  The total of plaintiff’s economic
+
+
+
+5 damages  not  paid  a  health  insurance,  subject  to  direct
+
+
+
+6 reimbursement under ORS 742.534, together with his non-economic
+
+
+
+7 damages, exceeds $350,000 but plaintiff hereby limits amount
+
+
+
+8 sought for both non-economic damages and non-742.534 economic
+
+
+
+9 damages to $350,000 for purposes of ORS 20.080.
+
+
+
+10                                16.
+
+
+
+11      By letter dated February 15, 2016, plaintiff made demand upon
+
+
+
+12 defendant DA for damages in the manner provided by ORS
+
+
+
+13 20.080.
+
+
+
+14                                17.
+
+
+
+15      Plaintiff is entitled to recover attorney fees incurred herein
+
+
+
+16 pursuant to ORS 20.080 as well as his damages and costs and
+
+
+
+17 disbursements.
 
 9
 
-10
 
-11
 
-12
+10      WHEREFORE, plaintiff RONALD WEASLEY prays for Judgment
 
-13
 
-14
 
-15
+11 against defendants, and each of them, as follows:
+
+
+
+12      1.   For his non-economic damages and non-health insurer-paid
+
+
+
+13           (ORS 742.534) economic damages, in the amount of $350,000;
+
+
+
+14      2.   For his attorney fees pursuant to ORS 20.080;
+
+
+
+15      3.   For his costs and disbursements herein.
+
+
 
 16
 
-10
 
-11
 
-12
 
-13
 
-14
 
-15
 
-16
 
-15.
-As a direct and foreseeable result of the acts and omissions
-of defendant DA, plaintiff incurred health care expenses
-and other economic damages. The total of plaintiff’s economic
-damages not paid a health insurance, subject to direct
-reimbursement under ORS 742.534, together with his non—economic
-7 damages, exceeds $350,000 but plaintiff hereby limits amount
-sought for both non-economic damages and non—742.534 economic
-damages to $350,000 for purposes of ORS 20.080.
-16.
-By letter dated February 15, 2016, plaintiff made demand upon
-defendant DA for damages in the manner provided by ORS
 
-20.080.
-17.
-Plaintiff is entitled to recover attorney fees incurred herein
-pursuant to ORS 20.080 as well as his damages and costs and
+17      DATED this 14th day of November, 2017.
 
-disbursements.
 
-WHEREFORE, plaintiff RONALD WEASLEY prays for Judgment
-against defendants, and each of them, as follows:
-1. For his non-economic damages and non—health insurer-paid
-(ORS 742.534) economic damages, in the amount of $350,000;
-2. For his attorney fees pursuant to ORS 20.080;
 
-3. For his costs and disbursements herein.
+18                                    WOLTERS KLEWER, LLC
 
-Page 5 7 COMPLAINT (ORS 20.080)
 
-   
 
-GI A7FR, MAURFR X. PFTFRSON P r. Annnumk allaw
+19
 
-DATED this 14:h day of November, 2017.
 
-WOLTERS KLEWER, LLC
 
-5/ Deborah L. Robertson
-Deborah L. Robertson, OSB
-#115042
-Of attorneys for Plaintiff
+		20	  s/ Deborah L. Robertson 	 Deborah L. Robertson, OSB #115042
+
+21                                    Of attorneys for Plaintiff
+
+
 
 22
 
+
+
 23
+
+
 
 24
 
+
+
 25
+
+
 
 26
 
-Page 6 7 COMPLAINT (ORS 20.080)
 
-   
 
-GI A7FR, MAIIRFR X. PFTFRSON P r. Annnmvx .ouw
+Page 6 — COMPLAINT (ORS 20.080)
 
+G:\Clients -- DLR\SPRR16001\Complaint 20.080.wpd
+
+GLAZER, MAURER & PETERSON, P.C., Attorneys at Law
+
+4500 Kruse Way, Suite 390, Lake Oswego, Oregon 97035
+
+Phone: 503-635-8801; Fax: 503-635-1108; E-mail: peter@gmplawyers.com

@@ -35,9 +35,9 @@
         <div id="sidebar-wrapper-lit">
         <ul class="sidebar-nav">
             <br><li class="sidebar-brand">
-                <form class="form-inline my-2 my-lg-0" id="search-engine">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="user-lit-search" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="lit-search" type="submit">Search</button>
                 </form></li><br>
             <li><a href="/case_init"><span class="glyphicon glyphicon-edit"></span> Start a New Case</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-check"></span> Completed Cases</a></li><br>
@@ -131,16 +131,14 @@
                     </div>
                     </div>
 
-
-
-
                             </div>
                             <div id="notepad" style="display:none">
                                 <textarea id="area" rows="10" cols="50"></textarea></div>
                             <div id="notepadControls" style="display:none">
-                                <p><a href="javascript:save();" class="button">Save</a>
-                                   <a href="javascript:close();" class="button">Close</a>
-                                   <a href="javascript:download('notes.txt', 'Hello world!');" class="button">Download</a></p>
+                                <p><a href="#" class="button" id="save-note">Save</a>
+                                <a href="#'" class="button" id="close-note">Close</a>
+                                <a href="#" class="button" id="download-note">Download</a>
+                                </p>
                             </div>
 
                         </div><br>
@@ -194,7 +192,8 @@
                                     {% if case.request_pro_docs %}
                                     <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
-                                    <li id="newNote"><a href="#">Add Notes</a></li>
+                                    <li id="saved-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
+                                    <li id="new-note" data-case-id="{{ case.case_id }}"><a href="#">Stuff</a></li>
                                     </div>
                                 </td>
                             </tr>
@@ -202,6 +201,8 @@
                             {% endfor %}
                           </table>
                         </div>
+
+                    <div id="search-results-table" style="display:none"></div>
 
                 </div>
             </div>

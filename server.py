@@ -2,7 +2,7 @@
 
 import textract, requests, os, sys
 
-from ocr import OCR_file, allowed_file
+from ocr import OCR_file, allowed_file, es_index_complaint
 # from boxes import convert_to_image, draw_rectangles
 
 import os
@@ -29,6 +29,9 @@ from docx import Document
 from lit_form_classes import Answer
 from corp_form_classes import LPA
 
+from elasticsearch import Elasticsearch
+from elasticsearch.client.ingest import IngestClient
+
 
 app = Flask(__name__)
 
@@ -41,15 +44,13 @@ AUTHORIZATION_BASE_URL = 'https://github.com/login/oauth/authorize'
 TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-# Normally, if you use an undefined variable in Jinja2, it fails
-# silently. This is horrible. Fix this so that, instead, it raises an
-# error.
 app.jinja_env.undefined = StrictUndefined
 
 UPLOAD_FOLDER = 'filestorage/'
-
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+INDEX = 'documents'
 
 
 @app.route('/test_boxes')
@@ -391,10 +392,13 @@ def upload_file():
     if 'file' not in request.files:
         flash('No file part')
         return redirect('/')
+
     uploaded_file = request.files['file']
+
     if uploaded_file.filename == '':
         flash('No selected file')
         return redirect('/')
+
     if uploaded_file and allowed_file(uploaded_file.filename):
         filename = secure_filename(uploaded_file.filename)
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -527,7 +531,7 @@ def send_to_db():
     db.session.commit()
 
     # Add the complaint to elasticsearch index
-    # es_index_complaint(filename)
+    es_index_complaint(new_complaint.txt, new_complaint.complaint_id, case_id, new_complaint.doc)
 
     session['active_case'] = case_id
 
@@ -672,6 +676,31 @@ def get_case_histories():
                                          }
 
     return jsonify(casehistory)
+
+
+@app.route('/search_results/<search>')
+def return_search_results(search):
+    """Inputs user's search query. Outputs a list of relevant documents."""
+
+    # import pdb; pdb.set_trace()
+
+    search_results = []
+
+    es.indices.refresh(index=INDEX)
+
+    # res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
+    res = es.search(index=INDEX, body={"query": {"match": {"content": search}}})
+
+    print("Got %d Hits:" % res['hits']['total'])
+
+    for hit in res['hits']['hits']:
+
+        search_results.append("%(filepath)s" % hit["_source"])
+        # print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
+
+    # Return a list of paths to relevant documents
+    return search_results
+
 
 
 

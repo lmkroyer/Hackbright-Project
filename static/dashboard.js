@@ -34,8 +34,9 @@
 //     document.getElementById('td1').innerHTML = "Some text to enter";
 // }
 
-
-// ATTNY BAR CHART FUNCTIONS
+///////////////////////////////
+// ATTNY BAR CHART FUNCTIONS //
+///////////////////////////////
 
 function createAttnyAvail() {
 
@@ -87,8 +88,9 @@ $("#expandRow").click(function(){
     $("#collapsedRow").toggle();
 });
 
-
-// USER LINE GRAPH ON DASHBOARD
+//////////////////////////////////
+// USER LINE GRAPH ON DASHBOARD //
+//////////////////////////////////
 
 function showUserInfo() {
 
@@ -122,7 +124,7 @@ showUserInfo();
 // NOTEPAD FUNCTIONS //
 ///////////////////////
 
-function check_web_storage_support() {
+function checkWebStorageSupport() {
     if(typeof(Storage) !== "undefined") {
         return(true);
     }
@@ -132,21 +134,72 @@ function check_web_storage_support() {
     }
 }
 
-function display_saved_note() {
-    if(check_web_storage_support() == true) {
+function displaySavedNote() {
+
+    if(checkWebStorageSupport() == true) {
         result = localStorage.getItem('note');
     }
+
     if(result === null) {
         result = "No note saved";
     }
     document.getElementById('area').value = result;
 }
 
-function save() {
-    if(check_web_storage_support() == true) {
-        let area = document.getElementById("area");
-        if(area.value != '') {
-            localStorage.setItem("note", area.value);
+function listSavedNotes(caseID) {
+
+    if(checkWebStorageSupport() == true) {
+
+        let noteValues = [],
+        noteKeys = Object.keys(localStorage),
+        i = noteKeys.length;
+
+        while ( i-- ) {
+            noteValues.push( localStorage.getItem(noteKeys[i]) );
+        }
+
+        let specCaseNotes = [];
+
+        // FIXME: here is psuedocode
+        // for item in noteValues:
+        //     JSON.parse(item)
+        //     if item.case_id == caseID:
+        //         specCaseNotes.append(item)
+
+        //         document.getElementById('saved-ntoes').value = item;
+                $('#saved-notes').html(item.key);
+
+
+
+        // result = localStorage.getItem('note');
+    }
+
+    if(result === null) {
+        result = "No note saved";
+    }
+
+    document.getElementById('area').value = result;
+}
+
+function saveNote(caseID) {
+
+    let today = new Date();
+    let todayStr = today.toDateString();
+
+    if(checkWebStorageSupport() == true) {
+        let noteInput = document.getElementById("area");
+
+        if(noteInput.value != '') {
+
+            let noteObj = {'case_id':caseID,
+                           'text': noteInput.value,
+                           'date': todayStr
+                          };
+
+            let noteObjJSON = JSON.stringify(noteObj);
+            let noteName = "Note" + noteObj.date;
+
+            localStorage.setItem(noteName, noteObjJSON);
         }
         else {
             alert("Nothing to save");
@@ -154,23 +207,23 @@ function save() {
     }
 }
 
-// function download(filename) {
-//     let text = document.getElementById("area");
-//     let pom = document.createElement('a');
-//     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-//     pom.setAttribute('download', filename);
+function downloadNote(filename) {
+    let text = document.getElementById("area");
+    let pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
 
-//     if (document.createEvent) {
-//         let event = document.createEvent('MouseEvents');
-//         event.initEvent('click', true, true);
-//         pom.dispatchEvent(event);
-//     }
-//     else {
-//         pom.click();
-//     }
-// }
+    if (document.createEvent) {
+        let event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
 
-function close() {
+function closeNote() {
     // this line clears content
     // document.getElementById('area').value = "";
     $("#notepad").toggle();
@@ -178,29 +231,80 @@ function close() {
     $("#progressChart").toggle();
 }
 
-$("#newNote").click(function(){
+
+$("#new-note").click(function(){
+    let caseID = $(this).data("case-id");
+    $("#save-note").data("case-id", caseID);
     $("#notepad").toggle();
     $("#notepadControls").toggle();
     $("#progressChart").toggle();
 });
 
+
+$("#close-note").click(function(){
+    closeNote(caseID);
+});
+
+
+$("#save-note").click(function(){
+    let caseID = $(this).data("case-id");
+    console.log(caseID);
+    saveNote(caseID);
+});
+
+
+$("#download-note").click(function(){
+    downloadNote();
+});
+
+
+// $("#div"+case.case_id).click(function() {
+
+// }
+
+// JSON.stringify() --> returns a string (from an object)
+// JSON.parse() --> turns strings back into object
+
+
 ///////////////////
 // SEARCH ENGINE //
 ///////////////////
 
-// function getSearchEntry() {
 
-//     let search = document.getElementById('search-engine');
-//     $.get("/searchResults.json", function (data) {
-//         // put search result display here
-//                                 });
+$("#lit-search").click(function() {
+
+    let search = document.getElementById('user-lit-search');
+
+    $.get("/search_results/<search>", function (data) {
+
+        // this is a list of documents
+        // let results = data;
+
+        // for (let result of results) {
+        let resultsContent = "<table>";
+
+        for (i=0; i < 100; i++) {
+            resultsContent += '<tr><td>' + 'result ' +  i + ':' + result + '</td></tr>';
+        }
+
+        resultsContent += "</table>";
+
+        $('#search-results-table').append(resultsContent);
+
+    });
+
+
+
+    $("#search-results-table").toggle();
+    $("#progressChart").toggle();
+    $("#caseInfo").toggle();
+});
+
 
 
 /////////////////////
 // MAKE A TIMELINE //
 /////////////////////
-
-
 
 // function caseHistory() {
 

@@ -38,7 +38,7 @@ $("#formFund").click(function(){
 });
 })
 
-$("#summary-report").click(function(){
+$("#sum-{{ fund.fund }}").click(function(){
     $("#allOptions").toggle();
     // $("#LPA-generator").toggle();
     $("#sum-rep").toggle();

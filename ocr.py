@@ -5,6 +5,16 @@ import textract, os
 from lit_form_classes import Complaint
 import fileinput
 
+from elasticsearch import Elasticsearch
+from elasticsearch.client.ingest import IngestClient
+
+import json
+from datetime import datetime
+
+es = Elasticsearch([{'host': 'localhost', 'port': 9200, 'serializer': 'JSONSerializerPython2()'}])
+
+INDEX = 'documents'
+
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx', 'doc'])
 
 
@@ -19,7 +29,10 @@ def OCR_file(document):
     # Decode string to handle stray bytes
     decoded_text = text.decode('utf-8')
 
-    # FIXME: need some logic here to check what kind of form was uploaded (add dropdown for user)
+    # # Add the OCR'd text to elasticsearch
+    # es_index_complaint(decoded_text)
+
+    # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = Complaint(decoded_text)
 
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
@@ -46,46 +59,75 @@ def allowed_file(filename):
             filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
 
 
-def generate_initial_answer(ABC):
-    """Takes in case-specific info and inserts into txt file answer template.
+def es_index_complaint(text_path, complaint_id, case_id, filepath):
+    """Add a document to elasticsearch index."""
 
-    Converts txt to docx filetype. Returns docx."""
+    # Read in the .txt complaint passed in
+    text = open(text_path, 'r').read()
 
-    # Open a the answer template as a txt file
-    # with open('/forms/answer_template.txt', 'w') as answer:
-    #     # Get a string from the txt file
-    #     answer_string = answer.read()
-    #     # Decode string to handle stray bytes
-    #     decoded_text = text.decode('utf-8')
-    #     new_answer = TextBlob
+    decoded_text = text.decode('utf-8')
 
-    # # Close the file
-    # text_file.close()
+    # For now, add only full text search; add other key values for more structured searches
+    doc = {
+        'case': case_id,
+        'doc_id': complaint_id,
+        'text': decoded_text,
+        'path': filepath
+        # 'timestamp': datetime.now(),
+    }
 
-    template = open('/forms/answer_template.txt', 'r')
-    template_string = template.read()
-    template.close()
+    # Add the full text to the es index as a complaint
+    es.index(index=INDEX, doc_type='complaint', id=complaint_id, body=doc)
 
-    answer = template_string.replace()
 
-def generate_final_answer(defenses):
-    """Takes in a list of selected defenses and a docx file and adds appropriate
-    paragraphs.
 
-    Outputs a final answer document."""
+    # res = es.index(index="test-index", doc_type='tweet', id=1, body=doc)
+    # print(res['created'])
 
-    # make a dictionary with affirm defense and paragraph text
-    # start with txt file, replace small items
-    # convert to docx
-    # open docx and add the relevant paragraphs
-    # save
+    # res = es.get(index="test-index", doc_type='tweet', id=1)
+    # print(res['_source'])
 
-    # for defense in defenses:
-    pass
 
-def generate_answer(defenses):
+# def generate_initial_answer(ABC):
+#     """Takes in case-specific info and inserts into txt file answer template.
 
-    answer = Answer()
+#     Converts txt to docx filetype. Returns docx."""
+
+#     # Open a the answer template as a txt file
+#     # with open('/forms/answer_template.txt', 'w') as answer:
+#     #     # Get a string from the txt file
+#     #     answer_string = answer.read()
+#     #     # Decode string to handle stray bytes
+#     #     decoded_text = text.decode('utf-8')
+#     #     new_answer = TextBlob
+
+#     # # Close the file
+#     # text_file.close()
+
+#     template = open('/forms/answer_template.txt', 'r')
+#     template_string = template.read()
+#     template.close()
+
+#     answer = template_string.replace()
+
+# def generate_final_answer(defenses):
+#     """Takes in a list of selected defenses and a docx file and adds appropriate
+#     paragraphs.
+
+#     Outputs a final answer document."""
+
+#     # make a dictionary with affirm defense and paragraph text
+#     # start with txt file, replace small items
+#     # convert to docx
+#     # open docx and add the relevant paragraphs
+#     # save
+
+#     # for defense in defenses:
+#     pass
+
+# def generate_answer(defenses):
+
+#     answer = Answer()
     # call all the methods on the answer
 
 
