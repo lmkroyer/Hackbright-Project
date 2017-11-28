@@ -698,8 +698,13 @@ def return_search_results(search):
         search_results.append("%(filepath)s" % hit["_source"])
         # print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
 
+    import pdb; pdb.set_trace()
+
     # Return a list of paths to relevant documents
     return search_results
+
+#     (Pdb) res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
+# *** SerializationError: ({'query': {'match_all': set([u'botts'])}}, TypeError("Unable to serialize set([u'botts']) (type: <type 'set'>)",))
 
 
 

@@ -273,9 +273,9 @@ $("#download-note").click(function(){
 
 $("#lit-search").click(function() {
 
-    let search = document.getElementById('user-lit-search');
+    let search = $('#user-lit-search');
 
-    $.get("/search_results/<search>", function (data) {
+    $.get("/search_results/" + search.val(), function (data) {
 
         // this is a list of documents
         // let results = data;
