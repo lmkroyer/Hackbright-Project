@@ -157,7 +157,7 @@
                             <th> Status </th>
                             {% for case in active_case_lst %}
                             {% for defendant in case.defendants %}
-                            <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" class="accordion-toggle" id="case-row">
+                            <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle" id="case-row">
                                 <td id="caseId"> {{ case.case_id }} </td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
@@ -192,9 +192,11 @@
                                     {% if case.request_pro_docs %}
                                     <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
-                                    <li id="saved-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
-                                    <li id="new-note" data-case-id="{{ case.case_id }}"><a href="#">Stuff</a></li>
+                                    <li id="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
+
                                     </div>
+                                    <div id="display-notes">
+                                        <b>Notes:</b></div>
                                 </td>
                             </tr>
                             {% endfor %}

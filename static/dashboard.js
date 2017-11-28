@@ -84,9 +84,9 @@ $("#availChart").click(function(){
     $("#progressChart").toggle();
 });
 
-$("#expandRow").click(function(){
-    $("#collapsedRow").toggle();
-});
+// $("#expandRow").click(function(){
+//     $("#collapsedRow").toggle();
+// });
 
 //////////////////////////////////
 // USER LINE GRAPH ON DASHBOARD //
@@ -134,31 +134,53 @@ function checkWebStorageSupport() {
     }
 }
 
-function displaySavedNote() {
+function displaySavedNote(note) {
 
-    if(checkWebStorageSupport() == true) {
-        result = localStorage.getItem('note');
+    if(checkWebStorageSupport() === true) {
+        let result = localStorage.getItem('note');
     }
 
-    if(result === null) {
+    if (result === null) {
         result = "No note saved";
     }
+
     document.getElementById('area').value = result;
 }
 
 function listSavedNotes(caseID) {
 
-    if(checkWebStorageSupport() == true) {
+    // JSON.parse() --> turns strings back into object
+
+    if(checkWebStorageSupport() === true) {
 
         let noteValues = [],
         noteKeys = Object.keys(localStorage),
         i = noteKeys.length;
-
         while ( i-- ) {
-            noteValues.push( localStorage.getItem(noteKeys[i]) );
+            console.log(noteKeys);
+            let noteObj = JSON.parse(localStorage.getItem(noteKeys[i]));
+            if (noteObj.case_id == caseID) {
+                noteValues.push(noteObj);
+            }
         }
 
-        let specCaseNotes = [];
+        // let thisCaseNotes = [];
+
+        // for (let note of noteValues) {
+        //     let noteObj = JSON.parse(note);
+
+        //     if (noteObj.case_id == caseID) {
+        //         thisCaseNotes.push(noteObj);
+        //     }
+        // }
+
+        let trHTML = '';
+        $.each(noteValues, function(j, item) {
+            trHTML += "<tr><td>" + "Note " + item.date + "</td></tr>";
+        });
+
+        $("#display-notes").append(trHTML);
+
 
         // FIXME: here is psuedocode
         // for item in noteValues:
@@ -166,19 +188,7 @@ function listSavedNotes(caseID) {
         //     if item.case_id == caseID:
         //         specCaseNotes.append(item)
 
-        //         document.getElementById('saved-ntoes').value = item;
-                $('#saved-notes').html(item.key);
-
-
-
-        // result = localStorage.getItem('note');
     }
-
-    if(result === null) {
-        result = "No note saved";
-    }
-
-    document.getElementById('area').value = result;
 }
 
 function saveNote(caseID) {
@@ -191,13 +201,13 @@ function saveNote(caseID) {
 
         if(noteInput.value != '') {
 
-            let noteObj = {'case_id':caseID,
-                           'text': noteInput.value,
-                           'date': todayStr
+            let noteObj = {"case_id":caseID,
+                           "text": noteInput.value,
+                           "date": todayStr
                           };
 
             let noteObjJSON = JSON.stringify(noteObj);
-            let noteName = "Note" + noteObj.date;
+            let noteName = "Note " + noteObj.date;
 
             localStorage.setItem(noteName, noteObjJSON);
         }
@@ -232,17 +242,17 @@ function closeNote() {
 }
 
 
-$("#new-note").click(function(){
+$("#new-notes").click(function(){
     let caseID = $(this).data("case-id");
-    $("#save-note").data("case-id", caseID);
+    $("#save-note").attr("data-case-id", caseID);
     $("#notepad").toggle();
     $("#notepadControls").toggle();
     $("#progressChart").toggle();
 });
 
-
+// FIXME: caseID
 $("#close-note").click(function(){
-    closeNote(caseID);
+    closeNote();
 });
 
 
@@ -257,38 +267,23 @@ $("#download-note").click(function(){
     downloadNote();
 });
 
+$("#case-row").click(function(){
+    let caseID = $(this).data("case-id");
+    listSavedNotes(caseID);
+});
+
 
 // $("#div"+case.case_id).click(function() {
 
 // }
 
 // JSON.stringify() --> returns a string (from an object)
-// JSON.parse() --> turns strings back into object
+
 
 
 ///////////////////
 // SEARCH ENGINE //
 ///////////////////
-
-
-// $("#lit-search").click(function() {
-
-//     let search = $('#user-lit-search');
-
-//     $.get("/search_results/" + search.val(), function (data) {
-
-//         let trHTML = '';
-//         $.each(data, function (i, item) {
-//             trHTML += '<tr><td>' + item + '</td></tr>';
-//         });
-
-//         $('#search-results-table').append(trHTML);
-//     });
-
-//     $("#search-results-table").toggle();
-//     $("#progressChart").toggle();
-//     $("#caseInfo").toggle();
-// });
 
 
 function getResults() {

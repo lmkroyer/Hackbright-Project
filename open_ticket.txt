@@ -40,10 +40,13 @@ misc: start messing with bounding box functionality
 
 
 TUESDAY:
+- pass in status of case from server
 - how pass doc to each download
 - get notes to display on browser line
 - es: make highlighted text display in search results
     - make sure can download return results
+    - handle no results message
+    - 'back to dash' button after search results
 - connect dots on lit work flow
 - make a summary report OCR
 - ability to delete cases
@@ -52,11 +55,17 @@ TUESDAY:
 - where to put spinner? https://codepen.io/nelsyeung/pen/MwdWmj?page=1&
 or https://jsfiddle.net/kimmobrunfeldt/72tkyn40/
 
+Monday:
+- make navbar stay at top
+- fix lit containers / flex space
+
 
 
 MON PM / TUES: set up elasticsearch
 
 TUESDAY: opencv bounding boxes + confi provision
+
+WEDNESDAY: bounding boxes and summary report
 
 redo wireframe on lit side -- add functionality for case pattern + to resume
 
