@@ -686,7 +686,7 @@ def return_search_results(search):
     # search_results = {
     #                     'doc_id': {
     #                                 'path': 'abc',
-    #                                 'highlights': 'text'
+    #                                 'highlights': ['text1', 'text2]'
     #                             }
     #                 }
 
@@ -718,22 +718,35 @@ def return_search_results(search):
 
     print "Got %d Hits:" % res['hits']['total']
 
-    import pdb; pdb.set_trace()
-
     for hit in res['hits']['hits']:
 
         doc_id = "%(doc_id)s" % hit["_source"]
         search_results[doc_id] = {}
-        search_results[doc_id]['path'] = "%(path)s" % hit["_source"]
 
-        # matched_text =
+        full_path = "%(path)s" % hit["_source"]
+        path = full_path.split('/')[1]
 
-        search_results[doc_id]['highlights'] = "%(highlight)s" % hit["_source"]
+
+        search_results[doc_id]['path'] = path
+
+        highlights = []
+
+        for highlight in hit['highlight']['text']:
+            highlights.append(highlight)
+
+        # this gives a string of returned match if 1
+        # matched_text = res['hits']['hits'][0]['highlight']['text'][0]
+
+        # if more than one result, here is a list of strings of highlights:
+        # res['hits']['hits'][0]['highlight']['text']
+
+        search_results[doc_id]['highlights'] = highlights
 
         # search_results.append("%(path)s" % hit["_source"])
         # search_results["%(doc_id)s" % hit["_source"]] = "%(path)s" % hit["_source"]
         # search_results["%(doc_id)s" % hit["_source"]] = {'path': "%(path)s" % hit["_source",
         #                                                  'highlights': "%(highlight)s" % hit["_source"]}
+    # import pdb; pdb.set_trace()
 
     # Return a list of paths to relevant documents
     return jsonify(search_results)

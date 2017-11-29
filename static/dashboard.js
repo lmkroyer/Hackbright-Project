@@ -297,17 +297,36 @@ function getResults() {
     let query = $("#user-lit-search").val();
 
     $.get("/search_results/" + query, function(data) {
-        let trHTML = '';
-        $.each(data, function(i, item) {
-            trHTML += "<tr><td>" + item + "</td></tr>";
 
-        });
+        console.log(data);
+
+        let trHTML = '';
+
+        for (let result in data) {
+
+            let previewText = data[result].highlights;
+            let path = data[result].path;
+
+            console.log(path);
+            // let previewText = result['highlights'];
+            trHTML += "<tr><td>" + previewText + "</td></tr>";
+            trHTML += "<tr><td><a href='/download/" + path + "'>Download</a></td></tr>";
+        }
+
+    // below worked to display path
+        // $.each(data, function(i, item) {
+        //     trHTML += "<tr><td>" + item + "</td></tr>";
+
+        //     console.log(typeof(item));
+
+        // });
 
         $("#search-results-table").append(trHTML);
 
     });
 
     $("#search-results-table").toggle();
+    $("#search-results-div").toggle();
     $("#progressChart").toggle();
     $("#caseInfo").toggle();
 }
@@ -321,6 +340,13 @@ $("#user-lit-search").keyup(function(event) {
 
 $("#lit-search").click(function(event) {
     getResults();
+    });
+
+$("#dash-redirect").click(function() {
+    $("#search-results-table").toggle();
+    $("#search-results-div").toggle();
+    $("#progressChart").toggle();
+    $("#caseInfo").toggle();
     });
 
 
