@@ -1,29 +1,46 @@
 
 "use strict";
 
-// function getCaseStatus() {
+//////////////////////////////
+// CASE TABLE - CASE STATUS //
+//////////////////////////////
 
-//     let status = document.getElementById('caseID');
+function getCaseStatus() {
 
-//     let cases = document.getElementById('caseList');
+    let myCase = document.getElementById('case-status');
 
-//     for (let cse of cases) {
+    console.log(myCase);
+    let myCaseObj= $(myCase).data("case");
 
-//         if (cse.request_pro_docs.submitted) {
-//             return '100%';
-//         }
-//         else if (cse.interrogatories.submitted) {
-//             return '75%';
-//         }
-//         else if (cse.answer.submitted) {
-//             return '50%';
-//         }
-//         else if (cse.complaint.processed) {
-//             return '25%';
-//         }
-//         else {
-//             return '0%';
-//         }
+    console.log(myCaseObj);
+
+    // let cases = document.getElementById('caseList');
+
+    // for (let cse of cases) {
+
+    if (myCaseObj.request_pro_docs && myCaseObj.request_pro_docs.date_submitted) {
+        let status = '100%';
+    }
+    else if (myCaseObj.interrogatories && myCaseObj.interrogatories.date_submitted) {
+        let status = '75%';
+    }
+    else if (myCaseObj.answer && myCaseObj.answer.date_submitted) {
+        let status = '50%';
+    }
+    else if (myCaseObj.complaint && myCaseObj.complaint.date_processed) {
+        let status = '25%';
+    }
+    else {
+        let status = '0%';
+    }
+
+    console.log(status);
+    // document.getElementById('case-status').innerHTML = status;
+
+    // $("#case-status").html(status);
+}
+
+getCaseStatus();
 // FIXME: this needs to show status!
 
 
@@ -255,7 +272,6 @@ $("#close-note").click(function(){
 
 $("#save-note").click(function(){
     let caseID = $(this).data("case-id");
-    console.log(caseID);
     saveNote(caseID);
 });
 
@@ -271,7 +287,6 @@ $("#case-row").click(function(){
 
 $(document).on("click", ".case-note", function(){
     let noteKey = $(this).data("key");
-    console.log(noteKey);
     $("#notepad").toggle();
     $("#notepadControls").toggle();
     $("#progressChart").toggle();
@@ -406,4 +421,17 @@ $(".show-timeline").click(function(){
 // (".class").on click - event function
 
 // start with html data attributes, make server data dict, write js functions that listen for id and populate jinja loop
+
+
+
+////////////////////
+// BOUNDING BOXES //
+////////////////////
+
+$("#bounding-box-btn").click(function(){
+    $("#caseInfo").toggle();
+    $("#progressChart").toggle();
+});
+
+
 

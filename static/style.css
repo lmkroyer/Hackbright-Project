@@ -1,4 +1,9 @@
 
+canvas#viewport {
+  margin: 0px;
+  padding: 0px;
+}
+
 @font-face {
   font-family: ailerons;
   src: url('Ailerons-Typeface.otf');

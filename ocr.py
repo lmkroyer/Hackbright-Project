@@ -3,6 +3,7 @@
 from textblob import TextBlob
 import textract, os
 from lit_form_classes import Complaint
+from corp_form_classes import PPM
 import fileinput
 
 from elasticsearch import Elasticsearch
@@ -34,6 +35,43 @@ def OCR_file(document):
 
     # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = Complaint(decoded_text)
+
+    # Create txt file in filestorage -- DO I WANT TO DO THIS?
+    doc_name = document.split('.')[0]
+    text_path = os.path.join('{doc_name}.txt'.format(doc_name=doc_name))
+
+    # Open a txt file or create one
+    with open(text_path, 'w+') as text_file:
+        # Write spellchecked text to the new file (FIXME: SHOULD THIS BE DECODED TEXT?)
+        text_file.write(text)
+
+    # Close the file
+    text_file.close()
+
+    # Return a class instance
+    return parsed_text
+
+
+def OCR_ppm(document):
+    """Takes in a file and outputs (saves) an OCR'd txt file."""
+
+    # Use multi page functionality with tesseract
+    #FIXME: make sure this method works with other file formats, it at least works with pdf -- may need to if / else for other file formats
+    text = textract.process(document, method='tesseract')
+    # Decode string to handle stray bytes
+    decoded_text = text.decode('utf-8')
+
+    # # Add the OCR'd text to elasticsearch
+    # es_index_complaint(decoded_text)
+
+    # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
+    parsed_text = PPM(decoded_text)
+
+    print parsed_text.word_list
+    print parsed_text.sentence_list
+    print parsed_text.nouns
+
+    import pdb; pdb.set_trace()
 
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
     doc_name = document.split('.')[0]

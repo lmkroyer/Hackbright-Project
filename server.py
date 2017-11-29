@@ -2,7 +2,7 @@
 
 import textract, requests, os, sys
 
-from ocr import OCR_file, allowed_file, es_index_complaint
+from ocr import OCR_file, OCR_ppm, allowed_file, es_index_complaint
 # from boxes import convert_to_image, draw_rectangles
 
 import os
@@ -388,7 +388,7 @@ def create_team():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    """Lets user upload a file."""
+    """Lets user upload a ltigation file."""
 
     if 'file' not in request.files:
         flash('No file part')
@@ -420,6 +420,39 @@ def upload_file():
 
         print parsed_text.word_list
         print parsed_text.nouns
+
+        new_case = request.form.get('new_case')
+
+        return render_template('display.html', parsed_text=parsed_text,
+                                               filename=filename,
+                                               txt_filename=txt_filename,
+                                               claims=claims,
+                                               new_case=new_case)
+                                               # selected_claim_name=selected_claim_name)
+
+
+@app.route('/upload/ppm', methods=['POST'])
+def upload_ppm():
+    """Lets user upload a file."""
+
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect('/')
+
+    uploaded_file = request.files['file']
+
+    if uploaded_file.filename == '':
+        flash('No selected file')
+        return redirect('/')
+
+    if uploaded_file and allowed_file(uploaded_file.filename):
+        filename = secure_filename(uploaded_file.filename)
+        uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        parsed_text = OCR_ppm(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        txt_filename = filename.split('.')[0]
+        txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
 
         new_case = request.form.get('new_case')
 
@@ -750,6 +783,15 @@ def return_search_results(search):
 
     # Return a list of paths to relevant documents
     return jsonify(search_results)
+
+
+@app.route('/')
+
+@app.route('/ocr_by_layout')
+def draw_bounding_boxes():
+    """Messing around with bounding boxes and opencv library."""
+
+    return render_template('draw_boxes.html')
 
 
 if __name__ == "__main__":

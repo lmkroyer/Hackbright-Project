@@ -88,6 +88,14 @@
     </div>
     <div id="page-content-wrapper" class="col-sm-8">
         <div class="page-content">
+
+            <div id="upload-sum-rep" style="display:none">
+              <h4>Upload a Fund Doc:</h4>
+                <form action='/upload/ppm' method="POST" enctype="multipart/form-data">
+                  <p><input type="file" name="file">
+                      <input type="submit">
+                </form>
+            </div>
             <div id="allOptions">
                 <h3 id="corp-options">Select an Action:</h3><br>
                 <li id="formFund"><a href="#">Form a Fund</a></li>
@@ -169,14 +177,6 @@
                     </form>
 
              </div><br>
-
-                <div id="upload-sum-rep" style="display:none">
-                  <h4>Upload a Fund Doc:</h4>
-                  <form action='/upload' method="POST" enctype="multipart/form-data">
-                    <p><input type="file" name="file">
-                        <input type="submit">
-                  </form>
-                </div>
 
               <div id="sum-rep" style="display:none">
                <table class="table table-hover">

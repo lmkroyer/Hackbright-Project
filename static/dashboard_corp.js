@@ -38,11 +38,11 @@ $("#formFund").click(function(){
 });
 })
 
-$("#sum-{{ fund.fund }}").click(function(){
-    $("#allOptions").toggle();
-    // $("#LPA-generator").toggle();
-    $("#sum-rep").toggle();
-});
+// $("#sum-{{ fund.fund }}").click(function(){
+//     $("#allOptions").toggle();
+//     // $("#LPA-generator").toggle();
+//     $("#sum-rep").toggle();
+// });
 
 
 $("#availChart").click(function(){
@@ -51,9 +51,14 @@ $("#availChart").click(function(){
     $("#allOptions").toggle();
 });
 
-$("document").ready(function() {
+// $("document").ready(function() {
+// $("#start-sum-rep").click(function(){
+//     $("#allOptions").hide();
+//     $("#upload-sum-rep").show();
+// });
+// });
+
 $("#start-sum-rep").click(function(){
-    $("#allOptions").hide();
-    $("#upload-sum-rep").show();
+    $("#upload-sum-rep").toggle();
+    $("#allOptions").toggle();
 });
-})

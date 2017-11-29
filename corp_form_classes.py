@@ -111,3 +111,31 @@ class LPA(object):
         lpa.save('filestorage/{filename}'.format(filename=filename))
         # Return filename to pass to display
         return filename
+
+
+class PPM(TextBlob):
+    def __init__(self, decoded_text):
+        super(PPM, self).__init__(decoded_text)
+
+        self.word_list = self.words
+        self.sentence_list = self.sentences
+        self.nouns = self.noun_phrases
+        self.fund = self.get_fund_name()
+
+
+    def get_fund_name(self):
+        """Return the name of the reviewing fund."""
+
+        return self.nouns[0]
+
+    def get_mgmt_fee(self):
+        """Return the management fee of the fund."""
+
+        for i in range(len(self.sentence_list)):
+
+            if self.sentence_list[i].find('the "Management Fee"') and self.sentence_list[i].find('%'):
+                sentence = sentence_list[]
+                fee = re.search('\d+.\d+\%', sentence)
+                return fee
+
+

@@ -47,7 +47,8 @@
             <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Notifications</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
             <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
-            <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li>
+            <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br>
+            <li id="bounding-box-btn"><a href="#"><span class="glyphicon glyphicon-star"></span> NEW Beta Test Bounding Boxes<span class="glyphicon glyphicon-star"></span></a></li>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -59,8 +60,6 @@
                             <canvas id="progressChart" width="800" height="350"></canvas>
                             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
                             <div id="timeline" style="display:none">
-
-
 
                         <div class="page-header" id="timeline" style="display:none">
                           <h1>Horizontal timeline</h1>
@@ -170,7 +169,7 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td id="case-status">Status: <br><button type="button" class="show-timeline" id="{{ case.case_id }}">Show Case History</button></td>
+                                <td id="case-status" data-case="{{ case }}">Status: <br><button type="button" class="show-timeline" id="{{ case.case_id }}">Show Case History</button></td>
                             </tr>
                             <tr class="hiddenRow">
                                 <td></td>
@@ -193,10 +192,9 @@
                                     <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
                                     <li id="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
-
-                                    </div>
                                     <div id="display-notes">
                                         <b>Notes:</b></div>
+                                    </div>
                                 </td>
                             </tr>
                             {% endfor %}

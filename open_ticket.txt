@@ -2,6 +2,9 @@
 - add doc type to top of search result
 - show case id on top of text box
 
+WED:
+- fix case status
+
 
 SUNDAY: elasticsearch and PPM generation (or OCR PPM for confi)
 
