@@ -31,6 +31,7 @@ from corp_form_classes import LPA
 
 from elasticsearch import Elasticsearch
 from elasticsearch.client.ingest import IngestClient
+from elasticsearch_dsl import Search
 
 
 app = Flask(__name__)
@@ -693,25 +694,49 @@ def return_search_results(search):
 
     es.indices.refresh(index=INDEX)
 
-    # # this raises: TypeError("Unable to serialize set([u'botts'])
-    # res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
-    # this raises an empty search result
-    res = es.search(index=INDEX, body={"query": {"match": {"text": search}}})
+    # res = es.search(index=INDEX, body={"query": {"match": {"text": search}}})
 
-    print("Got %d Hits:" % res['hits']['total'])
+    res = es.search(index=INDEX, body={
+                                        "query": {
+                                            "match": {
+                                                "text": search
+                                                }
+                                            },
+                                        "highlight": {
+                                            "pre_tags": ["<b>"],
+                                            "post_tags": ["</b>"],
+                                            "fields": {
+                                                "text": {}
+                                            }
+                                        }
+                                    })
+
+
+    # s = Search.from_dict(res)
+
+    # highlights = s.highlight(search, fragment_size=50)
+
+    print "Got %d Hits:" % res['hits']['total']
+
+    import pdb; pdb.set_trace()
 
     for hit in res['hits']['hits']:
 
+        doc_id = "%(doc_id)s" % hit["_source"]
+        search_results[doc_id] = {}
+        search_results[doc_id]['path'] = "%(path)s" % hit["_source"]
+
+        # matched_text =
+
+        search_results[doc_id]['highlights'] = "%(highlight)s" % hit["_source"]
+
         # search_results.append("%(path)s" % hit["_source"])
-        search_results["%(doc_id)s" % hit["_source"]] = "%(path)s" % hit["_source"]
+        # search_results["%(doc_id)s" % hit["_source"]] = "%(path)s" % hit["_source"]
+        # search_results["%(doc_id)s" % hit["_source"]] = {'path': "%(path)s" % hit["_source",
+        #                                                  'highlights': "%(highlight)s" % hit["_source"]}
 
     # Return a list of paths to relevant documents
     return jsonify(search_results)
-
-#     (Pdb) res = es.search(index=INDEX, body={"query": {"match_all": {search}}})
-# *** SerializationError: ({'query': {'match_all': set([u'botts'])}}, TypeError("Unable to serialize set([u'botts']) (type: <type 'set'>)",))
-
-
 
 
 if __name__ == "__main__":
