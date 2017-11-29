@@ -129,6 +129,7 @@ class PPM(TextBlob):
         self.leverage = self.get_indebtedness()
         self.min_commitment = self.get_min_commitment()
         self.transfers = self.get_transfers()
+        self.reinvestment = self.get_reinvestment()
 
 
     def get_fund_name(self):

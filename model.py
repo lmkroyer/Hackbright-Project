@@ -65,7 +65,7 @@ class FundClient(db.Model):
     im_email = db.Column(db.String(64), nullable=True)
     sig_date_lpa = db.Column(db.Date, nullable=True)
     lpa = db.Column(db.String(64), nullable=True)
-    mgmt_fee = db.Column(db.Integer, nullable=True)
+    mgmt_fee = db.Column(db.String(8), nullable=True)
     perf_fee = db.Column(db.Integer, nullable=True)
     ppm = db.Column(db.String(64), nullable=True)
     ima = db.Column(db.String(64), nullable=True)
@@ -79,6 +79,7 @@ class FundClient(db.Model):
     leverage = db.Column(db.Text, nullable=True)
     min_commitment = db.Column(db.String(25), nullable=True)
     transfers = db.Column(db.Text, nullable=True)
+    reinvestment = db.Column(db.Text, nullable=True)
 
     # Define relationship to user
     user = db.relationship('User', backref=db.backref('fclients'))

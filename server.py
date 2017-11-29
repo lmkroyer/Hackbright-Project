@@ -431,22 +431,16 @@ def upload_ppm():
 
     if uploaded_file and allowed_file(uploaded_file.filename):
         filename = secure_filename(uploaded_file.filename)
-        uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        ppm_doc = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        uploaded_file.save(ppm_doc)
 
-        parsed_text = OCR_ppm(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        parsed_text = OCR_ppm(ppm_doc)
 
-        txt_filename = filename.split('.')[0]
-        txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
+        # txt_filename = filename.split('.')[0]
+        # txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
 
         # Add the PPM to the db
-        add_ppm_db(parsed_text)
-
-        # return render_template('display.html', parsed_text=parsed_text,
-        #                                        filename=filename,
-        #                                        txt_filename=txt_filename,
-        #                                        claims=claims,
-        #                                        new_case=new_case)
-                                               # selected_claim_name=selected_claim_name)
+        add_ppm_db(parsed_text, ppm_doc)
 
 
 @app.route('/submit_complaint', methods=['POST'])
@@ -704,39 +698,27 @@ def get_summary_report(clientID):
 
     summaryreport = {}
 
-    ppm_info = X.query.filter()
+    fund = FundClient.query.get(clientID)
 
+    name = fund.fund
 
+    name_caps = name.upper()
 
+    summaryreport[fund] = {
+                           'name_caps': name_caps,
+                           'name': name,
+                           'jurisdiction': fund.fund_state,
+                           'manager': fund.im,
+                           'principals': fund.principals,
+                           'min_commit': fund.min_commitment,
+                           'mgmt_fee': fund.mgmt_fee,
+                           'leverage': fund.leverage,
+                           'reinvest': fund.reinvestment,
+                           'removal': fund.removal,
+                           'transfers': fund.transfers
+    }
 
-    current_user = session.get('current_user')
-
-    user_object = User.query.get(current_user)
-
-    # Get a list of current user's active cases
-    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
-
-    for case in active_case_lst:
-
-        # If the case has a complaint, display info about it
-        if case.complaint:
-            complaint = case.complaint.legal_basis + ' claim' + case.complaint.damages_asked + 'damages claimed'
-        else:
-            complaint = 'Incomplete'
-
-        # If the case has an answer, display info about it
-        if case.answer:
-            answer = 'Submitted ' + case.answer.date_submitted
-
-        else:
-            answer = 'Incomplete'
-
-            casehistory[case.case_id] = {
-                                         'complaint':complaint,
-                                         'answer':answer
-                                         }
-
-    return jsonify(casehistory)
+    return jsonify(summaryreport)
 
 
 @app.route('/search_results/<search>')
