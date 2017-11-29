@@ -73,6 +73,13 @@ class FundClient(db.Model):
     form_PF = db.Column(db.String(64), nullable=True)
     sum_rep = db.Column(db.String(64), nullable=True)
 
+    # The following are specific to generating a summary report from a PPM object
+    principals = db.Column(db.String(250), nullable=True)
+    removal = db.Column(db.Text, nullable=True)
+    leverage = db.Column(db.Text, nullable=True)
+    min_commitment = db.Column(db.String(25), nullable=True)
+    transfers = db.Column(db.Text, nullable=True)
+
     # Define relationship to user
     user = db.relationship('User', backref=db.backref('fclients'))
 

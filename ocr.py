@@ -67,11 +67,11 @@ def OCR_ppm(document):
     # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
     parsed_text = PPM(decoded_text)
 
-    print parsed_text.word_list
-    print parsed_text.sentence_list
-    print parsed_text.nouns
+    # print parsed_text.word_list
+    # print parsed_text.sentence_list
+    # print parsed_text.nouns
 
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
 
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
     doc_name = document.split('.')[0]
@@ -95,6 +95,12 @@ def allowed_file(filename):
     # Returns a boolean 'true' if allowed format
     return ('.' in filename and
             filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
+
+
+def add_ppm_db(PPM):
+    """Takes in a PPM object and stores it in the database."""
+
+
 
 
 def es_index_complaint(text_path, complaint_id, case_id, filepath):

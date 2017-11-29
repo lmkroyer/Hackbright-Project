@@ -2,7 +2,7 @@
 
 import textract, requests, os, sys
 
-from ocr import OCR_file, OCR_ppm, allowed_file, es_index_complaint
+from ocr import OCR_file, OCR_ppm, allowed_file, es_index_complaint, add_ppm_db
 # from boxes import convert_to_image, draw_rectangles
 
 import os
@@ -69,22 +69,8 @@ def make_lit_dashboard():
     user_object = User.query.get(current_user)
     # Query for all cases where settled == False
     active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
-    # cases = active_cases.statement.execute().fetchall()
     case_count = active_cases.count()
     active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
-
-    # @wip: Figure out case status
-    # for case in active_case_lst:
-    #     if case.request_pro_docs.submitted:
-    #         status = '100%'
-    #     elif case.interrogatories.submitted:
-    #         status = '75%'
-    #     elif case.answer.submitted:
-    #         status = '50%'
-    #     elif case.complaint.processed:
-    #         status = '25%'
-    #     else:
-    #         status = '0%'
 
     return render_template('/welcome.html', active_case_lst=active_case_lst,
                                             case_count=case_count)
@@ -136,15 +122,16 @@ def user_login():
 def signout():
     """Signs out user and removes from session."""
 
-    flash('Successfully signed out')
     del session['oauth_token']
-    # include this?
     del session['current_user']
     del session['current_user_name']
+
+    flash('Successfully signed out')
 
     return redirect('/')
 
 
+# TODO:
 # @app.route('/register')
 # def register_user():
 #     """Allows user to create new account."""
@@ -152,12 +139,10 @@ def signout():
 #     return render_template('user_registration.html')
 
 
+# TODO:
 @app.route('/edit_profile')
 def edit_profile():
     """Allows user to edit exisitng account details."""
-
-    # FIXME: grad the user object for user who is logged in
-    # user = User.query
 
     return render_template('edit_profile.html')
 
@@ -208,7 +193,6 @@ def profile():
 
     github = OAuth2Session(client_id, token=session['oauth_token'])
     github_user = github.get('https://api.github.com/user').json()
-
 
 
 @app.route('/dashboard_lit')
@@ -454,13 +438,14 @@ def upload_ppm():
         txt_filename = filename.split('.')[0]
         txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
 
-        new_case = request.form.get('new_case')
+        # Add the PPM to the db
+        add_ppm_db(parsed_text)
 
-        return render_template('display.html', parsed_text=parsed_text,
-                                               filename=filename,
-                                               txt_filename=txt_filename,
-                                               claims=claims,
-                                               new_case=new_case)
+        # return render_template('display.html', parsed_text=parsed_text,
+        #                                        filename=filename,
+        #                                        txt_filename=txt_filename,
+        #                                        claims=claims,
+        #                                        new_case=new_case)
                                                # selected_claim_name=selected_claim_name)
 
 
@@ -676,11 +661,53 @@ def test_d3():
     return render_template('attorney_status.html')
 
 
+# FIXME: finish for other doc types
 @app.route('/casehistory.json')
 def get_case_histories():
     """JSON information about each case history."""
 
     casehistory = {}
+
+    current_user = session.get('current_user')
+
+    user_object = User.query.get(current_user)
+
+    # Get a list of current user's active cases
+    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
+
+    for case in active_case_lst:
+
+        # If the case has a complaint, display info about it
+        if case.complaint:
+            complaint = case.complaint.legal_basis + ' claim' + case.complaint.damages_asked + 'damages claimed'
+        else:
+            complaint = 'Incomplete'
+
+        # If the case has an answer, display info about it
+        if case.answer:
+            answer = 'Submitted ' + case.answer.date_submitted
+
+        else:
+            answer = 'Incomplete'
+
+            casehistory[case.case_id] = {
+                                         'complaint':complaint,
+                                         'answer':answer
+                                         }
+
+    return jsonify(casehistory)
+
+
+@app.route('/summaryreport/<clientID>')
+def get_summary_report(clientID):
+    """Returns JSON information to populate each summary report."""
+
+    summaryreport = {}
+
+    ppm_info = X.query.filter()
+
+
+
 
     current_user = session.get('current_user')
 
@@ -785,7 +812,7 @@ def return_search_results(search):
     return jsonify(search_results)
 
 
-@app.route('/')
+# @app.route('/')
 
 @app.route('/ocr_by_layout')
 def draw_bounding_boxes():

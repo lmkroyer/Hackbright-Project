@@ -38,12 +38,6 @@ $("#formFund").click(function(){
 });
 })
 
-// $("#sum-{{ fund.fund }}").click(function(){
-//     $("#allOptions").toggle();
-//     // $("#LPA-generator").toggle();
-//     $("#sum-rep").toggle();
-// });
-
 
 $("#availChart").click(function(){
     createAttnyAvail();
@@ -58,7 +52,40 @@ $("#availChart").click(function(){
 // });
 // });
 
+//////////////////////////
+// SUMMARY REPORT TABLE //
+//////////////////////////
+
+// Model:
+// function showCaseHistory(buttonID) {
+
+//     $.get("/casehistory.json", function (data) {
+//         $('#complaint-info').html(data[buttonID]['complaint']);
+//         $('#answer-info').html(data[buttonID]['answer']);
+//     });
+// }
+
+function buildSummaryReport(clientID) {
+
+    $.get('/summaryreport/' + clientID, function (data) {
+
+
+
+
+
+}
+
+
 $("#start-sum-rep").click(function(){
     $("#upload-sum-rep").toggle();
     $("#allOptions").toggle();
 });
+
+$(".show-sum-rep").click(function(){
+    $("#allOptions").toggle();
+    // $("#LPA-generator").toggle();
+    $("#sum-rep").toggle();
+    let clientID = $(this).attr("id");
+    buildSummaryReport(clientID);
+});
+
