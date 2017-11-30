@@ -1,4 +1,11 @@
+#home-img {
+  border-radius: 50%;
+  opacity: 0.9;
+}
 
+#team-options {
+  display: inline-block;
+}
 
 #canvas{border:1px solid red;}
 
@@ -16,6 +23,11 @@
   font-family: ailerons;
   font-weight: bold;
   src: url('Ailerons-Typeface.otf');
+}
+
+#init-logo {
+  font-family: ailerons;
+  font-size: 36pt;
 }
 
 
@@ -80,7 +92,7 @@
     width: 100%;
     height: 600px;
     background-position: center center;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 #map_dash {

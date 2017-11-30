@@ -240,7 +240,7 @@ def user_progress_data():
                 "pointHoverBorderWidth": 2,
                 "pointRadius": 3,
                 "pointHitRadius": 10,
-                "data": [65, 59, 80, 81, 56, 55, 40],
+                "data": [65, 59, 80, 81, 56, 55, 40, 48, 54, 39, 45, 62],
                 "spanGaps": False},
             {
                 "label": "Value",
@@ -260,7 +260,7 @@ def user_progress_data():
                 "pointHoverBorderColor": "rgba(151,187,205,1)",
                 "pointHoverBorderWidth": 2,
                 "pointHitRadius": 10,
-                "data": [20, 22, 15, 14, 21, 21, 19, 18, 22, 20, 20],
+                "data": [20, 22, 15, 14, 21, 21, 19, 18, 22, 20, 20, 21],
                 "spanGaps": False}
         ]
     }
@@ -682,7 +682,6 @@ def test_d3():
     return render_template('attorney_status.html')
 
 
-# FIXME: finish for other doc types
 @app.route('/casehistory.json')
 def get_case_histories():
     """JSON information about each case history."""
@@ -707,13 +706,26 @@ def get_case_histories():
         # If the case has an answer, display info about it
         if case.answer:
             answer = 'Submitted ' + case.answer.date_submitted
-
         else:
             answer = 'Incomplete'
 
+        # If the case has an interrogatory, display info about it
+        if case.interrogatories:
+            interrogatories = 'Submitted ' + case.interrogatories.date_submitted
+        else:
+            interrogatories = 'Incomplete'
+
+        # If the case has an answer, display info about it
+        if case.request_pro_docs:
+            request_pro_docs = 'Submitted ' + case.request_pro_docs.date_submitted
+        else:
+            request_pro_docs = 'Incomplete'
+
             casehistory[case.case_id] = {
                                          'complaint':complaint,
-                                         'answer':answer
+                                         'answer':answer,
+                                         'interrogatories':interrogatories,
+                                         'request_pro_docs':request_pro_docs
                                          }
 
     return jsonify(casehistory)

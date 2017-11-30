@@ -185,7 +185,6 @@ function listSavedNotes(caseID) {
         //         noteValues.push(noteObj);
         //     }
         // }
-        console.log(noteValues);
 
         let trHTML = '';
 
@@ -262,6 +261,7 @@ $("#new-notes").click(function(){
     $("#notepad").toggle();
     $("#notepadControls").toggle();
     $("#progressChart").toggle();
+    $("#case-note-tag").html("Write a note for Case <b>" + caseID + "</b>:");
 });
 
 $("#close-note").click(function(){
@@ -381,6 +381,8 @@ function showCaseHistory(buttonID) {
     $.get("/casehistory.json", function (data) {
         $('#complaint-info').html(data[buttonID]['complaint']);
         $('#answer-info').html(data[buttonID]['answer']);
+        $('#interrogatories-info').html(data[buttonID]['interrogatories']);
+        $('#requestprodocs-info').html(data[buttonID]['request_pro_docs']);
     });
 }
 

@@ -132,6 +132,7 @@
 
                             </div>
                             <div id="notepad" style="display:none">
+                                <p id="case-note-tag">Write a note for Case </p>
                                 <textarea id="area" rows="10" cols="50"></textarea></div>
                             <div id="notepadControls" style="display:none">
                                 <p><a href="#" class="button" id="save-note">Save</a>
@@ -148,7 +149,7 @@
                           {% elif case_count == 1 %}
                           <p><b>You Have {{ case_count }} Active Case:</b></p>
                           {% endif %}
-                          <table class="table table-hover table-dark">
+                          <table class="table table-hover table-dark table-striped">
                             <th> Case Id </th>
                             <th> Type </th>
                             <th> Team </th>

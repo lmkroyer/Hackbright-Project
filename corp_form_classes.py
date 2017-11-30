@@ -151,7 +151,9 @@ class PPM(TextBlob):
                 # Returns a sentence object
                 sentence = self.sentence_list[i]
                 # Get string from sentence object
+                print sentence
                 string = str(sentence)
+                print string
 
                 percent = re.search(r"\d+.\d+\%", string).group()
                 payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", string).group()
@@ -163,6 +165,8 @@ class PPM(TextBlob):
 
     def get_jurisdiction(self):
         """Return the jurisdiction of the fund entity."""
+
+        import pdb; pdb.set_trace()
 
         for i in range(len(self.sentence_list)):
 

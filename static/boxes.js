@@ -99,3 +99,9 @@ $("#canvas").mouseup(function (e) {
 $("#canvas").mouseout(function (e) {
     handleMouseOut(e);
 });
+
+
+// put things into a map of thing: coordiantes
+// when click submit, send map to server
+
+// https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python

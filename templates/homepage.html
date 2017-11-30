@@ -3,7 +3,7 @@
 {% block head %}
 
   {% if 'current_user_name' not in session %}
-    <h4 align="right"><a href="/login">Login</a></h4>
+    <!-- <h4 align="right"><a href="/login">Login</a></h4> -->
     <h5 align="right"><a href="/register">Register new user</a></h5>
   {% else %}
     <h5 align="right">Hello, {{ session['current_user_name'] }}</h5>
@@ -28,14 +28,20 @@
     <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
   </div>
 
+  <div id="map"></div>
+
+  {% else %}
+  <br><br><br>
+  <div align="center">
+  <img src="/static/city3.jpg" class="img-responsive" id="home-img" style="width:20%;">
+  </div><br>
+  <h4 align="center"><a href="/login">Login</a></h4>
+
+  <!-- <h4 align="center"><a href="/login">Login</a></h4> -->
   {% endif %}
 
-<!--     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate">Corporate</button></a>
-
-    <a href='/dashboard_lit'><button type="button" class="btn btn-outline-litigation">Litigation</button></a> -->
-
-    <div id="map"></div>
     <script src="/static/casemap.js"></script>
     <script async defer
     //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
+
 {% endblock %}
