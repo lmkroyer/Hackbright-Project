@@ -48,10 +48,10 @@ class Complaint(TextBlob):
     def get_plaintiff_fname(self):
         """Return the plaintiff's first name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'Plaintiff':
-        #         plaintiff_fname = self.word_list[i - 4]
-        #         return plaintiff_fname.capitalize()
+        for i in range(len(self.word_list)):
+            if self.word_list[i] == 'Plaintiff':
+                plaintiff_fname = self.word_list[i - 4]
+                return plaintiff_fname.capitalize()
 
         # for i in range(len(self.nouns)):
         #     if self.nouns[i] == 'plaintiff':
@@ -59,29 +59,29 @@ class Complaint(TextBlob):
         #         plaintiff_fname = full_name.split(' ')[0]
         #         return plaintiff_fname.capitalize()
 
-        for i in range(len(self.nouns)):
-            if self.nouns[i] == 'plaintiff':
-                plaintiff_fname = self.nouns[i - 1][-2]
-                return plaintiff_fname.capitalize()
+        # for i in range(len(self.nouns)):
+        #     if self.nouns[i] == 'plaintiff':
+        #         plaintiff_fname = self.nouns[i - 1][-2]
+        #         return plaintiff_fname.capitalize()
 
 
     def get_plaintiff_lname(self):
         """Return the plaintiff's last name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'Plaintiff':
-        #         plaintiff_lname = self.word_list[i - 2]
-        #         return plaintiff_lname.capitalize()
+        for i in range(len(self.word_list)):
+            if self.word_list[i] == 'Plaintiff':
+                plaintiff_lname = self.word_list[i - 3]
+                return plaintiff_lname.capitalize()
         # for i in range(len(self.nouns)):
         #     if self.nouns[i] == 'plaintiff':
         #         full_name = self.nouns[i - 1]
         #         plaintiff_lname = full_name.split(' ')[1]
         #         return plaintiff_lname.capitalize()
 
-        for i in range(len(self.nouns)):
-            if self.nouns[i] == 'plaintiff':
-                plaintiff_lname = self.nouns[i - 1][-1]
-                return plaintiff_lname.capitalize()
+        # for i in range(len(self.nouns)):
+        #     if self.nouns[i] == 'plaintiff':
+        #         plaintiff_lname = self.nouns[i - 1][-1]
+        #         return plaintiff_lname.capitalize()
 
     def get_case_no(self):
         """Return the plaintiff's last name."""

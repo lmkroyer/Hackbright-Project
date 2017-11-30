@@ -21,8 +21,7 @@ from model import (User, CaseUser, Case, OpposingCounsel, Role, CaseParty,
                    RequestProDocs, FundClient, connect_to_db, db)
 
 from flask_sqlalchemy import SQLAlchemy
-# import requests
-# import os
+
 from werkzeug.utils import secure_filename
 
 from docx import Document
@@ -68,9 +67,12 @@ def make_lit_dashboard():
     current_user = session.get('current_user')
 
     user_object = User.query.get(current_user)
+
     # Query for all cases where settled == False
     active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
+    # Count those cases
     case_count = active_cases.count()
+    # Return a list of all active cases
     active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
 
     return render_template('/welcome.html', active_case_lst=active_case_lst,

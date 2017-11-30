@@ -4,7 +4,7 @@ https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-go
 - change search result page to like inner html so can have title
 - add doc type to top of search result
 - add link to incomplete timeline tags to continue progression
-*- get case status to appear
+*- get case status to appear w/ TIMELINE:
     - you have 'X' days to answer
      / timing generally
 - get summary report to display

@@ -8,37 +8,36 @@
 function getCaseStatus() {
 
     let myCase = document.getElementById('case-status');
+    let myCaseComplaint = $(myCase).data("case-complaint");
+    let myCaseAnswer = $(myCase).data("case-answer");
+    let myCaseInterrogatories = $(myCase).data("case-interrogatories");
+    let myCaseRequestProDocs = $(myCase).data("case-requestprodocs");
 
-    console.log(myCase);
-    let myCaseObj= $(myCase).data("case");
+    let status;
 
-    console.log(myCaseObj);
+    debugger;
 
-    // let cases = document.getElementById('caseList');
-
-    // for (let cse of cases) {
-
-    if (myCaseObj.request_pro_docs && myCaseObj.request_pro_docs.date_submitted) {
-        let status = '100%';
+    if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
+        status = '100%';
     }
-    else if (myCaseObj.interrogatories && myCaseObj.interrogatories.date_submitted) {
-        let status = '75%';
+    else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
+        status = '75%';
     }
-    else if (myCaseObj.answer && myCaseObj.answer.date_submitted) {
-        let status = '50%';
+    else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
+        status = '50%';
     }
-    else if (myCaseObj.complaint && myCaseObj.complaint.date_processed) {
-        let status = '25%';
+    else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
+        status = '25%';
     }
     else {
-        let status = '0%';
+        status = '0%';
     }
 
-    console.log(status);
-    // document.getElementById('case-status').innerHTML = status;
+    document.getElementById('case-status').innerHTML = status;
 
-    // $("#case-status").html(status);
 }
+
+getCaseStatus();
 
 // FIXME: this needs to show status!
 
@@ -392,7 +391,18 @@ $(".show-timeline").click(function(){
     $("#progressChart").toggle();
     let buttonID = $(this).attr("id");
     showCaseHistory(buttonID);
+    $(".show-timeline").html("Show Less");
 });
+
+// function toggleDisplay() {
+//     if ($("#timeline").show();) {
+//         $(".show-timeline").html("Show More");
+//     }
+//     else {
+//         $(".show-timeline").html("Show Less");
+//     }
+
+// }
 
 
 // preload all the cases into the DOM
