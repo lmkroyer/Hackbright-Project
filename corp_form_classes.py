@@ -1,3 +1,5 @@
+# coding: utf8
+
 """FACTORY OF CORPORATE FORM OBJECTS."""
 
 from textblob import TextBlob
@@ -135,7 +137,9 @@ class PPM(TextBlob):
     def get_fund_name(self):
         """Return the name of the reviewing fund."""
 
-        return self.nouns[0]
+        result = self.nouns[0]
+        name = re.search(r'(?:(?!CONFIDENTIAL).)*', result).group()
+        return name.upper()
 
 
     def get_mgmt_fee(self):
@@ -143,14 +147,17 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find("the 'Management Fee'") and self.sentence_list[i].find('%'):
+            if self.sentence_list[i].find('the “Management Fee”'.decode('utf-8')) != -1 and self.sentence_list[i].find('%') != -1:
                 # Returns a sentence object
-                sentence = sentence_list[i]
+                sentence = self.sentence_list[i]
                 # Get string from sentence object
                 string = str(sentence)
-                percent = re.search(r"\d+.\d+\%", string)
-                payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+ ){2}[A-Za-z]+", string)
-                fee = percent + ', ' + payable_when
+
+                percent = re.search(r"\d+.\d+\%", string).group()
+                payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", string).group()
+                fee = percent + ', payable ' + payable_when
+
+                print fee
                 return fee
 
 
@@ -159,10 +166,11 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the "Fund"') and self.sentence_list[i].find('organized under the laws'):
-                sentence = sentence_list[i]
+            if self.sentence_list[i].find('the “Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
+
+                sentence = self.sentence_list[i]
                 string = str(sentence)
-                return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string)
+                return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string).group()
 
 
     def get_manager(self):
@@ -170,11 +178,11 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the "Manager"') and self.sentence_list[i].find('will be the manager of the Fund'):
+            if self.sentence_list[i].find('the “Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
 
-                sentence = sentence_list[i]
+                sentence = self.sentence_list[i]
                 string = str(sentence)
-                return re.search(r"^.*(?=(\,))", string)
+                return re.search(r"^.*(?=(\,))", string).group()
 
 
     def get_principals(self):
@@ -182,9 +190,9 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the "Principals"') or self.sentence_list[i].find('the Principal'):
+            if self.sentence_list[i].find('the “Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
                 prinicpals = []
-                sentence = sentence_list[i]
+                sentence = self.sentence_list[i]
                 string = str(sentence)
                 # return re.search(r"(?<!\.\s)\b[A-Z][a-z]*\b", string)
                 list_words = string.split(' ')
@@ -206,9 +214,9 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the Manager may be removed'):
+            if self.sentence_list[i].find('the Manager may be removed') != -1:
 
-                sentence = sentence_list[i]
+                sentence = self.sentence_list[i]
                 return str(sentence)
 
 
@@ -217,10 +225,13 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('indebtedness') and self.sentence_list[i].find('the Fund may'):
+            sentence = self.sentence_list[i]
+            sentence = sentence.lower()
 
-                sentence = sentence_list[i]
-                return str(sentence)
+            if sentence.find('indebtedness') != -1 and self.sentence_list[i].find('the fund may') != -1:
+
+                result = self.sentence_list[i]
+                return str(result)
 
 
     def get_min_commitment(self):
@@ -228,10 +239,10 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('minimum capital commitment'):
-                sentence = sentence_list[i]
+            if self.sentence_list[i].find('minimum capital commitment') != -1:
+                sentence = self.sentence_list[i]
                 string = str(sentence)
-                num = re.search(r"\d+.\d+", string)
+                num = re.search(r"\d+.\d+", string).group()
                 return '$' + num
 
 
@@ -240,8 +251,8 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('reinvestment') and self.sentence_list[i].find('subject to'):
-                sentence = sentence_list[i]
+            if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject to') != -1:
+                sentence = self.sentence_list[i]
                 return str(sentence)
 
 
@@ -250,8 +261,8 @@ class PPM(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('proposed transfers'):
-                sentence = sentence_list[i]
+            if self.sentence_list[i].find('proposed transfers') != -1:
+                sentence = self.sentence_list[i]
                 return str(sentence)
 
 

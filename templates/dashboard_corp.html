@@ -71,6 +71,17 @@
                   {% endfor %}
                 </li>
 
+                <li id="sum-rep-list">Data:
+                  {% for summary_report in summary_reports %}
+                  <li><label class="tree-toggle nav-header" id="client-info-sub">Summary Reports</label><br>
+                    <ul class="tree" style="display:none">
+                      <li><label class="tree-toggle nav-header" id="client-info-sub-sub"><a href="#" class="show-sum-rep" id="{{ summary_report.client_id }}">{{ summary_report.fund }}</a></label>
+                      </li>
+                    </ul>
+                  </li>
+                  {% endfor %}
+                </li>
+
 
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example

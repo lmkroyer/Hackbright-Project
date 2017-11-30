@@ -1,4 +1,6 @@
-- change search result page to like inner html so can have title and 'back to dash' button every page
+https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
+
+- change search result page to like inner html so can have title
 - add doc type to top of search result
 - show case id on top of text box
 

@@ -97,26 +97,27 @@ def allowed_file(filename):
             filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
 
 
-def add_ppm_db(PPM, ppm_doc):
-    """Takes in a PPM object and stores it in the database."""
+# def add_ppm_db(PPM, ppm_doc):
+#     """Takes in a PPM object and stores it in the database."""
 
-    # Check to see whether the fund exsists in the db
-    fund = FundClient.query.filter(FundClient.fund == PPM.fund).first()
+#     # Check to see whether the fund exsists in the db
+#     fund = FundClient.query.filter(FundClient.fund == PPM.fund).first()
 
-    if not fund:
-        fund = FundClient(fund=PPM.fund,
-                          mgmt_fee=PPM.mgmt_fee,
-                          fund_state=PPM.jurisdiction,
-                          im=PPM.manager,
-                          principals=PPM.principals,
-                          removal=PPM.removal,
-                          leverage=PPM.leverage,
-                          min_commitment=PPM.min_commitment,
-                          transfers=PPM.transfers,
-                          ppm=ppm_doc)
+#     if not fund:
+#         fund = FundClient(fund=PPM.fund,
+#                           mgmt_fee=PPM.mgmt_fee,
+#                           fund_state=PPM.jurisdiction,
+#                           im=PPM.manager,
+#                           principals=PPM.principals,
+#                           removal=PPM.removal,
+#                           leverage=PPM.leverage,
+#                           min_commitment=PPM.min_commitment,
+#                           transfers=PPM.transfers,
+#                           ppm=ppm_doc,
+#                           sum_rep=True)
 
-        db.session.add(fund)
-        db.session.commit()
+#         db.session.add(fund)
+#         db.session.commit()
 
 
 def es_index_complaint(text_path, complaint_id, case_id, filepath):

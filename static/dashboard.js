@@ -40,7 +40,6 @@ function getCaseStatus() {
     // $("#case-status").html(status);
 }
 
-getCaseStatus();
 // FIXME: this needs to show status!
 
 

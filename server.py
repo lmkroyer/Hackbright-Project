@@ -2,7 +2,7 @@
 
 import textract, requests, os, sys
 
-from ocr import OCR_file, OCR_ppm, allowed_file, es_index_complaint, add_ppm_db
+from ocr import OCR_file, OCR_ppm, allowed_file, es_index_complaint
 # from boxes import convert_to_image, draw_rectangles
 
 import os
@@ -19,6 +19,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (User, CaseUser, Case, OpposingCounsel, Role, CaseParty,
                    Party, DocType, ClaimType, Complaint, Answer, Interrogatories,
                    RequestProDocs, FundClient, connect_to_db, db)
+
 from flask_sqlalchemy import SQLAlchemy
 # import requests
 # import os
@@ -324,7 +325,10 @@ def display_corp_dashboard():
 
     funds = FundClient.query.all()
 
-    return render_template('dashboard_corp.html', funds=funds)
+    summary_reports = FundClient.query.filter(FundClient.sum_rep == True).all()
+
+    return render_template('dashboard_corp.html', funds=funds,
+                                                  summary_reports=summary_reports)
 
 
 @app.route('/case_init')
@@ -419,6 +423,8 @@ def upload_file():
 def upload_ppm():
     """Lets user upload a file."""
 
+    user = session.get('current_user')
+
     if 'file' not in request.files:
         flash('No file part')
         return redirect('/')
@@ -434,13 +440,34 @@ def upload_ppm():
         ppm_doc = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         uploaded_file.save(ppm_doc)
 
-        parsed_text = OCR_ppm(ppm_doc)
+        PPM = OCR_ppm(ppm_doc)
 
         # txt_filename = filename.split('.')[0]
         # txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
 
         # Add the PPM to the db
-        add_ppm_db(parsed_text, ppm_doc)
+        # add_ppm_db(parsed_text, ppm_doc)
+
+        fund = FundClient.query.filter(FundClient.fund == PPM.fund).first()
+
+        if not fund:
+            fund = FundClient(fund=PPM.fund,
+                              attorney=user,
+                              mgmt_fee=PPM.mgmt_fee,
+                              fund_state=PPM.jurisdiction,
+                              im=PPM.manager,
+                              principals=PPM.principals,
+                              removal=PPM.removal,
+                              leverage=PPM.leverage,
+                              min_commitment=PPM.min_commitment,
+                              transfers=PPM.transfers,
+                              ppm=ppm_doc,
+                              sum_rep=True)
+
+            db.session.add(fund)
+            db.session.commit()
+
+    return redirect('/dashboard_corp')
 
 
 @app.route('/submit_complaint', methods=['POST'])

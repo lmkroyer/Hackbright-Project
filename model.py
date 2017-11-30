@@ -71,7 +71,7 @@ class FundClient(db.Model):
     ima = db.Column(db.String(64), nullable=True)
     form_13F = db.Column(db.String(64), nullable=True)
     form_PF = db.Column(db.String(64), nullable=True)
-    sum_rep = db.Column(db.String(64), nullable=True)
+    sum_rep = db.Column(db.Boolean, nullable=True)
 
     # The following are specific to generating a summary report from a PPM object
     principals = db.Column(db.String(250), nullable=True)
