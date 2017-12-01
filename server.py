@@ -26,8 +26,8 @@ from werkzeug.utils import secure_filename
 
 from docx import Document
 
-from lit_form_classes import Answer
-from corp_form_classes import LPA
+from lit_form_classes import AnswerForm
+from corp_form_classes import LPAForm
 
 from elasticsearch import Elasticsearch
 from elasticsearch.client.ingest import IngestClient
@@ -602,16 +602,23 @@ def generate_answer():
         user = User.query.filter(User.user_id == case.team_lead).first()
 
         # Create and Answer and generate the document
-        answer = Answer(complaint, user, defenses)
+        answer = AnswerForm(complaint, user, defenses)
         filename = answer.insert_information()
 
+        date = datetime.utcnow()
+        docx = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
         # Store the Answer info in the database
-        answer.date_created = datetime.utcnow()
-        answer.docx = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        db.session.add(answer)
+        new_answer = Answer(case_id=case_id,
+                            date_created=date,
+                            date_reviewed=date,
+                            date_submitted=date,
+                            docx=docx)
+
+        db.session.add(new_answer)
         db.session.commit()
 
-    return redirect(url_for('download', filename=filename))
+    return redirect(url_for('generated_doc', filename=filename))
 
 # @WIP:
 @app.route('/process_LPA', methods=['POST'])
@@ -649,7 +656,7 @@ def generate_lpa():
                                  im_email=im_email,
                                  sig_date_lpa=sig_date)
 
-    lpa = LPA(fund, fund_state, fund_ppp,
+    lpa = LPAForm(fund, fund_state, fund_ppp,
               gp, gp_state, gp_address, gp_email, gp_sig_party,
               im, im_state, im_address, im_email,
               sig_date)
@@ -769,8 +776,10 @@ def return_search_results(search):
     # search_results = {
     #                     'doc_id': {
     #                                 'path': 'abc',
-    #                                 'highlights': ['text1', 'text2]'
+    #                                 'highlights': ['text1', 'text2'],
+    #                                 'doc_type': 'complaint'
     #                             }
+    #                     'total_hits': '5',
     #                 }
 
     search_results = {}
@@ -799,7 +808,10 @@ def return_search_results(search):
 
     # highlights = s.highlight(search, fragment_size=50)
 
-    print "Got %d Hits:" % res['hits']['total']
+    # total_hits = res['hits']['total']
+    # search_results['total_hits'] = total_hits
+
+    # print "Got %d Hits:" % res['hits']['total']
 
     for hit in res['hits']['hits']:
 
@@ -808,9 +820,10 @@ def return_search_results(search):
 
         full_path = "%(path)s" % hit["_source"]
         path = full_path.split('/')[1]
-
-
         search_results[doc_id]['path'] = path
+
+        # doc_type = hit["_type"]
+        # search_results[doc_id]['doc_type'] = doc_type
 
         highlights = []
 

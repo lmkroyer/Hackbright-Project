@@ -11,9 +11,9 @@ from defenses import all_defenses
 import inflect
 
 
-class Complaint(TextBlob):
+class ComplaintForm(TextBlob):
     def __init__(self, decoded_text):
-        super(Complaint, self).__init__(decoded_text)
+        super(ComplaintForm, self).__init__(decoded_text)
 
         self.word_list = self.words
         self.sentence_list = self.sentences
@@ -244,7 +244,7 @@ class Complaint(TextBlob):
         return 'N/A'
 
 
-class Answer(object):
+class AnswerForm(object):
 
     plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
     case_state = case_county = user_fname = user_lname = user_mailing_address = None
@@ -288,14 +288,14 @@ class Answer(object):
         # FIXME: change civil code #s so that state gets input as variable
 
         # Make a list of all attributes on an Answer class
-        attrs = [attr for attr in Answer.__dict__.keys()
+        attrs = [attr for attr in AnswerForm.__dict__.keys()
                  if (not attr.startswith("__") and
-                     not callable(Answer.__dict__[attr]))]
+                     not callable(AnswerForm.__dict__[attr]))]
 
         # Make a list of all upper case attributes
-        cap_attrs = [attr.upper() for attr in Answer.__dict__.keys()
+        cap_attrs = [attr.upper() for attr in AnswerForm.__dict__.keys()
                  if (not attr.startswith("__") and
-                     not callable(Answer.__dict__[attr]))]
+                     not callable(AnswerForm.__dict__[attr]))]
 
         # Make a Document object for Python-docx
         answer = Document('forms/answer_template.docx')
@@ -372,7 +372,7 @@ class Answer(object):
         return filename
 
 
-class Interrogatories(object):
+class InterrogatoriesForm(object):
 
     plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
     case_state = case_county = user_fname = user_lname = user_mailing_address = None
@@ -448,7 +448,7 @@ class Interrogatories(object):
         return filename
 
 
-class RequestProDocs(object):
+class RequestProDocsForm(object):
 
     plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
     case_state = case_county = user_fname = user_lname = user_mailing_address = None

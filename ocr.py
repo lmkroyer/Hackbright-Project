@@ -2,8 +2,8 @@
 
 from textblob import TextBlob
 import textract, os
-from lit_form_classes import Complaint
-from corp_form_classes import PPM
+from lit_form_classes import ComplaintForm
+from corp_form_classes import PPMForm
 import fileinput
 
 from elasticsearch import Elasticsearch
@@ -34,7 +34,7 @@ def OCR_file(document):
     # es_index_complaint(decoded_text)
 
     # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
-    parsed_text = Complaint(decoded_text)
+    parsed_text = ComplaintForm(decoded_text)
 
     # Create txt file in filestorage -- DO I WANT TO DO THIS?
     doc_name = document.split('.')[0]
@@ -65,7 +65,7 @@ def OCR_ppm(document):
     # es_index_complaint(decoded_text)
 
     # TODO: need some logic here to check what kind of form was uploaded (add dropdown for user)
-    parsed_text = PPM(decoded_text)
+    parsed_text = PPMForm(decoded_text)
 
     # print parsed_text.word_list
     # print parsed_text.sentence_list
@@ -133,7 +133,7 @@ def es_index_complaint(text_path, complaint_id, case_id, filepath):
         'case': case_id,
         'doc_id': complaint_id,
         'text': decoded_text,
-        'path': filepath
+        'path': filepath,
         # 'timestamp': datetime.now(),
     }
 

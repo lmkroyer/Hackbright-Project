@@ -1,17 +1,20 @@
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
 
-- make sure lit form classes work for pdf
+** - broke the status
+- clear contents from search bar / es db
+
+- download but redirect to dashboard
+- fix URL search results
 - change search result page to like inner html so can have title
 - add doc type to top of search result
 - add link to incomplete timeline tags to continue progression
 *- get case status to appear w/ TIMELINE:
+    - change so 'this' so on each line
     - you have 'X' days to answer
      / timing generally
 - get summary report to display
 - prettier case progress transit pages: https://tutorialzine.com/2016/09/freebie-5-beautiful-bootstrap-headers
 
-WED:
-- fix case status
 
 timeline: https://bootsnipp.com/snippets/a3BjR
 

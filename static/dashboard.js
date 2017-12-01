@@ -7,15 +7,14 @@
 
 function getCaseStatus() {
 
-    let myCase = document.getElementById('case-status');
+    let myCase = $("#case-status");
+
     let myCaseComplaint = $(myCase).data("case-complaint");
     let myCaseAnswer = $(myCase).data("case-answer");
     let myCaseInterrogatories = $(myCase).data("case-interrogatories");
     let myCaseRequestProDocs = $(myCase).data("case-requestprodocs");
 
     let status;
-
-    debugger;
 
     if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
         status = '100%';
@@ -33,21 +32,13 @@ function getCaseStatus() {
         status = '0%';
     }
 
-    document.getElementById('case-status').innerHTML = status;
+    if (myCase) {
+        myCase.innerHTML = status;
+    }
 
 }
 
 getCaseStatus();
-
-// FIXME: this needs to show status!
-
-
-// let caseStatus = document.querySelector("#case-status");
-// caseStatus.innerHTML = getCaseStatus();
-
-// function insertText() {
-//     document.getElementById('td1').innerHTML = "Some text to enter";
-// }
 
 ///////////////////////////////
 // ATTNY BAR CHART FUNCTIONS //
@@ -81,17 +72,6 @@ function createAttnyAvail() {
     });
 
 }
-
-
-// function showTimeline(case_id) {
-//     $.get("/caseTimeline.json", function (data) {
-//       let myLineChart = Chart.Line(ctx_line, {
-//                                     data: data,
-//                                     options: options
-//                                 });
-//       // $("#lineLegend").html(myLineChart.generateLegend());
-//     });
-// }
 
 $("#availChart").click(function(){
     createAttnyAvail();
@@ -176,14 +156,6 @@ function listSavedNotes(caseID) {
                 noteValues[key] = noteObj;
             }
         }
-        // i = noteKeys.length;
-        // while ( i-- ) {
-        //     console.log(noteKeys);
-        //     let noteObj = JSON.parse(localStorage.getItem(noteKeys[i]));
-        //     if (noteObj.case_id == caseID) {
-        //         noteValues.push(noteObj);
-        //     }
-        // }
 
         let trHTML = '';
 
@@ -191,10 +163,6 @@ function listSavedNotes(caseID) {
             let value = noteValues[key];
             trHTML += "<tr><td><li><a href='#' class='case-note' data-key='" + key + "'>" + "Note: " + value.date + "</a></li></td></tr>";
         }
-        // $.each(noteValues, function(j, item) {
-        //     console.log(item);
-        //     trHTML += "<tr><td><li><a href='#' class='case-note' data-object='" + item + "'>" + "Note: " + item.date + "</a></li></td></tr>";
-        // });
 
         $("#display-notes").html("<b>Notes:</b>");
         $("#display-notes").append(trHTML);
@@ -292,14 +260,6 @@ $(document).on("click", ".case-note", function(){
 });
 
 
-// $("#div"+case.case_id).click(function() {
-
-// }
-
-// JSON.stringify() --> returns a string (from an object)
-
-
-
 ///////////////////
 // SEARCH ENGINE //
 ///////////////////
@@ -311,29 +271,22 @@ function getResults() {
 
     $.get("/search_results/" + query, function(data) {
 
-        console.log(data);
-
         let trHTML = '';
 
         for (let result in data) {
 
             let previewText = data[result].highlights;
             let path = data[result].path;
+            // let resultQuant = data.total_hits;
+            // let docType = data[result].doc_type;
 
-            console.log(path);
             // let previewText = result['highlights'];
+            // trHTML += "<tr><td><b><u>" + docType + "</u></b></td></tr>";
             trHTML += "<tr><td>" + previewText + "</td></tr>";
             trHTML += "<tr><td><a href='/download/" + path + "'>Download</a></td></tr>";
         }
 
-    // below worked to display path
-        // $.each(data, function(i, item) {
-        //     trHTML += "<tr><td>" + item + "</td></tr>";
-
-        //     console.log(typeof(item));
-
-        // });
-
+        // $("#search-results-div").html("<h2>Search Results:</h2>");
         $("#search-results-table").append(trHTML);
 
     });
@@ -360,6 +313,7 @@ $("#dash-redirect").click(function() {
     $("#search-results-div").toggle();
     $("#progressChart").toggle();
     $("#caseInfo").toggle();
+    document.getElementById('user-lit-search').value = "";
     });
 
 
@@ -367,13 +321,6 @@ $("#dash-redirect").click(function() {
 /////////////////////
 // MAKE A TIMELINE //
 /////////////////////
-
-// function caseHistory() {
-
-//     $.get("/casehistory.json");
-// }
-
-// let CASEHISTORY = caseHistory();
 
 function showCaseHistory(buttonID) {
 
