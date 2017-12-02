@@ -14,10 +14,10 @@
     z-index:5;
 }
 
-
-
-/*FANCY BUTTONS*/
-
+#login-route {
+  color: black;
+  font-family: ailerons;
+}
 
 #home-img {
   border-radius: 50%;
@@ -30,7 +30,9 @@
   display: inline-block;
 }
 
-#canvas{border:1px solid red;}
+#canvas {
+  border:1px solid red;
+}
 
 /*canvas#viewport {
   margin: 0px;
@@ -64,10 +66,6 @@
   font-size: 48pt;
 }
 
-/*#dash-logo {
-  font-family: ailerons;
-}
-*/
 #client-info {
   color: white;
 }
@@ -168,7 +166,6 @@ body {
   left: 250px;
   width: 250px;
   background-image: url("darkmap.jpg");
-/*  background: #CCC;*/
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -217,8 +214,6 @@ body {
   width: 250px;
   font-size: 18pt;
 }
-
-
 
 /*TEXT BOX FOR NOTEPAD*/
 
@@ -271,17 +266,17 @@ a.button:active {
     margin: 0;
     padding: 0;
 
-    background: #fdfbfb ;
+/*    background: #fdfbfb ;
     background: -webkit-linear-gradient(left, #fdfbfb  , #ebedee);
     background: -o-linear-gradient(right, #fdfbfb , #ebedee);
     background: -moz-linear-gradient(right, #fdfbfb , #ebedee);
-    background: linear-gradient(to right, #fdfbfb  , #ebedee);
-/*
+    background: linear-gradient(to right, #fdfbfb  , #ebedee);*/
+
     background: #e6e9f0;
     background: -webkit-linear-gradient(left, #e6e9f0, #eef1f5);
     background: -o-linear-gradient(right, #e6e9f0 #eef1f5);
     background: -moz-linear-gradient(right, #e6e9f0 #eef1f5);
-    background: linear-gradient(to right, #e6e9f0, #eef1f5);*/
+    background: linear-gradient(to right, #e6e9f0, #eef1f5);
 }
 
 #dashBackCorp {
@@ -295,11 +290,6 @@ a.button:active {
     background: -moz-linear-gradient(right, #29323c, #485563);
     background: linear-gradient(to right, #29323c , #485563);
 }
-
-/*#LPA-generator {
-  color: white;
-  box-sizing : border-box;
-}*/
 
 #corp-options {
   color: grey;

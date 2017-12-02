@@ -120,8 +120,15 @@ class PPMForm(TextBlob):
     def __init__(self, decoded_text):
         super(PPMForm, self).__init__(decoded_text)
 
-        # self.sentence_list = self.sentences
-        # self.fund = self.get_fund_name()
+        self.sentence_list = self.sentences
+        self.fund = self.get_fund_name()
+        self.mgmt_fee = self.get_mgmt_fee()
+        self.jurisdiction = self.get_jurisdiction()
+        self.manager = self.get_manager()
+        self.principals = self.get_principals()
+        self.removal = self.get_removal()
+        self.leverage = self.get_indebtedness()
+        self.min_commitment = self.get_min_commitment
         # self.parse()
 
         for sentence in self.sentences:
