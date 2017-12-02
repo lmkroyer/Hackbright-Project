@@ -14,7 +14,7 @@
 
 <body id="dashBack">
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" id="dash-logo" href="/about_us">Lglease</a>
@@ -145,7 +145,7 @@
 
                         <div id="caseInfo" class="row-fluid">
                           {% if case_count > 1 %}
-                          <p><b>You Have {{ case_count }} Active Cases:</b></p>
+                          <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Cases:</b></p>
                           {% elif case_count == 1 %}
                           <p><b>You Have {{ case_count }} Active Case:</b></p>
                           {% endif %}
@@ -171,7 +171,7 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td id="case-status-{{ case.case_id }}">{{ case.status }}</td>
+                                <td id="case-status-{{ case.case_id }}"><a id="red-text">{{ case.status }}</a></td>
                                 <td><button type="button" class="show-timeline" id="{{ case.case_id }}">Show More</button></td>
                             </tr>
                             <tr class="hiddenRow">

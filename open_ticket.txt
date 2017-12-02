@@ -1,5 +1,17 @@
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
 
+https://codepen.io/fixcl/pen/CHgrn
+
+maybe dropdown: https://codepen.io/psigns/pen/MaZWYN?page=9
+or https://codepen.io/andyfitz/pen/HjaBk?page=1&
+or: https://codepen.io/felixw/pen/rExvk?page=14
+
+https://codepen.io/stevenfabre/pen/Awcvd?page=24
+
+https://codepen.io/andreasstorm/pen/LFhqD?page=27
+
+defenses: https://codepen.io/evxan/pen/Fnwgy?page=12
+
 
 homepage: https://codepen.io/ARS/pen/vEwEPP
 

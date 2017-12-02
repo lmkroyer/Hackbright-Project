@@ -8,8 +8,10 @@
     <!-- <h4 align="right"><a href="/login">Login</a></h4> -->
     <h5 align="right"><a href="/register">Register new user</a></h5>
   {% else %}
-    <h3 align="left">Welcome, {{ session['current_user_name'] }}</h3>
+
+    <h3 align="left" id="greet-user">Welcome, {{ session['current_user_name'] }}</h3>
     <h4 align="left"><a href="/signout">Sign out</a></h4>
+
   {% endif %}
 
     <h1 align="center" id="logo">Lglease</h1>
@@ -39,7 +41,7 @@
     </p>
 </div> -->
 
-
+<body id="pod">
   <div align="center">
     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate" id="dash">Corporate</button></a>
     <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
@@ -47,13 +49,18 @@
 
   <div id="map"></div>
 
+</body>
+
   {% else %}
   <br><br><br>
-  <div align="center">
-  <img src="/static/city3.jpg" class="img-responsive" id="home-img" style="width:20%;">
+  <div class="gallery">
+  <div align="center" class="img__wrap">
+    <img src="/static/city3.jpg" class="img-responsive" id="home-img" style="width:20%;">
+    <div class="gallery-text">
+      <h4 align="center"><a href="/login" id="login-route">Login</a></h4>
+    </div>
   </div><br>
-  <h4 align="center"><a href="/login" id="login-route">Login</a></h4>
-
+  </div>
 
 
   <!-- <h4 align="center"><a href="/login">Login</a></h4> -->
