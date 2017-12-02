@@ -340,7 +340,7 @@ $(".show-timeline").click(function(){
     $("#progressChart").toggle();
     let buttonID = $(this).attr("id");
     showCaseHistory(buttonID);
-    $(".show-timeline").html("Show Less");
+    // $(".show-timeline").html("Show Less");
 });
 
 // function toggleDisplay() {

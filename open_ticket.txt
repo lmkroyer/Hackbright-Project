@@ -1,3 +1,12 @@
+OPEN:
+
+- notes not showing up on table
+- sidebar / page format doesn't work with navbar
+- landing page: hover over to display text 'login'
+- clear search results for new searches
+
+
+
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
 
 https://codepen.io/fixcl/pen/CHgrn

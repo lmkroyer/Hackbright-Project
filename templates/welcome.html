@@ -14,7 +14,7 @@
 
 <body id="dashBack">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" id="dash-logo" href="/about_us">Lglease</a>
@@ -156,7 +156,7 @@
                             <th> Opposition </th>
                             <th> Status </th>
                             <th> Deadline </th>
-                            <th></th>
+                            <th> History </th>
                             {% for case in active_case_lst %}
                             {% for defendant in case.defendants %}
                             <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle" id="case-row">
@@ -174,7 +174,7 @@
                                 <td> {{ case.opp.firm_name }} </td>
                                 <td id="case-status-{{ case.case_id }}"><a id="red-text">{{ case.status }}</a></td>
                                 <td id="case-deadline-{{ case.case_id }}"><a id="red-text">{{ case.deadline }}</a></td>
-                                <td><button type="button" class="show-timeline" id="{{ case.case_id }}">Show More</button></td>
+                                <td><button type="button" class="btn btn-outline-success my-2 my-sm-0 show-timeline" id="{{ case.case_id }}">Display</button></td>
                             </tr>
                             <tr class="hiddenRow">
                                 <td></td>
@@ -199,10 +199,11 @@
                                     <li id="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
                                 </td>
                                 <td>
-                                    <div id="display-notes">
+                                    <div class="accordion-body collapse" id="display-notes">
                                         <b>Notes:</b></div>
                                     </div>
                                 </td>
+                                <td></td>
                             </tr>
                             {% endfor %}
                             {% endfor %}

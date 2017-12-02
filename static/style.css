@@ -256,13 +256,15 @@ body {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background-image: url("blackmap.jpg");
+  background-color: #2D2B36;
+/*  background-color: #272532;*/
+/*  background-image: url("blackmap.jpg");*/
   position: fixed;
   height: 100%;
   overflow-y: auto;
   z-index: 1000;
   transition: all 0.4s ease 0s;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #page-content-wrapper {
@@ -300,6 +302,10 @@ body {
       transition: all 0.4s ease 0s;
     }
 
+}
+
+.navbar {
+  background-color: #1a0006;
 }
 
 .navbar-brand {
@@ -353,6 +359,10 @@ a.button:active {
     background: rgba(80, 120, 80, 1);
 }*/
 
+.btn-outline-success:hover {
+    background: #e1e2e2;
+}
+
 #dashBack {
     height: 100%;
     margin: 0;
@@ -375,7 +385,7 @@ a.button:active {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: url("dark.jpg");
+    background: url("neat.png");
 
 /*    background: #29323c;
     background: -webkit-linear-gradient(left, #29323c , #485563);

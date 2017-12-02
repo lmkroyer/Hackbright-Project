@@ -4,9 +4,9 @@
 /////////////////////////
 
 $('#home-img').hover(function(){
-    $('#darkness').fadeTo(100, 1);
+    $('#darkness').fadeTo(25, 1);
 }, function(){
-    $('#darkness').fadeTo(100, 0, function(){
+    $('#darkness').fadeTo(25, 0, function(){
         $(this).show();
         // $('#login-route').show();
     });
