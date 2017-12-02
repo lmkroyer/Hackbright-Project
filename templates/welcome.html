@@ -171,7 +171,7 @@
                                     {% endfor %}
                                 </td>
                                 <td> {{ case.opp.firm_name }} </td>
-                                <td id="case-status" data-case-complaint="{{ case.complaint }}" data-case-answer"{{ case.answer }}" data-case-interrogatories="{{ case.interrogatories }}" data-case-requestprodocs="{{ case.request_pro_docs }}">Status: </td>
+                                <td id="case-status-{{ case.case_id }}">{{ case.status }}</td>
                                 <td><button type="button" class="show-timeline" id="{{ case.case_id }}">Show More</button></td>
                             </tr>
                             <tr class="hiddenRow">

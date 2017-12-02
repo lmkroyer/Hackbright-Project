@@ -75,6 +75,40 @@ def make_lit_dashboard():
     # Return a list of all active cases
     active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
 
+    # Loop over case list, use js logic, and apply a status attribute: r(object).status = "set to status"
+    for case in active_case_lst:
+        if case.request_pro_docs:
+            case.status = '100%'
+        if case.interrogatories:
+            case.status = '75%'
+        if case.answer:
+            case.status = '50%'
+        if case.complaint:
+            case.status = '25%'
+        else:
+            case.status = '0%'
+
+    # if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
+    #     status = '100%';
+    # }
+    # else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
+    #     status = '75%';
+    # }
+    # else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
+    #     status = '50%';
+    # }
+    # else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
+    #     status = '25%';
+    # }
+    # else {
+    #     status = '0%';
+    # }
+
+    # if (myCase) {
+    #     myCase.html(status);
+    # }
+
+
     return render_template('/welcome.html', active_case_lst=active_case_lst,
                                             case_count=case_count)
 
@@ -245,7 +279,7 @@ def user_progress_data():
                 "data": [65, 59, 80, 81, 56, 55, 40, 48, 54, 39, 45, 62],
                 "spanGaps": False},
             {
-                "label": "Value",
+                "label": "Settlement Value (Thousands)",
                 "fill": True,
                 "lineTension": 0.5,
                 "backgroundColor": "rgba(151,187,205,0.2)",
@@ -443,6 +477,23 @@ def upload_ppm():
         uploaded_file.save(ppm_doc)
 
         PPM = OCR_ppm(ppm_doc)
+
+        # if not PPM.mgmt_fee:
+        #     PPM.mgmt_fee = 'N/A'
+        # if not PPM.jurisdiction:
+        #     PPM.jurisdiction = 'N/A'
+        # if not PPM.manager:
+        #     PPM.manager = 'N/A'
+        # if not PPM.principals:
+        #     PPM.principals = 'N/A'
+        # if not PPM.removal:
+        #     PPM.removal = 'N/A'
+        # if not PPM.leverage:
+        #     PPM.leverage = 'N/A'
+        # if not PPM.min_commitment:
+        #     PPM.min_commitment = 'N/A/'
+        # if not PPM.transfers:
+        #     PPM.transfers = 'N/A'
 
         # txt_filename = filename.split('.')[0]
         # txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
@@ -752,7 +803,7 @@ def get_summary_report(clientID):
 
     name_caps = name.upper()
 
-    summaryreport[fund] = {
+    summaryreport[fund.client_id] = {
                            'name_caps': name_caps,
                            'name': name,
                            'jurisdiction': fund.fund_state,

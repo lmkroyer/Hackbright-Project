@@ -116,79 +116,174 @@ class LPAForm(object):
 
 
 class PPMForm(TextBlob):
+
     def __init__(self, decoded_text):
         super(PPMForm, self).__init__(decoded_text)
 
-        self.sentence_list = self.sentences
-        self.fund = self.get_fund_name()
-        self.parse()
+        # self.sentence_list = self.sentences
+        # self.fund = self.get_fund_name()
+        # self.parse()
 
-
-    def parse(self):
-        """Parses a PPM for attributes."""
-
-        for i in range(len(self.sentence_list)):
-            sentence = self.sentence_list[0]
+        for sentence in self.sentences:
+        # for i in range(len(self.sentence_list)):
+        #     sentence = self.sentence_list[i]
             string = " ".join(sentence.split())
 
             # Check for each form attribute; if there, set as class attribute (else set 'N/A')
-            mgmt_fee = PPMForm.get_mgmt_fee(string)
-            if mgmt_fee:
-                self.mgmt_fee = mgmt_fee
-            else:
-                self.mgmt_fee = 'N/A'
+            self.mgmt_fee = PPMForm.get_mgmt_fee(string)
 
-            jurisdiction = PPMForm.get_jurisdiction(string)
-            if jurisdiction:
-                self.jurisdiction = jurisdiction
-            else:
-                self.jurisdiction = 'N/A'
+            self.jurisdiction = PPMForm.get_jurisdiction(string)
 
-            manager = PPMForm.get_manager(string)
-            if manager:
-                self.manager = manager
-            else:
-                self.manager = 'N/A'
+            self.manager = PPMForm.get_manager(string)
 
-            principals = PPMForm.get_principals(string)
-            if principals:
-                self.principals = principals
-            else:
-                self.principals = 'N/A'
+            self.principals = PPMForm.get_principals(string)
 
-            removal = PPMForm.get_removal(string)
-            if removal:
-                self.removal = removal
-            else:
-                self.removal = 'N/A'
+            self.removal = PPMForm.get_removal(string)
 
-            leverage = PPMForm.get_indebtedness(string)
-            if leverage:
-                self.leverage = leverage
-            else:
-                self.leverage = 'N/A'
+            self.leverage = PPMForm.get_indebtedness(string)
 
-            min_commitment = PPMForm.get_min_commitment(string)
-            if min_commitment:
-                self.min_commitment = min_commitment
-            else:
-                self.min_commitment = 'N/A'
+            self.min_commitment = PPMForm.get_min_commitment(string)
 
-            transfers = PPMForm.get_transfers(string)
-            if transfers:
-                self.transfers = transfers
-            else:
-                self.transfers= 'N/A'
+            self.transfers = PPMForm.get_transfers(string)
 
-            reinvestment = PPMForm.get_reinvestment(string)
-            if reinvestment:
-                self.reinvestment = reinvestment
-            else:
-                self.reinvestment = 'N/A'
+            self.reinvestment = PPMForm.get_reinvestment(string)
+
+        result = self.sentences[0]
+        string = str(result)
+
+        fund = re.search(r'(?:(?!CONFIDENTIAL).)*', string).group()
+
+        self.fund = fund.upper()
+
+    # def parse(self):
+    #     """Parses a PPM for attributes."""
+
+    #     for sentence in self.sentences:
+    #     # for i in range(len(self.sentence_list)):
+    #     #     sentence = self.sentence_list[i]
+    #         string = " ".join(sentence.split())
+
+    #         # Check for each form attribute; if there, set as class attribute (else set 'N/A')
+    #         self.mgmt_fee = self.get_mgmt_fee(string)
+
+    #         self.jurisdiction = self.get_jurisdiction(string)
+
+    #         self.manager = self.get_manager(string)
+
+    #         self.principals = self.get_principals(string)
+
+    #         self.removal = self.get_removal(string)
+
+    #         self.leverage = self.get_indebtedness(string)
+
+    #         self.min_commitment = self.get_min_commitment(string)
+
+    #         self.transfers = self.get_transfers(string)
+
+    #         self.reinvestment = self.get_reinvestment(string)
+
+    # def get_fund_name(self):
+    #     """Returns the name of the reviewing fund."""
+
+    #     result = self.sentence_list[0]
+    #     string = str(result)
+
+    #     fund = re.search(r'(?:(?!CONFIDENTIAL).)*', string).group()
+
+    #     self.fund = fund.upper()
+
+        # return name.upper()
+
+    # @staticmethod
+    # def get_mgmt_fee(sentence):
+    #     """Returns the management fee of the fund."""
+
+    #     # if '“Management Fee”'.decode('utf-8') in sentence and '%' in sentence:
+    #     if u'“Management Fee”' in sentence and '%' in sentence:
+
+    #         percent = re.search(r"\d+.\d+\%", sentence).group()
+    #         payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", sentence).group()
+    #         fee = percent + ', payable ' + payable_when
+
+    #         return fee
+
+    # @staticmethod
+    # def get_jurisdiction(sentence):
+    #     """Returns the jurisdiction of the fund entity."""
+
+    #     if 'the “Fund”'.decode('utf-8') in sentence and 'organized under the laws' in sentence:
+
+    #         return re.search(r"(?<=\borganized under the laws of\s)(\w+)", sentence).group()
+
+    # @staticmethod
+    # def get_manager(sentence):
+    #     """Returns the manager of the fund ."""
+
+    #     if 'the “Manager”'.decode('utf-8') in sentence and 'will be the manager of the Fund' in sentence:
+
+    #         return re.search(r"^.*(?=(\,))", sentence).group()
+
+    # @staticmethod
+    # def get_principals(sentence):
+    #     """Returns the principal(s) of the fund."""
+
+    #     if 'the “Principals”'.decode('utf-8') in sentence or 'the “Principal”'.decode('utf-8') in sentence:
+
+    #         prinicpals = []
+    #         list_words = sentence.split(' ')
+
+    #         for word in list_words:
+    #             if word[0].isupper():
+    #                 prinicpals.append(word)
+
+    #         return ' '.join(list_words)
+
+    # @staticmethod
+    # def get_removal(sentence):
+    #     """Returns the removal provision."""
+
+    #     if 'the Manager may be removed' in sentence:
+
+    #         return sentence
+
+    # @staticmethod
+    # def get_indebtedness(sentence):
+    #     """Returns the fund's allowed use of leverage."""
+
+    #     sentence = sentence.lower()
+
+    #     if 'indebtedness' in sentence and 'the fund may' in sentence:
+
+    #         return u' '.join(sentence).encode('utf-8').strip()
+
+    # @staticmethod
+    # def get_min_commitment(sentence):
+    #     """Returns the minimum capital commitment."""
+
+    #     if 'minimum capital commitment' in sentence:
+    #         num = re.search(r"\d+.\d+", sentence).group()
+
+    #         return '$' + num
+
+    # @staticmethod
+    # def get_reinvestment(sentence):
+    #     """Returns the reinvestment provision."""
+
+    #     if 'reinvestment' in sentence and 'subject to' in sentence:
+
+    #         return sentence
+
+    # @staticmethod
+    # def get_transfers(sentence):
+    #     """Returns the transfer permissions provision."""
+
+    #     if 'proposed transfers' in sentence:
+
+    #         return sentence
 
 
     def get_fund_name(self):
-        """Returns the name of the reviewing fund."""
+        """Return the name of the reviewing fund."""
 
         result = self.sentence_list[0]
         string = str(result)
@@ -197,234 +292,132 @@ class PPMForm(TextBlob):
 
         return name.upper()
 
-    @staticmethod
+
     def get_mgmt_fee(sentence):
-        """Returns the management fee of the fund."""
+        """Return the management fee of the fund."""
 
-        if '“Management Fee”'.decode('utf-8') in sentence and '%' in sentence:
+        for i in range(len(self.sentence_list)):
 
-            percent = re.search(r"\d+.\d+\%", sentence).group()
-            payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", sentence).group()
-            fee = percent + ', payable ' + payable_when
+            if self.sentence_list[i].find('“Management Fee”'.decode('utf-8')) != -1 and self.sentence_list[i].find('%') != -1:
 
-            return fee
+                # Returns a sentence object
+                sentence = self.sentence_list[i]
+                # Get string from sentence object
+                string = str(sentence)
 
-    @staticmethod
-    def get_jurisdiction(sentence):
-        """Returns the jurisdiction of the fund entity."""
+                percent = re.search(r"\d+.\d+\%", string).group()
+                payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", string).group()
+                fee = percent + ', payable ' + payable_when
 
-        if 'the “Fund”'.decode('utf-8') in sentence and 'organized under the laws' in sentence:
+                print fee
+                return fee
 
-            return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string).group()
 
-    @staticmethod
-    def get_manager(sentence):
-        """Returns the manager of the fund ."""
+    def get_jurisdiction(self):
+        """Return the jurisdiction of the fund entity."""
 
-        if 'the “Manager”'.decode('utf-8') in sentence and 'will be the manager of the Fund' in sentence:
+        # import pdb; pdb.set_trace()
 
-            return re.search(r"^.*(?=(\,))", string).group()
+        for i in range(len(self.sentence_list)):
 
-    @staticmethod
-    def get_principals(sentence):
-        """Returns the principal(s) of the fund."""
+            if self.sentence_list[i].find('the “Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
 
-        if 'the “Principals”'.decode('utf-8') in sentence or 'the “Principal”'.decode('utf-8') in sentence:
+                sentence = self.sentence_list[i]
+                string = str(sentence)
+                return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string).group()
 
-            prinicpals = []
-            list_words = sentence.split(' ')
 
-            for word in list_words:
-                if word[0].isupper():
-                    prinicpals.append(word)
+    def get_manager(self):
+        """Return the manager of the fund ."""
 
-            return ' '.join(list_words)
+        for i in range(len(self.sentence_list)):
 
-    @staticmethod
-    def get_removal(sentence):
-        """Returns the removal provision."""
+            if self.sentence_list[i].find('the “Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
 
-        if 'the Manager may be removed' in sentence:
+                sentence = self.sentence_list[i]
+                string = str(sentence)
+                return re.search(r"^.*(?=(\,))", string).group()
 
-            return sentence
 
-    @staticmethod
-    def get_indebtedness(sentence):
-        """Returns the fund's allowed use of leverage."""
+    def get_principals(self):
+        """Return the principal(s) of the fund."""
 
-        sentence = sentence.lower()
+        for i in range(len(self.sentence_list)):
 
-        if 'indebtedness' in sentence and 'the fund may' in sentence:
+            if self.sentence_list[i].find('the “Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
+                prinicpals = []
+                sentence = self.sentence_list[i]
+                string = str(sentence)
+                # return re.search(r"(?<!\.\s)\b[A-Z][a-z]*\b", string)
+                list_words = string.split(' ')
+                for word in list_words:
+                    if word[0].isupper():
+                        prinicpals.append(word)
 
-            result = self.sentence_list[i]
-            return str(result)
+                return ' '.join(list_words)
 
-    @staticmethod
-    def get_min_commitment(sentence):
-        """Returns the minimum capital commitment."""
 
-        if 'minimum capital commitment' in sentence:
-            num = re.search(r"\d+.\d+", sentence).group()
+    def get_confi(self):
+        """Return confidentiality provision."""
 
-            return '$' + num
+        pass
 
-    @staticmethod
-    def get_reinvestment(sentence):
-        """Returns the reinvestment provision."""
 
-        if 'reinvestment' in sentence and 'subject to' in sentence:
+    def get_removal(self):
+        """Return the removal provision."""
 
-            return sentence
+        for i in range(len(self.sentence_list)):
 
-    @staticmethod
-    def get_transfers(sentence):
-        """Returns the transfer permissions provision."""
+            if self.sentence_list[i].find('the Manager may be removed') != -1:
 
-        if 'proposed transfers' in sentence:
+                sentence = self.sentence_list[i]
+                return str(sentence)
 
-            return sentence
 
+    def get_indebtedness(self):
+        """Return the fund's allowed use of leverage."""
 
+        for i in range(len(self.sentence_list)):
 
-    # def get_fund_name(self):
-    #     """Return the name of the reviewing fund."""
+            sentence = self.sentence_list[i]
+            sentence = sentence.lower()
 
-    #     result = self.sentence_list[0]
-    #     string = str(result)
+            if sentence.find('indebtedness') != -1 and self.sentence_list[i].find('the fund may') != -1:
 
-    #     name = re.search(r'(?:(?!CONFIDENTIAL).)*', string).group()
+                result = self.sentence_list[i]
+                return str(result)
 
-    #     return name.upper()
 
+    def get_min_commitment(self):
+        """Return the minimum capital commitment."""
 
-    # def get_mgmt_fee(sentence):
-    #     """Return the management fee of the fund."""
+        for i in range(len(self.sentence_list)):
 
-    #     for i in range(len(self.sentence_list)):
+            if self.sentence_list[i].find('minimum capital commitment') != -1:
+                sentence = self.sentence_list[i]
+                string = str(sentence)
+                num = re.search(r"\d+.\d+", string).group()
+                return '$' + num
 
-    #         if self.sentence_list[i].find('“Management Fee”'.decode('utf-8')) != -1 and self.sentence_list[i].find('%') != -1:
 
-    #             import pdb; pdb.set_trace()
-    #             # Returns a sentence object
-    #             sentence = self.sentence_list[i]
-    #             # Get string from sentence object
-    #             print sentence
-    #             string = str(sentence)
-    #             print string
+    def get_reinvestment(self):
+        """Return the reinvestment provision."""
 
-    #             percent = re.search(r"\d+.\d+\%", string).group()
-    #             payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", string).group()
-    #             fee = percent + ', payable ' + payable_when
+        for i in range(len(self.sentence_list)):
 
-    #             print fee
-    #             return fee
+            if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject to') != -1:
+                sentence = self.sentence_list[i]
+                return str(sentence)
 
 
-    # def get_jurisdiction(self):
-    #     """Return the jurisdiction of the fund entity."""
+    def get_transfers(self):
+        """Return the transfer permissions provision."""
 
-    #     # import pdb; pdb.set_trace()
+        for i in range(len(self.sentence_list)):
 
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('the “Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
-
-    #             sentence = self.sentence_list[i]
-    #             string = str(sentence)
-    #             return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string).group()
-
-
-    # def get_manager(self):
-    #     """Return the manager of the fund ."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('the “Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
-
-    #             sentence = self.sentence_list[i]
-    #             string = str(sentence)
-    #             return re.search(r"^.*(?=(\,))", string).group()
-
-
-    # def get_principals(self):
-    #     """Return the principal(s) of the fund."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('the “Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
-    #             prinicpals = []
-    #             sentence = self.sentence_list[i]
-    #             string = str(sentence)
-    #             # return re.search(r"(?<!\.\s)\b[A-Z][a-z]*\b", string)
-    #             list_words = string.split(' ')
-    #             for word in list_words:
-    #                 if word[0].isupper():
-    #                     prinicpals.append(word)
-
-    #             return ' '.join(list_words)
-
-
-    # def get_confi(self):
-    #     """Return confidentiality provision."""
-
-    #     pass
-
-
-    # def get_removal(self):
-    #     """Return the removal provision."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('the Manager may be removed') != -1:
-
-    #             sentence = self.sentence_list[i]
-    #             return str(sentence)
-
-
-    # def get_indebtedness(self):
-    #     """Return the fund's allowed use of leverage."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         sentence = self.sentence_list[i]
-    #         sentence = sentence.lower()
-
-    #         if sentence.find('indebtedness') != -1 and self.sentence_list[i].find('the fund may') != -1:
-
-    #             result = self.sentence_list[i]
-    #             return str(result)
-
-
-    # def get_min_commitment(self):
-    #     """Return the minimum capital commitment."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('minimum capital commitment') != -1:
-    #             sentence = self.sentence_list[i]
-    #             string = str(sentence)
-    #             num = re.search(r"\d+.\d+", string).group()
-    #             return '$' + num
-
-
-    # def get_reinvestment(self):
-    #     """Return the reinvestment provision."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject to') != -1:
-    #             sentence = self.sentence_list[i]
-    #             return str(sentence)
-
-
-    # def get_transfers(self):
-    #     """Return the transfer permissions provision."""
-
-    #     for i in range(len(self.sentence_list)):
-
-    #         if self.sentence_list[i].find('proposed transfers') != -1:
-    #             sentence = self.sentence_list[i]
-    #             return str(sentence)
+            if self.sentence_list[i].find('proposed transfers') != -1:
+                sentence = self.sentence_list[i]
+                return str(sentence)
 
 
 

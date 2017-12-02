@@ -5,40 +5,42 @@
 // CASE TABLE - CASE STATUS //
 //////////////////////////////
 
-function getCaseStatus() {
+// function getCaseStatus() {
 
-    let myCase = $("#case-status");
+//     // attach event listener to sent post request, update db, and update html
 
-    let myCaseComplaint = $(myCase).data("case-complaint");
-    let myCaseAnswer = $(myCase).data("case-answer");
-    let myCaseInterrogatories = $(myCase).data("case-interrogatories");
-    let myCaseRequestProDocs = $(myCase).data("case-requestprodocs");
+//     let myCase = $("#case-status");
 
-    let status;
+//     let myCaseComplaint = $(myCase).data("case-complaint");
+//     let myCaseAnswer = $(myCase).data("case-answer");
+//     let myCaseInterrogatories = $(myCase).data("case-interrogatories");
+//     let myCaseRequestProDocs = $(myCase).data("case-requestprodocs");
 
-    if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
-        status = '100%';
-    }
-    else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
-        status = '75%';
-    }
-    else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
-        status = '50%';
-    }
-    else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
-        status = '25%';
-    }
-    else {
-        status = '0%';
-    }
+//     let status;
 
-    if (myCase) {
-        myCase.innerHTML = status;
-    }
+//     if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
+//         status = '100%';
+//     }
+//     else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
+//         status = '75%';
+//     }
+//     else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
+//         status = '50%';
+//     }
+//     else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
+//         status = '25%';
+//     }
+//     else {
+//         status = '0%';
+//     }
 
-}
+//     if (myCase) {
+//         myCase.html(status);
+//     }
 
-getCaseStatus();
+// }
+
+// getCaseStatus();
 
 ///////////////////////////////
 // ATTNY BAR CHART FUNCTIONS //

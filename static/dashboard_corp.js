@@ -56,15 +56,6 @@ $("#availChart").click(function(){
 // SUMMARY REPORT TABLE //
 //////////////////////////
 
-// Model:
-// function showCaseHistory(buttonID) {
-
-//     $.get("/casehistory.json", function (data) {
-//         $('#complaint-info').html(data[buttonID]['complaint']);
-//         $('#answer-info').html(data[buttonID]['answer']);
-//     });
-// }
-
 function buildSummaryReport(clientID) {
 
     $.get('/summaryreport/' + clientID, function (data) {
@@ -83,7 +74,6 @@ function buildSummaryReport(clientID) {
 
 }
 
-
 $("#start-sum-rep").click(function(){
     $("#upload-sum-rep").toggle();
     $("#allOptions").toggle();
@@ -91,9 +81,7 @@ $("#start-sum-rep").click(function(){
 
 $(".show-sum-rep").click(function(){
     $("#allOptions").toggle();
-    // $("#LPA-generator").toggle();
     $("#sum-rep").toggle();
     let clientID = $(this).attr("id");
     buildSummaryReport(clientID);
 });
-

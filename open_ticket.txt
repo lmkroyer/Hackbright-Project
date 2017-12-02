@@ -1,7 +1,15 @@
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
 
+
+homepage: https://codepen.io/ARS/pen/vEwEPP
+
 ** - broke the status
-- clear contents from search bar / es db
+** - sum rep logic is broken
+** - get summary report to show up
+- clear contents from es db
+
+FRIDAY: get timing device to show up
++ pretty drag and drop: https://bootsnipp.com/snippets/kW1xB
 
 - download but redirect to dashboard
 - fix URL search results

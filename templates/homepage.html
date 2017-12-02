@@ -2,6 +2,8 @@
 
 {% block head %}
 
+<div id="darkness"></div>
+
   {% if 'current_user_name' not in session %}
     <!-- <h4 align="right"><a href="/login">Login</a></h4> -->
     <h5 align="right"><a href="/register">Register new user</a></h5>
@@ -23,6 +25,21 @@
 {% block content %}
 
   {% if 'current_user' in session %}
+
+<!-- <div class="wrapper">
+    <p class="inner">
+        <a href="javascript: void 0;" class="button">
+            <span class="border"></span>
+            <span class="top"></span>
+            <span class="right"></span>
+            <span class="bottom"></span>
+            <span class="left"></span>
+            <span class="text">click to explore</span>
+        </a>
+    </p>
+</div> -->
+
+
   <div align="center">
     <a href='/dashboard_corp'><button type="button" class="btn btn-outline-corporate" id="dash">Corporate</button></a>
     <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
@@ -35,12 +52,15 @@
   <div align="center">
   <img src="/static/city3.jpg" class="img-responsive" id="home-img" style="width:20%;">
   </div><br>
-  <h4 align="center"><a href="/login">Login</a></h4>
+  <h4 align="center"><a href="/login" id="login-route">Login</a></h4>
+
+
 
   <!-- <h4 align="center"><a href="/login">Login</a></h4> -->
   {% endif %}
 
     <script src="/static/casemap.js"></script>
+    <script src="/static/homepage.js"></script>
     <script async defer
     //       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv0ZxBjljPczGB-zCBhkRcGrU8JyAlis&libraries=places&callback=initMap"></script>
 
