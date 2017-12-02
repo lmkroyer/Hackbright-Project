@@ -10,7 +10,7 @@ import os
 from requests_oauthlib import OAuth2Session
 from github import Github
 from textblob import TextBlob
-from datetime import datetime
+from datetime import datetime, timedelta
 from jinja2 import StrictUndefined
 from flask import (Flask, jsonify, render_template, redirect, request, flash,
                    session, url_for, send_from_directory)
@@ -81,10 +81,22 @@ def make_lit_dashboard():
             case.status = '100%'
         if case.interrogatories:
             case.status = '75%'
+            time = case.interrogatories.date_submitted + timedelta(days=30)
+            time = time.strftime('%m/%d/%Y')
+            time_message = "Request Due: " + time
+            case.deadline = time_message
         if case.answer:
             case.status = '50%'
+            time = case.answer.date_submitted + timedelta(days=30)
+            time = time.strftime('%m/%d/%Y')
+            time_message = "Interrogatories Due: " + time
+            case.deadline = time_message
         if case.complaint:
             case.status = '25%'
+            time = case.complaint.date_processed + timedelta(days=30)
+            time = time.strftime('%m/%d/%Y')
+            time_message = "Answer Due: " + time
+            case.deadline = time_message
         else:
             case.status = '0%'
 
