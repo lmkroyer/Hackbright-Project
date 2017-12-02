@@ -3,6 +3,8 @@
     z-index:10;
 }
 
+#home-img:hover {-webkit-filter: brightness(200%); }
+
 #darkness {
     background:rgba(0, 0, 0, 0.5);
     display:none;

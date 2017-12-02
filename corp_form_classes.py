@@ -128,39 +128,42 @@ class PPMForm(TextBlob):
         self.principals = self.get_principals()
         self.removal = self.get_removal()
         self.leverage = self.get_indebtedness()
-        self.min_commitment = self.get_min_commitment
+        self.min_commitment = self.get_min_commitment()
+        self.transfers = self.get_transfers()
+        self.reinvestment = self.get_reinvestment()
+
         # self.parse()
 
-        for sentence in self.sentences:
-        # for i in range(len(self.sentence_list)):
-        #     sentence = self.sentence_list[i]
-            string = " ".join(sentence.split())
+        # for sentence in self.sentences:
+        # # for i in range(len(self.sentence_list)):
+        # #     sentence = self.sentence_list[i]
+        #     string = " ".join(sentence.split())
 
-            # Check for each form attribute; if there, set as class attribute (else set 'N/A')
-            self.mgmt_fee = PPMForm.get_mgmt_fee(string)
+        #     # Check for each form attribute; if there, set as class attribute (else set 'N/A')
+        #     self.mgmt_fee = PPMForm.get_mgmt_fee(string)
 
-            self.jurisdiction = PPMForm.get_jurisdiction(string)
+        #     self.jurisdiction = PPMForm.get_jurisdiction(string)
 
-            self.manager = PPMForm.get_manager(string)
+        #     self.manager = PPMForm.get_manager(string)
 
-            self.principals = PPMForm.get_principals(string)
+        #     self.principals = PPMForm.get_principals(string)
 
-            self.removal = PPMForm.get_removal(string)
+        #     self.removal = PPMForm.get_removal(string)
 
-            self.leverage = PPMForm.get_indebtedness(string)
+        #     self.leverage = PPMForm.get_indebtedness(string)
 
-            self.min_commitment = PPMForm.get_min_commitment(string)
+        #     self.min_commitment = PPMForm.get_min_commitment(string)
 
-            self.transfers = PPMForm.get_transfers(string)
+        #     self.transfers = PPMForm.get_transfers(string)
 
-            self.reinvestment = PPMForm.get_reinvestment(string)
+        #     self.reinvestment = PPMForm.get_reinvestment(string)
 
-        result = self.sentences[0]
-        string = str(result)
+        # result = self.sentences[0]
+        # string = str(result)
 
-        fund = re.search(r'(?:(?!CONFIDENTIAL).)*', string).group()
+        # fund = re.search(r'(?:(?!CONFIDENTIAL).)*', string).group()
 
-        self.fund = fund.upper()
+        # self.fund = fund.upper()
 
     # def parse(self):
     #     """Parses a PPM for attributes."""
@@ -199,7 +202,7 @@ class PPMForm(TextBlob):
 
     #     self.fund = fund.upper()
 
-        # return name.upper()
+    #     return name.upper()
 
     # @staticmethod
     # def get_mgmt_fee(sentence):
@@ -323,11 +326,9 @@ class PPMForm(TextBlob):
     def get_jurisdiction(self):
         """Return the jurisdiction of the fund entity."""
 
-        # import pdb; pdb.set_trace()
-
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the “Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
+            if self.sentence_list[i].find('“Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
 
                 sentence = self.sentence_list[i]
                 string = str(sentence)
@@ -339,7 +340,7 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the “Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
+            if self.sentence_list[i].find('“Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
 
                 sentence = self.sentence_list[i]
                 string = str(sentence)
@@ -351,7 +352,7 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the “Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
+            if self.sentence_list[i].find('“Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
                 prinicpals = []
                 sentence = self.sentence_list[i]
                 string = str(sentence)
