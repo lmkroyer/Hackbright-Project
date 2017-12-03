@@ -4,7 +4,10 @@ OPEN:
 - sidebar / page format doesn't work with navbar
 - landing page: hover over to display text 'login'
 - clear search results for new searches
-
+- make lit navbar hover white text like corp
+- center table header text
+    - add drop down to sort
+- fix notepad buttons
 
 
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
