@@ -49,6 +49,18 @@
             <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
             <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br>
             <li id="bounding-box-btn"><a href="#"><span class="glyphicon glyphicon-star"></span> NEW Beta Test Bounding Boxes<span class="glyphicon glyphicon-star"></span></a></li>
+
+                    <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                    </ul>
+                  </div>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -165,7 +177,7 @@
                                 <td>
                                     {% for user in case.users %}
                                     {% if user.user_id == case.team_lead %}
-                                    <b><li>{{ user.fname }} {{user.lname}}</b></li>
+                                    <b><li>{{ user.fname }} {{user.lname}}</b><span class="glyphicon glyphicon-star"></span></li>
                                     {% else %}
                                     <li>{{ user.fname }} {{user.lname}}</li>
                                     {% endif %}

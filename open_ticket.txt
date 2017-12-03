@@ -1,5 +1,7 @@
 OPEN:
 
+- get rid of extra timeline stuff [?]
+- design: how display team leader?
 - notes not showing up on table
 - sidebar / page format doesn't work with navbar
 - landing page: hover over to display text 'login'
@@ -8,6 +10,18 @@ OPEN:
 - center table header text
     - add drop down to sort
 - fix notepad buttons
+- back to dash on bottom left of all lit flow
+- DOWNLOAD ANSWER WHILE REDIRECT TO DASHBOARD
+- pdf 2 is getting New york for plaintiff f and l name
+- status and deadline are not changing dynamically
+
+dropdown: https://codepen.io/Polanco08/pen/aflBd?page=4
+
+corp:
+- options aren't displaying:
+    -make large, white, hoverable
+- get sum rep formatted well
+- make lpa text white
 
 
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
@@ -27,9 +41,7 @@ defenses: https://codepen.io/evxan/pen/Fnwgy?page=12
 
 homepage: https://codepen.io/ARS/pen/vEwEPP
 
-** - broke the status
 ** - sum rep logic is broken
-** - get summary report to show up
 - clear contents from es db
 
 FRIDAY: get timing device to show up

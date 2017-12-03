@@ -2,12 +2,13 @@
 
 {% block head %}
 
-
 {% endblock %}
 
 {% block content %}
 
-Let us know if everything looks right<br><br>
+<div align="center"><br><br><br>
+
+<h4><b>Let us know if everything looks right</b></h4><br>
 
 <form action="/submit_complaint", method='POST'>
 
@@ -16,25 +17,25 @@ Let us know if everything looks right<br><br>
   <input type="hidden" name="new_case" value="{{ new_case }}">
 
 
-  CLAIM TYPE: <!-- FIXME -->
+  <p align="center">CLAIM TYPE:</p>
   <select name="claim_type">
     {% for claim in claims %}
     <option value="{{ claim.claim_type_id }}">{{ claim.name }}</option>
     {% endfor %}
-  </select><br>
+  </select><br><br>
 
 <!--   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br> -->
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
   Amount claimed: <input type="text" name="damages_asked" value="${{ parsed_text.amount_claimed  }}"><br>
   Date: <input type="text" name="claim_type" value="{{ parsed_text.complaint_date }}"><br><br>
 
-Counsel:<br><br>
+<p align="center">Counsel:</p>
 
   First name: <input type="text" name="counsel_fname" value="{{ parsed_text.counsel_fname  }}"><br>
   Last name: <input type="text" name="counsel_lname" value="{{ parsed_text.counsel_lname  }}"><br>
   Firm name: <input type="text" name="counsel_firm" value="{{ parsed_text.counsel_firm }}"><br><br>
 
-Court<br><br>
+<p align="center">Court:</p>
 
   Court county: <input type="text" name="court_county" value="{{ parsed_text.county }}"><br>
   Court state: <input type="text" name="court_state" value="{{ parsed_text.state }}"><br>
@@ -42,12 +43,12 @@ Court<br><br>
 
 <!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
  -->
-Plaintiff:<br><br>
+<p align="center">Plaintiff:</p>
 
   First name: <input type="text" name="plaintiff_fname" value="{{ parsed_text.plaintiff_fname }}"><br>
   Last name: <input type="text" name="plaintiff_lname" value="{{ parsed_text.plaintiff_lname }}"><br><br><br>
 
-Defendant:<br><br>
+<p align="center">Defendant:</p>
 
   First name: <input type="text" name="defendant_fname" value="{{ parsed_text.defendant_fname }}"><br>
   Last name: <input type="text" name="defendant_lname" value="{{ parsed_text.defendant_lname }}"><br>
@@ -59,9 +60,10 @@ Defendant:<br><br>
   Injury location: <input type="text" name="incident_location"><br>
   Description of injury: <input type="text" name="incident_description"><br> -->
 
-  <input type="submit">
+  <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Confirm">
 
 </form>
+</div>
 
 <!-- <div id="document"<p>
 

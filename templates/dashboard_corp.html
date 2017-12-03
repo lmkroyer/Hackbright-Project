@@ -81,19 +81,6 @@
                   </li>
                   {% endfor %}
                 </li>
-
-
-                  <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                    </ul>
-                  </div>
             </ul>
         </div>
     </div>
@@ -103,14 +90,14 @@
             <div id="upload-sum-rep" style="display:none">
               <h4>Upload a Fund Doc:</h4>
                 <form action='/upload/ppm' method="POST" enctype="multipart/form-data">
-                  <p><input type="file" name="file">
-                      <input type="submit">
+                  <input type="file" name="file">
+                    <input type="submit">
                 </form>
             </div>
             <div id="allOptions">
-                <h3 id="corp-options">Select an Action:</h3><br>
-                <li id="formFund"><a href="#">Form a Fund</a></li>
-                <li id="start-sum-rep"><a href="#">Start a Summary Report</a></li>
+                <!-- <h3 id="corp-options">Select an Action:</h3><br> -->
+                <a href="#" id="formFund">Form a Fund</a>
+                <a href="#" id="start-sum-rep">Start a Summary Report</a>
             </div>
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
 

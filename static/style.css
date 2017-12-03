@@ -1,5 +1,40 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+/*#allOptions {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 1em;
+  perspective: 500px;
+  width: 6em;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    text-shadow: #000 1px 1px 1px;
+    transform: rotateY(0deg) translate(0);
+    transform-origin: 0 0;
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+      color: #5c6478;
+    }
+    &.siblings {
+      transform: rotateY(-180deg) translate(-2em);
+    }
+    &.selected {
+      color: #c00;
+      transform: translate(2em);
+    }
+  }
+  &:hover a {
+    transform: rotateY(0deg);
+  }
+
+}*/
+
+
+
 
 .team-heading {
   font-weight: normal;

@@ -1,29 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div align="center">
 <form action='/process_answer', method='POST'>
-
-<!--     pull from here: http://www.karlinlaw.com/blog/2012/06/sample-general-denial-answer-filed-in-california-buisness-or-real-estate-lawsuit-with-affirmative-de.shtml -->
-
-  Select the appropriate responses:<br>
-  <input type="checkbox" name="affirmative_defenses" value="no cause of action">No Cause of Action<br>
-  <input type="checkbox" name="affirmative_defenses" value="statute of frauds">Statute of Frauds<br>
-  <input type="checkbox" name="affirmative_defenses" value="offset">Offset<br>
-  <input type="checkbox" name="affirmative_defenses" value="waiver">Waiver<br>
-  <input type="checkbox" name="affirmative_defenses" value="estoppel">Estoppel<br>
-  <input type="checkbox" name="affirmative_defenses" value="breach of contract">Breach of Contract<br>
-  <input type="checkbox" name="affirmative_defenses" value="release">Release<br>
-  <input type="checkbox" name="affirmative_defenses" value="in pari delicato">In Pari Delicato<br>
-  <input type="checkbox" name="affirmative_defenses" value="equitable estoppel">Equitable Estoppel<br>
-  <input type="checkbox" name="affirmative_defenses" value="full performance">Full Performance<br>
-  <input type="checkbox" name="affirmative_defenses" value="failure to mitigate damages">Failure to Mitigate Damages<br>
-  <input type="checkbox" name="affirmative_defenses" value="ratification of acts">Ratification of Acts<br>
-  <input type="checkbox" name="affirmative_defenses" value="no reasonable reliance">No Reasonable Reliance<br>
-  <input type="checkbox" name="affirmative_defenses" value="statute of limitations">Statute of Limitations<br>
-  <input type="checkbox" name="affirmative_defenses" value="parole evidence rule">Parole Evidence Rule<br>
-
-  <input type="submit">
+  <br>
+  <br>
+  <br>
+  <h4><b>Which responses would you like to include?</b></h4><br>
+  <input type="checkbox" name="affirmative_defenses" value="no cause of action"> No Cause of Action<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="statute of frauds"> Statute of Frauds<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="offset"> Offset<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="waiver"> Waiver<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="estoppel"> Estoppel<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="breach of contract"> Breach of Contract<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="release"> Release<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="in pari delicato"> In Pari Delicato<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="equitable estoppel"> Equitable Estoppel<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="full performance"> Full Performance<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="failure to mitigate damages"> Failure to Mitigate Damages<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="ratification of acts"> Ratification of Acts<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="no reasonable reliance"> No Reasonable Reliance<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="statute of limitations"> Statute of Limitations<br><br>
+  <input type="checkbox" name="affirmative_defenses" value="parole evidence rule"> Parole Evidence Rule<br><br>
+  <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Okay">
 </form>
-
+</div>
 
 {% endblock %}
