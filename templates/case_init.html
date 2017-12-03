@@ -19,7 +19,7 @@
     <form id="team-select" action='/process_users' method='POST'>
         <label for="select">Team Lead</label>
         <div class="form-select">
-            <select id="select">
+            <select id="select" name="team_lead">
                 <option value="">Select a team lead</option>
                 {% for attorney in attorneys %}
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
@@ -28,7 +28,7 @@
         </div>
         <label for="select">Associate</label>
         <div class="form-select">
-            <select id="select">
+            <select id="select" name="attorney_1">
                 <option value="">Select an associate</option>
                 {% for attorney in attorneys %}
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
@@ -37,7 +37,7 @@
         </div>
         <label for="select">Associate</label>
         <div class="form-select">
-            <select id="select">
+            <select id="select" name="attorney_2">
                 <option value="">Select an associate</option>
                 {% for attorney in attorneys %}
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
