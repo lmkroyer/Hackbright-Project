@@ -1,6 +1,8 @@
 OPEN:
 
 - get rid of extra timeline stuff [?]
+- add progress loader to litigation upload screen
+- display number of search results
 - design: how display team leader?
 - notes not showing up on table
 - sidebar / page format doesn't work with navbar
@@ -29,7 +31,8 @@ corp:
 - change background to gradient of homepage pic
 - when hover over summary report table, make text black/grey
 - blur background of corp side
-- make sidebar dark
+- make sidebar same as lit
+- fit search bar
 
 
 shadow on hover: https://codepen.io/ovdojoey/pen/BomKyZ
