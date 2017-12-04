@@ -158,9 +158,9 @@ a#login-route:hover {
   z-index:10;
 }
 
-#home-img:hover {
+/*#home-img:hover {
   -webkit-filter: brightness(200%);
-}
+}*/
 
 #greet-user {
   color: #c91e0c;
@@ -325,6 +325,14 @@ a#login-route:hover {
   margin: 0;
   padding: 0;
   font-size: 10pt;
+}
+
+#search-input {
+  width: 90%;
+}
+
+#search-btn {
+  width: 10%;
 }
 
 @media (max-width:767px) {
