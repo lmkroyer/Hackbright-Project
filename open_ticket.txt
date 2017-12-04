@@ -13,17 +13,22 @@ OPEN:
 - back to dash on bottom left of all lit flow
 - DOWNLOAD ANSWER WHILE REDIRECT TO DASHBOARD
 - pdf 2 is getting New york for plaintiff f and l name
-- status and deadline are not changing dynamically
+** - status and deadline are not changing dynamically *****
 - clean up code
 - write readme
+- load up users / cases
 
 dropdown: https://codepen.io/Polanco08/pen/aflBd?page=4
 
 corp:
-- options aren't displaying:
-    -make large, white, hoverable
+
 - get sum rep formatted well
+- add .correct to the sentence ones? (need to iterate over word list, so .split)
 - make lpa text white
+- change background to gradient of homepage pic
+- when hover over summary report table, make text black/grey
+- blur background of corp side
+- make sidebar dark
 
 
 shadow on hover: https://codepen.io/ovdojoey/pen/BomKyZ

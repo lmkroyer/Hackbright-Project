@@ -55,7 +55,9 @@
   transform: scale(1);
 }
 
-
+#sum-rep tr:hover {
+    color: black;
+}
 
 /* Clear floats after the columns */
 .team-row:after {
@@ -216,6 +218,10 @@
   padding-left:4em;
 }
 
+#sum-rep-list {
+  color: white;
+}
+
 /*#dash {
   margin: auto;
   display: block;
@@ -295,7 +301,7 @@ body {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background-color: #2D2B36;
+  background-color: #1a0006;
 /*  background-color: #272532;*/
 /*  background-image: url("blackmap.jpg");*/
   position: fixed;
@@ -303,7 +309,7 @@ body {
   overflow-y: auto;
   z-index: 1000;
   transition: all 0.4s ease 0s;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 #page-content-wrapper {

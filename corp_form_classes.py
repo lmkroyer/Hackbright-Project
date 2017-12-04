@@ -303,13 +303,12 @@ class PPMForm(TextBlob):
         return name.upper()
 
 
-    def get_mgmt_fee(sentence):
+    def get_mgmt_fee(self):
         """Return the management fee of the fund."""
 
         for i in range(len(self.sentence_list)):
 
             if self.sentence_list[i].find('“Management Fee”'.decode('utf-8')) != -1 and self.sentence_list[i].find('%') != -1:
-
                 # Returns a sentence object
                 sentence = self.sentence_list[i]
                 # Get string from sentence object
@@ -319,7 +318,6 @@ class PPMForm(TextBlob):
                 payable_when = re.search(r"(?<=\bwhich will be payable\s)(?:[A-Za-z]+){2}[A-Za-z]+", string).group()
                 fee = percent + ', payable ' + payable_when
 
-                print fee
                 return fee
 
 
@@ -328,11 +326,11 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('“Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('organized under the laws') != -1:
+            if self.sentence_list[i].find('“Fund”'.decode('utf-8')) != -1 and self.sentence_list[i].find('under the laws of') != -1:
 
                 sentence = self.sentence_list[i]
                 string = str(sentence)
-                return re.search(r"(?<=\borganized under the laws of\s)(\w+)", string).group()
+                return re.search(r"(?<=\bunder the laws of\s)(\w+)", string).group()
 
 
     def get_manager(self):
@@ -340,10 +338,11 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('“Manager”'.decode('utf-8')) != -1 and self.sentence_list[i].find('will be the manager of the Fund') != -1:
+            if self.sentence_list[i].find('will be the manager') != -1:
 
                 sentence = self.sentence_list[i]
                 string = str(sentence)
+
                 return re.search(r"^.*(?=(\,))", string).group()
 
 
@@ -352,15 +351,10 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('“Principals”'.decode('utf-8')) != -1 or self.sentence_list[i].find('the “Principal”'.decode('utf-8')) != -1:
-                prinicpals = []
+            if self.sentence_list[i].find('principals of the Manager') != -1:
                 sentence = self.sentence_list[i]
                 string = str(sentence)
-                # return re.search(r"(?<!\.\s)\b[A-Z][a-z]*\b", string)
                 list_words = string.split(' ')
-                for word in list_words:
-                    if word[0].isupper():
-                        prinicpals.append(word)
 
                 return ' '.join(list_words)
 
@@ -376,7 +370,7 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('the Manager may be removed') != -1:
+            if self.sentence_list[i].find('Manager may be removed') != -1:
 
                 sentence = self.sentence_list[i]
                 return str(sentence)
@@ -387,11 +381,8 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            sentence = self.sentence_list[i]
-            sentence = sentence.lower()
-
-            if sentence.find('indebtedness') != -1 and self.sentence_list[i].find('the fund may') != -1:
-
+            if self.sentence_list[i].find('indebtedness') != -1 and self.sentence_list[i].find('may') != -1:
+                import pdb; pdb.set_trace()
                 result = self.sentence_list[i]
                 return str(result)
 
@@ -413,7 +404,8 @@ class PPMForm(TextBlob):
 
         for i in range(len(self.sentence_list)):
 
-            if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject to') != -1:
+            if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject') != -1:
+                import pdb; pdb.set_trace()
                 sentence = self.sentence_list[i]
                 return str(sentence)
 
