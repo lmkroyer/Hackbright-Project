@@ -24,9 +24,9 @@
   {% if 'current_user' in session %}
 
   <body id="pod">
-    <div id="allOptions" align="center">
-      <a href='/dashboard_corp' class="effect-box" ><button type="button" id="dash">Corporate</button></a>
-      <a href='/welcome'><button type="button" class="btn btn-outline-litigation" id="dash">Litigation</button></a>
+    <div align="center" class="effect-box" id="allOptions">
+      <a href='/dashboard_corp'><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Corporate</button></a>
+      <a href='/welcome'><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Litigation</button></a>
     </div>
     <div id="map"></div>
   </body>
@@ -38,9 +38,9 @@
   <div align="center" class="img__wrap">
     <img src="/static/city3.jpg" class="img-responsive" id="home-img" style="width:20%;">
     <div class="gallery-text">
-      <h4 align="center"><a href="/login" id="login-route">Login</a></h4>
+      <h3 align="center"><a href="/login" id="login-route">Login</a></h4>
     </div>
-  </div><br>
+  </div>
   </div>
 
   {% endif %}

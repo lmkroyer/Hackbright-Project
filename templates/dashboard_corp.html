@@ -10,7 +10,7 @@
 
 <body id="dashBackCorp">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" id="corp-nav">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" id="dash-logo" href="/about_us">Lglease</a>
@@ -37,11 +37,6 @@
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form></li><br>
-<!--                 <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-time"></span> Set a Reminder</a></li><br>
-                <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span> Plan a Meeting</a></li><br>
-                <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br> -->
-
                 <li id="client-info">Clients:
                   {% for fund in funds %}
                   <li><label class="tree-toggle nav-header" id="client-info-sub">{{ fund.fund }}</label><br>

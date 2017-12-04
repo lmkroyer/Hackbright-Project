@@ -14,8 +14,8 @@
 {% block content %}
 
 <div class="row" id="team-row">
-  <div class="team-column">
-    <h1 class="team-heading">Choose your Team</h1>
+  <div class="team-column col-xs-6" align="center">
+    <h1 class="team-heading">Choose your Team</h1><br>
     <form id="team-select" action='/process_users' method='POST'>
         <label for="select">Team Lead</label>
         <div class="form-select">
@@ -24,18 +24,18 @@
                 {% for attorney in attorneys %}
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
                 {% endfor %}
-            </select>
+            </select><br>
         </div>
-        <label for="select">Associate</label>
+        <br><label for="select">Associate</label>
         <div class="form-select">
             <select id="select" name="attorney_1">
                 <option value="">Select an associate</option>
                 {% for attorney in attorneys %}
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
                 {% endfor %}
-            </select>
+            </select><br>
         </div>
-        <label for="select">Associate</label>
+        <br><label for="select">Associate</label>
         <div class="form-select">
             <select id="select" name="attorney_2">
                 <option value="">Select an associate</option>
@@ -43,6 +43,8 @@
                 <option value="{{ attorney.user_id }}">{{ attorney.fname }} {{ attorney.lname }}</option>
                 {% endfor %}
             </select>
+        <br>
+        <br>
         <input type='submit' class="btn btn-outline-success my-2 my-sm-0" value='Begin'>
         </div>
     </form>
@@ -52,12 +54,10 @@
     <br>
         <button class="btn btn-outline-success my-2 my-sm-0" id="dash-redirect-team">Back to Dashboard</button>
   </div>
-  <div class="team-column">
-      <div class="container-fluid">
-        <div class="col">
-            <canvas id="attnyBarChart" width="800" height="900"></canvas>
-        </div>
-      </div>
+  <div class="team-column col-xs-6">
+    <div class="col">
+        <canvas id="attnyBarChart" width="800" height="900"></canvas>
+    </div>
   </div>
 </div>
 

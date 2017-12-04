@@ -3,11 +3,10 @@ OPEN:
 - get rid of extra timeline stuff [?]
 - add progress loader to litigation upload screen
 - display number of search results
-- design: how display team leader?
 - notes not showing up on table
 - sidebar / page format doesn't work with navbar
 - landing page: hover over to display text 'login'
-- clear search results for new searches
+- [clear search results for new searches]
 - make lit navbar hover white text like corp
 - center table header text
     - add drop down to sort

@@ -1,48 +1,40 @@
-[2017-12-03T02:50:27,355][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopping ...
-[2017-12-03T02:50:27,540][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopped
-[2017-12-03T02:50:27,541][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closing ...
-[2017-12-03T02:50:27,574][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closed
-[2017-12-03T03:31:45,366][WARN ][o.e.b.JNANatives         ] Unable to lock JVM Memory: error=12, reason=Cannot allocate memory
-[2017-12-03T03:31:45,386][WARN ][o.e.b.JNANatives         ] This can result in part of the JVM being swapped out.
-[2017-12-03T03:31:45,388][WARN ][o.e.b.JNANatives         ] Increase RLIMIT_MEMLOCK, soft limit: 65536, hard limit: 65536
-[2017-12-03T03:31:45,389][WARN ][o.e.b.JNANatives         ] These can be adjusted by modifying /etc/security/limits.conf, for example: 
+[2017-12-04T21:22:21,320][WARN ][o.e.b.JNANatives         ] Unable to lock JVM Memory: error=12, reason=Cannot allocate memory
+[2017-12-04T21:22:21,378][WARN ][o.e.b.JNANatives         ] This can result in part of the JVM being swapped out.
+[2017-12-04T21:22:21,379][WARN ][o.e.b.JNANatives         ] Increase RLIMIT_MEMLOCK, soft limit: 65536, hard limit: 65536
+[2017-12-04T21:22:21,380][WARN ][o.e.b.JNANatives         ] These can be adjusted by modifying /etc/security/limits.conf, for example: 
 	# allow user 'vagrant' mlockall
 	vagrant soft memlock unlimited
 	vagrant hard memlock unlimited
-[2017-12-03T03:31:45,389][WARN ][o.e.b.JNANatives         ] If you are logged in interactively, you will have to re-login for the new limits to take effect.
-[2017-12-03T03:31:46,688][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] initializing ...
-[2017-12-03T03:31:46,997][INFO ][o.e.e.NodeEnvironment    ] [node-1_lindsay_01-dev] using [1] data paths, mounts [[/home/vagrant/src (home_vagrant_src)]], net usable_space [292gb], net total_space [464.7gb], types [vboxsf]
-[2017-12-03T03:31:47,000][INFO ][o.e.e.NodeEnvironment    ] [node-1_lindsay_01-dev] heap size [1015.6mb], compressed ordinary object pointers [true]
-[2017-12-03T03:31:47,454][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] node name [node-1_lindsay_01-dev], node ID [K6il1mL8SgO_OsMykcPBjA]
-[2017-12-03T03:31:47,456][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] version[6.0.0], pid[1082], build[8f0685b/2017-11-10T18:41:22.859Z], OS[Linux/4.4.0-92-generic/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_151/25.151-b12]
-[2017-12-03T03:31:47,456][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] JVM arguments [-Xms1g, -Xmx1g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/home/vagrant/src/Projects/ocr/elasticsearch-6.0.0, -Des.path.conf=/home/vagrant/src/Projects/ocr/elasticsearch-6.0.0/config]
-[2017-12-03T03:31:53,334][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [aggs-matrix-stats]
-[2017-12-03T03:31:53,339][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [analysis-common]
-[2017-12-03T03:31:53,341][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [ingest-common]
-[2017-12-03T03:31:53,342][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-expression]
-[2017-12-03T03:31:53,344][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-mustache]
-[2017-12-03T03:31:53,345][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-painless]
-[2017-12-03T03:31:53,345][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [parent-join]
-[2017-12-03T03:31:53,348][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [percolator]
-[2017-12-03T03:31:53,349][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [reindex]
-[2017-12-03T03:31:53,350][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [repository-url]
-[2017-12-03T03:31:53,351][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [transport-netty4]
-[2017-12-03T03:31:53,352][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [tribe]
-[2017-12-03T03:31:53,354][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded plugin [ingest-attachment]
-[2017-12-03T03:31:57,703][INFO ][o.e.d.DiscoveryModule    ] [node-1_lindsay_01-dev] using discovery type [zen]
-[2017-12-03T03:31:59,276][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] initialized
-[2017-12-03T03:31:59,278][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] starting ...
-[2017-12-03T03:31:59,626][INFO ][o.e.t.TransportService   ] [node-1_lindsay_01-dev] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
-[2017-12-03T03:31:59,705][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] memory locking requested for elasticsearch process but memory is not locked
-[2017-12-03T03:31:59,708][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] max number of threads [3811] for user [vagrant] is too low, increase to at least [4096]
-[2017-12-03T03:31:59,710][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-[2017-12-03T03:32:02,822][INFO ][o.e.c.s.MasterService    ] [node-1_lindsay_01-dev] zen-disco-elected-as-master ([0] nodes joined), reason: new_master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{TAX5JK03QeW7NvZcA9FfHQ}{127.0.0.1}{127.0.0.1:9300}
-[2017-12-03T03:32:02,834][INFO ][o.e.c.s.ClusterApplierService] [node-1_lindsay_01-dev] new_master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{TAX5JK03QeW7NvZcA9FfHQ}{127.0.0.1}{127.0.0.1:9300}, reason: apply cluster state (from master [master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{TAX5JK03QeW7NvZcA9FfHQ}{127.0.0.1}{127.0.0.1:9300} committed version [1] source [zen-disco-elected-as-master ([0] nodes joined)]])
-[2017-12-03T03:32:02,893][INFO ][o.e.h.n.Netty4HttpServerTransport] [node-1_lindsay_01-dev] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
-[2017-12-03T03:32:02,894][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] started
-[2017-12-03T03:32:03,464][INFO ][o.e.g.GatewayService     ] [node-1_lindsay_01-dev] recovered [1] indices into cluster_state
-[2017-12-03T03:32:04,903][INFO ][o.e.c.r.a.AllocationService] [node-1_lindsay_01-dev] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[documents][4]] ...]).
-[2017-12-03T04:54:59,580][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopping ...
-[2017-12-03T04:54:59,630][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopped
-[2017-12-03T04:54:59,631][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closing ...
-[2017-12-03T04:54:59,658][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closed
+[2017-12-04T21:22:21,384][WARN ][o.e.b.JNANatives         ] If you are logged in interactively, you will have to re-login for the new limits to take effect.
+[2017-12-04T21:22:22,500][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] initializing ...
+[2017-12-04T21:22:22,766][INFO ][o.e.e.NodeEnvironment    ] [node-1_lindsay_01-dev] using [1] data paths, mounts [[/home/vagrant/src (home_vagrant_src)]], net usable_space [292.4gb], net total_space [464.7gb], types [vboxsf]
+[2017-12-04T21:22:22,767][INFO ][o.e.e.NodeEnvironment    ] [node-1_lindsay_01-dev] heap size [1015.6mb], compressed ordinary object pointers [true]
+[2017-12-04T21:22:23,262][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] node name [node-1_lindsay_01-dev], node ID [K6il1mL8SgO_OsMykcPBjA]
+[2017-12-04T21:22:23,263][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] version[6.0.0], pid[4392], build[8f0685b/2017-11-10T18:41:22.859Z], OS[Linux/4.4.0-92-generic/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2017-12-04T21:22:23,264][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] JVM arguments [-Xms1g, -Xmx1g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/home/vagrant/src/Projects/ocr/elasticsearch-6.0.0, -Des.path.conf=/home/vagrant/src/Projects/ocr/elasticsearch-6.0.0/config]
+[2017-12-04T21:22:29,005][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [aggs-matrix-stats]
+[2017-12-04T21:22:29,007][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [analysis-common]
+[2017-12-04T21:22:29,008][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [ingest-common]
+[2017-12-04T21:22:29,009][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-expression]
+[2017-12-04T21:22:29,010][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-mustache]
+[2017-12-04T21:22:29,011][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [lang-painless]
+[2017-12-04T21:22:29,011][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [parent-join]
+[2017-12-04T21:22:29,012][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [percolator]
+[2017-12-04T21:22:29,013][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [reindex]
+[2017-12-04T21:22:29,014][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [repository-url]
+[2017-12-04T21:22:29,015][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [transport-netty4]
+[2017-12-04T21:22:29,015][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded module [tribe]
+[2017-12-04T21:22:29,016][INFO ][o.e.p.PluginsService     ] [node-1_lindsay_01-dev] loaded plugin [ingest-attachment]
+[2017-12-04T21:22:33,198][INFO ][o.e.d.DiscoveryModule    ] [node-1_lindsay_01-dev] using discovery type [zen]
+[2017-12-04T21:22:34,772][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] initialized
+[2017-12-04T21:22:34,773][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] starting ...
+[2017-12-04T21:22:35,114][INFO ][o.e.t.TransportService   ] [node-1_lindsay_01-dev] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-12-04T21:22:35,186][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] memory locking requested for elasticsearch process but memory is not locked
+[2017-12-04T21:22:35,187][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] max number of threads [3811] for user [vagrant] is too low, increase to at least [4096]
+[2017-12-04T21:22:35,189][WARN ][o.e.b.BootstrapChecks    ] [node-1_lindsay_01-dev] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2017-12-04T21:22:38,278][INFO ][o.e.c.s.MasterService    ] [node-1_lindsay_01-dev] zen-disco-elected-as-master ([0] nodes joined), reason: new_master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{81MoPqdkTBmXgY_XlwkI6w}{127.0.0.1}{127.0.0.1:9300}
+[2017-12-04T21:22:38,289][INFO ][o.e.c.s.ClusterApplierService] [node-1_lindsay_01-dev] new_master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{81MoPqdkTBmXgY_XlwkI6w}{127.0.0.1}{127.0.0.1:9300}, reason: apply cluster state (from master [master {node-1_lindsay_01-dev}{K6il1mL8SgO_OsMykcPBjA}{81MoPqdkTBmXgY_XlwkI6w}{127.0.0.1}{127.0.0.1:9300} committed version [1] source [zen-disco-elected-as-master ([0] nodes joined)]])
+[2017-12-04T21:22:38,332][INFO ][o.e.h.n.Netty4HttpServerTransport] [node-1_lindsay_01-dev] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-12-04T21:22:38,334][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] started
+[2017-12-04T21:22:38,873][INFO ][o.e.g.GatewayService     ] [node-1_lindsay_01-dev] recovered [1] indices into cluster_state
+[2017-12-04T21:22:40,496][INFO ][o.e.c.r.a.AllocationService] [node-1_lindsay_01-dev] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[documents][4]] ...]).

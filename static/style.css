@@ -1,5 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*background-color: #7283a0;*/
+    /*background-color: #b6ccd6;*/
+/*    background-color: #93afbc;*/
+    background-image: url("home2.jpg");
+    background-color: #dce3ef;
+}
+
 #dash-logo {
   font-family: ailerons;
 }
@@ -31,7 +42,50 @@
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
+}
 
+#allOptions a.effect-box:before {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  -webkit-transform: scale(1,0);
+  transform: scale(1,0);
+}
+
+#allOptions a.effect-box:after {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+#allOptions a.effect-box:hover:after,
+#allOptions a.effect-box:hover:before {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+#allOptions p a {
+  color: #fff;
+  font-size: 24pt;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  font-family: Open sans, sans-serif;
+}
+
+#allOptions a.effect-box:after,
+#allOptions a.effect-box:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
 }
 
 #allOptions a.effect-box:before {
@@ -59,37 +113,33 @@
     color: black;
 }
 
-.team-row:after {
-    content: "";
-    display: table;
-    clear: both;
+.gallery {
+  position: relative;
+  text-align: center;
 }
 
 .gallery-text{
     position: absolute;
-    top: 0; right: 0;
-    bottom: 0; left: 0;
-    width: 300px;
-    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
     text-align: center;
-    background-color: rgba(0,0,0,0.8);
-    opacity: 0;
-    -webkit-transition: opacity 0.6s;
-    -moz-transition: opacity 0.6s;
-    transition: opacity 0.6s;
-     vertical-align:middle;
-     line-height:200px;
   }
 
-.gallery-text:hover{
-    opacity: 1;
+.gallery-text h3 {
+  color: red;
+  vertical-align:middle;
+  line-height:100%;
 }
 
-.gallery-text h4{
-    color: white;
-    display: inline-table;
-     vertical-align:middle;
-     line-height:100%;
+#login-route {
+  color: red;
+  font-size: 300%;
+}
+
+a#login-route:hover {
+  text-decoration: none;
 }
 
 #complaint-upload {
@@ -103,26 +153,14 @@
 }
 
 #home-img {
-    position:relative;
-    text-align: center;
-    z-index:10;
+  position:relative;
+  text-align: center;
+  z-index:10;
 }
 
-#home-img:hover {-webkit-filter: brightness(200%); }
-
-/*#login-route {
-  left: 0;
-  position:absolute;
-  text-align:center;
-  width: 100%;
-  display:hidden;
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway';
-  font-weight: 400;
-  font-size: 2.4em;
-  color: #9A12B3;
-}*/
+#home-img:hover {
+  -webkit-filter: brightness(200%);
+}
 
 #greet-user {
   color: #c91e0c;
@@ -236,17 +274,6 @@
     background-position: center center;
 }
 
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    /*background-color: #7283a0;*/
-    /*background-color: #b6ccd6;*/
-/*    background-color: #93afbc;*/
-    background-image: url("home2.jpg");
-    background-color: #dce3ef;
-}
-
 #myDiv {
   display: none;
   text-align: center;
@@ -275,8 +302,8 @@ body {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  /*background-color: #1a0006;*/
-/*  background-color: #272532;*/
+/*  background-color: #56678f;
+*//*  background-color: #272532;*/
   background-image: url("blackmap.jpg");
   position: fixed;
   height: 100%;
@@ -327,6 +354,14 @@ body {
   background-color: #1a0006;
 }
 
+.navbar-default .navbar-nav > li > a:hover {
+  color:white;
+}
+
+/*#corp-nav {
+  background-color: #e6e9f0;
+}*/
+
 .navbar-brand {
   width: 250px;
   font-size: 18pt;
@@ -375,7 +410,7 @@ body {
     background: linear-gradient(to right, #e6e9f0, #eef1f5);
 }
 
-#dashBackCorp:before {
+/*#dashBackCorp:before {
   content: "";
   position: fixed;
   left: 0;
@@ -393,7 +428,7 @@ body {
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
-}
+}*/
 
 #dashBackCorp {
   position: fixed;
@@ -402,10 +437,15 @@ body {
   z-index: 0;
   margin-left: 20px;
   margin-right: 20px;
+  background: #29323c;
+  background: -webkit-linear-gradient(left, #29323c, #485563);
+  background: -o-linear-gradient(right, #29323c #485563);
+  background: -moz-linear-gradient(right, #29323c #485563);
+  background: linear-gradient(to right, #29323c, #485563);
 }
 
 #allOptions h3 {
-  color: black;
+  color: grey;
 }
 
 /*#dashBackCorp {

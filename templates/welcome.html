@@ -49,18 +49,6 @@
             <li><a href="#"><span class="glyphicon glyphicon-file"></span> Forms</a></li><br>
             <li id="availChart"><a href="#"><span class="glyphicon glyphicon-signal"></span> Check Attorney Availability</a></li><br>
             <li id="bounding-box-btn"><a href="#"><span class="glyphicon glyphicon-star"></span> NEW Beta Test Bounding Boxes<span class="glyphicon glyphicon-star"></span></a></li>
-
-                    <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                    </ul>
-                  </div>
         </ul>
     </div>
     <div id="page-content-wrapper">
@@ -159,7 +147,7 @@
                           {% if case_count > 1 %}
                           <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Cases:</b></p>
                           {% elif case_count == 1 %}
-                          <p><b>You Have {{ case_count }} Active Case:</b></p>
+                          <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Case:</b></p>
                           {% endif %}
                           <table class="table table-hover table-dark table-striped">
                             <th> Case Id </th>
@@ -172,7 +160,7 @@
                             {% for case in active_case_lst %}
                             {% for defendant in case.defendants %}
                             <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle" id="case-row">
-                                <td id="caseId"> {{ case.case_id }} </td>
+                                <td id="caseId"> {{ case.case_id }} <span class="glyphicon glyphicon-triangle-bottom"></span></td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
