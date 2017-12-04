@@ -1,59 +1,61 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-/*#allOptions {
+#allOptions {
   font-weight: bold;
   font-size: 2em;
-  margin: 1em;
-  perspective: 500px;
-  width: 6em;
-
-  a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: #000 1px 1px 1px;
-    transform: rotateY(0deg) translate(0);
-    transform-origin: 0 0;
-    transition: 0.5s ease-in-out;
-
-    &:hover {
-      color: #5c6478;
-    }
-    &.siblings {
-      transform: rotateY(-180deg) translate(-2em);
-    }
-    &.selected {
-      color: #c00;
-      transform: translate(2em);
-    }
-  }
-  &:hover a {
-    transform: rotateY(0deg);
-  }
-
-}*/
-
-
-
-
-.team-heading {
-  font-weight: normal;
-  font-size: 40px;
-  font-weight: normal;
-  text-transform: uppercase;
-  #sub-head {
-    font-size: 13px;
-    display: block;
-    padding-left: 4px;
-  }
+  color: white;
 }
 
-.team-column {
-    float: left;
-    width: 50%;
-    padding-left:4em;
-    padding-right:4em;
+#allOptions p:hover {
+    background: #e1e2e2;
 }
+
+#allOptions h3 a {
+  color: #fff;
+  font-size: 2em;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  font-family: Open sans, sans-serif;
+}
+
+#allOptions a.effect-box:after,
+#allOptions a.effect-box:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+
+}
+
+#allOptions a.effect-box:before {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  -webkit-transform: scale(1,0);
+  transform: scale(1,0);
+}
+
+#allOptions a.effect-box:after {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+#allOptions a.effect-box:hover:after,
+#allOptions a.effect-box:hover:before {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+
 
 /* Clear floats after the columns */
 .team-row:after {
@@ -228,7 +230,7 @@
 }
 
 #upload-sum-rep {
-  color: white;
+  color: black;
 }
 
 

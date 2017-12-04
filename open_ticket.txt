@@ -14,6 +14,8 @@ OPEN:
 - DOWNLOAD ANSWER WHILE REDIRECT TO DASHBOARD
 - pdf 2 is getting New york for plaintiff f and l name
 - status and deadline are not changing dynamically
+- clean up code
+- write readme
 
 dropdown: https://codepen.io/Polanco08/pen/aflBd?page=4
 
@@ -23,6 +25,8 @@ corp:
 - get sum rep formatted well
 - make lpa text white
 
+
+shadow on hover: https://codepen.io/ovdojoey/pen/BomKyZ
 
 https://gis.stackexchange.com/questions/107068/how-to-reduce-the-opacity-of-a-google-maps-layer-in-cartodb-js
 

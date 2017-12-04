@@ -87,17 +87,17 @@
     <div id="page-content-wrapper" class="col-sm-8">
         <div class="page-content">
 
+            <div id="allOptions">
+                <h3 id="corp-options">Select an Action:</h3><br>
+                <h3 align="left"><a href="#" class="effect-box" id="formFund">Form a Fund</a></h3>
+                <h3 align="left"><a href="#" class="effect-box" id="start-sum-rep">Start a Summary Report</a></h3>
+            </div>
             <div id="upload-sum-rep" style="display:none">
               <h4>Upload a Fund Doc:</h4>
                 <form action='/upload/ppm' method="POST" enctype="multipart/form-data">
                   <input type="file" name="file">
-                    <input type="submit">
+                    <input type="submit" class="btn btn-outline-success my-2 my-sm-0">
                 </form>
-            </div>
-            <div id="allOptions">
-                <!-- <h3 id="corp-options">Select an Action:</h3><br> -->
-                <a href="#" id="formFund">Form a Fund</a>
-                <a href="#" id="start-sum-rep">Start a Summary Report</a>
             </div>
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
 

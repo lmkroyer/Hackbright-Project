@@ -86,12 +86,3 @@ $(".show-sum-rep").click(function(){
     buildSummaryReport(clientID);
 });
 
-
-// $('#allOptions a').on('click', function(){
-//   $(this).parent().find('a').removeClass('selected').addClass('siblings');
-//   $(this).addClass('selected');
-// });
-
-// $('#allOptions a').each(function (i) {
-//   $(this).attr("style", "transition-delay:" + i * 100 + "ms");
-// });
