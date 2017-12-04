@@ -24,6 +24,7 @@ corp:
 
 - get sum rep formatted well
 - add .correct to the sentence ones? (need to iterate over word list, so .split)
+    - test lines added to get_manager
 - make lpa text white
 - change background to gradient of homepage pic
 - when hover over summary report table, make text black/grey
