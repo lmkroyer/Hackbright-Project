@@ -11,8 +11,17 @@ body {
     background-color: #dce3ef;
 }
 
+#dash {
+  font-size: 16pt;
+}
+
 #dash-logo {
   font-family: ailerons;
+  color: white;
+}
+
+#dash-logo:hover {
+  color: grey;
 }
 
 #allOptions {
@@ -868,3 +877,8 @@ html, body {
   bottom: 0px;
   left: 43px;
 }
+
+#half-screen {
+  height: 50%;
+}
+

@@ -56,9 +56,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-
                             <canvas id="progressChart" width="800" height="350"></canvas>
-                            <button class="btn btn-outline-success my-2 my-sm-0" id="lit-search">Search</button>
                             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
                             <div id="timeline" style="display:none">
 
@@ -132,7 +130,7 @@
 
                         </div><br>
 
-                        <div id="caseInfo" class="row-fluid">
+                        <div id="caseInfo" class="row-fluid lit-frame">
                           {% if case_count > 1 %}
                           <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Cases:</b></p>
                           {% elif case_count == 1 %}

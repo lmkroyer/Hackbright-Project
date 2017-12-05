@@ -2,12 +2,14 @@ OPEN:
 
 - try blurring the backgrounds
 
+- change IDs to classes
+
 - set column widths by % as a class on table headers in css
 - fix table to only show YOUR active cases
 
 look for import pdb
 
-- change size of graph and do table scrolling
+- change size of graph (1/2 page) and do table scrolling
 
 
 - fix format timeline
