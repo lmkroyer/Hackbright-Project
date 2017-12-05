@@ -86,3 +86,7 @@
 [2017-12-05T20:36:46,180][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] started
 [2017-12-05T20:36:46,704][INFO ][o.e.g.GatewayService     ] [node-1_lindsay_01-dev] recovered [1] indices into cluster_state
 [2017-12-05T20:36:48,675][INFO ][o.e.c.r.a.AllocationService] [node-1_lindsay_01-dev] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[documents][1]] ...]).
+[2017-12-05T23:46:20,122][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopping ...
+[2017-12-05T23:46:20,185][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] stopped
+[2017-12-05T23:46:20,186][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closing ...
+[2017-12-05T23:46:20,206][INFO ][o.e.n.Node               ] [node-1_lindsay_01-dev] closed
