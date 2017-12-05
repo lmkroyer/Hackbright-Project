@@ -771,7 +771,7 @@ def get_case_histories():
 
         # If the case has a complaint, display info about it
         if case.complaint:
-            complaint = case.complaint.legal_basis + ' claim' + case.complaint.damages_asked + 'damages claimed'
+            complaint = case.complaint.damages_asked + ' damages claimed'
         else:
             complaint = 'Incomplete'
 
@@ -923,7 +923,7 @@ def draw_bounding_boxes():
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
-    app.debug = False
+    app.debug = True
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
 
     connect_to_db(app)

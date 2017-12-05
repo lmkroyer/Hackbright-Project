@@ -24,11 +24,15 @@
   {% if 'current_user' in session %}
 
   <body id="pod">
-    <div align="center" class="effect-box" id="allOptions">
-      <a href='/dashboard_corp'><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Corporate</button></a>
-      <a href='/welcome'><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Litigation</button></a>
+    <div align="center" class="effect-box">
+      <a href='/dashboard_corp' align="center"><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Corporate</button></a>
+      <a href='/welcome' align="center"><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Litigation</button></a>
     </div>
     <div id="map"></div>
+
+    <div id="home-footer">
+    <p>Lglease ©2017 | <a href="https://www.linkedin.com/in/lindsaykroyer/">Contact us</a></p>
+  </div>
   </body>
 
   {% else %}

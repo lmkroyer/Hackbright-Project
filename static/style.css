@@ -11,6 +11,80 @@ body {
     background-color: #dce3ef;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: #D3D3D3;
+  color: black;
+  text-align: center;
+  margin-left: 250px;
+}
+
+.footer p {
+  text-align: center;
+  margin-left: -250px;
+}
+
+#home-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: #D3D3D3;
+  color: black;
+  text-align: center;
+}
+
+.btn-outline-success-inverse {
+    background: #e1e2e2;
+    color: black;
+}
+
+.btn-outline-success-inverse:hover {
+    background: white;
+}
+
+@table_width: 800px;
+@table_body_height: 300px;
+
+#case-table {
+  width: @table_width;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  th { text-decoration: underline; }
+  th, td {
+    padding: 5px;
+    text-align: left;
+    width: 25px;
+  }
+
+  thead {
+    tr {
+      display: block;
+      position: relative;
+    }
+  }
+  tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: @table_body_height;
+  }
+}
+
+.old_ie_wrapper {
+  height: @table_body_height;
+  width: @table_width;
+  overflow-x: hidden;
+  overflow-y: auto;
+  tbody { height: auto; }
+}
+
 #dash {
   font-size: 16pt;
 }
@@ -266,6 +340,8 @@ a#login-route:hover {
 
 #sum-rep {
   color: white;
+  margin-left: -60px;
+  margin-top: 30px;
 }
 
 #table-labels {
@@ -273,7 +349,9 @@ a#login-route:hover {
 }
 
 #upload-sum-rep {
-  color: black;
+  color: white;
+  margin-top: 80px;
+  margin-left: -40px;
 }
 
 /*--------------------------------*/
@@ -892,8 +970,4 @@ html, body {
   top: auto;
   bottom: 0px;
   left: 43px;
-}
-
-#half-screen {
-  height: 50%;
 }

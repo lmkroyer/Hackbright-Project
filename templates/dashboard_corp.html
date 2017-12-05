@@ -90,10 +90,10 @@
                 <p align="left"><a href="#" class="effect-box" id="start-sum-rep">Start a Summary Report</a></p>
             </div>
             <div id="upload-sum-rep" style="display:none">
-              <h4>Upload a Fund Doc:</h4>
+              <h3>Upload a Fund Doc:</h3>
                 <form action='/upload/ppm' method="POST" enctype="multipart/form-data">
                   <input type="file" name="file">
-                    <input type="submit" class="btn btn-outline-success my-2 my-sm-0">
+                    <br><input type="submit" class="btn btn-outline-success-inverse my-2 my-sm-0">
                 </form>
             </div>
             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
@@ -174,6 +174,7 @@
              </div><br>
 
               <div id="sum-rep" style="display:none">
+                <h3 id="title-name">SUMMARY REPORT: </h3><br>
                <table class="table table-hover">
                 <thead>
                   <tr id="table-labels">
@@ -211,10 +212,6 @@
                     <td colspan="2" id="leverage-info">Larry the Bird</td>
                   </tr>
                   <tr>
-                    <th scope="row">Reinvestment</th>
-                    <td colspan="2" id="reinvest-info">Larry the Bird</td>
-                  </tr>
-                  <tr>
                     <th scope="row">Removal</th>
                     <td colspan="2" id="removal-info">Larry the Bird</td>
                   </tr>
@@ -228,6 +225,9 @@
 
         </div>
     </div>
+    </div>
+    <div class="footer">
+      <p>Lglease ©2017 | <a href="https://www.linkedin.com/in/lindsaykroyer/">Contact us</a></p>
     </div>
 </div>
 

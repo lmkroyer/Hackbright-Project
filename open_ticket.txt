@@ -1,5 +1,9 @@
 OPEN:
 
+table: table-layout: fixed,
+
+on th, td {width: px}
+
 - try blurring the backgrounds
 - remove 'note' from note dashboard
 

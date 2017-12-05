@@ -183,13 +183,8 @@ class PPMForm(TextBlob):
 
                 sentence = self.sentence_list[i]
                 string = str(sentence)
-                corrected_words = []
-                for word in string:
-                    fixed_word = word.correct()
-                    corrected_words.append(fixed_word)
-                new_string = ' '.join(corrected_words)
 
-                return re.search(r"^.*(?=(\,))", new_string).group()
+                return re.search(r"^.*(?=(\,))", string).group()
 
 
     def get_principals(self):
@@ -222,8 +217,8 @@ class PPMForm(TextBlob):
         for i in range(len(self.sentence_list)):
 
             if self.sentence_list[i].find('indebtedness') != -1 and self.sentence_list[i].find('may') != -1:
-                import pdb; pdb.set_trace()
                 result = self.sentence_list[i]
+
                 return str(result)
 
 
@@ -236,6 +231,7 @@ class PPMForm(TextBlob):
                 sentence = self.sentence_list[i]
                 string = str(sentence)
                 num = re.search(r"\d+.\d+", string).group()
+
                 return '$' + num
 
 
@@ -245,8 +241,8 @@ class PPMForm(TextBlob):
         for i in range(len(self.sentence_list)):
 
             if self.sentence_list[i].find('reinvestment') != -1 and self.sentence_list[i].find('subject') != -1:
-                import pdb; pdb.set_trace()
                 sentence = self.sentence_list[i]
+
                 return str(sentence)
 
 
@@ -257,6 +253,7 @@ class PPMForm(TextBlob):
 
             if self.sentence_list[i].find('proposed transfers') != -1:
                 sentence = self.sentence_list[i]
+
                 return str(sentence)
 
         # self.parse()

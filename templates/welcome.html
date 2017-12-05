@@ -35,7 +35,6 @@
         <div id="sidebar-wrapper-lit">
         <ul class="sidebar-nav">
             <br><li class="sidebar-brand">
-<!--                 <form class="form-inline my-2 my-lg-0"> -->
                 <input class="form-control mr-sm-2" id="user-lit-search" type="text" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="lit-search" type="submit">Search</button>
                 </li><br>
@@ -70,7 +69,7 @@
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">Complaint</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Processed: [date] via Lglease</small></p>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Processed 4 days ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p id="complaint-info">Stuff</p>
@@ -82,7 +81,7 @@
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">Answer</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Processed 11 hours ago via Lglease</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p id="answer-info">Stuff</p>
@@ -94,7 +93,7 @@
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">Interrogatories</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Pending</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p id="interrogatories-info">Stuff</p>
@@ -106,7 +105,7 @@
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">Request for Production of Documents</h4>
-                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Lglease</small></p>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Pending</small></p>
                                     </div>
                                     <div class="timeline-body">
                                         <p id="requestprodocs-info">Stuff</p>
@@ -138,13 +137,18 @@
                           {% endif %}
                           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for cases.." title="Type in a name">
                           <table class="table table-hover table-dark table-striped" id="case-table">
-                            <th> Case Id </th>
-                            <th> Type </th>
-                            <th> Team </th>
-                            <th> Opposition </th>
-                            <th> Status </th>
-                            <th> Deadline </th>
-                            <th> History </th>
+                            <thead>
+                            <tr>
+                            <th class="case-id-head"> Case ID </th>
+                            <th class="type-head"> Type </th>
+                            <th class="team-head"> Team </th>
+                            <th class="opp-head"> Opposition </th>
+                            <th class="status-head"> Status </th>
+                            <th class="dead-head"> Deadline </th>
+                            <th class="history-head"> History </th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {% for case in active_case_lst %}
                             {% for defendant in case.defendants %}
                             <tr data-toggle="collapse" data-target=".div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle case-row">
@@ -186,15 +190,16 @@
                                     {% endif %}
                                     <li class="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
                                 </td>
-                                <td class="hiddenRow">
+                                <td class="hiddenRow" colspan="2">
                                     <div class="accordion-body collapse div-{{ case.case_id }}" id="display-notes">
                                         <b>Notes:</b></div>
                                     </div>
                                 </td>
-                                <td class="hiddenRow"></td>
+                                <!-- <td class="hiddenRow"></td> -->
                             </tr>
                             {% endfor %}
                             {% endfor %}
+                            </tbody>
                           </table>
                         </div>
 
@@ -212,6 +217,10 @@
 </div>
 
 <div id="caseList" style="display:none">{{ active_case_lst }}</div>
+
+<div class="footer">
+    <p>Lglease ©2017 | <a href="https://www.linkedin.com/in/lindsaykroyer/">Contact us</a></p>
+</div>
 
 </body>
 

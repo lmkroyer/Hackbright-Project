@@ -1,48 +1,6 @@
 
 "use strict";
 
-//////////////////////////////
-// CASE TABLE - CASE STATUS //
-//////////////////////////////
-
-// function getCaseStatus() {
-
-//     // attach event listener to sent post request, update db, and update html
-
-//     let myCase = $("#case-status");
-
-//     let myCaseComplaint = $(myCase).data("case-complaint");
-//     let myCaseAnswer = $(myCase).data("case-answer");
-//     let myCaseInterrogatories = $(myCase).data("case-interrogatories");
-//     let myCaseRequestProDocs = $(myCase).data("case-requestprodocs");
-
-//     let status;
-
-//     if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
-//         status = '100%';
-//     }
-//     else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
-//         status = '75%';
-//     }
-//     else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
-//         status = '50%';
-//     }
-//     else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
-//         status = '25%';
-//     }
-//     else {
-//         status = '0%';
-//     }
-
-//     if (myCase) {
-//         myCase.html(status);
-//     }
-
-// }
-
-// getCaseStatus();
-
-
 function myFunction() {
   let input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
@@ -100,10 +58,6 @@ $("#availChart").click(function(){
     $("#progressChart").toggle();
 });
 
-// $("#expandRow").click(function(){
-//     $("#collapsedRow").toggle();
-// });
-
 //////////////////////////////////
 // USER LINE GRAPH ON DASHBOARD //
 //////////////////////////////////
@@ -122,19 +76,10 @@ function showUserInfo() {
                                     data: data,
                                     options: options
                                 });
-      // $("#lineLegend").html(myLineChart.generateLegend());
     });
 }
 
 showUserInfo();
-
-
-// START A NEW CASE
-
-
-// $("#caseInit").click(function(){
-//     $("#progressChart").toggle();
-// });
 
 ///////////////////////
 // NOTEPAD FUNCTIONS //
@@ -182,7 +127,7 @@ function listSavedNotes(caseID) {
 
         for (let key in noteValues) {
             let value = noteValues[key];
-            trHTML += "<tr><td><li><a href='#' class='case-note' data-key='" + key + "'>" + "Note: " + value.date + "</a></li></td></tr>";
+            trHTML += "<tr><td><li><a href='#' class='case-note' data-key='" + key + "'>" + value.date + "</a></li></td></tr>";
         }
 
         $("#display-notes").html("<b>Notes:</b>");
@@ -343,7 +288,6 @@ $("#dash-redirect").click(function() {
     });
 
 
-
 /////////////////////
 // MAKE A TIMELINE //
 /////////////////////
@@ -358,54 +302,12 @@ function showCaseHistory(buttonID) {
     });
 }
 
-
 $(".show-timeline").click(function(){
     $("#timeline").toggle();
     $("#progressChart").toggle();
     let buttonID = $(this).attr("id");
     showCaseHistory(buttonID);
-    // $(".show-timeline").html("Show Less");
 });
-
-// function toggleDisplay() {
-//     if ($("#timeline").show();) {
-//         $(".show-timeline").html("Show More");
-//     }
-//     else {
-//         $(".show-timeline").html("Show Less");
-//     }
-
-// }
-
-
-// preload all the cases into the DOM
-// server side: format into in json
-
-// global variable (js): json object of all cases (case_id: {attribute1: attribute1
-//                                                             })
-
-// map each id to button
-
-// inside event listener callback: use this or evt.target
-
-// 1. write html jinja look that
-// 2. each box on timeline gets ID that matches attribute names from data dict
-// jquery element from complaint div
-
-// attach event listener to class of buttons, each button will store case ID, so function with
-//     event listener will call the specific case info in the data dict (using this.attr('id'))
-
-//     {case 1: {complaint: attribute,
-//               answer: attribute,
-//               interrogatories: attribute,
-//     case 2: {complaintL attribute
-
-//         ...}}}
-
-// (".class").on click - event function
-
-// start with html data attributes, make server data dict, write js functions that listen for id and populate jinja loop
-
 
 
 ////////////////////

@@ -59,6 +59,7 @@ $("#availChart").click(function(){
 function buildSummaryReport(clientID) {
 
     $.get('/summaryreport/' + clientID, function (data) {
+        $('#title-name').html('SUMMARY REPORT: ' + data[clientID]['name_caps']);
         $('#fund-name-caps').html(data[clientID]['name_caps']);
         $('#fund-name').html(data[clientID]['name']);
         $('#jurisdiction-info').html(data[clientID]['jurisdiction']);
@@ -67,7 +68,6 @@ function buildSummaryReport(clientID) {
         $('#min-commit-info').html(data[clientID]['min_commit']);
         $('#mgmt-fee-info').html(data[clientID]['mgmt_fee']);
         $('#leverage-info').html(data[clientID]['leverage']);
-        $('#reinvest-info').html(data[clientID]['reinvest']);
         $('#removal-info').html(data[clientID]['removal']);
         $('#transfers-info').html(data[clientID]['transfers']);
     });
