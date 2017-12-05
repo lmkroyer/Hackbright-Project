@@ -1,4 +1,4 @@
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block head %}
 
@@ -11,9 +11,11 @@
   <h2>Upload a complaint</h2><br>
   <form action='/upload' method="POST" enctype="multipart/form-data">
     <input type="file" name="file">
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Process">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" id="submit-btn" value="Process">
     <input type="hidden" name="new_case" value="{{ new_case }}">
   </form>
 </div>
+
+<script src="/static/upload.js"></script>
 
 {% endblock %}

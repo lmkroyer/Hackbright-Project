@@ -58,6 +58,7 @@
                     <div class="col-md-12">
 
                             <canvas id="progressChart" width="800" height="350"></canvas>
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="lit-search">Search</button>
                             <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
                             <div id="timeline" style="display:none">
 
@@ -119,13 +120,13 @@
                     </div>
 
                             </div>
-                            <div id="notepad" style="display:none">
+                            <div id="notepad" style="display:none" align="center">
                                 <p id="case-note-tag">Write a note for Case </p>
                                 <textarea id="area" rows="10" cols="50"></textarea></div>
-                            <div id="notepadControls" style="display:none">
-                                <p><a href="#" class="button" id="save-note">Save</a>
-                                <a href="#'" class="button" id="close-note">Close</a>
-                                <a href="#" class="button" id="download-note">Download</a>
+                            <div id="notepadControls" style="display:none" align="center">
+                                <p><a href="#" class="btn btn-outline-success my-2 my-sm-0" id="save-note">Save</a>
+                                <a href="#'" class="btn btn-outline-success my-2 my-sm-0" id="close-note">Close</a>
+                                <a href="#" class="btn btn-outline-success my-2 my-sm-0" id="download-note">Download</a>
                                 </p>
                             </div>
 
@@ -137,7 +138,8 @@
                           {% elif case_count == 1 %}
                           <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Case:</b></p>
                           {% endif %}
-                          <table class="table table-hover table-dark table-striped">
+                          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for cases.." title="Type in a name">
+                          <table class="table table-hover table-dark table-striped" id="case-table">
                             <th> Case Id </th>
                             <th> Type </th>
                             <th> Team </th>
@@ -147,8 +149,8 @@
                             <th> History </th>
                             {% for case in active_case_lst %}
                             {% for defendant in case.defendants %}
-                            <tr data-toggle="collapse" data-target="#div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle" id="case-row">
-                                <td id="caseId"> {{ case.case_id }} <span class="glyphicon glyphicon-triangle-bottom"></span></td>
+                            <tr data-toggle="collapse" data-target=".div-{{ case.case_id }}" data-case-id="{{ case.case_id }}" class="accordion-toggle case-row">
+                                <td id="caseId"> {{ case.case_id }} <span class="glyphicon glyphicon-triangle-right tri-toggle"></span><span class="glyphicon glyphicon-triangle-bottom tri-toggle" style="display:none"></span></td>
                                 <td> {{ case.complaint.legal_basis }} </td>
                                 <td>
                                     {% for user in case.users %}
@@ -164,13 +166,13 @@
                                 <td id="case-deadline-{{ case.case_id }}"><a id="red-text">{{ case.deadline }}</a></td>
                                 <td><button type="button" class="btn btn-outline-success my-2 my-sm-0 show-timeline" id="{{ case.case_id }}">Display</button></td>
                             </tr>
-                            <tr class="hiddenRow">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="accordion-body collapse" id="div-{{ case.case_id }}">
+                            <tr>
+                                <td class="hiddenRow"></td>
+                                <td class="hiddenRow"></td>
+                                <td class="hiddenRow"></td>
+                                <td class="hiddenRow"></td>
+                                <td class="hiddenRow">
+                                    <div class="accordion-body collapse div-{{ case.case_id }}" id="div-{{ case.case_id }}">
                                     <b>Documents:</b>
                                     {% if case.complaint %}
                                     <li><object data="{{ case.complaint.doc }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.complaint.doc }}">Complaint</a></object></li>
@@ -184,14 +186,14 @@
                                     {% if case.request_pro_docs %}
                                     <li><object data="{{ case.request_pro_docs.docx }}" type="text/plain" width="500" style="height 300px"><a href="{{ case.request_pro_docs.docx }}">Request for Production of Documents</a></object></li>
                                     {% endif %}
-                                    <li id="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
+                                    <li class="new-notes" data-case-id="{{ case.case_id }}"><a href="#">Add Notes</a></li>
                                 </td>
-                                <td>
-                                    <div class="accordion-body collapse" id="display-notes">
+                                <td class="hiddenRow">
+                                    <div class="accordion-body collapse div-{{ case.case_id }}" id="display-notes">
                                         <b>Notes:</b></div>
                                     </div>
                                 </td>
-                                <td></td>
+                                <td class="hiddenRow"></td>
                             </tr>
                             {% endfor %}
                             {% endfor %}

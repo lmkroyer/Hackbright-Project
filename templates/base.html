@@ -12,7 +12,9 @@
     <link href="/static/style.css" rel="stylesheet">
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  {% block head %} put your content here {% endblock %}
+  {% block head %}
+
+  {% endblock %}
 
 </head>
 
@@ -23,7 +25,12 @@
         {% endfor %}
     </ul>
 
+    <div class="loader" align="center" style="display:none"></div>
+
   {% block content %} put your content here {% endblock %}
 
+<script src="/static/upload.js"></script>
+
 </body>
+
 </html>

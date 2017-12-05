@@ -19,6 +19,7 @@ body {
   font-weight: bold;
   font-size: 2em;
   color: white;
+  font-family: Open sans;
 }
 
 #allOptions p a {
@@ -134,8 +135,11 @@ body {
 }
 
 #login-route {
-  color: red;
-  font-size: 300%;
+  /*color: #32CD32;*/
+  color: white;
+  /*color: #00007f;*/
+  font-size: 400%;
+  font-family: ailerons;
 }
 
 a#login-route:hover {
@@ -156,11 +160,11 @@ a#login-route:hover {
   position:relative;
   text-align: center;
   z-index:10;
+  border-radius: 50%;
+  opacity: 0.9;
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-/*#home-img:hover {
-  -webkit-filter: brightness(200%);
-}*/
 
 #greet-user {
   color: #c91e0c;
@@ -179,13 +183,6 @@ a#login-route:hover {
     top:0;
     width:100%;
     z-index:5;
-}
-
-#home-img {
-  border-radius: 50%;
-  opacity: 0.9;
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #team-options {
@@ -263,7 +260,7 @@ a#login-route:hover {
 
 #map {
     width: 100%;
-    height: 600px;
+    height: 75%;
     background-position: center center;
     opacity: 0.6;
 }
@@ -328,11 +325,7 @@ a#login-route:hover {
 }
 
 #search-input {
-  width: 90%;
-}
-
-#search-btn {
-  width: 10%;
+  width: 100%;
 }
 
 @media (max-width:767px) {
@@ -373,6 +366,22 @@ a#login-route:hover {
 .navbar-brand {
   width: 250px;
   font-size: 18pt;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /*TEXT BOX FOR NOTEPAD*/
@@ -453,7 +462,7 @@ a#login-route:hover {
 }
 
 #allOptions h3 {
-  color: grey;
+  color: #ADD8E6;
 }
 
 /*#dashBackCorp {

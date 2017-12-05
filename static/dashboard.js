@@ -42,6 +42,25 @@
 
 // getCaseStatus();
 
+
+function myFunction() {
+  let input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("case-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
 ///////////////////////////////
 // ATTNY BAR CHART FUNCTIONS //
 ///////////////////////////////
@@ -223,7 +242,7 @@ function closeNote() {
 }
 
 
-$("#new-notes").click(function(){
+$(".new-notes").click(function(){
     document.getElementById('area').value = "";
     let caseID = $(this).data("case-id");
     $("#save-note").attr("data-case-id", caseID);
@@ -248,9 +267,14 @@ $("#download-note").click(function(){
     downloadNote();
 });
 
-$("#case-row").click(function(){
+$(".case-row").click(function(){
     let caseID = $(this).data("case-id");
     listSavedNotes(caseID);
+    $.each($(this).find(".tri-toggle"),
+        function(element) {
+            $(this).toggle();
+        }
+    );
 });
 
 $(document).on("click", ".case-note", function(){

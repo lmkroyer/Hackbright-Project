@@ -1,37 +1,33 @@
 OPEN:
 
-- get rid of extra timeline stuff [?]
-- add progress loader to litigation upload screen
+- try blurring the backgrounds
+
+- set column widths by % as a class on table headers in css
+- fix table to only show YOUR active cases
+
+look for import pdb
+
+- change size of graph and do table scrolling
+
+
+- fix format timeline
+    **add routes to generate forms **
 - display number of search results
-- notes not showing up on table
-- sidebar / page format doesn't work with navbar
-- landing page: hover over to display text 'login'
 - [clear search results for new searches]
-- make lit navbar hover white text like corp
-- center table header text
-    - add drop down to sort
-- fix notepad buttons
+- add table drop down to sort
 - back to dash on bottom left of all lit flow
 - DOWNLOAD ANSWER WHILE REDIRECT TO DASHBOARD
 - pdf 2 is getting New york for plaintiff f and l name
-** - status and deadline are not changing dynamically *****
+
 - clean up code
 - write readme
 - load up users / cases
-
-dropdown: https://codepen.io/Polanco08/pen/aflBd?page=4
 
 corp:
 
 - get sum rep formatted well
 - add .correct to the sentence ones? (need to iterate over word list, so .split)
     - test lines added to get_manager
-- make lpa text white
-- change background to gradient of homepage pic
-- when hover over summary report table, make text black/grey
-- blur background of corp side
-- make sidebar same as lit
-- fit search bar
 
 
 shadow on hover: https://codepen.io/ovdojoey/pen/BomKyZ

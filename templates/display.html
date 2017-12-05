@@ -24,7 +24,6 @@
     {% endfor %}
   </select><br><br>
 
-<!--   CLAIM TYPE: <input type="text" name="claim_type" value="{{ parsed_text.claim }}"><br> -->
   Legal basis: <input type="text" name="legal_basis" value="{{ parsed_text.legal_basis }}"><br>
   Amount claimed: <input type="text" name="damages_asked" value="${{ parsed_text.amount_claimed  }}"><br>
   Date: <input type="text" name="claim_type" value="{{ parsed_text.complaint_date }}"><br><br>
@@ -41,7 +40,7 @@
   Court state: <input type="text" name="court_state" value="{{ parsed_text.state }}"><br>
   Case No.: <input type="text" name="case_no" value="{{ parsed_text.case_no }}"><br><br>
 
-<!-- FIXME: add a for loop to see if individual or corporation, from model.py. it also says in doc!!!
+<!-- FIXME: add a for loop to see if individual or corporation
  -->
 <p align="center">Plaintiff:</p>
 
@@ -54,24 +53,11 @@
   Last name: <input type="text" name="defendant_lname" value="{{ parsed_text.defendant_lname }}"><br>
   Residence: <input type="text" name="defendant_residence" value="{{ parsed_text.defendant_residence  }}"><br><br>
 
-<!-- Claim details:<br><br>
-
-  Date of injury: <input type="text" name="incident_date"><br>
-  Injury location: <input type="text" name="incident_location"><br>
-  Description of injury: <input type="text" name="incident_description"><br> -->
-
   <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Confirm">
 
 </form>
 </div>
 
-<!-- <div id="document"<p>
-
-FIXME: display the pdf next to form inputs to verify
-
-<iframe src=" " width=400 height=600><iframe>
-
-</p></div> -->
-
+<script src="/static/upload.js"></script>
 
 {% endblock %}
