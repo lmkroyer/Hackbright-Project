@@ -274,7 +274,7 @@ def user_progress_data():
                 "fill": True,
                 "lineTension": 0.5,
                 "backgroundColor": "rgba(220,220,220,0.2)",
-                "borderColor": "rgba(220,220,220,1)",
+                "borderColor": "#A0A0A0",
                 "borderCapStyle": 'butt',
                 "borderDash": [],
                 "borderDashOffset": 0.0,

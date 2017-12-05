@@ -1,6 +1,7 @@
 OPEN:
 
 - try blurring the backgrounds
+- remove 'note' from note dashboard
 
 - change IDs to classes
 

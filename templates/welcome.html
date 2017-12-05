@@ -25,7 +25,7 @@
       <li><a href="/attorneys">Attorneys</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ session['current_user_name'] }}</a></li>
+      <li><a href="#" id="user-glyph"><span class="glyphicon glyphicon-user"></span> Hello, {{ session['current_user_name'] }}</a></li>
       <li><a href="/signout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
@@ -56,9 +56,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                            <canvas id="progressChart" width="800" height="350"></canvas>
-                            <canvas id="attnyBarChart" width="800" height="350" style="display:none"></canvas>
-                            <div id="timeline" style="display:none">
+                            <canvas id="progressChart" width="800" height="275"></canvas>
+                            <canvas id="attnyBarChart" width="800" height="275" style="display:none"></canvas>
+                            <div id="timeline" width="800" height="275" style="display:none">
 
                         <div class="page-header" id="timeline" style="display:none">
                           <h1>Horizontal timeline</h1>
