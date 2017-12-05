@@ -274,7 +274,7 @@ def user_progress_data():
                 "fill": True,
                 "lineTension": 0.5,
                 "backgroundColor": "rgba(220,220,220,0.2)",
-                "borderColor": "#A0A0A0",
+                "borderColor": "#919EAE",
                 "borderCapStyle": 'butt',
                 "borderDash": [],
                 "borderDashOffset": 0.0,
@@ -923,7 +923,7 @@ def draw_bounding_boxes():
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
-    app.debug = True
+    app.debug = False
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
 
     connect_to_db(app)

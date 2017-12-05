@@ -24,8 +24,16 @@ body {
   color: grey;
 }
 
+#user-glyph {
+  color: white;
+}
+
 #user-glyph:hover {
-  grey;
+  color: grey;
+}
+
+#login-route:hover {
+  color: #D8D8D8;
 }
 
 #allOptions {
@@ -33,6 +41,7 @@ body {
   font-size: 2em;
   color: white;
   font-family: Open sans;
+  margin-left: -60px;
 }
 
 #allOptions p a {
