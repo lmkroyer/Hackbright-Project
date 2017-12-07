@@ -3,17 +3,14 @@
 {% block head %}
 
 <div id="darkness"></div>
-
   {% if 'current_user_name' not in session %}
     <h5 align="right"><a href="/register">Register new user</a></h5>
   {% else %}
-
     <h3 align="left" id="greet-user">Welcome, {{ session['current_user_name'] }}</h3>
     <h4 align="left"><a href="/signout">Sign out</a></h4>
-
   {% endif %}
-
     <h1 align="center" id="logo">Lglease</h1>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/static/mapstyle.js"></script>
 
@@ -29,7 +26,6 @@
       <a href='/welcome' align="center"><button type="button" class="btn btn-outline-success my-2 my-sm-0" id="dash">Litigation</button></a>
     </div>
     <div id="map"></div>
-
     <div id="home-footer">
     <p>Lglease ©2017 | <a href="https://www.linkedin.com/in/lindsaykroyer/">Contact us</a></p>
   </div>

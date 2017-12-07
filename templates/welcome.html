@@ -2,8 +2,6 @@
 
 {% block head %}
 
-<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1" /> -->
-
 <script src=
   "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
 </script>
@@ -13,7 +11,6 @@
 {% block content %}
 
 <body id="dashBack">
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -30,7 +27,6 @@
     </ul>
   </div>
 </nav>
-
 <div id="wrapper">
         <div id="sidebar-wrapper-lit">
         <ul class="sidebar-nav">
@@ -58,7 +54,6 @@
                             <canvas id="progressChart" width="800" height="275"></canvas>
                             <canvas id="attnyBarChart" width="800" height="275" style="display:none"></canvas>
                             <div id="timeline" width="800" height="275" style="display:none">
-
                         <div class="page-header" id="timeline" style="display:none">
                           <h1>Horizontal timeline</h1>
                         </div>
@@ -115,7 +110,6 @@
                         </ul>
                     </div>
                     </div>
-
                             </div>
                             <div id="notepad" style="display:none" align="center">
                                 <p id="case-note-tag">Write a note for Case </p>
@@ -126,9 +120,7 @@
                                 <a href="#" class="btn btn-outline-success my-2 my-sm-0" id="download-note">Download</a>
                                 </p>
                             </div>
-
                         </div><br>
-
                         <div id="caseInfo" class="row-fluid lit-frame">
                           {% if case_count > 1 %}
                           <p><b>You Have <a id="red-text">{{ case_count }}</a> Active Cases:</b></p>
@@ -195,33 +187,27 @@
                                         <b>Notes:</b></div>
                                     </div>
                                 </td>
-                                <!-- <td class="hiddenRow"></td> -->
                             </tr>
                             {% endfor %}
                             {% endfor %}
                             </tbody>
                           </table>
                         </div>
-
                     <div id="search-results-div" style="display:none">
                         <h2>Search Results:</h2>
                         <table class="table table-striped" id="search-results-table" style="display:none">
                         </table>
                         <button class="btn btn-outline-success my-2 my-sm-0" id="dash-redirect">Back to Dashboard</button>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <div id="caseList" style="display:none">{{ active_case_lst }}</div>
-
 <div class="footer">
     <p>Lglease ©2017 | <a href="https://www.linkedin.com/in/lindsaykroyer/">Contact us</a></p>
 </div>
-
 </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

@@ -1,5 +1,3 @@
-<!-- https://codepen.io/MillerTime/pen/wGRYxW -->
-
 {% extends 'base.html' %}
 
 {% block head %}
@@ -9,7 +7,6 @@
 </script>
 
   <h1>Available Attorneys</h1>
-
 <canvas id="hBarChart" width="800" height="450"></canvas>
 
 {% endblock %}
@@ -17,8 +14,6 @@
 {% block content %}
 
 <script>
-
-// let bar_ctx = document.getElementById("bar-chart-horizontal").getContext('2d');
 
     let options = {
         responsive: true,
@@ -33,6 +28,7 @@
 
     let ctx_bar = $("#hBarChart").get(0).getContext("2d");
 
+    // TODO: make a gradient
     // let green_red_gradient = bar_ctx.createLinearGradient(0, 0, 0, 600);
     // green_red_gradient.addColorStop(0, 'red');
     // green_red_gradient.addColorStop(1, 'green');
@@ -43,47 +39,12 @@
                                               data: data,
                                               options: options
                                             });
-      // $('#donutLegend').html(myDonutChart.generateLegend());
     });
-
-
-//     let attorneyAvail = new Chart(ctx, {
-//         type: 'horizontalBar',
-//         data: {
-//             // labels: fname, lname,
-//             datasets: [{
-//                 label: 'Current Caseload',
-//                 data: caseVolume,
-//                             backgroundColor: green_red_gradient,
-//                             hoverBackgroundColor: green_red_gradient,
-//                             hoverBorderWidth: 2,
-//                             hoverBorderColor: 'white'
-//             }]
-//         },
-//         options: {
-//             scales: {
-//                 yAxes: [{
-//                     ticks: {
-//                         beginAtZero:true
-//                     }
-//                 }]
-//             }
-//         }
-//         // options: {
-//         //   legend: { display: false },
-//         //   title: {
-//         //     display: true,
-//         //     text: 'XYZ'
-//         //   }
-//         // }
-//     });
-// });
 
 </script>
 
   <div class="attny-chart">
     <canvas id="hBarChart"></canvas>
- <!--    <div id="lineLegend" class="chart-legend"></div> -->
   </div>
 
 <div>
