@@ -33,36 +33,15 @@ class ComplaintForm(TextBlob):
         self.counsel_firm = self. get_counsel_firm()
         self.complaint_date = self.get_complaint_date()
         self.legal_basis = self.get_legal_basis()
-        # self.injury_date = self.get_injury_date()
-        # self.injury_location = self.get_injury_location()
-        # self.injury_description = self.get_injury_description()
 
-        # etc...
-
-# FIXME: refactor option to consolidate double ifs in one line, and return the self. (no name)
-# FIXME: remove punctuation from word list so can not hardcode that into checks
-# FIXME: .correct() everything that comes out
-# FIXME: a way to grab other defendants and/or check if company or person
-
-    # Could also check if what comes after starts with upper case, and if so pull it
     def get_plaintiff_fname(self):
         """Return the plaintiff's first name."""
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Plaintiff':
                 plaintiff_fname = self.word_list[i - 4]
+
                 return plaintiff_fname.capitalize()
-
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'plaintiff':
-        #         full_name = self.nouns[i - 1]
-        #         plaintiff_fname = full_name.split(' ')[0]
-        #         return plaintiff_fname.capitalize()
-
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'plaintiff':
-        #         plaintiff_fname = self.nouns[i - 1][-2]
-        #         return plaintiff_fname.capitalize()
 
 
     def get_plaintiff_lname(self):
@@ -71,17 +50,9 @@ class ComplaintForm(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Plaintiff':
                 plaintiff_lname = self.word_list[i - 3]
-                return plaintiff_lname.capitalize()
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'plaintiff':
-        #         full_name = self.nouns[i - 1]
-        #         plaintiff_lname = full_name.split(' ')[1]
-        #         return plaintiff_lname.capitalize()
 
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'plaintiff':
-        #         plaintiff_lname = self.nouns[i - 1][-1]
-        #         return plaintiff_lname.capitalize()
+                return plaintiff_lname.capitalize()
+
 
     def get_case_no(self):
         """Return the plaintiff's last name."""
@@ -89,6 +60,7 @@ class ComplaintForm(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'No':
                 case_no = self.word_list[i + 1]
+
                 return case_no
 
 
@@ -125,22 +97,18 @@ class ComplaintForm(TextBlob):
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'defendant':
+
                 return self.word_list[i + 1]
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'defendant':
-        #         defendant_fname = self.nouns[i + 1]
-        #         return defendant_fname.capitalize()
+
 
     def get_defendant_lname(self):
         """Return the defendant's last name."""
 
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'defendant':
+
                 return self.word_list[i + 2]
-        # for i in range(len(self.nouns)):
-        #     if self.nouns[i] == 'defendant':
-        #         defendant_lname = self.nouns[i + 2]
-        #         return defendant_lname.capitalize()
+
 
     def get_amount_claimed(self):
         """Return the dollar of damages requested."""
@@ -148,6 +116,7 @@ class ComplaintForm(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'Amount':
                 if self.word_list[i + 1] == 'claimed':
+
                     return self.word_list[i + 2]
 
 
@@ -170,6 +139,7 @@ class ComplaintForm(TextBlob):
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'claim' and self.nouns[i + 1] == 'relief':
                 result = self.nouns[i + 2]
+
                 return result.capitalize()
 
 
@@ -179,33 +149,29 @@ class ComplaintForm(TextBlob):
         for i in range(len(self.word_list)):
             if self.word_list[i] == 'resides':
                 defendant_residence = self.word_list[i + 2:i + 6]
+
                 return ' '.join(defendant_residence)
 
 
     def get_counsel_fname(self):
         """Return the opposing counsel's first name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'P.C':
-        #         return self.word_list[i + 2]
-
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'llc':
                 full_name = self.nouns[i + 1]
                 counsel_fname = full_name.split(' ')[0]
+
                 return counsel_fname.capitalize()
 
 
     def get_counsel_lname(self):
         """Return the opposing counsel's last name."""
 
-        # for i in range(len(self.word_list)):
-        #     if self.word_list[i] == 'P.C' or self.word_list[i] == 'LLC':
-        #         return self.word_list[i + 4]
         for i in range(len(self.nouns)):
             if self.nouns[i] == 'llc':
                 full_name = self.nouns[i + 1]
                 counsel_lname = full_name.split(' ')[2]
+
                 return counsel_lname.capitalize()
 
 
@@ -227,23 +193,6 @@ class ComplaintForm(TextBlob):
         return datetime.utcnow()
 
 
-    def get_injury_date(self):
-
-        return 'N/A'
-
-        # regex: 'On *** plaintiff was'
-
-
-    def get_injury_location(self):
-
-        return 'N/A'
-
-
-    def get_injury_description(self):
-
-        return 'N/A'
-
-
 class AnswerForm(object):
 
     plaintiff_fname = plaintiff_lname = defendant_fname = defendant_lname = None
@@ -251,13 +200,6 @@ class AnswerForm(object):
     user_email = user_firm_name = case_no = None
 
     def __init__(self, complaint, user, defenses):
-
-# pass a complaint into the answer, and loop through complaint attributes and set to answer
-# method that takes in self and generates a document
-# make info inside brackets match so can set as variable and check all brackets
-# look up: get attr and set attr (takes in a variable, find attribute that matches that and set)
-# make a dictionary as a class attribute with keys as attribute name, value as right side
-#   use setattr(self, "left side", )
 
         self.complaint = complaint
         self.user = user
@@ -280,12 +222,6 @@ class AnswerForm(object):
         """Adds custom information into the answer template.
 
         Returns a modified docx file."""
-        # FIXME: add pronoun awareness (textblob)!!! on the extract from dictionary point.
-        # give user a change to choose female, male or plural
-        # user textblob on paragraphs to insert to convert to plural or pronoun
-
-        # Grab a value, turn to textblob object, change gender pronount, and then insert
-        # FIXME: change civil code #s so that state gets input as variable
 
         # Make a list of all attributes on an Answer class
         attrs = [attr for attr in AnswerForm.__dict__.keys()
@@ -302,8 +238,6 @@ class AnswerForm(object):
         style = answer.styles['Normal']
         font = style.font
         font.size = Pt(12)
-
-        # font.highlight_color = WD_COLOR.YELLOW
 
         # Preserve format: replace lowercase tags with values
         for attr_name in attrs:
@@ -328,7 +262,7 @@ class AnswerForm(object):
 
         counter1 = 1
         counter2 = 2
-        # FIXME: make this its own method on the class
+        # TODO: make this its own method on the class
         for defense in self.defenses:
 
             for p in answer.paragraphs:
@@ -417,8 +351,6 @@ class InterrogatoriesForm(object):
         font = style.font
         font.size = Pt(12)
 
-        # font.highlight_color = WD_COLOR.YELLOW
-
         # Preserve format: replace lowercase tags with values
         for attr_name in attrs:
 
@@ -493,8 +425,6 @@ class RequestProDocsForm(object):
         font = style.font
         font.size = Pt(12)
 
-        # font.highlight_color = WD_COLOR.YELLOW
-
         # Preserve format: replace lowercase tags with values
         for attr_name in attrs:
 
@@ -522,18 +452,3 @@ class RequestProDocsForm(object):
         request_pro_docs.save('filestorage/{filename}'.format(filename=filename))
         # Return filename to pass to display
         return filename
-
-
-# don't assume end coordinate
-# give user option to draw
-# function returns list
-# iterate over and crop box/image for each item
-# draw image with text returned (opencv)
-# algorithm: given this location and image, where can i place it?
-# tiling project
-
-
-
-
-
-

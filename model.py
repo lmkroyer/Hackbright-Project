@@ -251,10 +251,7 @@ class Complaint(db.Model):
     doc_type_id = db.Column(db.Integer, default=1, nullable=False)
     date_received = db.Column(db.DateTime, nullable=False)
     date_processed = db.Column(db.DateTime, nullable=True)
-    # Substantive data from document - maybe include?
-    # incident_date = db.Column(db.String(25), nullable=False)
-    # incident_location = db.Column(db.String(100), nullable=False)
-    # incident_description = db.Column(db.Text, nullable=False)
+    # Substantive data from document
     damages_asked = db.Column(db.String(100), nullable=False)
     legal_basis = db.Column(db.String(64), nullable=True)
     # TODO: put on AWS and change to url
@@ -338,7 +335,7 @@ class RequestProDocs(db.Model):
 # Helper functions
 
 def init_app():
-    # So that we can use Flask-SQLAlchemy, we'll make a Flask app.
+    # So that we can use Flask-SQLAlchemy, make a Flask app.
     from flask import Flask
     app = Flask(__name__)
 
@@ -361,7 +358,7 @@ if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    # So that we can use Flask-SQLAlchemy, we'll make a Flask app.
+    # So that we can use Flask-SQLAlchemy, make a Flask app.
     from flask import Flask
 
     app = Flask(__name__)

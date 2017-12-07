@@ -1,0 +1,1471 @@
+KXTER FUND ONE LLC
+
+CONFIDENTIAL
+PRIVATE PLACEMENT MEMORANDUM
+
+THE OFFERING OF SECURITIES DESCRIBED IN THIS CONFIDENTIAL PRIVATE
+PLACEMENT MEMORANDUM HAS NOT BEEN REGISTERED UNDER THE UNITED
+STATES SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR
+UNDER ANY SECURITIES LAWS OF ANY STATE OF THE UNITED STATES OR ANY
+OTHER JURISDICTION. AN INVESTOR SHOULD BE PREPARED TO BEAR THE
+ECONOMIC RISK OF AN INVESTMENT IN SUCH SECURITIES FOR AN INDEFINITE
+PERIOD OF TIME BECAUSE THEY HAVE NOT BEEN REGISTERED UNDER THE
+SECURITIES ACT OR THE LAWS OF ANY OTHER JURISDICTION, AND, THEREFORE,
+CANNOT BE SOLD UNLESS THEY ARE SUBSEQUENTLY REGISTERED OR AN
+EXEMPTION FROM REGISTRATION IS AVAILABLE.
+
+Scptcmbcr 1, 2015
+
+(ooo72a45,2)
+
+KXTER FUND ONE LLC
+
+CONFIDENTIAL PRIVATE PLACEMENT MEMORANDUM
+
+September 1, 2015
+
+KXTER FUND ONE LLC, a Delaware limited liability company (the “Fund”), is offering limited
+liability company membership interests (the “Interests”) in the Fund in a private offering (the
+“Offering”) under the Securities Act of 1933, as amended (the “Securities Act”). The Fund is
+targeting the sale of approximately US$25 million of Interests; however, the Fund may increase the
+size of the Offering, and there is no minimum subscription amount required for the Fund to hold its
+initial closing. Upon holding its initial closing,, additional approved subscribers will be admitted to
+the Fund at one or more closings held within twelve months after the Fund’s initial closing. The
+Offering is made pursuant to the private placement exemption of the Securities Act as a transaction not
+involving a public offering or under another available exemption under the Securities Act.
+
+The Offering will terminate upon the close of business on the date twelve months after the Fund's initial
+closing.
+
+This Confidential Private Placement Memorandum (this “Memorandum”) is submitted to the offeree
+(the “Offeree") for confidential use solely in connection with the Offeree's consideration of the
+Offering. This Memorandum may not be used for any other purpose and may not be reproduced or
+redistributed in whole or in part. By accepting this Memorandum, the Offeree agrees that the Offeree
+shall not disclose its contents to third parties (other than the Offeree's legal counsel, accountants and
+professional advisers) without the prior written consent of the Manager. The Offeree agrees to return
+this Memorandum and any accompanying documents to the person from whom it was received in the
+event the Offeree determines not to purchase any of the offered Interests. This Memorandum is not,
+and should not be constnied as, a public offer to sell or a public solicitation of an offer to buy Interests.
+
+Contact Information:
+
+KXTER FUND ONE LLC
+156 2"d Street
+
+San Francisco, CA 94105
+www.kxter.com
+
+(umnzmsa } i
+
+CONTENTS
+
+ 
+
+I. NOTICE TO PROSPECTIVE INVESTORS ................................................................................ 1
+II. EXECUTIVE SUMMARY .. .. 3
+III. A NEW MODEL: THE CROWDFUNDED VENTURE FUND ................................................. 4
+IV. MARKET OPPORTUNITY ......................................................................................................... 5
+V. INVESTMENT STRATEGY ........................................................................................................ 5
+VI. MANAGEMENT TEAM .............................................................................................................. 7
+VII. SUMMARY OF KEY INVESTMENT TERMS .......................................................................... 9
+VIII. RISK FACTORS ......................................................................................................................... 15
+IX. CERTAIN UNITED STATES FEDERAL TAX CONSIDERATIONS .................................... 24
+X. PRIVACY POLICY .................................................................................................................... 28
+
+(umnzmsz; ii
+
+KXTER FUND ONE, LLC
+
+I. NOTICE TO PROSPECTIVE INVESTORS
+
+THIS CONFIDENTIAL PRIVATE PLACEMENT MEMORANDUM (THIS
+“MEMORANDUM") IS BEING FURNISHED TO A LIMITED NUMBER OF
+SOPHISTICATED INVESTORS ON A CONFIDENTIAL BASIS FOR THE SOLE PURPOSE
+OF EVALUATING AN INVESTMENT IN LIMITED LIABILITY COMPANY
+MEMBERSHIP INTERESTS (THE “INTERESTS”) IN KXTER FUND ONE LLC (THE
+“FUND") AND MAY NOT BE USED FOR ANY OTHER PUPOSE. THIS MEMORANDUM
+MAY NOT BE REPRODUCED OR PROVIDED TO OTHERS WITHOUT THE PRIOR
+WRITTEN CONSENT OF KXTER ADVISORS LLC (THE “MANAGER”). UPON
+REQUEST, THE MEMORANDUM MUST BE RETURNED TO THE FUND. BY
+ACCEPTING DELIVERY OF THIS MEMORANDUM, EACH PROSPECTIVE INVESTOR
+AGREES TO THE FOREGOING.
+
+THE INTERESTS HAVE NOT BEEN REGISTERED WITH OR RECOMMENDED BY THE
+SECURITIES AND EXCHANGE COMMISSION OR ANY OTHER GOVERNMENTAL OR SELF,
+REGULATORY AGENCY. NO GOVERNMENTAL OR OTHER AGENCY HAS PASSED ON THE
+ACCURACY OR ADEQUACY OF THIS MEMORANDUM. ANY REPRESENTATION TO THE
+CONTRARY IS A CRIMINAL OFFENSE. THE INTERESTS IN THE FUND ARE EXPECTED TO
+BE OFFERED ONLY TO INVESTORS WHO ARE “ACCREDITED INVESTORS” FOR
+PURPOSES OF THE SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT")
+AND RULES PROMULGATED THEREUNDER. THE INFORMATION CONTAINED HEREIN
+IS FURNISHED FOR INFORMATIONAL PURPOSES ONLY. THIS MEMORANDUM DOES
+NOT CONSTITUTE AN OFFER TO SELL INTERESTS; SUCH AN OFFER CAN BE MADE ONLY
+DIRECTLY BY THE MANAGER.
+
+IN MAKING AN INVESTMENT DECISION, INVESTORS MUST RELY ON THEIR OWN
+EXAMINATION OF THE FUND AND THE TERMS OF THIS OFFERING, INCLUDING THE
+MERITS AND RISKS INVOLVED. PROSPECTIVE INVESTORS SHOULD NOT CONSTRUE
+THE CONTENTS OF THIS MEMORANDUM AS LEGAL, TAX, INVESTMENT, OR
+ACCOUNTING ADVICE. PROSPECTIVE INVESTORS ARE URGED TO CONSULT WITH
+THEIR OWN ADVISORS WITH RESPECT TO LEGAL, TAX, REGULATORY, FINANCIAL, AND
+ACCOUNTING CONSEQUENCES OF THEIR INVESTMENT IN THE INTERESTS.
+
+THE FUND‘S INVESTMENTS WILL BE CHARACTERIZED BY A HIGH DEGREE OF RISK,
+
+VOLATILITY AND ILLIQUIDITY. A PROSPECTIVE INVESTOR SHOULD THOROUGHLY
+REVIEW THE INFORMATION CONTAINED HEREIN, THE TERMS OF THE FUND’S
+LIMITED LIABILITY COMPANY OPERATING AGREEMENT (T H E “ F U N D
+A G R E E M E N T ") AND T H E SUBSCRIPTION AGREEMENT RELATING TO THE
+PURCHASE OF INTERESTS, AND CAREFULLY CONSIDER WHETHER AN INVESTMENT IN
+THE FUND IS SUITABLE TO THE INVESTOR’S FINANCIAL SITUATION AND GOALS.
+
+(omnzmsz; 1
+
+CERTAIN ECONOMIC AND MARKET INFORMATION CONTAINED HEREIN HAS BEEN
+OBTAINED FROM PUBLISHED SOURCES PREPARED BY OTHER PARTIES. WHILE SUCH
+SOURCES ARE BELIEVED TO BE RELIABLE, NEITHER THE FUND, THE MANAGER,
+NOR THEIR AFFILIATES ASSUME ANY RESPONSIBILITY FOR THE ACCURACY OR
+COMPLETENESS OF SUCH INFORMATION. NEITHER DELIVERY OF THIS
+MEMORANDUM NOR ANY STATEMENT HEREIN SHOULD BE TAKEN TO IMPLY THAT
+ANY INFORMATION CONTAINED HEREIN IS CORRECT AS OF ANY TIME SUBSEQUENT
+TO THE DATE HEREOF.
+
+NO PERSON HAS BEEN AUTHORIZED TO MAKE ANY STATEMENT CONCERNING THE
+FUND OR THE SALE OF INTERESTS DISCUSSED HEREIN OTHER THAN AS SET FORTH
+IN THIS MEMORANDUM, AND ANY SUCH STATEMENTS, IF MADE, MUST NOT BE
+RELIED UPON.
+
+IN CONSIDERING THE PRIOR PERFORMANCE INFORMATION CONTAINED HEREIN,
+PROSPECTIVE INVESTORS SHOULD BEAR IN MIND THAT PAST PERFORMANCE IS NOT
+NECESSARILY INDICATIVE OF FUTURE RESULTS, AND THERE CAN BE NO
+ASSURANCE THAT THE FUND WILL ACHIEVE COMPARABLERESULTS.
+
+CERTAIN STATEMENTS IN THIS MEMORANDUM CONSTITUTE FORWARDALOOKING
+STATEMENTS. WHEN USED IN THIS MEMORANDUM, THE WORDS “PROJECT,"
+“ANTICIPATE,” “BELIEVE,” “ESTIMATE,” “EXPECT," AND SIMILAR EXPRESSIONS ARE
+GENERALLY INTENDED TO IDENTIFY FORWARDALOOKING STATEMENTS. SUCH
+FORWARDrLOOKING STATEMENTS, INCLUDING THE INTENDED ACTIONS AND
+PERFORMANCE OBJECTIVES OF THE MANAGER, THE FUND, OR ANY PORTFOLIO
+COMPANY REFERENCED HEREIN, INVOLVE KNOWN AND UNKNOWN RISKS,
+UNCERTAINTIES, AND OTHER IMPORTANT FACTORS THAT COULD CAUSE THE
+ACTUAL RESULTS, PERFORMANCE, OR ACHIEVEMENTS OF THE MANAGER, THE FUND,
+OR ANY PORTFOLIO COMPANY OF THE FUND TO DIFFER MATERIALLY FROM
+ANY FUTURE RESULTS, PERFORMANCE, OR ACHIEVEMENTS EXPRESSED OR
+IMPLIED BY SUCH FORWARDrLOOKING STATEMENTS. ALL FORWARDALOOKING
+STATEMENTS IN THIS MEMORANDUM SPEAK ONLY AS OF THE DATE HEREOF. THE
+FUND AND THE MANAGER EXPRESSLY DISCLAIM ANY OBLIGATION OR
+UNDERTAKING TO DISSEMINATE ANY UPDATES OR REVISIONS TO ANY FORWARD,
+LOOKING STATEMENT CONTAINED HEREIN TO REFLECT ANY CHANGE IN ITS
+EXPECTATION WITH REGARD THERETO OR ANY CHANGE IN EVENTS, CONDITIONS,
+OR CIRCUMSTANCES ON WHICH ANY SUCH STATEMENT IS BASED.
+
+IN MAKING AN INVESTMENT DECISION, INVESTORS MUST RELY ON THEIR OWN
+EXAMINATION OF THE FUND AND THE TERMS OF THE OFFERING, INCLUDING THE
+MERITS AND RISKS INVOLVED. THESE SECURITIES HAVE NOT BEEN RECOMMENDED
+BY ANY FEDERAL OR STATE SECURITIES COMMISSION OR REGULATORY
+AUTHORITY. FURTHERMORE, THE FOREGOING AUTHORITIES HAVE NOT CONFIRMED
+
+(umnzmsz; 2
+
+THE ACCURACY OR DETERMINED THE ADEQUACY OF THIS DOCUMENT. ANY
+REPRESENTATION TO THE CONTRARY IS A CRIMINAL OFFENSE.
+
+THE INTERESTS HAVE NOT BEEN REGISTERED UNDER THE SECURITIES ACT OR ANY
+STATE SECURITIES LAWS, AND ARE NOT BEING OFFERED OR SOID TO THE PUBLIC,
+BUT ARE PART OF A PRIVATE PLACEMENT TO A LIMITED GROUP OF OFFEREES WHO
+QUALIFY FOR INVESTMENT IN THE FUND. FURTHERMORE, THE FUND WILL NOT BE
+REGISTERED AS AN INVESTMENT COMPANY UNDER THE INVESTMENT COMPANY
+ACT. CONSEQUENTLY, INVESTORS WILL NOT BE AFFORDED CERTAIN OF THE
+PROTECTIONS OF THE SECURITIES ACT AND THE INVESTMENT COMPANY ACT.
+THESE SECURITIES ARE SUBJECT TO RESTRICTIONS ON TRANSFERABILITY AND
+RESALE AND MAY NOT BE TRANSFERRED OR RESOLD EXCEPT IF AND TO THE EXTENT
+PERMITTED UNDER THE FUND AGREEMENT AND UNDER APPLICABLE SECURITIES
+LAWS, PURSUANT TO REGISTRATION OR EXEMPTION THEREFROM. INVESTORS
+SHOULD BE AWARE THAT THEY MAY BE REQUIRED TO BEAR THE FINANCIAL RISKS
+OF THIS INVESTMENT FOR AN INDEFINITE PERIOD OF TIME.
+
+THE SUMMARY OF KEY INVESTMENT TERMS CONTAINED IN THIS MEMORANDUM IS
+QUALIFIED IN ITS ENTIRETY BY REFERENCE TO THE FUND AGREEMENT AND THE
+SUBSCRIPTION AGREEMENT RELATING TO THE PURCHASE OF INTERESTS.
+
+ADDITIONAL INFORMATION MAY BE OBTAINED FROM THE MANAGER.
+
+II. EXECUTIVE SUMMARY
+
+KXTER FUND ONE LLC (the “Fund), is a Delaware limited liability company. The Fund’s
+investment objective is to seek to earn longiterm riskiadjusted returns that are attractive as compared
+to those of traditional public equity and Internet based blind investment pools (hereinafter referred to
+as “Cruwdfunding Sites”).
+
+The Fund intends to pursue its investment objective by investing its assets, directly or indirectly, in
+high quality emerging companies alongside the world’s leading venture capital ﬁrms, angel investor
+networks and accelerators. Speciﬁcally the Fund expects to make investments in predominantly early
+and venture stages, as well as select seed investments in consumer Internet, software, artificial
+intelligence, automation & instrumentation, consumer products, energy, media, food & beverage,
+health care/life sciences, financial technology, internet related, telecommunications, other segments
+and emerging technologies with high growth opportunity and may also consider investing in other
+ventures where the business proposition is compelling. The Fund expects to invest directly, indirectly
+via special purpose vehicles formed to invest in a single company (“SPVs”), through or alongside
+existing venture capital firms, angel investor networks, accelerators and crowdfunding sites. The Fund
+will maintain a specific geographic focus on companies based in the United States, with a focus on
+California and the larger San Francisco Bay Area. The Fund seeks to finance exceptional startups
+while creating true lasting relationships with our founders and entrepreneurs.
+
+(umnzmsz } 3
+
+The Fund’s approach focuses on taking early stage risk right alongside company founders and
+entrepreneurs, helping them build businesses that will last and grow for years to come. This approach
+will be coupled with a diversiﬁcation investment model, satisfying the large demand for seed stage
+capital by entrepreneurs, whilst protecting early stage investor money and providing uniquely qualified
+deal ﬂow to our members. The Fund plans to target direct investments in companies as well as indirect
+investments through SPVs and other investment vehicles that present signiﬁcant market opportunities
+for our investors.
+
+The Fund is seeking total capital commitments of approximately $25 million to finance a portfolio of
+highly capital efficient businesses over a five to ten year period, filling the largely unaddressed niche
+within the venture capital industry 7 the seed and Series A stage sector. The goal of the Fund is to
+address inefficiencies at this seed stage of the private equity financing continuum, helping fund,
+develop and grow successful and sustainable companies from the earliest stages of company formation,
+through fundable mid and late stage company maturities, and onto successful liquidation events.
+
+The Fund’s management team possesses a strong track record in starting and exiting startups, corporate
+finance, venture capital as well as mentoring seed stage companies. The deal ﬂow, experience, venture
+capital contacts and strategic relationships that flow from this track record offer the Fund and its
+investors a unique opportunity to identify unique business opportunities in a crowded market of high
+demand for capital by entrepreneurs, and low supply of available and sophisticated seed stage capital
+by institutions.
+
+The members of the Fund’s management team, through investing capital of their own W have
+previously invested in or have been founders of seven startup opportunities, all from the seed stage
+level of company formation. Six of these companies were acquired in successful M&A transactions
+and one provided liquidity to its investors via an initial public offering. Prior to their sale, all had
+achieved successful upfrounds of funding and were cashiﬂow positive and/or revenue generating
+enterprises. The Fund’s ambitions are rooted in the more than 20+ years of finance, industry and
+entrepreneurial experience of the management team.
+
+III. A NEW MODEL: THE CROWDFUNDED VENTURE FUND
+
+Given the inherent disadvantages of making investments on the Internet, in particular high risk venture
+investments on crowdfunding sites, the Fund’s goal is to assist in hedging risk for our investors but
+also to provide diversification over multiple sources and platforms. In particular the Fund will seek to
+take advantage of strategic relationships that allow for access to investment opportunities that may not
+be readily available to an individual investor with limited access and means.
+
+Speciﬁcally, in addition to providing capital investment, the Fund’s principals and advisors are
+prepared to lend their expertise and network resources to ensure that the basic building blocks are in
+place so each ofthe Fund’s portfolio companies (each, a “Portfolio Company”) can build its business,
+making these Portfolio Companies more attractive investments to venture capitalists and more ‘VC
+compliant’ and also more able to stand on their own sooner than if they were selflfunded or funded
+
+(omnzmsa } 4
+
+through a crowdfunding platform. Moreover, because the Fund’s principals, associates and advisors
+can spend far more time with our entrepreneurs on both pre and post funding business issues, there is
+the opportunity to know and understand our founders, their needs and goals and company objectives
+at a level that is much deeper than many other blind pool funds being offered on the Internet. This
+deep exposure, intimate knowledge and consistent visibility inside a startup investment is a
+fundamental and key differentiator between the Fund’s approach and all others 7 and has already
+helped the Fund and its management team develop a brand and reputation as a trusted source of capital
+and strategic advice for early stage entrepreneurs.
+
+IV. MARKET OPPORTUNITY
+
+As crowdfunding websites, focused mostly on prerseed funding, commit increasing amounts of capital
+to new ventures, and venture capital firms further retreat to later stage rounds, the demand for goitor
+market funding (also known as Series Seed or Series A rounds) is expected to grow as well,
+dramatically increasing the funding gap. The Fund intends to fill a portion of this funding gap by
+making investments in companies at this early goitoimarket stage of development, as well as select
+seed stage opportunities. By being independent from existing crowdfunding sites and accelerators we
+maintain the freedom to select the most promising investments from all relevant platforms, networks,
+angel and accelerator groups as well as portfolios of leading venture capital firms.
+
+Our management approach and expertise in nurturing companies through this funding gap should yield
+an exceptional amount of deal flow for goitoimarket opportunities. Moreover, the opportunity created
+by matching mentored, funded and maturing early stage companies with later stage VCs willing to
+place their capital in followron financings, should allow a sophisticated ‘fccder fund’ to help serve the
+needs of a venture capital industry still largely overcapitalized with excess mid and later stage funds.
+
+V. INVESTMENT STRATEGY
+Diversification
+
+The Manager anticipates that approximately eighty percent (80%) of the Fund’s investment capital will
+be invested in Series Seed / Series A stage opportunities alongside or in syndication with existing
+venture capital funds (the “Venture Investments”); and approximately twenty percent (20%) of the
+Fund’s investment capital will be invested in seed stage opportunities, primarily alongside or with
+angel and accelerator funds based in California (the “Innovation Investments”).
+
+For Venture Investments, we assume that the involvement of a third party venture capital firm will
+have mitigated a reasonable portion of the risks and milestones associated with this type of investment.
+There would still be significant technology and execution risk and we expect to understand these
+remaining risks well. Also at this stage, commercial market performance parameters will be defined
+to provide a relatively clear understanding of what remains in terms of commercial product
+development. Like any venture investment, there may still be gaps in the complete picture and business
+
+(000720452; 5
+
+plan, but clear identiﬁcation of the key success variables and missing pieces should have been
+completed with specific market traction (whether users or revenues) having been accomplished.
+
+For Innovation Investments, which include angel, accelerator and incubator funds, we are looking for
+entrepreneurs that can identify new ideas that may have a significant chance of succeeding, coupled
+with good teams that can execute. We do not expect complete plans, but the key technology risks and
+economic and market beneﬁts must have been identified. We want to see the possibility of significant
+risk elimination at the lowest possible cost.
+
+Mana ement ualit' .
+
+ 
+
+The Fund will seek opportunities in which a strong management team is in place to guide development
+of thc core technology and the organization nccdcd to realize the company’s markct potcntial. Factors
+that we believe define a strong management team include but are not limited to, the level of education
+and/or industry insight and knowledge of the founders, leadership capabilities of the senior
+management team, historical ability to reach milestones, problem solve on the fly, coupled with an
+ability to maintain cost control.
+
+Technolo ualities
+
+If the opportunity requires a new or innovative core technolog)’, it must offer substantial and
+sustainable differentiation and should have defensible intellectual property protection. It is expected
+that a company’s underlying technology will have been validated and working product prototypes will
+be under development or in a beta stage.
+
+Due Diligence
+
+Ultimatcly, the Fund’s goal is to support thosc companies that have the ability to successfully grow to
+cash flow positive and/or where follow on investors are attracted to provide the significant additional
+capital needed for full market commercialization at significant incremental valuations.
+
+The Fund will endeavor to apply a focused approach to evaluating companies and SPVs with a more
+rigorous due diligence processes than an individual investor on a crowdfunding site could hope to
+achieve. Moreover, our management team with entrepreneurial, academic, business and technical
+backgrounds and experience will cut across many sectors, and bring valuable insight into the strength
+of the underlying technologies and management of the companies we consider for investment, resulting
+in greater visibility into company operations, board representation, comprehensive term sheet
+negotiations and qualified funding agreements, while participating in a pool of reserved capital to allow
+for followron funding opportunities. Additional connections to mid to later stage VCs means that early
+stage investors can also reduce their risk that early stage investments might be depleted of cash prior
+to followron rounds of funding.
+
+Staged Investments
+
+(omnzmsm 6
+
+Our experience tells us that most entrepreneurs do better with smaller successive rounds of followion
+capital, forcing company management to learn cash conservation, prove product Viability, execute
+product pivots before major expenditures, or to conduct a fast failure with the least amount of capital
+losses. The Fund’s goal is to maintain available followron funding through additional capital reserves
+to help protect the Fund’s equity position in future VC rounds, while offering entrepreneurs extra
+runway to further expand their business models prior to followion rounds of financing.
+
+Venture Industry Relationships
+
+Market trends indicate that VCs are more and more looking to deploy larger amounts of capital per
+round while still seeking to reduce earliest stage risk within their investment portfolios. Because of
+this VCs are facing an increasingly competitive market for deal ﬂow, and are, more than ever before,
+seeking maturing startups with clean capital structures, talented and financially responsible
+management teams, validated technologies, and business models that have an increasingly shorter time
+horizon to exit opportunities.
+
+The Fund has established relationships with managing partners of several top tier VCs. We believe
+these VCs will refer the Fund deals that are too early for their own funding parameters, and that they
+Will also serve as future funding sources for the Fund’s maturing portfolio. This community of VCs is
+also expected to play an important role in the Fund’s due diligence process by helping to create specific
+milestones for our entrepreneurs to reach given defined expectations for what they might choose to
+fund, and at what level of company maturity, going forward.
+
+VI. MANAGEMENT TEAM
+
+The Fund’s management team is comprised of both experienced principals and sophisticated advisors
+and associates who contribute to all elements of startup funding and, more importantly, to developing
+and building businesses internally from the ground up. The Fund’s management team includes:
+
+Thomas Schneider, Managing Partner, is one of North America’s leading energy and technology
+entrepreneurs. Most recently he was Schneider Power's founding CEO and grew the company’s
+portfolio to $2.3 billion dollars (1,000+ Megawatt) of power generation facilities under development
+before moving into his current role as Managing Partner of ther Advisors LLC.
+
+Mr. Schneider is the greatigreat grandson of Energy and Electricity industrialist Josef Schneider Sr.
+who brought electric light to the world in 1892 by building the first run of the river hydro damn.
+Thomas founded a Montreal based record label while attending McGill University's Desautel Faculty
+of Management. After earning a bachelor's degree in Finance and International Business, Thomas
+made the move to Toronto, to launch Line Entertainment Holdings Inc. Line became one of the leading
+North American music, television, marketing and media consulting firms that catered to clients such
+as Sir Richard Branson's Virgin Group, Twentieth Century Fox Film Corporation and L.V.M.I-I. Line
+would eventually be sold to a private investor in November, 2003.
+
+((nwzmsa } 7
+
+Seeing an opportunity in the 2003 blackout that left the entire east coast in the dark and already owning
+a minority share in one of Germany's largest wind farms, Thomas founded Schneider Power Inc. on
+April 14th, 2004, raising venture capital from some of America's leading VC's including Investeco,
+Trapeze Asset Management and billionaires Stephen Bronfman (Claridge Inc.) and Dori Segal from
+Gazit Globe (NYSE:GZT). Schneider Power grew to become one of the leading independent power
+producers in North America, and a licensed electricity generator. With the launch of Schneider Power
+USA and Schneider Power Caribbean, Thomas took Schneider Power public on the Toronto Venture
+Exchange (TSXV:SNE) in September of 2008. The Company was eventually sold to Irvine, California
+based Quantum Technologies (NASDAQzQTWW) in April 2010.
+
+Nominated as Entrepreneur of the Year 2010 by Ernst & Young, Thomas’ work has garnered several
+awards including, the prestigious 2001 Golden Web Award for best Web Design, and US and Canadian
+marketing awards such as the 2000 Summit Award and the 2000 Spirit Award. Thomas is a published
+author and a member of the Entrepreneurs Organization (E0) 7 a global, by invitation only, association
+of 7,500 entrepreneurs in 38 countries whose total sales worldwide add up to more than US$124 billion
+dollars.
+
+Thomas holds a Bachelor of Commerce degree in Finance and International Business from McGill
+University, Montreal, as well as a certificate in Business Law from the University of Toronto. He
+holds advanced level certificates in Mathematics, Physics and Chemistry from the University of
+London, England and the IGCSE from University of Cambridge, England.
+
+Rickard Antblad, Managing Partner. Prior to joining the Manager Mr. Antblad worked as Program
+Director for Bacardi Global, driving strategic change and business transformation projects across the
+full portfolio of brands. This followed a twelve year career at Procter & Gamble in various leadership
+roles in Interactive Marketing and Brand Identity/Packaging Processes; with a strategic focus of
+identifying and driving improvement.
+
+Rickard has a Master of Science Degree in Industrial Engineering and Business Management from the
+Royal Institute of Technology, Stockholm, Sweden and participated in the exchange program at the
+Technical University of Eindhoven, The Netherlands. Rickard also served as Platoon Leader in the
+Military Service Engineering Corps prior to entering the workforce.
+
+John Ng, Chief Financial Ofﬁcer. Mr. Ng is a Certified Public Accountant and our Chief Financial
+Officer. Mr. Ng. has taken three companies public in his career and sen/ed over 14+ years in the
+capacity of Chief Financial Officer for a public company. Prior to joining the Fund he was the Chief
+Financial Officer of Tenth Power Technologies Corp. Mr. Ng previously worked with the current
+management team as Chief Financial Officer of Schneider Power Inc. where he was instrumental in
+the IPO process of the company. Prior to this he sen/ed as Senior Financial Analyst for Dell Computer
+Corporation and as an auditor for PriceWaterhouseCoopers.
+
+John has a Bachelor of Mathematics from the University of Waterloo, and has also qualified as a
+Certified Public Accountant and Canadian Chartered Accountant.
+
+(000720452 } 8
+
+Alan P. Niedzwiecki, Senior Advisor. Mr. Niedzwiecki has served as our advisor since April 2014.
+Alan has raised in excess of $1 billion in both debt and equity for various companies around the world.
+Prior to joining us he served as President and Chief Executive Officer of Quantum Fuel Systems
+(NASDAQ:QTWW) since August 2002. From Febmary 1990 to October 1999, Mr. Niedzwiecki was
+President of NGV Corporation, an engineering and marketing/commercialization consulting company.
+In this capacity, he worked with companies and organizations such as Shell, World Bank, EDO
+Aerospace (ITT Corporation), and Dynetek Industries.
+
+Mr. Niedzwiecki has more than 25 years of experience in corporate finance, energy, and technology
+development and commercialization. Mr. Niedzwiecki also served as Chairman of Schneider Power
+Inc. since March 2012 and as a Director of WestStart 7 CALSTART, Inc. Mr. Niedzwiecki is a
+graduate of Southern Alberta Institute of Technology.
+
+James Brett, Senior Advisor. Mr. Brett is a selfimade millionaire and serial entrepreneur, having
+started in the presentation and events industry in his teens, James Brett continues to be an innovator
+throughout his career. James was raised in the UK, the Netherlands and Canada and founded Mediaco
+20 years ago (now Frischkorn AV). He has built an enterprise with five North American offices serving
+high profile clients such as the White House, the Olympic Movement, the Emperor of Japan and HRH
+Queen Elizabeth II of England. In the past two decades, Mr. Brett has also successfully founded and
+divested of other ventures including Online Broadcasting Corporation, Syoni Communications and
+Fair Disclosure Financial Network to Thomson Reuters Corp. Mr. Brett brings truly innovative
+solutions, and mission critical execution to the corporate finance experience with the highest degree of
+discretion. Mr. Brett continues early stage investing through his venture capital fund in various diverse
+industries including Financial Services, Entertainment and Special Events.
+
+Francesco Matteini, InnReg Compliance. The Fund’s Manager has engaged InnReg, a premier
+provider of operations and compliance consulting services. For the last twenty years, InnReg has
+designed compliance systems and obtained regulatory approvals for innovative products in the
+financial services sector, including the first brokeriowned social media platform focused on trading
+and investing. The company is headed by Francesco Matteini who previously helped launch TradeKing
+and Zeeco as the firms’ Chief Compliance Officer; merging them into the sixth largest online broker
+in the US with 500,000 customers and $2.6 Billion in assets. Francesco has managed regulatory
+relations with regulatory agencies such as SEC, FINRA and NFA. Francesco holds a Masters in Public
+Administration from Harvard University’s John F. Kennedy School of Government and a JD. from
+Italy’s Universita degli Studi.
+
+VII. SUMMARY OF KEY INVESTMENT TERMS
+
+The following summarizes the principal terms of an investment in the Fund, and is qualified in its
+entirety by reference to the Fund Agreement and the subscription agreement relating to the purchase
+of an Interest in the Fund, all of which should be carefully reviewed prior to making an investment
+decision.
+
+(000720452 } 9
+
+The Fund
+
+Manager
+
+Sector F acus
+
+Anticipated Deal Size
+and Number afDeals
+
+Fund Investors
+
+Size of the Offering
+
+Minimum Subscriptian
+
+Term
+
+((nwzmsa ;
+
+ther Fund One LLC (the “Fund”), a limited liability company organized
+under the laws of Delaware for the purpose of making equity and equity,
+related investments in early and growth stage companies and investing in
+other private investment vehicles with a similar investment focus, including
+without limitation vehicles formed to invest in a single company (“SPVS”).
+
+ther Advisors LLC, a Delaware limited liability company (the
+“Manager"), will be the manager of the Fund. The Manager will
+exclusively manage and control the affairs of the Fund, and will have the
+authority to act on behalf of the Fund and to bind the Fund in all matters.
+The principals of the Manager that will be primarily responsible for the
+Fund’s investment activities will be Thomas Schneider and Rickard
+Antblad (the “Principals").
+
+Consumer Internet, software, artificial intelligence, automation &
+instrumentation, consumer products, energy, media, food & beverage,
+health care/life sciences, financial technology, Internet related,
+telecommunications, other segments and emerging technologies with high
+growth opportunity and other ventures where the business proposition is
+compelling.
+
+Initial investments: $25,000 7 $500,000;
+Followion investments: $500,000 7 $1,000,000;
+Number of investments: approximately 100 deals over life of the Fund.
+
+Investors in the Fund (“Members”) will consist of institutions, companies
+and individuals who are “accredited investors" within the meaning of the
+United States Securities Act of 1933, as amended.
+
+The Fund is offering up to $25 million of limited liability company
+membership interests (the “Interests"). However, the Manager may
+increase or decrease the size of the offering. There is no minimum size of
+the Fund.
+
+Unless the Manager otherwise consents, the minimum capital commitment
+for a Member will be $5,000. The Manager may reject the offer of a
+subscription for any reason.
+
+The Fund’s term will continue until the tenth anniversary of the Final
+Closing Date, unless terminated sooner upon the happening of certain
+events as set forth in the Fund’s limited liability company operating
+agreement (the “Fund Agreement"), subject to extension of up to two
+
+10
+
+Clasings
+
+Reinvestment of
+Capital
+
+Management Fee
+
+Management Fee
+Wiaver; Manager
+Contributians
+
+Expenses
+
+(000720452 ;
+
+additional oneryear periods by the Manager in the discretion of the
+Manager.
+
+The Manager may hold the Fund’s initial closing (the “Initial Closing")
+upon receiving aggregate capital commitments of any amount, and will do
+so as soon as practicable. The Manager may, in its sole discretion, hold one
+or more subsequent closings until the oneryear anniversary of the Initial
+Closing (the “Final Closing Date”). Each Member that participates in a
+closing subsequent to the Initial Closing will be required to contribute its
+proportionate share of all prior capital drawdowns.
+
+Proceeds from the sale or other disposition of investments other than short,
+term investments of excess cash generally will not be subject to
+reinvestment without the written consent of a majorityiinrinterest of the
+Members.
+
+The Fund will pay the Manager an annual management fee (the
+“Management Fee”), which will be payable quarterly in advance, prof
+rated for partial quarterly periods, and will equal 1.5% of the aggregate
+capital commitments of the Members per year.
+
+In advance of any ﬁscal year, the Manager may elect to substitute all or any
+portion of the Management Fee for such fiscal year by a special allocation
+of an equal amount of profit. At the time of any such election, the Manager
+shall further elect the extent to which such proﬁt shall be immediately
+distributed upon allocation, and to the extent the Manager elects not to so
+distribute such proﬁt, such amount shall be credited towards the Manager’s
+capital commitment (if any).
+
+Each Member will be solely responsible for its own legal and tax counsel
+expenses and any outiofipocket expenses incurred in connection with its
+admission to, or the maintenance or transfer of its interest in, the Fund.
+
+The Manager will be responsible for all of its own normal and recurring
+routine operating expenses, such as compensation of its professional staff
+and the cost of office space, office equipment, communications, utilities
+and other such normal overhead expenses.
+
+The Fund shall bear all third party operating expenses incurred in
+connection with the organization, syndication, formation, management,
+operations, and liquidation of the Fund, including, but not limited to, all
+costs and expenses incurred in the holding, purchase, sale or exchange of
+securities (whether or not ultimately consummated), expenses associated
+with Fund communications with Members, all legal, accounting, tax,
+
+11
+
+Incurrence of
+Indebtedness
+
+Distributians
+
+Allacatian «If Proﬁt and
+
+Loss
+
+Tax Distributions
+
+(000720452 ;
+
+consulting and professional services fees and expenses (including tax
+preparation) relating to the Fund and its activities or regulatory compliance
+of the Manager in connection therewith, placement agent fees and
+commissions of registered brokeridealers and similar platformibased
+marketing or transaction fees and expenses (not to exceed 1.0% of the
+Fund’s aggregate committed capital), consulting and advisor fees and
+expenses relating to investments or proposed investments, fees and
+expenses relating to ﬁnance and accounting services, audit and accounting
+fees, taxes applicable to the Fund on account of its operations, fees incurred
+in connection with the maintenance of bank or custodian accounts, the cost
+of liability and other premiums for insurance, and all fees, costs and
+expenses relating to indemnification obligations of the Fund and litigation
+and threatened litigation involving the Fund. If the expenses of the Fund
+(including, without limitation, any expenses related to indemnification
+obligations of the Fund or litigation or threatened litigation) exceed the cash
+expense reserves of the Fund (as reasonably determined by the Manager),
+the Manager or its affiliate may pay such expenses on behalf of the Fund
+and seek reimbursement from the Fund, and the Manager shall be permitted
+to (i) offset distributions (including in kind distributions) to be made to the
+Members on a pro rata basis and recover any such unreimbursed expenses,
+or (ii) sell securities held by the Fund and apply the proceeds towards the
+payment of such expenses.
+
+The Fund may not incur any indebtedness other than to pay expenses or
+shortiterm borrowings to fund Members’ capital contributions on an
+expedited basis, or in connection with a remedy provided in the Fund
+Agreement related to a Defaulting Member. If a Member’s capital
+contributions are “bridged” by such shortiterm borrowings, the Members
+whose capital contributions were so “bridged" shall be responsible for the
+costs of such borrowings.
+
+The Manager may distribute cash, securities or other Fund assets from time
+to time in its sole discretion to the Members in proportion to their capital
+commitments.
+
+Income, expense, gain and loss of the Fund will generally be allocated to
+the Members in a manner consistent with the priority of distribution set
+forth above.
+
+The Manager may determine in its discretion to cause the Fund to advance
+tax distributions to Members who have been allocated taxable income
+amounts.
+
+12
+
+Ctr-Investment by
+Members
+
+Drawdawns
+
+Defaulting Members
+
+Transfers; Withdrawals
+
+Terminatian
+
+(omnzmsa ;
+
+The Manager may, in its sole discretion, provide select Members with co,
+investment opportunities on a case by case basis.
+
+Capital commitments generally will be drawn down as necessary to fund
+investments and to meet Fund expenses and obligations. The Manager
+shall have sole discretion as to the amount and timing of such drawdowns,
+including without limitation the discretion to call for any portion, or the
+entire portion, of the balance of a Member’s capital commitment. Except
+in connection with a Fund closing, which may involve an immediate
+drawdown of the capital commitment of a Member participating in such
+closing, a minimum of ten business days’ notice for capital calls (a
+“Drawdown Notice") will be given by the Manager.
+
+Any Member that fails to contribute the full amount specified in a
+Drawdown Notice within ten business days of the speciﬁed due date or any
+other payment required to be made by it to the Manager or the Fund may
+be deemed a defaulting member (a “Defaulting Member") at the discretion
+of the Manager. The Manager in its sole discretion may waive or permit the
+cure of the condition causing such default subject to such conditions upon
+which the Manager and such Member may agree. A Defaulting Member
+will be subject to all available remedies the Manager or Fund may pursue
+at law or in equity as well as specific remedies provided in the Fund
+Agreement.
+
+All proposed transfers of Fund interests will be subject to the consent of the
+Manager, which consent may be granted or withheld in the sole discretion
+of the Manager. The Fund interests will be subject to restrictions on
+transfer designed to satisfy applicable securities and tax law considerations.
+Proposed transferees of Fund interests will be required, among other things,
+to demonstrate sufficient financial wherewithal to meet remaining capital
+commitment obligations. Voluntary withdrawal by Members from the
+Fund will generally not be permitted. In certain circumstances described
+in the Fund Agreement, a Member may be removed by the Manager.
+
+Upon termination, the Fund’s affairs shall be Wound up and the assets of
+the Fund shall be distributed in in the following order of priority:
+
+(i) First, to the creditors of the Fund (other than the Members) in
+satisfaction of the liabilities of the Fund, in the order of priority established
+by law, either by payment or the reasonable provision for payment thereof;
+
+(ii) Second, to the Members, in repayment of any loans made to, or other
+debts owed by, the Fund; and
+
+13
+
+Conﬂicts; Other
+Activities and F ees
+
+Remaval «If Manager
+
+Side Agreements
+
+Indemnity and
+Exculpation
+
+Income Tax
+Consideratians
+
+(000720452 ;
+
+(iii) Third, to the Members in respect of the positive balances in their
+applicable capital accounts.
+
+The Manager is only required to devote such time to the Fund’s affairs as
+it determines to be necessary in its reasonablejudgment. The Manager may
+organize or be associated with other investment funds with objectives
+similar to those of the Fund with no duty to account to the Fund or the
+Members and without regard to whether the interests of such investment
+funds conflict with those of the Fund. The Manager shall not be obligated
+to disclose or refer to the Fund any particular investment opportunity,
+whether or not such opportunity is of a character which could be undertaken
+by the Fund. The Fund may own investments in companies in which the
+Manager or an affiliate owns an interest, and the Members will be required
+to waive any conflicts of interest that may exist by Virtue of thereof. The
+Fund will have no interest in, and the Management Fee will not be offset
+by, any directors’ fccs, advisory fees, transaction fees, commitment fees,
+investment banking fees, broken deal or breakup fees, or other similar fees
+received by the Manager or its affiliates.
+
+The Manager may be removed for Cause upon the Vote of at least 75% in
+interest ofthc Members. “Cause" shall mean either (i) all Principals have
+permanently ceased performing services for the Manager or (ii) any
+Principal performs any act that constitutes a fraud or the commission of a
+felony relating to the Manager’s role as the manager of the Fund or
+involving moral turpitude, gross negligence or willful breach of duty.
+
+The Manager on its own behalf or on behalf of the Fund, without the
+approval of any Member or any other person, may enter into a side letter or
+similar agreement to or with a Member which has the effect of establishing
+
+rights under, or altering or supplementing the terms of, the Fund Agreement
+or such Member’s subscription agreement.
+
+Except in certain limited cases, the Manager and certain of its affiliates and
+agents will not be liable for any act or omission concerning the Fund and
+will be indemnified from any expense, damage or injury suffered or
+sustained by reason of their potential or actual involvement in the affairs of
+the Fund, including as an officer or director ofa company in which the Fund
+makes an investment.
+
+The Fund expects to be treated as a partnership for US. federal income tax
+purposes. The Manager intends to operate the Fund in a manner such that
+it will not be engaged in a trade or business for US. tax purposes.
+
+14
+
+ERISA Cansiderations Investment in the Fund generally is open to sophisticated institutional
+investors, including pension and other funds subject to the United States
+Employee Retirement Income Security Act of 1974, as amended
+(“ERISA"). Investors subject to ERISA will be required to make certain
+customary representations or provide assurances in order that the Manager
+may determine compliance with ERISA’s provisions. The Fund may be
+managed in a manner intended to qualify it for the venture capital operating
+company exception from the ERISA plan asset rules. Alternatively, the
+Manager may decide to limit the aggregate capital commitments of
+investors subject to ERISA to less than 25% of the Fund’s total committed
+capital.
+
+Reports The Manager will provide the Members with annual audited financial
+statements of the Fund within 120 days after the end of the fiscal year of
+the Fund and quarterly unaudited financial statements within 90 days after
+the end of each fiscal quarter (except the last). Financial statements will be
+prepared in accordance with accounting principles generally accepted in the
+United States. The ﬁscal year end of the Fund will be December 31.
+
+Amendment In general, the Fund Agreement may only be amended by the Manager and
+a majority in interest of the Members.
+
+Risk Factors An investment in the Fund involves significant risks and should be
+considered only by sophisticated investors able to meet drawdown
+obligations and assume the risks of loss and illiquidity inherent with an
+investment in the Fund.
+
+VIII. RISK FACTORS
+
+Investors should be aware that an investment in the Fund involves a high degree of risk. There can be
+no assurance that the Fund’s investment objectives will be achieved, or that an investor will receive
+any return of its invested capital. In addition, there will be occasions when the Manager (or its
+affiliates) encounter potential conﬂicts of interest in connection with the Fund. The following
+considerations, among others, should be carefully evaluated before making an investment in the Fund.
+
+Risk Inherent in Venture Capital Investments. The investments intended to be made by the Fund
+involve a high degree of risk. In general, financial and operating risks confronting both early, and
+developmentalistage companies, as well as more mature expansionistage companies, are significant.
+Many emerging growth companies go out of businesses every year. It is difficult to know how
+companies will grow, if at all, or what changes may occur in the market. While targeted retums should
+reﬂect the perceived level of risk in any investment situation, there can be no assurance that the Fund
+will be adequately compensated for risks taken. The loss of art investor’s entire investment in the Fund
+
+((nwzmsm 15
+
+is possible. The timing of profit realization is highly uncertain. Losses are likely to occur early in the
+Fund’s term, while successes often require a long maturation.
+
+Earlyistage and developmentalistage companies often experience unexpected problems in the areas of
+product development, manufacturing, marketing, financing and general management, which, in some
+cases, cannot be adequately solved. Such companies may require substantial amounts of financing
+which may not be available through institutional private placements or the public markets. In addition,
+the markets that such companies target are highly competitive and in many cases the competition
+consists of larger companies with access to greater resources. The percentage of such companies that
+survive and prosper is small.
+
+Investments in more mature companies in the expansion or proﬁtable stage involve substantial risks.
+Such companies typically have obtained capital in the form of debt and/or equity to expand rapidly,
+reorganize operations, acquire other businesses, or develop new products and markets. These activities
+by definition involve a significant amount of change in a company and could give rise to significant
+problems in sales, manufacturing, and general management of these activities.
+
+Lack of Portfolio Company Information. The information made available to the Fund regarding the
+Portfolio Companies the Fund will invest in, either directly or indirectly, is often very limited. As the
+Portfolio Companies are privately held, they are not subject to the same disclosure and reporting
+obligations of publicly traded companies. The Fund may not be provided with financial, operational,
+or other information that may be important in making an investment decision. In many cases, a
+Portfolio Company’s valuation at the time of the Fund’s investment and/or the Fund’s ownership
+percentage in such Portfolio Company will not be known and such ownership percentage can be
+reduced significantly for a number of reasons.
+
+Lack of Information for Monitoring and Valuing the Fund’s Assets. Despite the Manager’s efforts
+to acquire sufﬁcient information to monitor the Fund’s investments and make welliinformed valuation
+and pricing determinations, the Manager may only be able to obtain limited information at certain
+times and, in some cases, may not be able to obtain information beyond the information that is publicly
+available. It is possible that the Manager may not be aware on a timely basis of material adverse
+changes that have occurred with respect to certain of the Fund’s investments. The Value of the Fund’s
+assets could be significantly negatively affected by any such event. Further, the Manager may have to
+make Valuation determinations without the benefit of an adequate amount of relevant information.
+Investors should be aware that as a result of these difficulties, as well as other uncertainties, any
+valuation made by the Manager may not represent the fair market Value of the securities acquired by
+the Fund.
+
+Investment in Companies Dependent Upon New Technological Development and Market
+Adoption. An investment in the Fund may be susceptible to greater risk than an investment in a fund
+that invests in a broader range of securities. The specific risks faced by emerging growth technology
+companies such as some of the anticipated Portfolio Companies include:
+
+o rapidly changing science, business models, technologies and consumer preferences;
+
+((nwzmsm 16
+
+0 new competing products or services and improvements in existing products or services which
+may quickly render existing products or technologies obsolete;
+
+0 exposure, in certain circumstances, to a high degree of government regulation, making these
+companies susceptible to changes in government policy and failures to secure, or unanticipated
+delays in securing, regulatory approvals;
+
+o scarcity of management, technical, scientific, research and marketing personnel with
+appropriate training;
+
+0 the possibility of lawsuits related to patents and intellectual property; and
+
+o rapidly changing investor sentiments and preferences with regard to technology related
+investments (which are generally perceived as risky).
+
+No Assurance of Returns. The Fund will typically be an equity investor in the Portfolio Companies.
+The Fund will generally not receive any returns on its investments unless and until a Portfolio Company
+distributes money. A private company typically distributes money when it is sold to another company
+or a new set of investors, when it pays a dividend, or when it is listed on a stock exchange or other
+public trading platform. A Portfolio Company may take a long time to, or may never, achieve one of
+these events. As such, there can be no assurance that investors in the Fund will receive any returns
+from the Fund. The timing of profit realization, if any, is highly uncertain.
+
+Economic and Market Conditions. The success of any investment activity is determined to some
+degree by general economic conditions. The availability, unavailability, or hindered operation of
+external credit markets, equity markets and other economic systems which the Fund may depend upon
+to achieve its objectives may have a signiﬁcant negative impact on the Fund’s operations and
+profitability. The stability and sustainability of growth in global economies may be impacted by
+terrorism or acts of war. There can be no assurance that such markets and economic systems will be
+available or will be available as anticipated or needed for the Fund to operate successfully. Changing
+economic conditions could potentially adversely impact the valuation of portfolio holdings.
+
+Minority Investments. The Fund’s investments may represent minority stakes in privately held
+companies. As is the ease with minority holdings in general, such minority stakes that the Fund may
+hold will have neither the control characteristics of majority stakes nor the valuation premiums
+accorded majority or controlling stakes. The Fund may also invest in companies for which the Fund
+has no right to appoint a director or otherwise exert significant inﬂuence. In such cases, the Fund will
+be reliant on the existing management and board of directors of such companies, which may include
+representatives of other financial investors with whom the Fund is not affiliated and whose interests
+may conflict with the interests of the Fund.
+
+(000720452; 17
+
+Reliance on Manager. The Manager will have sole discretion over the investment of the capital
+committed to the Fund as well as the ultimate realization of any profits. Investors in the Fund will not
+receive the detailed financial information issued by Portfolio Companies that will be available to the
+Fund. Accordingly, investors will not have the opportunity to evaluate the relevant economic, financial
+and other information that will be utilized by the Manager in its selection of investment terms. As
+such, the pool of capital in the Fund represents a blind pool of capital. Investors will be relying on the
+Manager to identify, structure, and implement investments consistent with the Fund’s investment
+objectives and policies and to conduct the business of the Fund as contemplated by its Fund Agreement.
+The loss of one or more of the principals of the Manager would likely have a significant adverse impact
+on the business of the Fund. No assurances can be given that the principals of the Manager will
+continue to be affiliated with the Fund throughout its term. Notwithstanding any prior experience that
+the principals of the Manager may have in making investments of the type expected to be made by the
+Fund, any such experience necessarily was obtained under different market conditions and with
+different technologies at the forefront of development. There can be no assurance that the principals
+of the Manager will be able to duplicate any previous levels of success.
+
+Competitive Marketplace. The marketplace for venture capital investing has become increasingly
+competitive. Participation by financial intermediaries has increased, substantial amounts of funds have
+been dedicated to making investments in the private sector and the competition for investment
+opportunities is at high levels. Some of the Fund’s potential competitors may have greater ﬁnancial
+and personnel resources than the Fund. There can be no assurances that the Manager will secure
+attractive investment terms for the Fund. To the extent that the Fund encounters competition for
+investments, returns to Fund investors may vary.
+
+No Assurance of Additional Capital for Investments. After the Fund has invested in a Portfolio
+Company, continued development and marketing of products may require that additional financing be
+provided to the Portfolio Company. The Fund expects the Portfolio Companies will have substantial
+capital needs that will be need to be funded over several stages of investment. No assurance can be
+made that such additional financing will be available and no assurance can be made as to the terms
+upon which such financing may be obtained.
+
+Reserves. The Manager may establish reserves for followion investments by the Fund in Portfolio
+Companies, operating expenses, Fund liabilities, and other matters. Estimating the appropriate amount
+of such reserves is difficult, especially for followion investment opportunities which are directly tied
+to the success and capital needs of Portfolio Companies. Inadequate or excessive reserves could impair
+the investment returns to the Fund. If reserves are inadequate, the Fund may be unable to take
+advantage of attractive followion or other investment opportunities or to protect its existing
+investments from dilutive or other punitive terms associated with “payitoiplay” or similar provisions.
+If reserves are excessive, the Fund may decline attractive investment opportunities or hold unnecessary
+amounts of capital in money market or similar lowiyield accounts.
+
+((uwzmsm 18
+
+Indemniﬁcation. The Fund will be required to indemnify the Manager and certain of its owners,
+principals and affiliates for liabilities incurred in connection with the affairs of the Fund. Such
+liabilities may be material and have an adverse effect on the retums to Fund investors.
+
+Future and Past Performance. The performance of any prior fund or any personal investments
+affiliated with any of the principals of the Manager is not necessarily indicative of the future results
+that will be realized by the Fund. While the Manager may intend for the Fund to make investments
+that have estimated retums commensurate with the risks undertaken, there can be no assurance that
+targeted results will be achieved. Loss of principal is possible on any given investment.
+
+Bridge Financing. The Fund may lend to Portfolio Companies on a shortitenn, unsecured basis in
+anticipation of a future issuance of equity or longitenn debt. Such bridge loans would typically be
+convertible into a more permanent, longiterm security; however, for reasons not always in the Fund’s
+control, such longiterm securities may not issue and such bridge loans may remain outstanding. In
+such event, the interest rate on such loans may not adequately reflect the risk associated with the
+unsecured position taken by the Fund.
+
+Limitations on Ability to Exit Investments. The Fund will generally endeavor to exit from its
+investments in two principal ways: (i) a private sale (including an acquisition of a Portfolio Company)
+and (ii) initial and/or secondary public offerings. At any particular time, one or both of these avenues
+may not be open to the Fund, or timing with respect to these exit mechanisms may be inopportune. As
+such, the ability to exit from and liquidate the Fund’s portfolio holdings may be constrained at any
+particular time.
+
+Contingent Liabilities on Disposition of Investments. In connection with the disposition of an
+investment in the Portfolio Companies, the Fund may be required to make representations about the
+business and financial affairs of such companies typical of those made in connection with the sale ofa
+business. The Fund may be required to indemnify the purchasers of such investment to the extent that
+any such representations are inaccurate. These arrangements may result in the incurrence of contingent
+liabilities for which the Manager may establish reserves and escrows. In that regard, distributions may
+be delayed or withheld until such reserve is no longer needed or the escrow period expires.
+
+Absence of Liquidity and Public Markets. The Fund’s investments will generally be private, illiquid
+holdings. As such, there will be no public markets for the securities held by the Fund and no readily
+available liquidity mechanism at any particular time for any of the investments held by the Fund. In
+addition, the realization of value from any investments will not be possible or known with any certainty
+until the Manager elects, in its sole discretion, to sell the Fund’s investments and subsequently
+distribute the proceeds to its investors or to distribute securities to the Fund investors in lieu of cash.
+
+No Market; Illiquidity of Interests. An investment in the Fund will be illiquid and involves a high
+degree of risk. Because the Interests will not be registered under the Securities Act there will be no
+public market for the Interests, and it is not expected that a public market will develop. An investor in
+the Fund may not be able to avail itself of the provisions of Rule 144 of the Securities Act with respect
+to a proposed transfer of its Interest, and the investor will not be permitted to sell its Interest unless
+
+((uwzmsm 19
+
+such interests are subsequently registered under the Securities Act or an exemption from registration
+is available. Consequently, investors will bear the economic risks of its investment for the term of the
+Fund.
+
+Certain Limitations on the Ability of Investors to Transfer Fund Interests. The transferability of
+Interests will be restricted by the Fund Agreement and by United States federal and state securities
+laws. In general, a Fund investor will not be able to sell or transfer its Interest to third parties without
+the consent of the Manager.
+
+Legal and Regulatory Risks. The Fund will not be registered as an “investment company" under the
+Companies Act pursuant to an exemption set forth in Section 3(c)(l) and/or Section 3(c)(7) of the
+Companies Act. There is no assurance that such exemptions will continue to be available to the Fund.
+Due to the burdens ofcompliancc with the Companies Act, the performance of the Fund’s investment
+portfolio could be materially adversely affected, and risks involved in financing the Portfolio
+Companies could substantially increase, if the Fund becomes subject to registration under the
+Companies Act. Neither the Fund nor its legal counsel can assure the Fund’s investors that, under
+certain conditions, changed circumstances, or changes in the law, the Fund will not become subject to
+the Companies Act or other burdensome regulation. In addition, the Manager is not registered as an
+“investment adviser" under the Advisers Act. The rules promulgated by the SEC under the Doddi
+Frank Wall Street Reform and Consumer Protection Act (the “Dodd-Frank Act") may require the
+Manager (or an affiliate of the Manager) to register under the Advisers Act at some point in the future.
+In such event, such Manager or affiliate would become subject to additional regulatory and compliance
+requirements associated with the DoddiFrank Act or the Advisers Act. Any such additional
+requirements, or any different requirements, may be costly and/or burdensome to such party or parties
+and could result in the imposition of restrictions and limitations on the operations of the Fund and/or
+the disclosure ofinformation to regulatory authorities regarding the operations of the Fund. In addition,
+the Fund does not plan to register the offering of the Interests under the Securities Act. As a result, a
+Fund investor will not be afforded the protections of the Securities Act with respect to its investment
+in the Fund.
+
+Conﬂicts of Interest. The following discussion enumerates certain potential conflicts of interest that
+should be carefully evaluated before making an investment in the Fund. The following is not intended
+as an exhaustive list of the potential conﬂicts. Instances may arise where the interest of the Manager
+(or its affiliates or principals) may potentially or actually conﬂict with the interests of the Fund or the
+Fund’s investors. Conﬂicts of interest may arise as a result of the principals of the Manager or other
+investment funds managed by the Manager having existing investments in Portfolio Companies, as
+well as other investments both public and private. Additionally, one or more of the principals of the
+Manager may serve one or more Portfolio Companies on its board of directors or in a separate advisory
+or consulting capacity, and instances may arise where the principal’s ﬁduciary duties to a Portfolio
+Company or the principal’s advice or services might conflict with the interests of the Fund or the
+Fund’s investors. By acquiring an Interest, the investor will be deemed to have acknowledged the
+existence of any such actual or potential conﬂicts of interest and to have waived any claim with respect
+to any liability arising from the existence of any such conﬂicts of interest.
+
+((nwzmsa } 20
+
+Lack of Control. Subject to the implementation of the investment limitations described in the Fund
+Agreement, the Manager has complete discretion in managing the Fund’s portfolio. Investors will not
+make or participate in decisions with respect to the management, disposition or other realization of any
+investment made by the Fund or other decisions regarding the Fund’s business and affairs.
+
+Leverage. To the extent a Portfolio Company has a leveraged capital structure or borrows or enters
+into other ﬁnancing transactions requiring periodic payments, the Fund’s investment in the Portfolio
+Company will be subject to increased exposure to adverse economic factors such as a significant rise
+in interest rates, a severe downturn in the economy or deterioration in the condition of such company
+or its industry. If such a Portfolio Company is unable to generate sufficient cash flow to meet principal
+and interest payments on its indebtedness, the Value of any equity investment by the Fund in such
+company could be significantly reduced or even eliminated.
+
+Potential Liabilities. In connection with its investments, the Fund may negotiate the right to appoint
+one of the principals of the Manager or its affiliate as a member of a Portfolio Company’s board of
+directors. Membership on the board of directors of a Portfolio Company can result in the Fund or the
+individual director being named as a defendant in litigation. The Fund may also participate in such a
+Portfolio Company’s financing at valuations lower than the Valuations in preceding rounds of
+financing. Disputes arising out of such downiround financings may result in the Fund, the Manager
+or its members being named as defendants. A Portfolio Company may have insurance to protect
+directors and officers, but any such insurance may be inadequate. Or, a Portfolio Company may have
+no insurance to protect directors and officers. The Fund will indemnify the Manager and its principals,
+among others, for liabilities incurred in connection with operations of the Fund, including liabilities
+arising from such lawsuits. Such indemnification obligations and other liabilities could be substantial.
+
+Market Lock-Up Provisions. If a Portfolio Company engages in a public offering, the securities held
+by the Fund may continue to be subject to “lock up" provisions that may restrict the Fund’s ability to
+trade or sell such investments on the public market for extended periods of time during which such
+securities may experience substantial changes in value. As such, even where a Fund’s investment has
+become publicly traded, there is no guarantee the Fund will be able to exit from the investment on the
+terms initially offered to the public.
+
+Limited Portfolio Diversiﬁcation. As is typical of venture capital funds, the Portfolio Company
+holdings of the Fund will not be broadly diversified. A downturn of the economy or in the business of
+the Portfolio Company could impact the aggregate retums delivered to investors by the Fund.
+
+Manager Compensation. The amount of the management fee paid by the Fund to the Manager was
+set by the Manager without negotiations with any third party. It is possible that other investment
+advisers would perform the same services with respect to the Fund for less compensation than the
+Manager will receive from the Fund.
+
+Failure to Make Capital Contributions. If a Fund investor fails to satisfy when due installments of
+its capital commitment to the Fund, and the contributions made by nonidefaulting investors in the Fund
+and any borrowings by the Fund are inadequate to cover the defaulted amount, the Fund may be unable
+
+((nwzmsm 21
+
+to pay its obligations when due. As a result, the Fund may be subjected to significant penalties that
+could materially and adversely affect the returns to its investors. If Fund investors default on their
+capital commitment obligations to the Fund, such investors may be subject to various remedies as
+provided in the Fund Agreement.
+
+Withholding and Other Taxes. The Manager intends to structure the Fund’s investments in a manner
+that is intended to achieve the Fund’s investment objectives and, notwithstanding anything contained
+herein to the contrary, there can be no assurance that the structure of any investment will be tax efficient
+for any particular Fund investor or that any particular tax result will be achieved. In addition, tax
+reporting requirements may be imposed on Fund investors under the laws of the jurisdictions in which
+such investors are liable for taxation or in which the Fund makes portfolio investments. Investors
+should consult their own professional advisors with respect to the tax consequences of an investment
+in the Fund under the laws of the jurisdiction in which the investors are liable for taxation.
+Furthermore, the Fund’s returns in respect of its investments may be reduced by withholding or other
+taxes imposed by jurisdictions in which a Portfolio Company is organized.
+
+Limited Operating History. The Fund is a newly established limited liability company with no
+operating history. The Fund’s investment program should be evaluated on the basis that there can be
+no assurance that the Manager’s assessment of the prospects ofinvcstments will prove accurate or that
+the Fund will achieve its investment objective. Past performance of the principals of the Manager is
+not necessarily indicative of future results.
+
+Diverse Investors. Investors in the Fund may have conflicting investment, tax, and other interests
+with respect to their investments in the Fund. The conflicting interests of individual Fund investors
+may relate to or arise from, among other things, the nature of investments made by the Fund, the
+structuring or the acquisition of Fund investments and the timing of disposition of such investments.
+As a consequence, conflicts of interest may arise in connection with decisions made by the Manager
+with respect to the nature or structuring of investments that may be more beneficial for some Fund
+investors than for others, particularly with respect to investors’ individual tax situations. In selecting
+and structuring investments appropriate for the Fund, the Manager will consider the investment and
+tax objective of the Fund and its investors as a whole, not the investment, tax or other objective of any
+particular individual Fund investor.
+
+Risk of Dilution. Investors subscribing for interests in the Fund at closings other than the Fund’s
+initial closing will participate in theneexisting investments of the Fund, diluting the interests of then,
+existing investors therein. Although such investors will generally contribute their pro rata share of
+prior capital contributions previously drawn down by the Fund, there can be no assurance that such
+payment will reflect the fair value of the Fund’s existing investments at the time such additional
+investors subscribe for such interests.
+
+Foreign Investments. The Fund may hold investments in U.S. companies that may have operations
+primarily outside of the U.S. Any investment by U.S. companies in a foreign country involves risks
+not found in the U.S. domestic securities market, including the following: the risk of economic and
+
+(autumn } 22
+
+financial instability in the foreign country, which in some cases may include a collapse in credit
+markets, stock prices, currencies and/or consumer spending; the risk of adverse social and political
+developments, including nationalization, confiscation without fair compensation, political and social
+instability and war; the risk that the foreign country may impose restrictions on the repatriation of
+investment income or capital or on the ability of foreign persons to invest in certain types of companies,
+assets or securities; risks related to the possible lack of availability of sufficient financial information
+as a result of accounting, auditing, and financial disclosure standards that differ, in some cases
+significantly, from those in the United States; risks related to foreign laws and legal systems, which
+are likely to differ from those of the United States, including in particular the laws with respect to the
+rights of investors which may not be as comprehensive or well developed as those in the United States
+and the procedures for the judicial or other enforcement of such rights which may not be as effective
+as in the United States; risks related to the fact that some investments may be denominated in foreign
+currencies and, therefore, will be subject to ﬂuctuations in exchange rates; and risks related to
+applicable tax laws and regulations and tax treaties, which are likely to vary from country to country
+and may be less well developed than those in the United States, possibly resulting in retroactive
+taxation so that the Fund could become subject to an unanticipated local tax liability.
+
+Foreign Exchange Risks. Contributions to the Fund and distributions from the Fund will be
+denominated in US. dollars. Investments may be denominated in Us. dollars or other foreign
+currencies. As a result, the profits or losses of the Fund on any investment, as measured in US. dollars,
+may be affected by fluctuations in currency exchange rates and exchange control regulations as well
+as by the success of the investment itself. In addition, the Fund may incur costs in connection with
+conversions between various currencies. Neither the Fund nor the Manager intends to seek to reduce
+currency risks through “hedging" or other methods.
+
+Tax Considerations. The Fund’s income and gain for each taxable year will be allocated to, and
+includible in, each Fund investor’s taxable income whether or not cash or other property is actually
+distributed. Although the Fund may make distributions, Fund investors should have alternative sources
+from which to pay US. federal income tax liability.
+
+Taxes and Economics May Not Match During a Calendar Year. The income tax effects of the
+Fund’s transactions to investors may differ from the economic consequences of those transactions
+during a calendar year.
+
+There is the Possibility of a Tax Audit. The Fund’s tax returns might be audited by a taxing authority.
+An audit could result in adjustments to the Fund’s tax returns. If an audit results in an adjustment,
+investors may be required to file amended returns and to pay additional taxes plus interest. The Fund
+may take positions with respect to certain tax issues that depend on legal conclusions not yet addressed
+by the courts. Should any such positions be successfully challenged by the Us. Intemal Revenue
+Service, investors might be found to have a different tax liability for that year than that reported on
+their US. federal income tax returns. In addition, an audit of the Fund’s U.S. federal income tax
+information retum may result in adjustments to the tax consequences initially reported by the Fund and
+may affect items not related to investors’ investment in the Fund. If auditirelated adjustments result
+
+(omnzmsm Z3
+
+in an increase in an investor’s US. federal income tax liability for any year, the investor may also be
+liable for interest and penalties with respect to the amount of underpayment. The legal and accounting
+costs incurred in connection with any audit ofthe Fund’s tax return will be borne by the Fund.
+
+No Distributions with Respect to Tax. The Fund is not required distribute cash to enable investors
+to pay federal and state income taxes arising from the ownership of an Interest during a taxable year.
+A Fund investor may be liable for federal and state income taxes on income related to its ownership of
+an Interest, even though the investor has received no distributions from the Fund.
+
+Conﬁdential Information. The Fund Agreement will contain confidentiality provisions intended to
+protect proprietary and other information relating to the Fund and the Portfolio Companies. To the
+extent that such information is publicly disclosed, competitors of the Fund and/or competitors of the
+Portfolio Companies, and others, may benefit from such information, thereby adversely affecting the
+Fund, the Portfolio Companies, the Manager and the economic interests ofthe Fund’s investors.
+
+The foregoing risks do not purport to be a complete explanation of all the risks involved in acquiring
+an Interest in the Fund. When considering whether to subscribe for an Interest, prospective investors
+are urged to read the Fund’s entire Fund Agreement and consult with their legal, tax and other
+professional advisors before making a determination whether to invest in the Fund.
+
+IX. CERTAIN UNITED ATES FEDERAL TAX CONSIDERATIONS
+
+The following discussion summarizes certain United States federal tax considerations generally
+applicable to persons considering an investment in the Fund. The discussion does not address all tax
+considerations that may be relevant to specific investors in light of their particular circumstances. No
+other state, local or foreign tax considerations are addressed. All persons considering an investment
+in the Fund are urged to consult with their own tax advisors as to the specific United States federal,
+local and foreign tax consequences of such an investment.
+
+In General. Except where specifically addressing considerations applicable to taxiexempt or foreign
+investors, the discussion assumes that the Fund investor is a United States citizen or resident individual,
+a domestic corporation that is not taxiexempt, or a foreign person whose Fund interest is used or held
+for use in the conduct ofa United States trade or business. The discussion is based upon existing law
+as contained in United States federal statutes, regulations, administrative rulings and judicial decisions
+on the date of the this disclosure. Future changes to the law may, on either a prospective or retroactive
+basis, give rise to materially different tax considerations. Finally, no rulings have been or will be
+requested from the United States federal tax authorities as to any matter and there can be no assurance
+that such authorities will not successfully assert a position contrary to one or more of the legal
+conclusions discussed herein.
+
+Effect of Partnership Status. The Fund will be treated as a partnership, and not as an association
+taxable as a corporation, for United States federal income tax purposes. As such, the Fund will not be
+subject to federal income tax. Instead, each Fund investor will be required to report on such investor’s
+
+((nwzmsa } 24
+
+federal income tax return its allocated share of the Fund’s items of income, gain, loss and deduction
+substantially as if such investor had recognized the items directly. Accordingly, a Fund investor
+generally will be required to pay tax on its share of the Fund’s net income or gain (and, in the case of
+capital gain, will be entitled to the beneﬁts of reduced capital gain rates) in the year recognized without
+regard to whether the Fund makes a corresponding cash distribution. Except as described in the
+following paragraph, distributions (as opposed to allocations of taxable income or gain) received by a
+Fund investor from the Fund generally will not be subject to tax, but a Fund investor selling appreciated
+securities distributed to it by the Fund generally will be required to include in income for federal
+income tax purposes all of the appreciation in the value of such securities, including any such
+appreciation that accrued while the securities were held by the Fund.
+
+It is expected that the Fund will qualify as an “investment partnership” Within the meaning of Section
+731(c) of the United States Internal Revenue Code of 1986, as amended (the “Code”). If the Fund
+does not so qualify, an investor in the Fund that receives a distribution of marketable securities from
+the Fund may be required to recognize taxable gain to the extent that the fair market value of the
+distributed securities exceeds the investor’s tax basis in its Fund interest.
+
+As the tax matters partner of the Fund, the Manager will have the right to control any audit or
+investigation of the Fund by the Internal Revenue Service and all subsequent administrative and
+judicial proceedings arising out of such audit. The Manager will also have the authority under the
+Fund Agreement to make, or decline to make, all applicable tax elections on behalf of the Fund.
+
+Trade or Business Status. The Fund generally intends to take the position for federal income tax
+purposes that its operations and activities constitute an investment activity rather than the active
+conduct of a trade or business. One consequence of this position is that noncapitalized investment
+expenses incurred by the Fund in carrying on its activities generally will be treated by investors in the
+Fund who are individuals as “miscellaneous itemized deductions” and may not be available (or may
+be only partially available) to offset such investors’ taxable income from the Fund or other sources.
+
+Passive Activity Loss Rules. A Fund investor that is subject to the “passive activity loss mles” of the
+Code generally will not be permitted to offset against investor’s share of the Fund’s income and gain
+any losses or other deductions generated by the investor’s investments in “passive activities” (until the
+investor’s interests in such passive activities are disposed of). The activity of “trading personal
+property for the account of owners of interests in the activity" does not give rise to passive activity
+income or loss. Accordingly, a Fund investor’s ability to reduce its income for federal income tax
+purposes by the investor’s share ofthe Fund’s losses and deductions attributable to purchases and sales
+of Portfolio Company securities generally should not be limited by the passive activity loss rules
+(although such losses and deductions may be subject to other limitations, including restrictions on the
+use of miscellaneous itemized deductions and capital losses).
+
+Transfer of a Fund Interest. The sale or exchange of a Fund interest by an investor generally would
+result in the recognition of capital gain or loss equal to the difference between the investor’s tax basis
+in the Fund interest and the amount of consideration received, although a portion of such gain or loss
+
+((uwzmsa } 25
+
+may be recharacterized as ordinary income or loss to the extent attributable to the investor’s indirect
+share of certain assets of the Fund (including, without limitation, market discount bonds, shortiterm
+debt obligations, and stock in certain foreign corporations) described in Section 751(c) of the Code.
+
+50 Percent Capital Gain Exclusion for Qualiﬁed Small Business Investments. In general,
+noncorporate investors that, directly or via a passithrough entity such as the Fund, hold qualiﬁed “small
+business stock" for more than 5 years are permitted to exclude from taxable income 50 percent of any
+gain subsequently recognized upon a sale or exchange of such stock (60 percent for qualified business
+entity stock). For each noncorporate investor, the amount of gain eligible for the 50 percent exclusion
+generally is limited to the greater of: (i) 10 times the investor’s basis in the stock issued by such
+corporation and disposed of by such taxpayer during the taxable year or (ii) an aggregate of$10 million
+($5,000,000 for married taxpayers filing separately) with regard to stock in the issuing corporation.
+The remaining 50 percent of any qualifying gain is subject to tax at a rate of 28 percent, resulting in an
+effective tax rate of 14 percent on the entire gain. Seven percent of the 50 percent exclusion is treated
+as a preference item (and thus added back to the 28% tax bracket) for federal alternative minimum tax
+purposes. Accordingly, subject to the limitations described above, the total amount of qualified gain
+recognized by an individual who is subject to alternative minimum tax would be taxable at an effective
+maximum rate of 14.98 percent, which is less than the current maximum tax rate on long term capital
+gains of 23.8 percent.
+
+To be treated as small business stock eligible for the 50 percent exclusion, stock must have been
+acquired at original issue from a qualified small business corporation. In general, a qualified small
+business corporation is a domestic “C" corporation that, at all times on and after August 10, 1993 and
+before the stock in question is issued and immediately after issuing the stock in question, has $50
+million or less in gross assets and satisfies certain other requirements. Because several of these
+requirements must continue to be satisfied after the issuance of qualified stock, it is possible that the
+stock may cease to qualify as small business stock due to events occurring after the issue date.
+Accordingly, there can be no assurance that any stock acquired directly or indirectly by the Fund would
+qualify for the 50 percent exclusion, even if such stock qualifies as small business stock at the time of
+issuance.
+
+Rollover for Qualified Small Business Stock. Under Section 1045 of the Code, if a noncorporate
+taxpayer (i) realizes gain on a sale of qualified small business stock (as defined above) that has been
+held by the taxpayer for more than six months, and (ii) within 60 days after such sale, purchases new
+qualified small business stock, the taxpayer generally is required to recognize (and pay tax on) such
+gain only to the extent that the net sale proceeds from the original stock exceed the cost of the newly
+purchased stock. Any remaining gain is carried over to the newly purchased stock and may be
+recognized (and taxable) upon a subsequent disposition of such stock. Section 1045 generally operates
+on a flowithrough basis with respect to purchases and sales of qualified small business stock by entities
+treated as partnerships for federal income tax purposes such as the Fund. Thus, noncorporate Fund
+investors may be entitled to Section 1045 rollover benefits when the Fund sells and purchases
+securities. Nevertheless, stock may cease to qualify as qualified small business stock due to
+circumstances beyond the control of the Fund. Accordingly, there can be no assurance that any
+
+(0011720452 } 26
+
+noncorporate Fund investor would be entitled to the benefits of Section 1045 with respect to any
+specific purchases and sales of stock by the Fund.
+
+Tax-Exempt Investors. It is anticipated that the Fund’s income will consist principally, if not
+exclusively, of dividends and interest as well as gains from the disposition of capital assets or other
+property not held for sale in the ordinary course of business. However, the Manager will be under no
+obligation to avoid causing the Fund to recognize income or gains that qualify as “unrelated business
+taxable income” (“UBTI”) within the meaning of Sections 5117514 of the Code.
+
+Foreign Investors. For purposes of the remainder of this discussion, the term “Foreign Investor”
+generally refers to a person, not otherwise carrying on a trade or business in the United States, that is
+a nonresident alien individual, a corporation or partnership organized under the laws of a foreign
+country, a trust or estate not subject to United States taxation on its worldwide income, or an entity
+that is disregarded for purposes of US. tax law and owned by a foreign person. As discussed above
+under the section titled “Trade or Business Status,” the Fund generally intends to take the position for
+federal income tax purposes that it is not engaged in the conduct of a trade or business. If this position
+is upheld, Foreign Investors generally will not, solely as a result of investment in the Fund, be: (i)
+considered to be engaged in a United States trade or business, (ii) required to file United States federal
+income tax returns, or (iii) subject to United States federal income tax on gain from the sale of capital
+assets held by them directly or through their interests in the Fund. However, the Fund would be
+required to withhold tax at a 30 percent rate from the gross amount of United States source income
+allocated to a Foreign Investor to the extent such income consists of dividends or certain types of
+interest or other passive income. A Foreign Investor that is eligible for a reduced rate of United States
+taxation pursuant to a tax treaty may obtain a refund from the Internal Revenue Service with respect
+to its share of any tax withheld.
+
+Notwithstanding the foregoing, a Foreign Investor’s share of the net gain recognized upon disposition
+by the Fund of a United States real property interest would be treated for federal income tax purposes
+as if it were effectively connected with a United States trade or business. For this purpose, the term
+“United States real property interest” generally would include any interest in real property located in
+the United States. These provisions have a “lookrthrough” rule that encompasses the stock of
+companies in which at least half of the fair market value of their trade or business at any point during
+the preceding 5 years comprises United States real property assets.1 In general, if Foreign Investors
+were deemed to dispose of a United States real property interest under any of these niles, then the Fund
+would be required to withhold tax at the highest marginal income tax rate from allocations to such
+Foreign Investors of such net gain and each Foreign Investor would be required to report its share of
+such gain on a United States federal income tax return. While it is not intended that the Fund will
+
+' Classes of publicly traded stock (i.e., any class of stock that is regularly traded on an established
+securities market) are only subject to this rule in the case of a foreign person who owns, directly or
+indirectly, greater than 5 percent of such stock at any point during the 5 years preceding its disposition.
+
+(000720452; 27
+
+acquire or dispose of assets that qualify as United States real property interests, there can be no
+assurance that Portfolio Company securities will not so qualify.
+
+If the Fund were determined to be engaged in a trade or business, Foreign Investors generally would
+be: (i) considered to be engaged in the conduct of a trade or business in the United States, (ii) required
+to ﬁle United States federal income tax returns and pay United States federal income tax and (iii)
+subject to United States federal income tax withholding with respect to that portion of their shares of
+the Fund’s net income which is considered to be effectively connected with such trade or business. In
+addition, Foreign Investors that are corporations may be subject to a 30 percent tax on their “dividend
+equivalent amount” for purposes ofthc United States branch proﬁts tax, subject to possible reduction
+pursuant to an international bilateral income tax treaty. Finally, Foreign Investors could be subject to
+United States federal income tax with respect to any gain recognized upon a sale or exchange of their
+interests in the Fund, depending on the assets the Fund holds at such time and the type of sale. Foreign
+Investors may apply withheld taxes against the tax liability shown on their federal income tax returns
+and refunds may be obtained from the Internal Revenue Service for any excess tax withheld.
+
+Notwithstanding the foregoing, pursuant to the Hiring Incentives to Restore Employment Act,
+payments made to foreign entities and foreign financial institutions after July 1, 2014 will be subject
+to a thirty percent (30%) U.S. withholding tax unless the foreign entity or foreign financial institution
+has complied with reporting and disclosure requirements regarding “United States persons” (within the
+meaning of Section 7701 of the Code) that hold a financial account, either directly or indirectly, with
+such foreign entities or foreign financial institutions.
+
+FOREIGN INVESTORS ARE URGED TO CONSULT WITH THEIR OWN TAX ADVISORS TO
+DECIDE WHICH UNITED STATES TAX FORMS SHOULD BE SUBMITTED TO THE FUND
+UPON PURCHASING AN INTEREST THEREIN.
+
+Federal Estate Tax Considerations for Foreign Investors. The applicability of United States federal
+estate tax to a Fund interest owned at the time of death by a Foreign Investor who is an individual is
+uncertain under current law. Accordingly, a Foreign Investor who is an individual may wish to
+consider holding his or her interest in the Fund through a noniU.S. corporation.
+
+X. PRIVACY POLICY
+
+Pursuant to the GrammrLeachiBliley Act, Public Law No. 1067102, and the rule issued by the Federal
+Trade Commission regarding the Privacy of Consumer Financial Information, 16 C.F.R. Part 313 (the
+“FTC Privacy Rule”), institutions that provide certain ﬁnancial products or services to individuals to
+be used for personal, family, or household purposes are required to provide written notices to their
+customers regarding disclosure of nonpublic personal information. We have been advised that we may
+be subject to such requirement. This notice is being provided to you to comply with the FTC Privacy
+Rule.
+
+(000720452; 28
+
+We understand that it is our obligation to maintain the confidentiality of information with regard to our
+investors generally. As a consequence, we do not disclose any nonpublic personal information about
+our investors or former investors to anyone other than our affiliates and service providers, except as
+permitted by law and as described in the following sentences. Consistent with industry practice (and
+the provisions of our fund agreements), we may distribute certain personallyiidentifiable financial
+information such as the names of investors, the amount of their capital commitments and capital
+account information, to all investors or prospective investors in each specific fund and in future funds.
+In addition, in order to accurately and efﬁciently conduct the Fund’s investment program, we must
+collect, maintain, use and disclose certain nonipublic information about you and the Fund’s other
+investors. Finally, we may disclose certain personallyiidentifiable financial information such as the
+names of investors and the amount of their capital commitments to the Portfolio Companies or other
+investment vehicles in which the Fund acquires an interest.
+
+We collect, and may disclose to our affiliates and service providers (e.g., our attorneys, accountants,
+auditors, administrators, entities that assist us with the distribution of stock to our investors and
+placement agents for future fundraising activities) on a “need to know" basis, certain nonpublic
+personal information about you from the following sources:
+
+7 Information we receive from you as set forth in your subscription agreement, investor
+questionnaire or similar forms, such as your name, address, and social security or tax
+identification number; and
+
+7 Information about your transactions with us, our affiliates and service providers, or others, such
+as your participation in each of our funds, your capital account balance, your contributions and
+distributions and, in the case of an investor that is an individual retirement account, information
+with regard to such account.
+
+We restrict access to nonpublic personal information about you to those employees who need to know
+that information to provide services to the Fund and its investors. We maintain physical, electronic,
+and procedural safeguards to guard your nonpublic personal information. In addition, we will continue
+to assess new technology for protecting information with regard to our investors.
+
+In connection with fundraising efforts for future funds, we may disclose information about existing
+investors to one or more placement agents for use in marketing efforts, including communication with
+prospective future investors.
+
+This policy may change from time to time, but you can always review our current policy by asking us
+for a copy. If you have any questions about our privacy policy, please call us at (650) 46179000 or
+email us at investor@kxter.eom.
+
+(000720452; 29
+

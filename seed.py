@@ -158,18 +158,6 @@ def load_users():
     db.session.commit()
 
 
-# def load_caseusers():
-#     """Add some fake teams."""
-
-#     caseUser1 = case
-
-# def load_cases():
-#     """Add some fake case data."""
-
-#     case1 = Case(case_no=012345678,
-#                  team_lead=user11,
-#                  )
-
 if __name__ == "__main__":
     connect_to_db(app)
 

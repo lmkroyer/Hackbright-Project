@@ -4,9 +4,6 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    /*background-color: #7283a0;*/
-    /*background-color: #b6ccd6;*/
-/*    background-color: #93afbc;*/
     background-image: url("home2.jpg");
     background-color: #dce3ef;
 }
@@ -231,9 +228,7 @@ body {
 }
 
 #login-route {
-  /*color: #32CD32;*/
   color: white;
-  /*color: #00007f;*/
   font-size: 400%;
   font-family: ailerons;
 }
@@ -354,10 +349,6 @@ a#login-route:hover {
   margin-left: -40px;
 }
 
-/*--------------------------------*/
-/*Maps*/
-/*--------------------------------*/
-
 #map {
     width: 100%;
     height: 75%;
@@ -386,7 +377,7 @@ a#login-route:hover {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background-image: url("blackmap.jpg");
+  background-image: url("/img/blackmap.jpg");
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -399,9 +390,7 @@ a#login-route:hover {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-/*  background-color: #56678f;
-*//*  background-color: #272532;*/
-  background-image: url("blackmap.jpg");
+  background-image: url("/img/blackmap.jpg");
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -459,10 +448,6 @@ a#login-route:hover {
   color:white;
 }
 
-/*#corp-nav {
-  background-color: #e6e9f0;
-}*/
-
 .navbar-brand {
   width: 250px;
   font-size: 18pt;
@@ -519,37 +504,12 @@ a#login-route:hover {
     height: 100%;
     margin: 0;
     padding: 0;
-
-/*    background: #fdfbfb ;
-    background: -webkit-linear-gradient(left, #fdfbfb  , #ebedee);
-    background: -o-linear-gradient(right, #fdfbfb , #ebedee);
-    background: -moz-linear-gradient(right, #fdfbfb , #ebedee);
-    background: linear-gradient(to right, #fdfbfb  , #ebedee);*/
-
     background: #e6e9f0;
     background: -webkit-linear-gradient(left, #e6e9f0, #eef1f5);
     background: -o-linear-gradient(right, #e6e9f0 #eef1f5);
     background: -moz-linear-gradient(right, #e6e9f0 #eef1f5);
     background: linear-gradient(to right, #e6e9f0, #eef1f5);
 }
-
-/*#dashBackCorp:before {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  display: block;
-  background-image: url('neat.png');
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-}*/
 
 #dashBackCorp {
   position: fixed;
@@ -568,18 +528,6 @@ a#login-route:hover {
 #allOptions h3 {
   color: #ADD8E6;
 }
-
-/*#dashBackCorp {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: url("neat.png");
-    background: #29323c;
-    background: -webkit-linear-gradient(left, #29323c , #485563);
-    background: -o-linear-gradient(right, #29323c, #485563);
-    background: -moz-linear-gradient(right, #29323c, #485563);
-    background: linear-gradient(to right, #29323c , #485563);
-}*/
 
 #corp-options {
   color: grey;

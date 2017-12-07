@@ -54,10 +54,18 @@ es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 INDEX = 'documents'
 
 
-@app.route('/test_boxes')
-def test_boxes():
+@app.route('/')
+def index():
+    """Homepage."""
 
-    pass
+    return render_template('homepage.html')
+
+
+@app.route('/about_us')
+def show_co_info():
+    """Display information about the company."""
+
+    return render_template('about_us.html')
 
 
 @app.route('/welcome')
@@ -100,43 +108,8 @@ def make_lit_dashboard():
         else:
             case.status = '0%'
 
-    # if (myCaseRequestProDocs !== 'None' && myCaseRequestProDocs !== undefined) {
-    #     status = '100%';
-    # }
-    # else if (myCaseInterrogatories !== 'None' && myCaseInterrogatories !== undefined) {
-    #     status = '75%';
-    # }
-    # else if (myCaseAnswer !== 'None' && myCaseAnswer !== undefined) {
-    #     status = '50%';
-    # }
-    # else if (myCaseComplaint !== 'None' && myCaseComplaint !== undefined) {
-    #     status = '25%';
-    # }
-    # else {
-    #     status = '0%';
-    # }
-
-    # if (myCase) {
-    #     myCase.html(status);
-    # }
-
-
     return render_template('/welcome.html', active_case_lst=active_case_lst,
                                             case_count=case_count)
-
-
-@app.route('/')
-def index():
-    """Homepage."""
-
-    return render_template('homepage.html')
-
-
-@app.route('/about_us')
-def show_co_info():
-    """Display information about the company."""
-
-    return render_template('about_us.html')
 
 
 @app.route('/active_cases.json')
@@ -146,8 +119,6 @@ def active_case_info():
     cases = {
         case.case_id: {
             'caseCounty': case.county
-            # 'caseState': case.state,
-            # 'caseID': case.case_id
         }
     for case in Case.query.filter(Case.settled == False).all()}
 
@@ -217,7 +188,7 @@ def callback():
     token = github.fetch_token(TOKEN_URL, client_secret=client_secret,
                                authorization_response=request.url)
 
-    # At this point we can fetch protected resources but let's save
+    # At this point we can fetch protected resources but instead save
     # the token and show how this is done from a persisted token
     # in /profile.
     session['oauth_token'] = token
@@ -242,23 +213,6 @@ def profile():
 
     github = OAuth2Session(client_id, token=session['oauth_token'])
     github_user = github.get('https://api.github.com/user').json()
-
-
-@app.route('/dashboard_lit')
-def display_lit_dashboard():
-    """Display the litigation dashboard."""
-
-    current_user = session.get('current_user')
-
-    user_object = User.query.get(current_user)
-    # Query for all cases where settled == False
-    active_cases = Case.query.filter(User.user_id == current_user, Case.settled == False)
-
-    case_count = active_cases.count()
-    active_case_lst = Case.query.filter(User.user_id == current_user, Case.settled == False).all()
-
-    return render_template('dashboard_lit.html', case_count=case_count,
-                                                 active_case_lst=active_case_lst)
 
 
 @app.route('/userProgress.json')
@@ -312,6 +266,7 @@ def user_progress_data():
                 "spanGaps": False}
         ]
     }
+
     return jsonify(data_dict)
 
 
@@ -319,7 +274,7 @@ def user_progress_data():
 def display_attorneys():
     """Display all attorneys and their availability."""
 
-    # this can be the same as the case init -- just query for all attorneys and pass into template
+    # This can be the same as the case init -- just query for all attorneys and pass into template
     attorneys = User.query.all()
 
     return render_template('attorneys.html', attorneys=attorneys)
@@ -383,7 +338,6 @@ def display_corp_dashboard():
 def start_case():
     """Allow user to initialize a team and case by uploading complaint."""
 
-
     attorneys = User.query.all()
 
     return render_template('case_init.html', attorneys=attorneys)
@@ -443,19 +397,9 @@ def upload_file():
 
         txt_filename = filename.split('.')[0]
         txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
+
         # Grab all claim types from db to pass into dropdown menu
         claims = ClaimType.query.all()
-        # # Figure out of OCR'd claim type is in the db
-        # selected_claim = ClaimType.query.filter(ClaimType.name == parsed_text.claim).first()
-
-        # if selected_claim:
-        #     selected_claim_name = selected_claim.name
-        # # FIXME: COME BACK TO THIS!!
-        # else:
-        #     selected_claim_name = xyz
-
-        print parsed_text.word_list
-        print parsed_text.nouns
 
         new_case = request.form.get('new_case')
 
@@ -489,29 +433,6 @@ def upload_ppm():
         uploaded_file.save(ppm_doc)
 
         PPM = OCR_ppm(ppm_doc)
-
-        # if not PPM.mgmt_fee:
-        #     PPM.mgmt_fee = 'N/A'
-        # if not PPM.jurisdiction:
-        #     PPM.jurisdiction = 'N/A'
-        # if not PPM.manager:
-        #     PPM.manager = 'N/A'
-        # if not PPM.principals:
-        #     PPM.principals = 'N/A'
-        # if not PPM.removal:
-        #     PPM.removal = 'N/A'
-        # if not PPM.leverage:
-        #     PPM.leverage = 'N/A'
-        # if not PPM.min_commitment:
-        #     PPM.min_commitment = 'N/A/'
-        # if not PPM.transfers:
-        #     PPM.transfers = 'N/A'
-
-        # txt_filename = filename.split('.')[0]
-        # txt_filename = '{txt_filename}.txt'.format(txt_filename=txt_filename)
-
-        # Add the PPM to the db
-        # add_ppm_db(parsed_text, ppm_doc)
 
         fund = FundClient.query.filter(FundClient.fund == PPM.fund).first()
 
@@ -583,8 +504,7 @@ def send_to_db():
                            lname=plaintiff_lname)
         db.session.add(plaintiff)
         db.session.commit()
-        # new_plaintiff = Plaintiff(case=case)
-        # new_plaintiff.parties.append(new_party1)
+
     case.parties.append(plaintiff)
     case.set_party_role(plaintiff, 'plaintiff')
 
@@ -597,8 +517,7 @@ def send_to_db():
                            residence=defendant_residence)
         db.session.add(defendant)
         db.session.commit()
-        # new_defendant = Defendant(case=case)
-        # new_defendant.parties.append()
+
     case.parties.append(defendant)
     case.set_party_role(defendant, 'defendant')
 
@@ -642,7 +561,7 @@ def send_to_db():
 
     return render_template('complaint_submitted.html')
 
-# FIXME: pass in the case_id here!!!
+# FIXME: pass in the case_id here instead of using session
 @app.route('/answer_init/')
 def display_answer_options():
     """Display answer options to user."""
@@ -683,7 +602,7 @@ def generate_answer():
 
     return redirect(url_for('generated_doc', filename=filename))
 
-# @WIP:
+
 @app.route('/process_LPA', methods=['POST'])
 def generate_lpa():
     """Create an LPA object from the user's input."""
@@ -733,7 +652,8 @@ def generate_lpa():
 
     return redirect(url_for('generated_doc', filename=filename))
 
-# TODO: display and allow to edit before build
+
+# TODO: display and allow user to edit before build
 @app.route('/display_answer')
 def display_answer():
     """Show the user the word doc to approve or edit."""
@@ -836,6 +756,7 @@ def get_summary_report(clientID):
 def return_search_results(search):
     """Inputs user's search query. Outputs a list of relevant documents."""
 
+    # TODO - adjust model to display more info:
     # search_results = {
     #                     'doc_id': {
     #                                 'path': 'abc',
@@ -848,8 +769,6 @@ def return_search_results(search):
     search_results = {}
 
     es.indices.refresh(index=INDEX)
-
-    # res = es.search(index=INDEX, body={"query": {"match": {"text": search}}})
 
     res = es.search(index=INDEX, body={
                                         "query": {
@@ -893,25 +812,11 @@ def return_search_results(search):
         for highlight in hit['highlight']['text']:
             highlights.append(highlight)
 
-        # this gives a string of returned match if 1
-        # matched_text = res['hits']['hits'][0]['highlight']['text'][0]
-
-        # if more than one result, here is a list of strings of highlights:
-        # res['hits']['hits'][0]['highlight']['text']
-
         search_results[doc_id]['highlights'] = highlights
-
-        # search_results.append("%(path)s" % hit["_source"])
-        # search_results["%(doc_id)s" % hit["_source"]] = "%(path)s" % hit["_source"]
-        # search_results["%(doc_id)s" % hit["_source"]] = {'path': "%(path)s" % hit["_source",
-        #                                                  'highlights': "%(highlight)s" % hit["_source"]}
-    # import pdb; pdb.set_trace()
 
     # Return a list of paths to relevant documents
     return jsonify(search_results)
 
-
-# @app.route('/')
 
 @app.route('/ocr_by_layout')
 def draw_bounding_boxes():
