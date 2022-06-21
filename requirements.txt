@@ -22,7 +22,7 @@ Jinja2==2.9.6
 lxml==4.1.0
 MarkupSafe==1.0
 nltk==3.2.5
-numpy==1.13.3
+numpy==1.22.0
 oauthlib==2.0.6
 olefile==0.44
 opencv-contrib-python==3.3.0.10
